@@ -1,0 +1,15 @@
+# For anyone cloning this repo. (Gautami uses her existing 'geospatial' env.)
+name: mapchallenge
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - geopandas
+  - folium
+  - osmnx
+  - mapclassify
+  - matplotlib
+  - ipykernel
+  - pip
+  - pip:
+      - playwright

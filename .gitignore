@@ -1,0 +1,16 @@
+# big downloads stay local (README explains how to get them)
+data/raw/*
+!data/raw/.gitkeep
+data/arcgis/*
+!data/arcgis/.gitkeep
+
+# secrets
+mapbox_token.txt
+.env
+
+# python / jupyter / os noise
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+desktop.ini
