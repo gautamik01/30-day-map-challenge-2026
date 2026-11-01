@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30 Day Map Challenge 2026 | Gautami Kasat</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1f1d1a; --muted:#6f675e; --paper:#f6f2eb; --card:#fffdf9; --line:#e5ddd0; --ai:#b57a08; --city:#c43d50; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#eef2f3; --muted:#a3b0b5; --paper:#11161a; --card:#1a2126;
+    --line:#29333a; --ai:#f2b134; --city:#ef7a88; } }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,system-ui,sans-serif }
+  header, main, footer { max-width:1120px; margin:0 auto; padding-left:16px; padding-right:16px }
+  header { padding-top:64px; padding-bottom:20px }
+  h1 { font-family:Fraunces,Georgia,serif; font-size:clamp(34px,6vw,58px); line-height:1.02; margin:0 0 14px; font-weight:600 }
+  .lede { max-width:680px; color:var(--muted); font-size:17px; line-height:1.55; margin:0 0 18px }
+  .tabs button { font:600 13px Inter,sans-serif; padding:7px 13px; border-radius:999px; border:1px solid var(--line);
+    background:var(--card); color:var(--ink); cursor:pointer; margin:0 6px 6px 0 }
+  .tabs button.on { background:var(--ink); color:var(--paper) }
+  main { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; padding-bottom:72px }
+  .card { display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:18px; transition:transform .15s, border-color .15s }
+  .card:hover { transform:translateY(-2px) }
+  .card.ai:hover { border-color:var(--ai) } .card.city:hover { border-color:var(--city) }
+  .card img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:8px; margin-bottom:12px; display:block }
+  .chip { font-size:11px; letter-spacing:.08em; text-transform:uppercase }
+  .card.ai .chip { color:var(--ai) } .card.city .chip { color:var(--city) }
+  h2 { font-family:Fraunces,Georgia,serif; font-size:21px; margin:8px 0 6px; font-weight:600 }
+  p { margin:0; color:var(--muted); font-size:14px; line-height:1.45 }
+  .meta { margin-top:12px; font-size:12px; color:var(--muted) }
+  footer { color:var(--muted); font-size:13px; padding-bottom:48px }
+  footer a { color:inherit }
+</style></head><body>
+<header>
+  <h1>30 Day Map Challenge 2026</h1>
+  <p class="lede"><b>The Cloud Has a Footprint</b> follows America's data centers, the ones running today and the giant AI campuses
+  on the way, into the water, power and climate risk around them. <b>City Senses</b> is the lighter thread:
+  how New York, Philadelphia, DC, San Francisco, Austin and Seattle look, sound and taste on a map.</p>
+  <div class="tabs"><button class="on" data-f="all">All</button><button data-f="A">Where the Cloud Lands</button></div>
+</header>
+<main>
+      <a class="card ai" data-study="A" href="day01_points-ai.html">
+        <img src="../png_thumbnail/day01_points-ai.png" alt="">
+        <div class="chip">Day 01 · Points · interactive</div>
+        <h2>Where the Cloud Lands</h2>
+        <p>US data centers today, and the AI campuses being built next</p>
+        <div class="meta">Where the Cloud Lands · Python + Mapbox</div>
+      </a>
+</main>
+<footer>Gautami Kasat · Python, GeoPandas, Mapbox, ArcGIS Pro ·
+  <a href="https://github.com/gautamik01/30-day-map-challenge-2026">code for every map</a></footer>
+<script>
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.card').forEach(c => c.style.display = (b.dataset.f === 'all' || c.dataset.study === b.dataset.f) ? '' : 'none');
+});
+</script></body></html>

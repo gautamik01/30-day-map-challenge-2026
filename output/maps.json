@@ -1,0 +1,15 @@
+[
+  {
+    "day": 1,
+    "prompt": "Points",
+    "title": "Where the Cloud Lands",
+    "subtitle": "US data centers today, and the AI campuses being built next",
+    "series": "ai",
+    "study": "A",
+    "tool": "Python + Mapbox",
+    "interactive": true,
+    "file": "day01_points-ai.html",
+    "preview": "../png_thumbnail/day01_points-ai.png",
+    "updated": "2026-11-01"
+  }
+]

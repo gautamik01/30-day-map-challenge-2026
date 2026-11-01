@@ -51,14 +51,15 @@ with sync_playwright() as p:
     return False
 
 
-def _caption_stub(stem, day, prompt, title, subtitle, series, interactive, live_url, code_url, thumb, credits=""):
+def _caption_stub(stem, day, prompt, title, subtitle, series, interactive, live_url, code_url, thumb, credits="", study=None):
     out = CAPTIONS / f"{stem}.md"
     tpl = CAPTIONS / "_template.md"
     if out.exists() or not tpl.exists():
         return out
     values = dict(day=f"{day:02d}", day_n=str(day), hashtags=S.SERIES[series]["hashtags"], prompt=prompt, title=title, subtitle=subtitle,
                   series=S.SERIES[series]["name"], interactive="yes" if interactive else "no",
-                  live_url=live_url, code_url=code_url, thumbnail=thumb, credits=credits or "(add data credits)")
+                  live_url=live_url, code_url=code_url, thumbnail=thumb, credits=credits or "(add data credits)",
+                  study=f"{study} · {S.STUDIES.get(study, '')}" if study else "(none yet)")
     text = tpl.read_text(encoding="utf-8")
     for k, v in values.items():
         text = text.replace("{" + k + "}", str(v))
@@ -67,7 +68,7 @@ def _caption_stub(stem, day, prompt, title, subtitle, series, interactive, live_
 
 
 def save(obj, *, day, slug, prompt, title, subtitle="", series="ai", tool="Python",
-         notebook=None, credits="", thumbnail=True):
+         notebook=None, credits="", study=None, thumbnail=True):
     """credits: full citation text for the caption file, e.g. style.credits("im3", "epoch", full=True)"""
     stem = f"day{day:02d}_{slug}"
     kind = type(obj).__name__
@@ -93,10 +94,10 @@ def save(obj, *, day, slug, prompt, title, subtitle="", series="ai", tool="Pytho
 
     live_url = f"{S.PAGES_URL}/output/{out.name}"
     code_url = f"{S.CODE_URL}/{notebook}" if notebook else S.CODE_URL
-    cap = _caption_stub(stem, day, prompt, title, subtitle, series, interactive, live_url, code_url, thumb.name, credits)
+    cap = _caption_stub(stem, day, prompt, title, subtitle, series, interactive, live_url, code_url, thumb.name, credits, study)
 
     reg = [r for r in _registry() if r["file"] != out.name]
-    reg.append(dict(day=day, prompt=prompt, title=title, subtitle=subtitle, series=series, tool=tool,
+    reg.append(dict(day=day, prompt=prompt, title=title, subtitle=subtitle, series=series, study=study, tool=tool,
                     interactive=interactive, file=out.name,
                     preview=f"../png_thumbnail/{thumb.name}" if thumb.exists() else None,
                     updated=date.today().isoformat()))
@@ -128,12 +129,12 @@ def build_gallery():
     reg = _registry()
     names = {k: v["name"] for k, v in S.SERIES.items()}
     cards = "".join(f"""
-      <a class="card {r['series']}" href="{r['file']}">
+      <a class="card {r['series']}" data-study="{r.get('study') or ''}" href="{r['file']}">
         {f'<img src="{r["preview"]}" alt="">' if r.get('preview') else ''}
         <div class="chip">Day {r['day']:02d} · {r['prompt']}{' · interactive' if r.get('interactive') else ''}</div>
         <h2>{r['title']}</h2>
         <p>{r.get('subtitle', '')}</p>
-        <div class="meta">{names.get(r['series'], r['series'])} · {r.get('tool', '')}</div>
+        <div class="meta">{S.STUDIES.get(r.get('study'), names.get(r['series'], r['series']))} · {r.get('tool', '')}</div>
       </a>""" for r in reg)
     (OUTPUT / "index.html").write_text(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -170,8 +171,8 @@ def build_gallery():
   <p class="lede"><b>{names['ai']}</b> follows America's data centers, the ones running today and the giant AI campuses
   on the way, into the water, power and climate risk around them. <b>{names['city']}</b> is the lighter thread:
   how New York, Philadelphia, DC, San Francisco, Austin and Seattle look, sound and taste on a map.</p>
-  <div class="tabs"><button class="on" data-f="all">All</button><button data-f="ai">{names['ai']}</button>
-  <button data-f="city">{names['city']}</button></div>
+  <div class="tabs"><button class="on" data-f="all">All</button>{"".join(
+      f'<button data-f="{k}">{v}</button>' for k, v in S.STUDIES.items() if any(r.get("study") == k for r in reg))}</div>
 </header>
 <main>{cards}
 </main>
@@ -180,6 +181,6 @@ def build_gallery():
 <script>
 document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {{
   document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
-  document.querySelectorAll('.card').forEach(c => c.style.display = (b.dataset.f === 'all' || c.classList.contains(b.dataset.f)) ? '' : 'none');
+  document.querySelectorAll('.card').forEach(c => c.style.display = (b.dataset.f === 'all' || c.dataset.study === b.dataset.f) ? '' : 'none');
 }});
 </script></body></html>""", encoding="utf-8")

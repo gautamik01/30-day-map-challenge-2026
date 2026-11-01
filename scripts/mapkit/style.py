@@ -63,6 +63,38 @@ SERIES = {
     ),
 }
 
+# ---------------------------------------------------------------- shared visual language
+# The same thing always looks the same on every map, so 2-3 maps read as one study.
+LOOK = {
+    # the cast
+    "existing":   "#8fb3c9",     # existing data centers, grey-blue
+    "existing_on_light": "#4f7389",   # same, darker, used automatically on light basemaps
+    "ai_running": "#f2b134",     # new AI campuses already running, amber
+    "ai_coming":  "#ff5c8a",     # new AI campuses under construction / expanding, glowing pink
+    # what they press on
+    "water":      "#2fb5a8",
+    "water_ramp": ["#0f3a40", "#16646a", "#2fb5a8", "#8fe3d6", "#e8fbf6"],   # low -> high stress
+    "power":      "#f25f3a",
+    "power_ramp": ["#3a1c14", "#7a2e1c", "#c4472a", "#f25f3a", "#ffb08a"],
+    "heat_ramp":  ["#2b1a33", "#6b2c4f", "#b8455a", "#ef7a4f", "#ffd27a"],
+    "risk_ramp":  ["#1f1a33", "#3d2c6b", "#6b44a8", "#a77bdb", "#e2ccff"],
+    "people":     "#e8e3d9",
+}
+LABELS = {
+    "existing":   "Existing data centers",
+    "ai_running": "New AI campuses · running",
+    "ai_coming":  "New AI campuses · coming",
+}
+
+# The studies the maps build toward. Tag each map with one in its notebook (STUDY = "A").
+STUDIES = {
+    "A": "Where the Cloud Lands",
+    "B": "What the Cloud Drinks",
+    "C": "What the Cloud Burns",
+    "D": "The Cloud at Risk",
+    "City": "City Senses",
+}
+
 # Raster basemaps for folium (Leaflet). Labels drawn above your data.
 BASEMAPS = {
     "light":   ("light_nolabels", "light_only_labels"),
@@ -128,13 +160,12 @@ def card_html(day, prompt, title, subtitle="", story="", legend_html="", sources
     .mk-title {{font-size:21px}} .mk-story {{display:none}} }}
 </style>
 <div class="mk-card">
-  <div class="mk-chip">Day {day:02d} &middot; {prompt}</div>
   <div class="mk-title">{title}</div>
   {f'<div class="mk-sub">{subtitle}</div>' if subtitle else ''}
   {f'<div class="mk-story">{story}</div>' if story else ''}
   {extra_html}
   {f'<div class="mk-legend">{legend_html}</div>' if legend_html else ''}
-  <div class="mk-foot">{('Data: ' + sources + '<br>') if sources else ''}{AUTHOR} &middot; {HASHTAG}</div>
+  <div class="mk-foot">{('Data: ' + sources + '<br>') if sources else ''}{AUTHOR}</div>
 </div>"""
 
 

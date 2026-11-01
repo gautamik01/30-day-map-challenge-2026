@@ -212,85 +212,223 @@ def interactive(layers, *, day, prompt, title, subtitle="", story="", sources=""
 
 
 # ======================================================================= Mapbox GL
-def mapbox(layers, *, day, prompt, title, subtitle="", story="", sources="", series="ai",
-           bounds=None, style="dark", projection="mercator", pitch=0, bearing=0, token=None):
+_MAP_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+__LIB__
+<style>
+  /* ---- THEME: dark panel by default; body.light switches everything to the light version ---- */
+  :root { --panel: rgba(13,17,21,.84); --ink:#eef2f4; --muted:#93a1a8; --line:rgba(255,255,255,.08);
+          --title:#f7e7c6; --tip:rgba(10,13,16,.94); --about:#c9d3d7; --hover:rgba(255,255,255,.06);
+          --shadow:0 10px 40px rgba(0,0,0,.35); --glow:#ff5c8a; }
+  body.light { --panel: rgba(255,255,255,.88); --ink:#1d2329; --muted:#5f6b72; --line:rgba(20,30,40,.10);
+               --title:#1d2329; --tip:rgba(255,255,255,.97); --about:#3a454c; --hover:rgba(20,30,40,.05);
+               --shadow:0 10px 34px rgba(30,40,50,.16); --glow:#e8436f; }
+  .hl { color:var(--glow); text-shadow:0 0 10px color-mix(in srgb, var(--glow) 85%, transparent),
+        0 0 26px color-mix(in srgb, var(--glow) 50%, transparent); }
+  body.light .hl { text-shadow:0 0 14px color-mix(in srgb, var(--glow) 40%, transparent); }
+  html, body, #map { margin:0; height:100%; background:__PAPER__; }
+  body { font-family: Inter, system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .panel { position:fixed; top:20px; left:20px; z-index:5; width:290px; padding:20px 20px 14px;
+           background:var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+           border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); }
+  .panel h1 { color:var(--title); font-family: Fraunces, Georgia, serif; font-weight:600; font-size:25px; line-height:1.08;
+              letter-spacing:-.01em; margin:0; }
+  .panel .sub { font-size:13px; line-height:1.45; color:var(--muted); margin:8px 0 0; }
+  .legend { margin:16px 0 4px; display:flex; flex-direction:column; gap:2px; }
+  .item { display:flex; align-items:center; gap:10px; width:100%; padding:8px 8px; margin:0 -8px;
+          width:calc(100% + 16px); border:0; border-radius:9px; background:transparent; color:var(--ink);
+          font:500 13px Inter, system-ui, sans-serif; text-align:left; cursor:pointer; transition:background .15s, opacity .15s; }
+  .item:hover { background:var(--hover); }
+  .item.off { opacity:.35; }
+  .item .dot { width:10px; height:10px; border-radius:50%; flex:none; }
+  .item .dot.glow { box-shadow:0 0 0 3px rgba(255,255,255,.04), 0 0 12px 3px currentColor; }
+  .item .label { flex:1; }
+  .item .n { color:var(--muted); font-variant-numeric: tabular-nums; font-size:12px; }
+  .cats { margin:0 0 6px 20px; display:flex; flex-wrap:wrap; gap:4px 12px; font-size:11.5px; color:var(--muted); }
+  .cats span::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px;
+                       background:var(--c); vertical-align:1px; }
+  .hint { font-size:11px; color:var(--muted); margin:6px 0 0; }
+  .about-btn { margin-top:12px; padding:0; border:0; background:none; color:var(--muted); cursor:pointer;
+               font:500 12px Inter, system-ui, sans-serif; display:flex; align-items:center; gap:6px; }
+  .about-btn:hover { color:var(--ink); }
+  .about { font-size:12px; line-height:1.55; color:var(--about); margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
+  .about .credits { color:var(--muted); font-size:11px; margin-top:8px; }
+  .about .by { color:var(--muted); font-size:11px; margin-top:6px; }
+  .tip { position:fixed; z-index:10; pointer-events:none; display:none; max-width:260px; padding:11px 13px;
+         background:var(--tip); color:var(--ink); border:1px solid var(--line); border-radius:11px;
+         box-shadow:var(--shadow); font-size:12px; }
+  .tip .t-name { font-weight:600; font-size:14px; line-height:1.25; }
+  .tip .t-kind { font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin:3px 0 7px; }
+  .tip .row { display:flex; justify-content:space-between; gap:14px; padding:2px 0; }
+  .tip .row span:first-child { color:var(--muted); }
+  .tip .row span:last-child { text-align:right; font-variant-numeric: tabular-nums; }
+  .mapboxgl-ctrl-group, .maplibregl-ctrl-group { background:var(--panel)!important; border:1px solid var(--line); }
+  body:not(.light) .mapboxgl-ctrl-group button span, body:not(.light) .maplibregl-ctrl-group button span { filter: invert(1); }
+  @media (max-width: 640px) {
+    .panel { top:auto; bottom:12px; left:12px; right:12px; width:auto; padding:14px 16px 10px; }
+    .panel h1 { font-size:20px; } .panel .sub { display:none; } .hint { display:none; }
+  }
+</style></head>
+<body class="__THEME__">
+<div id="map"></div>
+<aside class="panel">
+  <h1>__TITLE_HTML__</h1>
+  __SUB__
+  <div class="legend" id="legend"></div>
+  <p class="hint">Hover a point for details. Click the legend to show or hide a layer.</p>
+  <button class="about-btn" id="aboutBtn" aria-expanded="false">&#9432;&nbsp; About this map</button>
+  <div class="about" id="about" hidden>__ABOUT__<div class="credits">__CREDITS__</div><div class="by">__AUTHOR__</div></div>
+</aside>
+<div class="tip" id="tip"></div>
+<script>
+const C = __CONFIG__;
+const D = __DATA__;
+const lib = C.mapbox ? mapboxgl : maplibregl;
+if (C.mapbox) mapboxgl.accessToken = C.token;
+const narrow = window.innerWidth < 640;
+const pad = narrow ? {top:30, bottom:200, left:20, right:20} : {top:50, bottom:50, left:340, right:50};
+const map = new lib.Map(Object.assign({container:'map', style:C.style, bounds:C.bounds,
+  fitBoundsOptions:{padding:pad}, pitch:C.pitch, bearing:C.bearing},
+  C.mapbox ? {projection:C.projection} : {}));
+if (!C.mapbox && C.projection === 'globe') map.on('style.load', () => { try { map.setProjection({type:'globe'}); } catch(e) {} });
+map.addControl(new lib.NavigationControl({showCompass:false}), 'bottom-right');
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const zr = k => ['interpolate', ['linear'], ['zoom'], 2, ['*', ['get','_radius'], k[0]], 10, ['*', ['get','_radius'], k[1]]];
+
+map.on('load', () => {
+  C.layers.forEach(L => {
+    map.addSource(L.id, {type:'geojson', data:D[L.id]});
+    const vis = L.visible ? 'visible' : 'none';
+    if (L.kind === 'point') {
+      if (L.glow) map.addLayer({id:L.id+'-glow', type:'circle', source:L.id, layout:{visibility:vis},
+        paint:{'circle-color':['get','_color'], 'circle-radius':zr([2.6, 5]), 'circle-blur':1, 'circle-opacity':0.55}});
+      map.addLayer({id:L.id, type:'circle', source:L.id, layout:{visibility:vis},
+        paint:{'circle-color':['get','_color'], 'circle-radius':zr([0.75, 1.6]), 'circle-opacity':L.opacity,
+               'circle-stroke-width':L.glow || L.size ? 0.8 : 0, 'circle-stroke-color':'rgba(255,255,255,0.55)'}});
+    } else if (L.kind === 'line') {
+      map.addLayer({id:L.id, type:'line', source:L.id, layout:{visibility:vis},
+        paint:{'line-color':['get','_color'], 'line-width':['/', ['get','_radius'], 2], 'line-opacity':L.opacity}});
+    } else {
+      map.addLayer({id:L.id, type:'fill', source:L.id, layout:{visibility:vis},
+        paint:{'fill-color':['get','_color'], 'fill-opacity':L.opacity * 0.7, 'fill-outline-color':'rgba(255,255,255,0.15)'}});
+    }
+  });
+
+  // legend = layer switches
+  const legend = document.getElementById('legend');
+  C.layers.forEach(L => {
+    const b = document.createElement('button');
+    b.className = 'item' + (L.visible ? '' : ' off');
+    b.innerHTML = `<span class="dot ${L.glow ? 'glow' : ''}" style="background:${L.color};color:${L.color}"></span>
+                   <span class="label">${esc(L.name)}</span><span class="n">${L.count.toLocaleString()}</span>`;
+    b.onclick = () => {
+      const on = b.classList.toggle('off');
+      [L.id, L.id + '-glow'].forEach(id => map.getLayer(id) && map.setLayoutProperty(id, 'visibility', on ? 'none' : 'visible'));
+    };
+    legend.appendChild(b);
+    if (L.cats && L.cats.length > 1) {
+      const c = document.createElement('div'); c.className = 'cats';
+      c.innerHTML = L.cats.map(([n, col]) => `<span style="--c:${col}">${esc(n)}</span>`).join('');
+      legend.appendChild(c);
+    }
+  });
+
+  // hover cards
+  const tip = document.getElementById('tip');
+  const byId = Object.fromEntries(C.layers.map(L => [L.id, L]));
+  const ids = C.layers.slice().reverse().map(L => L.id);
+  const show = e => {
+    const live = ids.filter(id => map.getLayoutProperty(id, 'visibility') !== 'none');
+    const f = live.length ? map.queryRenderedFeatures(e.point, {layers: live}) : [];
+    if (!f.length) { tip.style.display = 'none'; map.getCanvas().style.cursor = ''; return; }
+    const p = f[0].properties, L = byId[f[0].layer.id];
+    const rows = Object.entries(L.fields).map(([k, lab]) => [lab, p[k]])
+      .filter(([, v]) => v !== undefined && v !== null && !['', 'n/a', 'nan', 'None', 'null'].includes(String(v)));
+    tip.innerHTML = `<div class="t-name">${esc(p._tip)}</div><div class="t-kind" style="color:${L.color}">${esc(L.name)}</div>`
+      + rows.map(([a, b]) => `<div class="row"><span>${esc(a)}</span><span>${esc(b)}</span></div>`).join('');
+    tip.style.display = 'block';
+    const r = tip.getBoundingClientRect(), x = e.originalEvent.clientX, y = e.originalEvent.clientY;
+    tip.style.left = (x + 16 + r.width > innerWidth ? x - r.width - 16 : x + 16) + 'px';
+    tip.style.top = (y + 16 + r.height > innerHeight ? y - r.height - 16 : y + 16) + 'px';
+    map.getCanvas().style.cursor = 'pointer';
+  };
+  map.on('mousemove', show);
+  map.on('click', show);
+  map.getCanvas().addEventListener('mouseleave', () => tip.style.display = 'none');
+});
+
+const btn = document.getElementById('aboutBtn'), about = document.getElementById('about');
+btn.onclick = () => { about.hidden = !about.hidden; btn.setAttribute('aria-expanded', String(!about.hidden)); };
+</script></body></html>"""
+
+
+def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bounds=None,
+           style="dark", projection="mercator", pitch=0, bearing=0, token=None, author=True,
+           highlight=None, story=None, **_ignored):
     """
-    Mapbox GL JS page (returns HTML text; publish() saves it).
+    A clean, portfolio-ready Mapbox GL page (returns HTML text; publish.save() writes it).
+
+    title / subtitle  short heading on the panel (keep the subtitle to one line)
+    about             a few sentences, hidden behind "About this map"
+    sources           data credits, shown inside About
+    Each Layer becomes a legend switch (click to show/hide) and points get hover cards built from Layer.popup.
     projection: 'mercator' | 'globe' | 'albers' | 'equalEarth' | 'naturalEarth' | 'winkelTripel'
-    token: your public Mapbox token, or set the MAPBOX_TOKEN environment variable.
-           With no token it falls back to MapLibre + CARTO so the map still works.
+    style: 'dark' keeps the dark panel; 'light' / 'standard' / 'satellite' switch the panel to light
+    highlight: a word in the title to make glow, e.g. highlight="AI"
+    No Mapbox token -> falls back to MapLibre + CARTO so it still works.
     """
+    import html as _h
+    light = style in ("light", "standard")
     pal = S.SERIES[series]
     from .paths import mapbox_token
     token = token or mapbox_token()
     use_mapbox = token.startswith("pk.")
-    sources_js, layers_js, legends, pop_layers = [], [], [], []
-    for i, layer in enumerate(layers):
-        g, legend = prepare(layer, series)
-        if legend:
-            legends.append(legend)
-        kind = _geom_kind(g)
-        sid = f"l{i}"
-        sources_js.append(f"map.addSource('{sid}', {{type:'geojson', data:{g.to_json()}}});")
-        vis = "visible" if layer.show else "none"
-        if kind == "point" and layer.glow:
-            layers_js.append(f"""map.addLayer({{id:'{sid}-glow', type:'circle', source:'{sid}', layout:{{visibility:'{vis}'}},
-              paint:{{'circle-color':['get','_color'], 'circle-radius':['*',['get','_radius'],['interpolate',['linear'],['zoom'],2,2.4,10,5]],
-              'circle-blur':1, 'circle-opacity':0.6}}}});""")
-        if kind == "point":
-            layers_js.append(f"""map.addLayer({{id:'{sid}', type:'circle', source:'{sid}', layout:{{visibility:'{vis}'}},
-              paint:{{'circle-color':['get','_color'], 'circle-radius':['*',['get','_radius'],['interpolate',['linear'],['zoom'],2,0.7,10,1.6]],
-              'circle-opacity':{layer.opacity}, 'circle-stroke-width':0.4, 'circle-stroke-color':'{pal['paper']}'}}}});""")
-        elif kind == "line":
-            layers_js.append(f"""map.addLayer({{id:'{sid}', type:'line', source:'{sid}', layout:{{visibility:'{vis}'}},
-              paint:{{'line-color':['get','_color'], 'line-width':['/',['get','_radius'],2], 'line-opacity':{layer.opacity}}}}});""")
-        else:
-            layers_js.append(f"""map.addLayer({{id:'{sid}', type:'fill', source:'{sid}', layout:{{visibility:'{vis}'}},
-              paint:{{'fill-color':['get','_color'], 'fill-opacity':{layer.opacity * 0.75}, 'fill-outline-color':'{pal['paper']}'}}}});""")
-        fields = {c: layer.popup[c[3:]] for c in g.columns if c.startswith("_p_")}
-        pop_layers.append((sid, fields))
+    about = about or story or ""
 
-    popup_js = "".join(f"""
-      map.on('click','{sid}',e=>{{const p=e.features[0].properties;
-        new {"mapboxgl" if use_mapbox else "maplibregl"}.Popup().setLngLat(e.lngLat).setHTML(
-          '<div style="font:13px Inter,sans-serif;color:#1e2a2f"><b>'+p._tip+'</b>'
-          +Object.entries({json.dumps(fields)}).map(([k,v])=>'<br>'+v+': <b>'+p[k]+'</b>').join('')+'</div>').addTo(map);}});
-      map.on('mouseenter','{sid}',()=>map.getCanvas().style.cursor='pointer');
-      map.on('mouseleave','{sid}',()=>map.getCanvas().style.cursor='');""" for sid, fields in pop_layers)
+    cfg_layers, data = [], {}
+    for i, layer in enumerate(layers):
+        g, _ = prepare(layer, series)
+        if light and layer.color == S.LOOK["existing"]:       # grey-blue is too faint on a light map
+            g["_color"] = S.LOOK["existing_on_light"]
+        sid = f"l{i}"
+        data[sid] = json.loads(g.to_json())
+        cats = []
+        if "_cat" in g:
+            cats = g[["_cat", "_color"]].drop_duplicates().values.tolist()
+        cfg_layers.append(dict(
+            id=sid, name=layer.name, kind=_geom_kind(g), count=int(len(g)),
+            color=(g["_color"].iloc[0] if (layer.color and len(g)) else layer.color or
+                   (g["_color"].iloc[0] if len(g) else pal["accent"])),
+            glow=bool(layer.glow), size=bool(layer.size_column), opacity=layer.opacity, visible=bool(layer.show),
+            cats=cats, fields={f"_p_{k}": v for k, v in (layer.popup or {}).items() if f"_p_{k}" in g},
+        ))
 
     (s_, w_), (n_, e_) = _bounds(layers, bounds)
     if use_mapbox:
         lib = ('<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">'
                '<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>')
-        init = (f"mapboxgl.accessToken='{token}'; const map=new mapboxgl.Map({{container:'map', style:'{S.MAPBOX_STYLES[style]}', "
-                f"projection:'{projection}', pitch:{pitch}, bearing:{bearing}}});")
-        credit = "Basemap &copy; Mapbox &copy; OpenStreetMap"
+        style_url, basemap = S.MAPBOX_STYLES[style], "Basemap © Mapbox © OpenStreetMap"
     else:
         lib = ('<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">'
                '<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>')
-        proj = "globe" if projection == "globe" else "mercator"
-        init = (f"const map=new maplibregl.Map({{container:'map', style:'{S.MAPLIBRE_FALLBACK[style]}', pitch:{pitch}, bearing:{bearing}}});"
-                + (f"map.on('style.load',()=>{{try{{map.setProjection({{type:'{proj}'}})}}catch(e){{}}}});" if proj == "globe" else ""))
-        credit = "Basemap &copy; CARTO &copy; OpenStreetMap"
-        print("No Mapbox token found, using the free MapLibre fallback. Set MAPBOX_TOKEN for real Mapbox.")
+        style_url, basemap = S.MAPLIBRE_FALLBACK[style], "Basemap © CARTO © OpenStreetMap"
+        print("No Mapbox token found, using the free MapLibre fallback. Add mapbox_token.txt for real Mapbox.")
 
-    card = S.card_html(day, prompt, title, subtitle, story, "".join(legends),
-                       (sources + " &middot; " if sources else "") + credit, series)
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Day {day:02d} | {title}</title>
-{S.FONTS}{lib}
-<style>html,body,#map{{margin:0;height:100%;background:{pal['paper']}}}</style></head>
-<body><div id="map"></div>{card}
-<script>
-{init}
-map.addControl(new {"mapboxgl" if use_mapbox else "maplibregl"}.NavigationControl(), 'bottom-right');
-map.on('load',()=>{{
-  {''.join(sources_js)}
-  {''.join(layers_js)}
-  {popup_js}
-  map.fitBounds([[{w_},{s_}],[{e_},{n_}]], {{padding:40, duration:0}});
-}});
-</script></body></html>"""
+    cfg = dict(mapbox=use_mapbox, token=token, style=style_url, projection=projection, pitch=pitch,
+               bearing=bearing, bounds=[[w_, s_], [e_, n_]], layers=cfg_layers)
+    credits = " · ".join(x for x in [sources, basemap] if x)
+    title_html = _h.escape(title)
+    if highlight and highlight in title:
+        title_html = title_html.replace(_h.escape(highlight), f'<span class="hl">{_h.escape(highlight)}</span>', 1)
+    out = _MAP_HTML
+    for k, v in {"__TITLE_HTML__": title_html, "__THEME__": "light" if light else "dark", "__TITLE__": _h.escape(title), "__SUB__": f'<p class="sub">{_h.escape(subtitle)}</p>' if subtitle else "",
+                 "__ABOUT__": about, "__CREDITS__": credits, "__AUTHOR__": S.AUTHOR if author else "",
+                 "__PAPER__": pal["paper"], "__LIB__": lib}.items():
+        out = out.replace(k, v)
+    return out.replace("__CONFIG__", json.dumps(cfg)).replace("__DATA__", json.dumps(data))
 
 
 # ======================================================================= static PNG
@@ -335,15 +473,14 @@ def static(layers, *, day, prompt, title, subtitle="", sources="", series="ai", 
         except Exception as e:
             print("basemap skipped:", e)
     ax.set_axis_off()
-    fig.text(0.06, 0.955, f"DAY {day:02d} · {prompt.upper()}", color=pal["accent"], fontsize=11, family="sans-serif", weight="bold")
-    fig.text(0.06, 0.915, title, color=pal["ink"], fontsize=26, family="serif", weight="bold")
+    fig.text(0.06, 0.93, title, color=pal["ink"], fontsize=26, family="serif", weight="bold")
     if subtitle:
-        fig.text(0.06, 0.89, subtitle, color=pal["muted"], fontsize=13, family="sans-serif")
+        fig.text(0.06, 0.905, subtitle, color=pal["muted"], fontsize=13, family="sans-serif")
     top = 0.05 + len(legends) * 0.022
     for i, (label, c) in enumerate(legends):
         fig.text(0.06, top - i * 0.022, "●", color=c, fontsize=13)
         fig.text(0.085, top - i * 0.022, label, color=pal["ink"], fontsize=11)
-    fig.text(0.06, 0.025, f"{('Data: ' + sources + '   ') if sources else ''}{S.AUTHOR} · {S.HASHTAG}",
+    fig.text(0.06, 0.025, f"{('Data: ' + sources + '   ') if sources else ''}{S.AUTHOR}",
              color=pal["muted"], fontsize=9)
     ax.set_position([0.03, 0.06 + len(legends) * 0.022, 0.94, 0.8 - len(legends) * 0.022])
     return fig

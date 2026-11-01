@@ -4,6 +4,7 @@
 |---|---|
 | Title | {title} |
 | Series | {series} |
+| Study | {study} |
 | Interactive | {interactive} |
 | Live map | {live_url} |
 | Code | {code_url} |

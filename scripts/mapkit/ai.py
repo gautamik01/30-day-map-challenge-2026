@@ -92,7 +92,7 @@ def load_datacenters(path=None, states=None):
     return gdf.reset_index(drop=True)
 
 
-def load_ai_campuses(country="United States", geocode=True):
+def load_ai_campuses(country="United States", geocode=True, check=True):
     """
     Epoch AI 'Frontier Data Centers': the big AI campuses, built and coming.
     Needs data/raw/data_centers.csv and data/raw/data_center_timelines.csv (see README).
@@ -134,7 +134,7 @@ def load_ai_campuses(country="United States", geocode=True):
     df = pd.DataFrame(rows)
 
     cache = PROCESSED / "ai_campuses_geocoded.csv"
-    known = pd.read_csv(cache) if cache.exists() else pd.DataFrame(columns=["name", "address", "lat", "lon"])
+    known = pd.read_csv(cache) if cache.exists() else pd.DataFrame(columns=["name", "address", "lat", "lon", "placement"])
     todo = df[~df["name"].isin(known["name"])]
     if geocode and len(todo):
         import time
@@ -142,26 +142,61 @@ def load_ai_campuses(country="United States", geocode=True):
         print(f"geocoding {len(todo)} addresses with OpenStreetMap (one time, ~1 per second) ...")
         new = []
         for _, r in todo.iterrows():
-            parts = [p.strip() for p in str(r["address"]).split(",")]
-            tries = [str(r["address"]), ", ".join(parts[-2:]), ", ".join(parts[-3:-1])]
+            addr = r["address"] if isinstance(r["address"], str) and r["address"].strip() else None
             lat = lon = None
-            for q in tries:
-                try:
-                    lat, lon = ox.geocode(q)
-                    break
-                except Exception:
-                    time.sleep(1)
-            if lat is None:
-                print(f"  could not place: {r['name']} ({r['address']}) -> add lat/lon by hand in {cache.name}")
-            new.append(dict(name=r["name"], address=r["address"], lat=lat, lon=lon))
+            if addr is None:
+                print(f"  no address in Epoch's file: {r['name']} -> add lat/lon by hand in {cache.name}")
+            else:
+                parts = [p.strip() for p in addr.replace("\n", " ").split(",")]
+                for q in [addr, ", ".join(parts[-3:]), ", ".join(parts[-2:])]:
+                    try:
+                        lat, lon = ox.geocode(q)
+                        break
+                    except Exception:
+                        time.sleep(1)
+                if lat is None:
+                    print(f"  could not place: {r['name']} ({addr}) -> add lat/lon by hand in {cache.name}")
+            new.append(dict(name=r["name"], address=addr, lat=lat, lon=lon, placement="address" if lat else None))
             time.sleep(1)
         known = pd.concat([known, pd.DataFrame(new)], ignore_index=True)
         known.to_csv(cache, index=False)
 
-    df = df.merge(known[["name", "lat", "lon"]], on="name", how="left").dropna(subset=["lat", "lon"])
+    cols = ["name", "lat", "lon"] + (["placement"] if "placement" in known else [])
+    df = df.merge(known[cols], on="name", how="left")
+    missing = df[df["lat"].isna()]
+    if len(missing):
+        print(f"{len(missing)} campus(es) left off the map until you add lat/lon in {cache.name}: "
+              + ", ".join(missing["name"]))
+    df = df.dropna(subset=["lat", "lon"])
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df["lon"], df["lat"]), crs=WGS84)
     gdf["state_abb"] = gdf["address"].str.extract(r",\s*([A-Z]{2})\s*\d{5}")[0]
+    if check:
+        _check_states(gdf, cache.name)
     return gdf.reset_index(drop=True)
+
+
+def _check_states(gdf, cache_name):
+    """Warn about any campus that lands outside the state named in its address (wrong geocoder match)."""
+    try:
+        states = load_states()[["state_abb", "state_name", "geometry"]]
+    except Exception as e:
+        print("state check skipped:", e)
+        return
+    g = gdf
+    if "placement" in g:
+        g = g[~g["placement"].fillna("").str.startswith("approximate")]   # placed by hand on purpose
+    j = gpd.sjoin(g[["name", "address", "lat", "lon", "geometry"]], states, how="left", predicate="within")
+    j = j[~j.index.duplicated()]
+    import re
+    names = set(states["state_name"]) | set(states["state_abb"])
+    names_in = lambda a: any(re.search(rf"\b{re.escape(x)}\b", a) for x in names) if isinstance(a, str) else False
+    bad = [names_in(a) and not ((isinstance(s, str) and re.search(rf"\b{s}\b", a)) or (isinstance(n, str) and n in a))
+           for a, s, n in zip(j["address"], j["state_abb"], j["state_name"])]
+    if any(bad):
+        print(f"check these in {cache_name}, they sit outside the state in their address:")
+        print(j.loc[bad, ["name", "address", "lat", "lon", "state_abb"]].to_string())
+    else:
+        print("location check: every AI campus sits inside the state named in its address")
 
 
 def _cached(url, name):
@@ -274,3 +309,119 @@ def save(gdf, name):
     out = PROCESSED / f"{name}.geojson"
     gdf.to_crs(WGS84).to_file(out, driver="GeoJSON")
     return out
+
+
+# ================================================================ the master table
+# One table, every data center (existing + AI campuses). Each map ADDS columns to it,
+# so by the end of a study the analysis is already in one place.
+MASTER = PROCESSED / "datacenters_master.geojson"
+MASTER_LOG = PROCESSED / "master_columns.json"
+BASE_COLS = ["uid", "kind", "name", "operator", "status", "state_abb", "state", "county", "sqft",
+             "power_now_mw", "power_peak_mw", "peak_date", "placement", "users", "source"]
+
+
+def _slug(s):
+    import re
+    return re.sub(r"[^a-z0-9]+", "-", str(s).lower()).strip("-")
+
+
+def build_master():
+    """Combine the IM3 atlas + Epoch AI campuses into one table. Keeps any columns earlier maps added."""
+    dc = load_datacenters()
+    big = load_ai_campuses(check=False)
+    e = gpd.GeoDataFrame(dict(
+        uid="im3_" + dc["id"].astype(str), kind="existing", name=dc["name"], operator=dc["operator"],
+        status="Existing", state_abb=dc.get("state_abb"), state=dc.get("state"), county=dc.get("county"),
+        sqft=dc.get("sqft"), source="IM3 Data Center Atlas"), geometry=dc.geometry, crs=WGS84)
+    a = gpd.GeoDataFrame(dict(
+        uid="epoch_" + big["name"].map(_slug), kind="ai_campus", name=big["name"], operator=big["owner"],
+        status=big["status"], state_abb=big["state_abb"], power_now_mw=big["power_now_mw"],
+        power_peak_mw=big["power_peak_mw"], peak_date=big["peak_date"],
+        placement=big.get("placement"), users=big["users"], source="Epoch AI"), geometry=big.geometry, crs=WGS84)
+    m = pd.concat([e, a], ignore_index=True)
+    m = gpd.GeoDataFrame(m, geometry="geometry", crs=WGS84)
+
+    # fill state / county from Census shapes where the source left them blank
+    try:
+        st = load_states()[["state_abb", "state_name", "geometry"]]
+        j = gpd.sjoin(m[["geometry"]], st, how="left", predicate="within")
+        j = j[~j.index.duplicated()]
+        m["state_abb"] = m["state_abb"].fillna(j["state_abb"])
+        m["state"] = m["state"].fillna(j["state_name"])
+    except Exception as ex:
+        print("state fill skipped:", ex)
+
+    if MASTER.exists():                      # keep what earlier maps added
+        old = gpd.read_file(MASTER)
+        extra = [c for c in old.columns if c not in BASE_COLS + ["geometry"]]
+        if extra:
+            m = m.merge(pd.DataFrame(old[["uid"] + extra]), on="uid", how="left")
+    m.to_file(MASTER, driver="GeoJSON")
+    print(f"master table: {len(m):,} rows ({(m.kind == 'existing').sum():,} existing, "
+          f"{(m.kind == 'ai_campus').sum()} AI campuses) -> data/processed/{MASTER.name}")
+    return m
+
+
+def master(rebuild=False):
+    """The master table. Built once from data/raw, then read from data/processed (fast, and on GitHub)."""
+    if rebuild or not MASTER.exists():
+        return build_master()
+    return gpd.read_file(MASTER)
+
+
+def update_master(gdf, columns, about="", source="", day=None):
+    """
+    Save new columns from today's map into the master table, matched on uid.
+        dcs = ai.attach(dcs, water_stress, ["bws_label"])
+        ai.update_master(dcs, ["bws_label"], about="Baseline water stress", source="WRI Aqueduct 4.0", day=20)
+    Works with a clipped subset too (only those rows are updated).
+    """
+    import json
+    from datetime import date
+    m = master().set_index("uid")
+    g = pd.DataFrame(gdf).drop_duplicates("uid").set_index("uid")
+    for c in columns:
+        if c not in m.columns:
+            m[c] = None
+        m.loc[g.index.intersection(m.index), c] = g[c]
+    gpd.GeoDataFrame(m.reset_index(), geometry="geometry", crs=WGS84).to_file(MASTER, driver="GeoJSON")
+    log = json.loads(MASTER_LOG.read_text()) if MASTER_LOG.exists() else {}
+    for c in columns:
+        log[c] = dict(about=about, source=source, day=day, updated=date.today().isoformat())
+    MASTER_LOG.write_text(json.dumps(log, indent=2))
+    print(f"master table: saved {', '.join(columns)} for {len(g):,} data centers")
+
+
+def base_layers(dcs, extra_popup=None, show_existing=True):
+    """
+    The standard cast, same look on every map:
+        Existing data centers · New AI campuses running · New AI campuses coming (glowing)
+    extra_popup: master columns to add to the hover cards, e.g. {"bws_label": "Water stress"}
+    """
+    from .render import Layer
+    from . import style as S
+    d = dcs.copy()
+    extra = extra_popup or {}
+    d["label"] = d["name"].where(~d["name"].isin(["Unnamed", "", None]) & d["name"].notna(),
+                                 d["operator"].where(~d["operator"].isin(["Unknown", ""]) & d["operator"].notna(),
+                                                     "Data center"))
+    d["operator_show"] = d["operator"].where(~d["operator"].isin(["Unknown"]), "")
+    now, peak = pd.to_numeric(d.get("power_now_mw"), errors="coerce"), pd.to_numeric(d.get("power_peak_mw"), errors="coerce")
+    d["power"] = [f"{a:,.0f} MW now · {b:,.0f} MW planned" if pd.notna(b) else "" for a, b in zip(now.fillna(0), peak)]
+    d["full_by"] = pd.to_datetime(d.get("peak_date"), errors="coerce").dt.year.astype("Int64").astype(str).replace("<NA>", "")
+    pl = d.get("placement", pd.Series("", index=d.index)).fillna("")
+    d["where"] = [p.replace("approximate: ", "") + " (approx.)" if p.startswith("approximate") else "" for p in pl]
+
+    ex = d[d["kind"] == "existing"]
+    ai_ = d[d["kind"] == "ai_campus"]
+    campus_popup = {"operator_show": "Owner", "status": "Status", "power": "Power", "full_by": "Full build",
+                    "where": "Placed at", **extra}
+    layers = [
+        Layer(ex, S.LABELS["existing"], color=S.LOOK["existing"], radius=2.4, opacity=0.6, tooltip="label",
+              popup={"operator_show": "Operator", "state": "State", **extra}, show=show_existing),
+        Layer(ai_[ai_["status"] == "Operating"], S.LABELS["ai_running"], color=S.LOOK["ai_running"],
+              size_column="power_peak_mw", radius=6, opacity=0.95, tooltip="label", popup=campus_popup),
+        Layer(ai_[ai_["status"] != "Operating"], S.LABELS["ai_coming"], color=S.LOOK["ai_coming"],
+              size_column="power_peak_mw", radius=6, opacity=0.95, glow=True, tooltip="label", popup=campus_popup),
+    ]
+    return [l for l in layers if len(l.gdf)]

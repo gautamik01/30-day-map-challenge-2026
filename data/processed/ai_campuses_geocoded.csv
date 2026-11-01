@@ -1,0 +1,78 @@
+name,address,lat,lon,placement
+Colossus 2,"5420 Tulane Rd, Memphis, TN 38109",34.9979829,-90.0348674,address
+OpenAI Stargate Abilene,"5502 Spinks Rd, Abilene, TX 79601",32.4942321,-99.8009071,address
+Anthropic-Amazon New Carlisle,"55001 Larrison Blvd, New Carlisle, IN 46552",41.7056871,-86.5098231,address
+Microsoft Fairwater Atlanta,"1435 Hwy 54 W, Fayetteville, GA 30214",33.4452227,-84.5248259,address
+Google Pryor (North),"4581 Webb St, Pryor, OK 74361",36.2411721,-95.3300473,address
+Meta Prometheus,"1 Community Cir, New Albany, OH 43054",40.0811745,-82.8087864,address
+Microsoft Fairwater Wisconsin,"4800 90th St, Mount Pleasant, WI 53403",42.6748702,-87.894888,address
+Google Columbus,"5076 S High St, Columbus, OH 43207",39.8614521,-83.0039995,address
+Google New Albany,"1101 Beech Rd SW, New Albany, OH 43054",40.070051,-82.754042,address
+Anthropic Lake Mariner,"7725 Lake Rd, Barker, NY 14012",43.3586546,-78.604128,address
+Google Mesa,,33.4152,-111.8315,"approximate: Mesa, AZ"
+Colossus 1,"3231 Riverport Rd, Memphis, TN 38109",35.0861965,-90.0733414,address
+Google Council Bluffs (East),"10410 Bunge Ave, Council Bluffs, IA 51503",41.1666499,-95.7977408,address
+CoreWeave Denton TX,"8171 Jim Christal Rd, Denton, TX 76207",33.2192732,-97.174715,address
+QTS Richmond 1,"6000 Technology Blvd, Sandston, VA 23150",37.4888273,-77.24749,address
+Meta Rosemount,"1772-2396 145th St, Rosemount, MN 55068, USA",44.7354555,-93.1435704,address
+Amazon Madison Mega Site,"Amazon Data Services Inc, Madison Mega Site Nissan Parkway and Highway 22 Canton, Mississippi Madison County",32.6126,-90.0368,"approximate: Canton, MS"
+Google Bristow,"13001 Rollins Ford Road, Bristow, VA 20136",38.7311636,-77.5480241,address
+Microsoft Goodyear,"14250 W Broadway Rd, Goodyear, AZ 85338",33.4089905,-112.3647996,address
+Meta Jeffersonville,"500 8th St, Jeffersonville, IN 47130, USA",38.279131,-85.739009,address
+Google Kansas City East,,39.2461,-94.4191,"approximate: Clay County, MO (Liberty)"
+Meta Temple,"2310 Eberhardt Rd, Temple, TX 76504",31.1259599,-97.3598178,address
+AWS New Albany,13360 Miller Rd NW,40.1157846,-82.7390187,address
+Google Omaha,"11110 State St, Omaha, NE 68142",41.3356809,-96.0523625,address
+Google Lincoln,"5475 Cloud Ct, Lincoln, NE 68514",40.907472,-96.6457832,address
+QTS Richmond 2,"6030–6070 Technology Blvd, Sandston, VA 23150",37.5234794,-77.3158118,address
+Google The Dalles,"3500 River Rd, The Dalles, OR",45.6253889,-121.2023887,address
+QTS Richmond 3,"3525–3543 Portugee Rd, Sandston, VA 23150",37.5234794,-77.3158118,address
+Meta Montgomery,"Co Rd 42, Montgomery, AL 36105, USA",32.3792,-86.3077,"approximate: Montgomery, AL"
+Meta Kuna,"601 Kuna Mora Rd,  Kuna ID 83634",43.4592072,-116.4211106,address
+Meta Cheyenne,"Cheyenne, WY 82007, USA",41.139981,-104.820246,address
+Amazon Ridgeland,"1626 County Line Road Ridgeland, Mississippi",32.4000327,-90.1971708,address
+Meta Huntsville,"5400 Prosperity Dr NW, Toney, AL",34.8981438,-86.7335699,address
+Coreweave Helios,"984 County Road 112, Afton, TX 79220",33.7628599,-100.8168001,address
+Microsoft Project Osmium,"5855 SW Kerry St, Cumming, IA 50061",41.4833235,-93.7624442,address
+Meta Eagle Mountain,"1275 N Community Cir, Eagle Mountain, UT 84005",40.3093488,-112.0119825,address
+Google Midlothian,"3250 Railport Parkway, Midlothian, TX 76065",32.438927,-97.0507991,address
+Google Storey County,,39.538,-119.443,"approximate: Tahoe-Reno Industrial Center, NV"
+Meta Los Lunas,"4250 Messenger Lp, Los Lunas, NM 87031",34.8301645,-106.7838267,address
+Google Lancaster,"105 Whiley Rd, Lancaster, OH 43130",39.7270407,-82.6831433,address
+Meta-QTS Hillsboro 2,"4755 NE Huffman St, Hillsboro, OR 97124",45.5588758,-122.9296051,address
+Google Arcola,"42575 Arcola Blvd, Sterling, VA 20166",39.0017455,-77.4033349,address
+Google Red Oak,"330 Austin Blvd, Red Oak, TX 75154",32.5376266,-96.7966747,address
+Google Papillion,"14651-15249 Gold Coast Rd 68138 Papillion Nebraska, USA",41.1544,-96.0422,"approximate: Papillion, NE"
+Meta Gallatin,"1 Meta Lp, Gallatin, TN 37066",36.3883031,-86.4475898,address
+CoreWeave Ellendale ND,"9685 87th Ave SE, Ellendale, ND 58436",46.0102576,-98.5686907,address
+Meta Sarpy,"14436-14998 Fairview Rd, Springfield, NE 68059, USA",41.2085613,-96.0870996,address
+CoreWeave Chester VA,"1401 Meadowville Technology Parkway, Chester, VA",37.3562229,-77.4460583,address
+AWS Berwick,"1125 Electron Ave, Berwick, PA 18603",41.0838485,-76.1435333,address
+CoreWeave Marble NC,"155 Palmer Ln, Marble, NC 28905",35.1849883,-83.9141225,address
+Meta Aiken,"7601 State Hwy 105, Trenton, SC 29847, USA",33.7404,-81.8404,"approximate: Trenton, SC"
+Core42 Lake Mariner,"7725 Lake Rd, Barker, NY 14012",43.3586546,-78.604128,address
+Microsoft SAT40,"15000 Lambda Drive, San Antonio, TX 78245",29.4246002,-98.4951405,"approximate: San Antonio, TX"
+STACK Infrastructure NVA02,"9590 Hornbaker Rd, Manassas, VA 20109",38.7458055,-77.5377246,address
+Microsoft-Nebius New Jersey,"3963 S Lincoln Ave, Vineland, New Jersey",39.4281986,-75.0184088,address
+Stream Phoenix,2950 S. Litchfield Road,33.4194907,-112.3599884,address
+Microsoft SAT14,"3545 Wiseman Boulevard, San Antonio, TX 78251",29.47677,-98.6946701,address
+Vantage TX1,"14720 Omicron Dr, San Antonio, TX 78245",29.4168571,-98.7901875,address
+CoreWeave Dalton 1 & 2,"2205 Industrial South Rd, Dalton, GA, 30721",34.7134428,-84.9521507,address
+xAI QTS Atlanta,"1025 Jefferson Street NW, Atlanta, GA 30318",33.7771892,-84.4195499,address
+Anthropic Barber Lake,,32.3882,-100.8646,"approximate: Colorado City, TX"
+CoreWeave Lancaster Greenfield site,"216 Greenfield Rd, Lancaster, PA",40.048747,-76.256144,address
+CoreWeave Muskogee OK,"1525 W 43rd St S, Muskogee, OK 74401, USA",35.6969225,-95.3838562,address
+Crusoe Abilene Expansion,"5502 Spinks Rd, Abilene, TX 79601",32.4942321,-99.8009071,address
+Goodnight,"10001 Lima Rd, Claude, TX 79019",35.1081103,-101.362741,address
+Google Cedar Rapids,"5800 EDGEWOOD RD SW CEDAR RAPIDS, IA 52404",41.9221755,-91.7156674,address
+Google Fort Wayne,"6015 Adams Center Road, Fort Wayne, IN 46806",41.0309293,-85.0536261,address
+Meta Bowling Green,"12356 Middleton Pike, Bowling Green, OH 43402",41.3747744,-83.6513229,address
+Meta Hyperion,"Holly Ridge, LA 71269",32.4676421,-91.6267883,address
+OpenAI Stargate Lordstown,"2300 Hallock Young Rd, Warren, OH 44481",41.2367955,-80.8190423,address
+OpenAI Stargate Michigan,,42.1667,-83.7816,"approximate: Saline Township, MI"
+OpenAI Stargate Milam,,30.8533,-96.9769,"approximate: Milam County, TX (Cameron)"
+OpenAI Stargate New Mexico,,31.8559,-106.6386,"approximate: Dona Ana County, NM (Santa Teresa)"
+OpenAI Stargate Shackelford,"175 Private Road 1604, Abilene, TX 79601, Shackelford County",32.7088752,-99.3307616,address
+OpenAI Stargate Wisconsin,,43.3872,-87.8756,"approximate: Port Washington, WI"
+QTS Cedar Rapids,"6200 76th Ave SW, Fairfax, IA 52228",41.9056197,-91.7510775,address
+QTS Eagle Mountain,"652 E Hyperscale Way, Eagle Mountain, UT 84013",40.2688855,-112.0342942,address
