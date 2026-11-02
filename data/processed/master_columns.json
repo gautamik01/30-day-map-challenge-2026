@@ -1,0 +1,14 @@
+{
+  "bws_cat": {
+    "about": "Baseline annual water stress of the river basin",
+    "source": "WRI Aqueduct 4.0",
+    "day": 3,
+    "updated": "2026-11-01"
+  },
+  "water_stress": {
+    "about": "Baseline annual water stress of the river basin",
+    "source": "WRI Aqueduct 4.0",
+    "day": 3,
+    "updated": "2026-11-01"
+  }
+}

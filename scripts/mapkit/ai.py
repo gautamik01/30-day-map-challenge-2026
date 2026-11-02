@@ -269,6 +269,7 @@ def hexbin(points, size_km=50, bounds_gdf=None, weight=None, keep_empty=False):
 
 def attach(points, polygons, columns):
     """Give each point the value(s) of the polygon it sits in (e.g. water stress, flood zone)."""
+    points = points.drop(columns=[c for c in columns if c in points.columns])   # safe to re-run
     j = gpd.sjoin(points, polygons[columns + ["geometry"]], predicate="within", how="left")
     j = j[~j.index.duplicated(keep="first")].drop(columns="index_right")
     return j
@@ -380,10 +381,10 @@ def update_master(gdf, columns, about="", source="", day=None):
     from datetime import date
     m = master().set_index("uid")
     g = pd.DataFrame(gdf).drop_duplicates("uid").set_index("uid")
+    idx = g.index.intersection(m.index)
     for c in columns:
-        if c not in m.columns:
-            m[c] = None
-        m.loc[g.index.intersection(m.index), c] = g[c]
+        m[c] = m[c].astype(object) if c in m.columns else None      # any type can be written back
+        m.loc[idx, c] = g.loc[idx, c].astype(object).values
     gpd.GeoDataFrame(m.reset_index(), geometry="geometry", crs=WGS84).to_file(MASTER, driver="GeoJSON")
     log = json.loads(MASTER_LOG.read_text()) if MASTER_LOG.exists() else {}
     for c in columns:
@@ -425,3 +426,178 @@ def base_layers(dcs, extra_popup=None, show_existing=True):
               size_column="power_peak_mw", radius=6, opacity=0.95, glow=True, tooltip="label", popup=campus_popup),
     ]
     return [l for l in layers if len(l.gdf)]
+
+
+# ================================================================ overlay loaders (Studies B, C, D)
+US48 = (-125.0, 24.4, -66.9, 49.5)
+
+
+def _find_any(patterns):
+    for pat in patterns:
+        hits = sorted(RAW.rglob(pat))
+        if hits:
+            return hits[0]
+    return None
+
+
+def _pick(df, *candidates):
+    """First column that exists (case-insensitive)."""
+    low = {c.lower(): c for c in df.columns}
+    for c in candidates:
+        if c.lower() in low:
+            return low[c.lower()]
+    return None
+
+
+# ---- Study B · water stress (WRI Aqueduct 4.0) -------------------------------------
+BWS_LABELS = {-1: "Arid, low water use", 0: "Low", 1: "Low to medium", 2: "Medium to high", 3: "High",
+              4: "Extremely high"}
+
+
+def load_water_stress(simplify=0.01):
+    """
+    Baseline annual water stress for US catchments, from WRI Aqueduct 4.0.
+    Unzip the Aqueduct download into data/raw/ (the .gdb folder). First run trims it to the US and caches it.
+    Returns polygons with bws_cat (-1..4), bws_label (plain words) and bws_raw (withdrawals / supply).
+    """
+    cache = RAW / "aqueduct_us_baseline.gpkg"
+    if not cache.exists():
+        src = _find_any(["*Aq40*.gdb", "*aqueduct*.gdb", "*.gdb", "*aqueduct*baseline*.gpkg", "*aqueduct*.shp"])
+        if src is None:
+            raise FileNotFoundError("No Aqueduct file in data/raw. Download 'Aqueduct 4.0 global maps data' from WRI, "
+                                    "unzip it into data/raw/ (see README).")
+        layers = gpd.list_layers(src)["name"].tolist() if hasattr(gpd, "list_layers") else ["baseline_annual"]
+        layer = next((l for l in layers if "baseline_annual" in l.lower()), layers[0])
+        print(f"reading {src.name} / {layer} for the US (one time, can take a minute) ...")
+        g = gpd.read_file(src, layer=layer, bbox=US48)
+        keep = [c for c in ["bws_raw", "bws_score", "bws_cat", "bws_label", "name_0", "gid_1", "pfaf_id"] if c in g.columns]
+        g = g[keep + ["geometry"]].to_crs(WGS84)
+        if simplify:
+            g["geometry"] = g.geometry.simplify(simplify, preserve_topology=True)
+        g.to_file(cache, driver="GPKG")
+    g = gpd.read_file(cache).to_crs(WGS84)
+    g["bws_cat"] = pd.to_numeric(g["bws_cat"], errors="coerce")
+    g = g[g["bws_cat"].between(-1, 4)].copy()
+    g["bws_cat"] = g["bws_cat"].astype(int)
+    g["water_stress"] = g["bws_cat"].map(BWS_LABELS)
+    return g.reset_index(drop=True)
+
+
+# ---- Study C · power plants (EIA) ------------------------------------------------------
+FUEL_GROUPS = {"natural gas": "Gas", "coal": "Coal", "nuclear": "Nuclear", "hydroelectric": "Hydro",
+               "pumped storage": "Hydro", "wind": "Wind", "solar": "Solar", "petroleum": "Oil",
+               "biomass": "Other", "geothermal": "Other", "other": "Other", "batteries": "Storage"}
+FUEL_ORDER = ["Gas", "Coal", "Nuclear", "Hydro", "Wind", "Solar", "Oil", "Storage", "Other"]
+FUEL_COLORS = {"Gas": "#ff8a3d", "Coal": "#8c7b75", "Nuclear": "#c58cff", "Hydro": "#3fa9f5", "Wind": "#7fe0c4",
+               "Solar": "#ffe066", "Oil": "#d4553a", "Storage": "#9aa5ff", "Other": "#7d8a8f"}
+
+
+EIA_CODES = {"NG": "Gas", "OG": "Gas", "BFG": "Gas", "LFG": "Gas", "OBG": "Gas",
+             "BIT": "Coal", "SUB": "Coal", "LIG": "Coal", "ANT": "Coal", "RC": "Coal", "WC": "Coal", "SGC": "Coal",
+             "NUC": "Nuclear", "WAT": "Hydro", "WND": "Wind", "SUN": "Solar", "MWH": "Storage",
+             "DFO": "Oil", "RFO": "Oil", "JF": "Oil", "KER": "Oil", "PC": "Oil", "WO": "Oil", "SGP": "Oil"}
+
+
+def _load_eia860m(path):
+    """EIA-860M monthly generator inventory (Excel): one row per generator -> one point per plant."""
+    raw = pd.read_excel(path, sheet_name=None, header=None)
+    sheet = next((k for k in raw if k.lower().startswith("operating")), list(raw)[0])
+    df = raw[sheet]
+    hdr = next(i for i in range(15) if df.iloc[i].astype(str).str.contains("Plant Name", case=False).any())
+    df.columns = [str(c).strip() for c in df.iloc[hdr]]
+    df = df.iloc[hdr + 1:]
+    pid, mw = _pick(df, "Plant ID", "Plant Code"), _pick(df, "Nameplate Capacity (MW)", "Net Summer Capacity (MW)")
+    src, lat, lon = _pick(df, "Energy Source Code"), _pick(df, "Latitude"), _pick(df, "Longitude")
+    df = df[pd.to_numeric(df[lat], errors="coerce").notna()].copy()
+    df["mw"] = pd.to_numeric(df[mw], errors="coerce").fillna(0)
+    df["fuel"] = df[src].astype(str).str.strip().str.upper().map(EIA_CODES).fillna("Other")
+    by = df.groupby([pid, "fuel"])["mw"].sum().unstack(fill_value=0)
+    first = df.groupby(pid).first()
+    out = pd.DataFrame(dict(plant=first[_pick(df, "Plant Name")], fuel=by.idxmax(axis=1), mw=by.sum(axis=1),
+                            lat=pd.to_numeric(first[lat]), lon=pd.to_numeric(first[lon])))
+    return gpd.GeoDataFrame(out.reset_index(drop=True), geometry=gpd.points_from_xy(out["lon"], out["lat"]), crs=WGS84)
+
+
+def load_power_plants(min_mw=0):
+    """
+    US power plants from EIA (Energy Atlas 'Power Plants' layer, CSV / GeoJSON / shapefile in data/raw).
+    Returns points with plant, fuel (grouped), mw.
+    """
+    xl = _find_any(["*860M*.xlsx", "*860m*.xlsx", "*generator*inventory*.xlsx", "*Generator*Inventory*.xlsx"])
+    if xl is not None:
+        out = _load_eia860m(xl)
+        out = out[out["mw"].fillna(0).ge(min_mw)]
+        return clip(out, "us48").reset_index(drop=True)
+    src = _find_any(["*power*plant*.csv", "*Power*Plant*.csv", "*power*plant*.geojson", "*Power*Plant*.geojson",
+                     "*power*plant*.shp", "*Power*Plant*.shp", "*power*plant*.gpkg"])
+    if src is None:
+        raise FileNotFoundError("No power plant file in data/raw. Download the EIA-860M generator inventory "
+                                "(Excel) from eia.gov/electricity/data/eia860M (see README).")
+    if src.suffix == ".csv":
+        df = pd.read_csv(src, low_memory=False)
+        lon, lat = _pick(df, "Longitude", "lon", "x"), _pick(df, "Latitude", "lat", "y")
+        g = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[lon], df[lat]), crs=WGS84)
+    else:
+        g = gpd.read_file(src).to_crs(WGS84)
+    fuel = _pick(g, "PrimSource", "primary_fuel", "prim_source", "Primary_Fuel", "fuel")
+    mw = _pick(g, "Total_MW", "Install_MW", "nameplate_capacity_mw", "capacity_mw", "Nameplate")
+    name = _pick(g, "Plant_Name", "plant_name", "name")
+    out = gpd.GeoDataFrame(dict(
+        plant=g[name] if name else "Power plant",
+        fuel=g[fuel].astype(str).str.strip().str.lower().map(FUEL_GROUPS).fillna("Other"),
+        mw=pd.to_numeric(g[mw], errors="coerce") if mw else None), geometry=g.geometry, crs=WGS84)
+    out = out[out.geometry.notna() & out["mw"].fillna(0).ge(min_mw)]
+    return clip(out, "us48").reset_index(drop=True)
+
+
+def power_nearby(dcs, plants, km=50):
+    """
+    For each data center: power plant capacity within `km`, the main fuel nearby and its share.
+    Adds: mw_within_{km}km, main_fuel_{km}km, main_fuel_share_{km}km, gas_share_{km}km
+    """
+    d = dcs.to_crs(EQUAL_AREA)
+    p = plants.to_crs(EQUAL_AREA)[["fuel", "mw", "geometry"]]
+    buf = gpd.GeoDataFrame(dict(uid=dcs["uid"].values), geometry=d.buffer(km * 1000).values, crs=EQUAL_AREA)
+    j = gpd.sjoin(p, buf, predicate="within")
+    by = j.groupby(["uid", "fuel"])["mw"].sum().unstack(fill_value=0)
+    tot = by.sum(axis=1)
+    out = dcs.copy()
+    sfx = f"{km}km"
+    out[f"mw_within_{sfx}"] = out["uid"].map(tot).fillna(0).round(0)
+    main = by.idxmax(axis=1)
+    out[f"main_fuel_{sfx}"] = out["uid"].map(main).fillna("None nearby")
+    out[f"main_fuel_share_{sfx}"] = out["uid"].map((by.max(axis=1) / tot * 100).round(0))
+    out[f"gas_share_{sfx}"] = out["uid"].map((by.get("Gas", 0) / tot * 100).round(0)) if "Gas" in by else 0
+    return out
+
+
+# ---- Study D · climate risk (FEMA National Risk Index, county level) ------------------------
+NRI_HAZARDS = {"RISK": "Overall natural hazard risk", "WFIR": "Wildfire", "HWAV": "Heat wave", "DRGT": "Drought",
+               "RFLD": "Riverine flooding", "CFLD": "Coastal flooding", "HRCN": "Hurricane", "TRND": "Tornado"}
+NRI_RATINGS = ["Very High", "Relatively High", "Relatively Moderate", "Relatively Low", "Very Low"]
+
+
+def load_risk_index():
+    """
+    FEMA National Risk Index, county table (CSV) joined to Census county shapes.
+    Columns kept: <HAZ>_RISKS (score 0-100) and <HAZ>_RISKR (rating) for each hazard in NRI_HAZARDS.
+    """
+    src = _find_any(["NRI_Table_Counties*.csv", "*NRI*Counties*.csv", "*nri*count*.csv"])
+    if src is None:
+        raise FileNotFoundError("No NRI county CSV in data/raw. Download 'Table (CSV) · All Counties' from FEMA NRI (see README).")
+    nri = pd.read_csv(src, dtype=str, low_memory=False)
+    fips = _pick(nri, "STCOFIPS", "NRI_ID", "COUNTYFIPS")
+    nri["geoid"] = nri[fips].str.replace("C", "", regex=False).str.zfill(5) if fips != "COUNTYFIPS" else \
+        (nri[_pick(nri, "STATEFIPS")].str.zfill(2) + nri[fips].str.zfill(3))
+    keep = ["geoid"]
+    for h in NRI_HAZARDS:
+        s, r = _pick(nri, f"{h}_SCORE" if h == "RISK" else f"{h}_RISKS"), _pick(nri, f"{h}_RATNG" if h == "RISK" else f"{h}_RISKR")
+        if s:
+            nri[f"{h}_score"] = pd.to_numeric(nri[s], errors="coerce")
+            keep.append(f"{h}_score")
+        if r:
+            nri[f"{h}_rating"] = nri[r]
+            keep.append(f"{h}_rating")
+    counties = load_counties()
+    g = counties.merge(nri[keep], on="geoid", how="left")
+    return clip(g, "us48").reset_index(drop=True)

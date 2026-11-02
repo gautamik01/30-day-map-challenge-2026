@@ -34,6 +34,19 @@ CREDITS = {
 }
 
 
+CREDITS.update({
+    "aqueduct": dict(
+        short="WRI Aqueduct 4.0 (CC BY 4.0)",
+        full="Kuzma, S. et al. (2023). Aqueduct 4.0: Updated decision-relevant global water risk indicators. "
+             "World Resources Institute. https://www.wri.org/data/aqueduct-global-maps-40-data · CC BY 4.0"),
+    "eia": dict(
+        short="US EIA power plants",
+        full="U.S. Energy Information Administration, Power Plants (Form EIA-860/923), U.S. Energy Atlas · public domain"),
+    "nri": dict(
+        short="FEMA National Risk Index",
+        full="FEMA, National Risk Index (county level), https://hazards.fema.gov/nri · public domain"),
+})
+
 def credits(*keys, full=False):
     """credits("im3", "epoch") -> one line for the map card; full=True -> citation list for captions."""
     if full:
@@ -87,11 +100,12 @@ LABELS = {
 }
 
 # The studies the maps build toward. Tag each map with one in its notebook (STUDY = "A").
+UMBRELLA = "The Physical Footprint of AI"      # shown as the small label above every AI map title
 STUDIES = {
-    "A": "Where the Cloud Lands",
-    "B": "What the Cloud Drinks",
-    "C": "What the Cloud Burns",
-    "D": "The Cloud at Risk",
+    "A": "Where AI Gets Built",
+    "B": "What AI Drinks",
+    "C": "What AI Burns",
+    "D": "Where AI Is at Risk",
     "City": "City Senses",
 }
 

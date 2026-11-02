@@ -5,9 +5,9 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 
 | Day | Date | Prompt | Study | Idea | Effort | Tool | Status |
 |---|---|---|---|---|---|---|---|
-| 1 | Nov 1 | Points | A | Where the Cloud Lands: every US data center + the new AI campuses | Standard | Mapbox | Building |
+| 1 | Nov 1 | Points | A | Where AI Gets Built: every US data center + the new AI campuses | Standard | Mapbox | Posted |
 | 2 | Nov 2 | Lines | City |  |  |  |  |
-| 3 | Nov 3 | Polygons | B | Which water utilities serve the data centers (EPA service areas) |  |  |  |
+| 3 | Nov 3 | Polygons | B | What AI Drinks: data centers on water stress (WRI Aqueduct) | Standard | Mapbox | Notebook ready |
 | 4 | Nov 4 | Clusters | A | Data center alleys: where they bunch up |  |  |  |
 | 5 | Nov 5 | Sight | City |  |  |  |  |
 | 6 | Nov 6 | Vintage |  |  |  | ArcGIS Pro? |  |
@@ -16,10 +16,10 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | 9 | Nov 9 | Urban-rural | A | Leaving the city for farmland |  |  |  |
 | 10 | Nov 10 | Prompting only |  |  | Quick |  |  |
 | 11 | Nov 11 | Sound |  |  |  |  |  |
-| 12 | Nov 12 | Power | C | What powers the cloud | Punch | ArcGIS Pro |  |
+| 12 | Nov 12 | Power | C | What AI Burns: power plants + main fuel near each site (EIA) | Punch | Mapbox (+ ArcGIS Pro option) | Notebook ready |
 | 13 | Nov 13 | Interactions | City |  |  |  |  |
 | 14 | Nov 14 | Borgesian map | City |  |  |  |  |
-| 15 | Nov 15 | Inside out | D | Wildfire risk |  |  |  |
+| 15 | Nov 15 | Inside out | D | Where AI Is at Risk: FEMA risk by county (overall or wildfire, heat...) | Standard | Mapbox | Notebook ready |
 | 16 | Nov 16 | Collaborative | City |  |  |  |  |
 | 17 | Nov 17 | Light & dark | C | Night lights | Punch | Mapbox |  |
 | 18 | Nov 18 | NULL | A | Counties with zero data centers | Quick |  |  |
@@ -38,15 +38,15 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 
 Status: *Idea → Building → Posted → Sent to MUSA*
 
-## Studies
+## Studies · The Physical Footprint of AI
 
 Each map stands alone, and also adds a column to the master table (`data/processed/datacenters_master.geojson`).
 When a study has 2 or 3 maps, they get stitched into one scrolling study page for the portfolio.
 
 | Study | Question | Maps |
 |---|---|---|
-| A · Where the Cloud Lands | Where are data centers, and where are the new AI campuses going? | Points, Clusters, Urban-rural, NULL, Network |
-| B · What the Cloud Drinks | Whose water do they share? | Polygons (water utilities), Hexagons (water stress), Water |
-| C · What the Cloud Burns | What powers them, and how hot is it getting? | Power, Light & dark, Raster (heat) |
-| D · The Cloud at Risk | What climate risks do they face, and where should they go instead? | Inside out (wildfire), Utopia |
+| A · Where AI Gets Built | Where are data centers, and where are the new AI campuses going? | Points, Clusters, Urban-rural, NULL, Network |
+| B · What AI Drinks | Whose water do they share? | Polygons (water utilities), Hexagons (water stress), Water |
+| C · What AI Burns | What powers them, and how hot is it getting? | Power, Light & dark, Raster (heat) |
+| D · Where AI Is at Risk | What climate risks do they face, and where should they go instead? | Inside out (wildfire), Utopia |
 | City · City Senses | The lighter thread | Lines, Sight, Interactions, Borgesian, Collaborative, Smell, OSM, Taste, Feeling, Pen & paper |

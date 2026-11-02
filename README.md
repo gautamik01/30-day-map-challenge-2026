@@ -66,6 +66,16 @@ Download into `data/raw/`:
 | `data_centers.csv` | [Epoch AI data page](https://epoch.ai/data/data-centers), Download section | Frontier AI campuses (CC BY 4.0) |
 | `data_center_timelines.csv` | same page, same download | Build-out timelines, power today vs. at full build |
 
+**For later maps** (also into `data/raw/`):
+
+| File | Source | Used for |
+|---|---|---|
+| Aqueduct 4.0 download, **unzipped** (the `.gdb` folder) | [WRI Aqueduct 4.0 global maps data](https://www.wri.org/data/aqueduct-global-maps-40-data) | Day 3 · water stress (CC BY 4.0) |
+| EIA-860M generator inventory (`.xlsx`) | [EIA-860M](https://www.eia.gov/electricity/data/eia860M/) → latest month's Excel | Day 12 · power plants (public domain) |
+| `NRI_Table_Counties.csv` | FEMA RAPT page → *National Risk Index Dataset* → county Table (CSV) | Day 15 · climate risk (public domain) |
+
+Census county and state shapes download automatically the first time they're needed.
+
 City maps pull from OpenStreetMap automatically and cache in `data/raw/`.
 
 ## Data credits
@@ -76,6 +86,9 @@ City maps pull from OpenStreetMap automatically and cache in `data/raw/`.
   National Laboratory with support from the U.S. Department of Energy's Office of Science.
 - **Frontier AI data centers:** Epoch AI, *Frontier Data Centers*, https://epoch.ai/data/data-centers, CC BY 4.0.
 - **City maps:** © OpenStreetMap contributors, ODbL.
+- **Water stress:** Kuzma, S. et al. (2023). *Aqueduct 4.0*. World Resources Institute, CC BY 4.0.
+- **Power plants:** U.S. Energy Information Administration, Form EIA-860M monthly generator inventory, public domain.
+- **Climate risk:** FEMA, National Risk Index (county level), public domain.
 - **Boundaries:** US Census Bureau, Cartographic Boundary Files.
 - **Basemaps:** © Mapbox, © CARTO, © Esri, © OpenStreetMap contributors.
 

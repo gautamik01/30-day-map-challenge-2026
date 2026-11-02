@@ -39,6 +39,7 @@ class Layer:
     show: bool = True           # visible when the map opens
     fmt: dict = field(default_factory=dict)   # {"sqft": "{:,.0f}"} number formats in popups
     glow: bool = False          # points only: soft halo around each dot (use for "what's coming")
+    colors: dict = None         # fixed colors per category, e.g. {"High": "#2fb5a8", ...}
 
 
 def _geom_kind(gdf):
@@ -83,6 +84,8 @@ def prepare(layer, series="ai"):
             [c for c in counts.index if c not in ("Other", "other", "n/a")] + \
             [c for c in ("Other", "other", "n/a") if c in counts.index]
         cmap = {c: (pal["categorical"][i] if i < len(pal["categorical"]) else "#8a8a8a") for i, c in enumerate(cats)}
+        if layer.colors:
+            cmap.update({c: col for c, col in layer.colors.items() if c in cmap})
         for c in ("Other", "other", "n/a"):
             if c in cmap:
                 cmap[c] = "#7d8a8f"
@@ -221,10 +224,12 @@ __LIB__
   /* ---- THEME: dark panel by default; body.light switches everything to the light version ---- */
   :root { --panel: rgba(13,17,21,.84); --ink:#eef2f4; --muted:#93a1a8; --line:rgba(255,255,255,.08);
           --title:#f7e7c6; --tip:rgba(10,13,16,.94); --about:#c9d3d7; --hover:rgba(255,255,255,.06);
-          --shadow:0 10px 40px rgba(0,0,0,.35); --glow:#ff5c8a; }
-  body.light { --panel: rgba(255,255,255,.88); --ink:#1d2329; --muted:#5f6b72; --line:rgba(20,30,40,.10);
-               --title:#1d2329; --tip:rgba(255,255,255,.97); --about:#3a454c; --hover:rgba(20,30,40,.05);
-               --shadow:0 10px 34px rgba(30,40,50,.16); --glow:#e8436f; }
+          --shadow:0 10px 40px rgba(0,0,0,.35); --glow:#ff5c8a;
+          --tile:rgba(255,255,255,.035); --tile-line:rgba(255,255,255,.07); --kicker:#c9b79a; }
+  body.light { --panel: rgba(248,245,239,.93); --ink:#22262a; --muted:#6f6a62; --line:rgba(60,48,30,.10);
+               --title:#1f2326; --tip:rgba(252,250,246,.98); --about:#3f3b35; --hover:rgba(60,48,30,.05);
+               --shadow:0 1px 2px rgba(60,48,30,.06), 0 12px 32px rgba(60,48,30,.12); --glow:#e8436f;
+               --tile:rgba(255,255,255,.72); --tile-line:rgba(60,48,30,.09); --kicker:#9a7b4f; }
   .hl { color:var(--glow); text-shadow:0 0 10px color-mix(in srgb, var(--glow) 85%, transparent),
         0 0 26px color-mix(in srgb, var(--glow) 50%, transparent); }
   body.light .hl { text-shadow:0 0 14px color-mix(in srgb, var(--glow) 40%, transparent); }
@@ -236,6 +241,22 @@ __LIB__
   .panel h1 { color:var(--title); font-family: Fraunces, Georgia, serif; font-weight:600; font-size:25px; line-height:1.08;
               letter-spacing:-.01em; margin:0; }
   .panel .sub { font-size:13px; line-height:1.45; color:var(--muted); margin:8px 0 0; }
+  .panel header { display:block; }
+  .kicker { display:flex; align-items:center; gap:8px; font-size:10.5px; font-weight:600; letter-spacing:.14em;
+            text-transform:uppercase; color:var(--kicker); margin:0 0 10px; }
+  .kicker::before { content:""; width:16px; height:2px; border-radius:2px; background:var(--glow); }
+  .legend.tiles { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin:14px 0 2px; }
+  .tile { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:11px 10px 10px; border-radius:12px;
+          background:var(--tile); border:1px solid var(--tile-line); color:var(--ink); cursor:pointer; text-align:left;
+          font:500 11.5px/1.3 Inter, system-ui, sans-serif; transition:transform .15s, opacity .15s, border-color .15s; }
+  .tile:hover { transform:translateY(-1px); border-color:var(--line); }
+  .tile.off { opacity:.38; }
+  .tile .num { font:600 21px/1 Inter, system-ui, sans-serif; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  .tile .lab { color:var(--muted); }
+  .tile .bar { width:100%; height:3px; border-radius:3px; }
+  .tile .bar.glow { box-shadow:0 0 10px 1px currentColor; }
+  .foot { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
+  .foot .hint { margin:0; }
   .legend { margin:16px 0 4px; display:flex; flex-direction:column; gap:2px; }
   .item { display:flex; align-items:center; gap:10px; width:100%; padding:8px 8px; margin:0 -8px;
           width:calc(100% + 16px); border:0; border-radius:9px; background:transparent; color:var(--ink);
@@ -269,13 +290,15 @@ __LIB__
   @media (max-width: 640px) {
     .panel { top:auto; bottom:12px; left:12px; right:12px; width:auto; padding:14px 16px 10px; }
     .panel h1 { font-size:20px; } .panel .sub { display:none; } .hint { display:none; }
+    .tile .num { font-size:18px; } .kicker { margin-bottom:6px; }
   }
 </style></head>
 <body class="__THEME__">
 <div id="map"></div>
 <aside class="panel">
+  <header>__KICKER__
   <h1>__TITLE_HTML__</h1>
-  __SUB__
+  __SUB__</header>
   <div class="legend" id="legend"></div>
   <p class="hint">Hover a point for details. Click the legend to show or hide a layer.</p>
   <button class="about-btn" id="aboutBtn" aria-expanded="false">&#9432;&nbsp; About this map</button>
@@ -319,11 +342,17 @@ map.on('load', () => {
 
   // legend = layer switches
   const legend = document.getElementById('legend');
+  const asTiles = !!C.tiles;
+  if (asTiles) legend.classList.add('tiles');
   C.layers.forEach(L => {
     const b = document.createElement('button');
-    b.className = 'item' + (L.visible ? '' : ' off');
-    b.innerHTML = `<span class="dot ${L.glow ? 'glow' : ''}" style="background:${L.color};color:${L.color}"></span>
-                   <span class="label">${esc(L.name)}</span><span class="n">${L.count.toLocaleString()}</span>`;
+    b.className = (asTiles ? 'tile' : 'item') + (L.visible ? '' : ' off');
+    b.innerHTML = asTiles
+      ? `<span class="bar ${L.glow ? 'glow' : ''}" style="background:${L.color};color:${L.color}"></span>
+         <span class="num">${L.count.toLocaleString()}</span><span class="lab">${esc(L.name).replace(' · ', '<br>')}</span>`
+      : `<span class="dot ${L.glow ? 'glow' : ''}" style="background:${L.color};color:${L.color}"></span>
+         <span class="label">${esc(L.name)}</span><span class="n">${L.count.toLocaleString()}</span>`;
+    b.title = 'Show / hide ' + L.name;
     b.onclick = () => {
       const on = b.classList.toggle('off');
       [L.id, L.id + '-glow'].forEach(id => map.getLayer(id) && map.setLayoutProperty(id, 'visibility', on ? 'none' : 'visible'));
@@ -367,7 +396,7 @@ btn.onclick = () => { about.hidden = !about.hidden; btn.setAttribute('aria-expan
 
 def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bounds=None,
            style="dark", projection="mercator", pitch=0, bearing=0, token=None, author=True,
-           highlight=None, story=None, **_ignored):
+           highlight=None, kicker=None, tiles=False, story=None, **_ignored):
     """
     A clean, portfolio-ready Mapbox GL page (returns HTML text; publish.save() writes it).
 
@@ -378,6 +407,8 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
     projection: 'mercator' | 'globe' | 'albers' | 'equalEarth' | 'naturalEarth' | 'winkelTripel'
     style: 'dark' keeps the dark panel; 'light' / 'standard' / 'satellite' switch the panel to light
     highlight: a word in the title to make glow, e.g. highlight="AI"
+    kicker:    optional small label above the title, e.g. kicker=style.UMBRELLA
+    tiles:     True shows the legend as stat tiles instead of a list (off by default)
     No Mapbox token -> falls back to MapLibre + CARTO so it still works.
     """
     import html as _h
@@ -398,6 +429,8 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
         cats = []
         if "_cat" in g:
             cats = g[["_cat", "_color"]].drop_duplicates().values.tolist()
+            if layer.order:
+                cats.sort(key=lambda c: layer.order.index(c[0]) if c[0] in layer.order else 99)
         cfg_layers.append(dict(
             id=sid, name=layer.name, kind=_geom_kind(g), count=int(len(g)),
             color=(g["_color"].iloc[0] if (layer.color and len(g)) else layer.color or
@@ -417,14 +450,15 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
         style_url, basemap = S.MAPLIBRE_FALLBACK[style], "Basemap © CARTO © OpenStreetMap"
         print("No Mapbox token found, using the free MapLibre fallback. Add mapbox_token.txt for real Mapbox.")
 
-    cfg = dict(mapbox=use_mapbox, token=token, style=style_url, projection=projection, pitch=pitch,
+    cfg = dict(tiles=bool(tiles), mapbox=use_mapbox, token=token, style=style_url, projection=projection, pitch=pitch,
                bearing=bearing, bounds=[[w_, s_], [e_, n_]], layers=cfg_layers)
     credits = " · ".join(x for x in [sources, basemap] if x)
     title_html = _h.escape(title)
     if highlight and highlight in title:
         title_html = title_html.replace(_h.escape(highlight), f'<span class="hl">{_h.escape(highlight)}</span>', 1)
     out = _MAP_HTML
-    for k, v in {"__TITLE_HTML__": title_html, "__THEME__": "light" if light else "dark", "__TITLE__": _h.escape(title), "__SUB__": f'<p class="sub">{_h.escape(subtitle)}</p>' if subtitle else "",
+    kicker = kicker or ""
+    for k, v in {"__KICKER__": f'<p class="kicker">{_h.escape(kicker)}</p>' if kicker else "", "__TITLE_HTML__": title_html, "__THEME__": "light" if light else "dark", "__TITLE__": _h.escape(title), "__SUB__": f'<p class="sub">{_h.escape(subtitle)}</p>' if subtitle else "",
                  "__ABOUT__": about, "__CREDITS__": credits, "__AUTHOR__": S.AUTHOR if author else "",
                  "__PAPER__": pal["paper"], "__LIB__": lib}.items():
         out = out.replace(k, v)
