@@ -29,7 +29,7 @@ import networkx as nx
 import osmnx as ox
 import requests
 import shapely
-from shapely.geometry import LineString, box
+from shapely.geometry import LineString, Polygon, box
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from mapkit.paths import PROCESSED, RAW, WGS84  # noqa: E402
@@ -331,6 +331,15 @@ def day4():
             "by_boro": g.boro.value_counts().to_dict(), "top_neighborhood_codes": g.nta.value_counts().head(12).to_dict() if "nta" in g else {}}
 
 
+def fix_rings(geom):
+    """The city's borough file packs every island into one shape as a list of rings. Rebuild real land, with lakes as holes."""
+    rings = sorted((Polygon(r).buffer(0) for r in shapely.get_rings(geom)), key=lambda p: -p.area)
+    out = rings[0]
+    for r in rings[1:]:
+        out = out.symmetric_difference(r)
+    return out
+
+
 def nyc_boroughs():
     """Borough shapes with the rivers cut out. Official copy first, then a public backup."""
     f = WEEK / "nyc_boroughs.geojson"
@@ -345,6 +354,10 @@ def nyc_boroughs():
             r = requests.get(backup, timeout=120)
         f.write_bytes(r.content)
         (WEEK / "nyc_boroughs_source.txt").write_text("official" if "arcgis" in r.url else "backup")
+        g = gpd.read_file(f)
+        if not g.geometry.is_valid.all():
+            g["geometry"] = [fix_rings(x) for x in g.geometry]
+            g.to_file(f, driver="GeoJSON")
     return gpd.read_file(f)
 
 
@@ -376,6 +389,8 @@ def day4_manhattan():
         parks = osm(box(*island.bounds), {"leisure": "park"}, ("name",)).rename(columns={"name": "signname"})
         parks_source = "OpenStreetMap"
     parks = only(parks[parks.intersects(island)], "Polygon", "MultiPolygon")
+    if len(parks) < 50:
+        raise ValueError(f"only {len(parks)} parks in Manhattan, something is wrong, so nothing was saved")
     save(parks[[c for c in ("signname", "acres", "typecategory", "geometry") if c in parks.columns]], "manhattan_parks.geojson")
 
     try:
@@ -390,6 +405,8 @@ def day4_manhattan():
         streets = osm(box(*island.bounds), {"highway": STREETS}, ("highway", "name"))
         streets_source = "OpenStreetMap"
     streets = only(streets[streets.intersects(island)], "LineString", "MultiLineString")
+    if len(streets) < 1000:
+        raise ValueError(f"only {len(streets)} street segments in Manhattan, something is wrong, so nothing was saved")
     name = next((c for c in ("full_street_name", "full_stree", "stname_label", "stname_lab", "street_name", "street_nam", "name") if c in streets.columns), None)
     streets["street"] = streets[name] if name else ""
     keep = [c for c in ("street", "rw_type", "highway", "geometry") if c in streets.columns]
