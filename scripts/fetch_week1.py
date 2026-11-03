@@ -3,7 +3,8 @@ fetch_week1.py : one run gets the data for the Day 2 to Day 7 maps, plus Day 21 
 
     conda activate geospatial
     pip install scikit-learn        (only needed once, the Day 4 notebook uses it)
-    python scripts/fetch_week1.py
+    python scripts/fetch_week1.py          (every step)
+    python scripts/fetch_week1.py day4     (just one day)
 
 Safe to run again. Finished steps are skipped, and a failed step does not stop the others.
 Delete a file in data/processed/ to fetch it again.
@@ -74,6 +75,7 @@ def step(name, *outputs):
                 print(f"[FAIL] {name}: {type(e).__name__}: {e}")
                 traceback.print_exc(limit=2)
             REPORT_FILE.write_text(json.dumps(REPORT, indent=2))
+        run.step_name = name
         return run
     return wrap
 
@@ -663,7 +665,11 @@ STEPS = [day2_route, day2_boston, day2_terrain, day3, day4, day5_city, day5_osm,
 
 if __name__ == "__main__":
     t0 = time.time()
-    for fn in STEPS:
+    wanted = sys.argv[1:]              # e.g. "day4" or "day7 day21". Nothing means every step.
+    chosen = [fn for fn in STEPS if not wanted or any(fn.step_name.startswith(w + "_") for w in wanted)]
+    if not chosen:
+        sys.exit(f"No step matches {wanted}. Try day2, day3, day4, day5, day6, day7 or day21.")
+    for fn in chosen:
         fn()
     REPORT_FILE.write_text(json.dumps(REPORT, indent=2))
     print("\n--- summary ---")
