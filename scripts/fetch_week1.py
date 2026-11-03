@@ -190,7 +190,7 @@ def places():
 def query_shape(geom, tolerance=0.002):
     """A simpler shape to ask OSM with. We clip to the real boundary afterward."""
     s = geom.buffer(tolerance).simplify(tolerance)
-    return s
+    return s if s.is_valid else s.buffer(0)
 
 
 # ------------------------------------------------------------------ Day 2
@@ -279,25 +279,34 @@ INDIAN = r"(?:^|[;, _])(?:indian|south_indian|north_indian|punjabi|gujarati|kera
 
 @step("day4_restaurants", "indian_restaurants.geojson")
 def day4():
-    frames, totals = [], {}
+    frames, totals, errors = [], {}, {}
     pl = places()
     for key, row in pl.iterrows():
         print(f"       {row['label']}")
-        g = osm(query_shape(row.geometry), {"amenity": ["restaurant", "fast_food"]},
-                ("id", "amenity", "name", "cuisine", "brand"))
-        pts = g.copy()
-        pts["geometry"] = pts.representative_point()
-        pts = pts[pts.within(row.geometry)]
-        for col in ("name", "cuisine"):
-            if col not in pts:
-                pts[col] = None
-        by_cuisine = pts.cuisine.fillna("").str.lower().str.contains(INDIAN, regex=True)
-        by_name = pts.name.fillna("").str.lower().str.contains(r"\bdosas?\b|\bdosai\b", regex=True)
-        hit = pts[by_cuisine | by_name].copy()
-        hit["city"] = key
-        hit["dosa_named"] = by_name[hit.index]
-        frames.append(hit)
-        totals[key] = {"all_eateries": len(pts), "with_cuisine_tag": int(pts.cuisine.notna().sum()), "indian": len(hit)}
+        try:
+            g = osm(query_shape(row.geometry), {"amenity": ["restaurant", "fast_food"]},
+                    ("id", "amenity", "name", "cuisine", "brand"))
+            pts = g.copy()
+            pts["geometry"] = pts.representative_point()
+            pts = pts[pts.within(row.geometry)].copy()
+            for col in ("name", "cuisine"):
+                if col not in pts:
+                    pts[col] = None
+            names = pts["name"].astype(object).where(pts["name"].notna(), "").astype(str).str.lower()
+            cuisines = pts["cuisine"].astype(object).where(pts["cuisine"].notna(), "").astype(str).str.lower()
+            by_cuisine = cuisines.str.contains(INDIAN, regex=True)
+            by_name = names.str.contains(r"\bdosas?\b|\bdosai\b", regex=True)
+            hit = pts[by_cuisine | by_name].copy()
+            hit["city"] = key
+            hit["dosa_named"] = by_name[hit.index]
+            frames.append(hit)
+            totals[key] = {"all_eateries": len(pts), "with_cuisine_tag": int(pts["cuisine"].notna().sum()), "indian": len(hit)}
+            print(f"         {totals[key]}")
+        except Exception as e:
+            errors[key] = f"{type(e).__name__}: {e}"
+            print(f"         failed: {errors[key]}")
+    if errors:
+        raise RuntimeError(f"cities failed, finished ones are cached so a rerun is quick: {errors}")
     out = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), crs=WGS84)
     save(out, "indian_restaurants.geojson")
     return {"by_city": totals}
