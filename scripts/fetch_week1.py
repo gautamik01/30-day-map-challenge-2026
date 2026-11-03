@@ -449,28 +449,36 @@ def block_groups():
     for year in (2024, 2023):
         r = requests.get(f"https://api.census.gov/data/{year}/acs/acs5", timeout=120, params={
             "get": "B01003_001E", "for": "block group:*", "in": "state:42 county:101 tract:*"})
-        if r.status_code == 200:
+        try:
             rows = r.json()
-            acs = pd.DataFrame(rows[1:], columns=rows[0])
-            acs["GEOID"] = acs.state + acs.county + acs.tract + acs["block group"]
-            acs["population"] = pd.to_numeric(acs.B01003_001E)
-            out = bg.merge(acs[["GEOID", "population"]], on="GEOID", how="left")
-            return out, year
-    raise RuntimeError(f"Census API answered {r.status_code}: {r.text[:200]}")
+        except ValueError:
+            print(f"       Census API {year} did not answer with data (status {r.status_code})")
+            continue
+        acs = pd.DataFrame(rows[1:], columns=rows[0])
+        acs["GEOID"] = acs.state + acs.county + acs.tract + acs["block group"]
+        acs["population"] = pd.to_numeric(acs.B01003_001E)
+        return bg.merge(acs[["GEOID", "population"]], on="GEOID", how="left"), f"ACS {year} 5-year"
+
+    # Without an API key the Census may refuse, so fall back to the 2020 counts in its public map service
+    base = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer"
+    layers = requests.get(base, params={"f": "json"}, timeout=120).json()["layers"]
+    layer = next(l["id"] for l in layers if "Block Groups" in l["name"])
+    rows = requests.get(f"{base}/{layer}/query", timeout=180, params={
+        "where": "STATE='42' AND COUNTY='101'", "outFields": "GEOID,POP100", "returnGeometry": "false", "f": "json"}).json()["features"]
+    pop = pd.DataFrame([f["attributes"] for f in rows])
+    pop["population"] = pd.to_numeric(pop.POP100)
+    return bg.merge(pop[["GEOID", "population"]], on="GEOID", how="left"), "2020 Census"
 
 
-@step("day7_parks_heat", "tenmin_parks.geojson", "heat_tracts.geojson", "philly_bg_pop.geojson")
+@step("day7_parks_heat", "tenmin_parks.geojson", "heat_tracts.geojson")
 def day7():
-    """City and Census data only. The walking analysis runs in the notebook, on the streets Day 5 already fetched."""
+    """City data only. The walking analysis runs in the notebook, on the streets Day 5 already fetched."""
     for old in ("meyerson_walk.geojson", "meyerson_water.geojson", "meyerson_point.json"):
         (WEEK / old).unlink(missing_ok=True)      # left over from the earlier Day 7 idea
 
     heat = arcgis_all(f"{PHILLY_GIS}/heat_vulnerability_ct/FeatureServer/0")
     heat.columns = [c.lower() if c != "geometry" else c for c in heat.columns]
     save(heat, "heat_tracts.geojson")
-
-    bg, acs_year = block_groups()
-    save(bg, "philly_bg_pop.geojson")
 
     # Parks: neighboring parcels count as one park, so Fairmount Park is not split into pieces
     ppr = arcgis_all(f"{PHILLY_GIS}/PPR_Properties/FeatureServer/0").to_crs(32618)
@@ -480,8 +488,15 @@ def day7():
     parks["acres"] = (parks.area / 4046.856).round(2)
     save(parks.to_crs(WGS84), "tenmin_parks.geojson")
     return {"parks": len(parks), "parks_1ac": int((parks.acres >= 1).sum()), "parks_10ac": int((parks.acres >= 10).sum()),
-            "acs_year": acs_year, "people": int(bg.population.sum()), "heat_tracts": len(heat),
-            "heat_fields": [c for c in heat.columns if c != "geometry"], "ppr_fields": [c for c in ppr.columns if c != "geometry"]}
+            "heat_tracts": len(heat), "heat_fields": [c for c in heat.columns if c != "geometry"],
+            "ppr_fields": [c for c in ppr.columns if c != "geometry"]}
+
+
+@step("day7_population", "philly_bg_pop.geojson")
+def day7_population():
+    bg, source = block_groups()
+    save(bg, "philly_bg_pop.geojson")
+    return {"source": source, "people": int(bg.population.sum()), "block_groups": len(bg)}
 
 
 # ------------------------------------------------------------------ Day 21
@@ -629,7 +644,7 @@ def day21_backdrop():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
+STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7, day7_population,
          day21_osm, day21_areas, day21_backdrop]
 
 if __name__ == "__main__":
