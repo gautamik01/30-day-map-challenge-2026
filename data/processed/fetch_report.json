@@ -1,0 +1,326 @@
+{
+  "day2_big_sur_route": {
+    "status": "ok",
+    "seconds": 434,
+    "miles": 26.29,
+    "start_ft": 334,
+    "top_ft": 560,
+    "finish_ft": 32,
+    "bridge_points": 11,
+    "missing": 0,
+    "filter": "[\"highway\"][\"ref\"~\"(^|;) *CA 1 *(;|$)\"]",
+    "official": "26.2 mi, start 356 ft, Hurricane Point 560 ft, finish 10 ft"
+  },
+  "day2_boston_profile": {
+    "status": "ok",
+    "seconds": 276,
+    "miles": 2.31,
+    "min_ft": 97,
+    "max_ft": 237,
+    "missing": 0,
+    "filter": "[\"highway\"~\"primary|secondary|tertiary\"]"
+  },
+  "day2_terrain": {
+    "status": "ok",
+    "seconds": 12,
+    "shape": [
+      1931,
+      1800
+    ],
+    "max_m": 4808,
+    "ocean_share": 0.361
+  },
+  "day3_sf": {
+    "status": "ok",
+    "seconds": 218,
+    "parking_polygons": 1272,
+    "parking_km2": 2.256,
+    "by_type": {
+      "surface": 586,
+      "untagged": 465,
+      "street_side": 109,
+      "multi-storey": 90,
+      "lane": 8,
+      "underground": 7,
+      "rooftop": 7
+    },
+    "golden_gate_park_km2": 4.063,
+    "street_ways": 13337
+  },
+  "day4_restaurants": {
+    "status": "FAILED",
+    "error": "ResponseStatusCodeError: 'overpass-api.de' responded: 502 Bad Gateway # 502 Gateway Timeout\n\nThis Overpass API server is currently at capacity. All query workers are busy\nand the request queue is full.\n\n## What to do\n\nRetry your request using exponential backoff: wait a short interval, then retry.\nIf the request fails again, double the wait time and retry again.\n\n## For heavy or automated use\n\nThis public endpoint is intended for browser-based and human-operated tools.\nFor automated or high-volume use, run a local Overpass API instance:\n\nhttps://github.com/b1tw153/Overpass-API/blob/main/README.md\n"
+  },
+  "day5_city_footprints": {
+    "status": "ok",
+    "seconds": 2,
+    "footprints": 1187,
+    "max_hgt_top": [
+      [
+        "Comcast Innovation and Technology Center",
+        "1800 ARCH ST",
+        1128
+      ],
+      [
+        "Comcast Center",
+        "1701 JOHN F KENNEDY BLVD # 1",
+        983
+      ],
+      [
+        "One Liberty Place",
+        "1650 MARKET ST",
+        825
+      ],
+      [
+        "Two Liberty Place",
+        "1601 CHESTNUT ST",
+        802
+      ],
+      [
+        "BNY Mellon Center",
+        "1735 MARKET ST",
+        795
+      ],
+      [
+        "Loews Philadelphia Hotel",
+        "1200 MARKET ST",
+        794
+      ],
+      [
+        "FMC Tower",
+        "2929 WALNUT ST",
+        744
+      ],
+      [
+        "Three Logan Square",
+        "1717 ARCH ST",
+        742
+      ],
+      [
+        "nan",
+        "20 S 16TH ST",
+        738
+      ],
+      [
+        "Shops at Liberty Place",
+        "1625 CHESTNUT ST",
+        700
+      ],
+      [
+        "Independence Blue Cross",
+        "1901-17 MARKET ST",
+        631
+      ],
+      [
+        "Centre Square",
+        "1500-42 MARKET ST",
+        615
+      ],
+      [
+        "nan",
+        "1911 WALNUT ST",
+        610
+      ],
+      [
+        "nan",
+        "1919 WALNUT ST",
+        606
+      ],
+      [
+        "nan",
+        "1441 CHESTNUT ST",
+        585
+      ],
+      [
+        "United Lodge of Theosophists",
+        "1917 WALNUT ST",
+        585
+      ],
+      [
+        "Two Commerce Square",
+        "2001 MARKET ST",
+        572
+      ],
+      [
+        "One Commerce Square",
+        "2005 MARKET ST",
+        572
+      ],
+      [
+        "City Hall",
+        "1400 JOHN F KENNEDY BLVD",
+        558
+      ],
+      [
+        "nan",
+        "301 S BROAD ST",
+        549
+      ],
+      [
+        "nan",
+        "1414 S PENN SQ",
+        546
+      ],
+      [
+        "1818 Beneficial Bank Place",
+        "1818-28 MARKET ST",
+        537
+      ],
+      [
+        "Center City One",
+        "1326-42 SPRUCE ST",
+        530
+      ],
+      [
+        "PNC Center",
+        "1600-22 MARKET ST",
+        513
+      ],
+      [
+        "1601",
+        "1601-23 MARKET ST",
+        505
+      ]
+    ]
+  },
+  "day5_osm_towers": {
+    "status": "ok",
+    "seconds": 124,
+    "kept": 393,
+    "top": [
+      [
+        "nan",
+        341.0
+      ],
+      [
+        "Comcast Technology Center",
+        341.0
+      ],
+      [
+        "nan",
+        296.726
+      ],
+      [
+        "nan",
+        288.0
+      ],
+      [
+        "nan",
+        277.0
+      ],
+      [
+        "nan",
+        269.748
+      ],
+      [
+        "nan",
+        269.748
+      ],
+      [
+        "nan",
+        266.703
+      ],
+      [
+        "nan",
+        266.703
+      ],
+      [
+        "nan",
+        258.0
+      ],
+      [
+        "nan",
+        258.0
+      ],
+      [
+        "nan",
+        250.0
+      ],
+      [
+        "nan",
+        240.0
+      ],
+      [
+        "nan",
+        240.0
+      ],
+      [
+        "nan",
+        240.0
+      ],
+      [
+        "nan",
+        233.0
+      ],
+      [
+        "nan",
+        233.0
+      ],
+      [
+        "nan",
+        228.0
+      ],
+      [
+        "nan",
+        228.0
+      ],
+      [
+        "nan",
+        225.0
+      ],
+      [
+        "nan",
+        222.5
+      ],
+      [
+        "FMC Tower",
+        222.5
+      ],
+      [
+        "nan",
+        220.0
+      ],
+      [
+        "nan",
+        220.0
+      ],
+      [
+        "nan",
+        220.0
+      ]
+    ]
+  },
+  "day5_backdrop": {
+    "status": "ok",
+    "seconds": 214,
+    "street_ways": 23793,
+    "water_polygons": 90
+  },
+  "day6_coastline": {
+    "status": "ok",
+    "seconds": 68,
+    "coast_ways": 59
+  },
+  "day6_scan": {
+    "status": "ok",
+    "seconds": 0,
+    "source_file": "bombay_1843.jpg",
+    "original_px": [
+      1428,
+      3112
+    ],
+    "saved_px": [
+      1377,
+      3000
+    ]
+  },
+  "day7_meyerson": {
+    "status": "ok",
+    "seconds": 143,
+    "edges": 27601,
+    "water": 70,
+    "point": "geocoded",
+    "km_within_833m": 0.0,
+    "km_within_1667m": 0.0
+  }
+}
