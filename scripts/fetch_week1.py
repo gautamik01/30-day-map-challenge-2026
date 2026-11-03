@@ -52,7 +52,6 @@ PLACE_LABELS = {"nyc": "New York", "philly": "Philadelphia", "dc": "Washington D
                 "sf": "San Francisco", "austin": "Austin", "seattle": "Seattle"}
 
 CITY_HALL = (39.95222, -75.16361)     # lat, lon
-MEYERSON = (39.9522, -75.1925)        # fallback if geocoding fails
 
 
 # ------------------------------------------------------------------ helpers
@@ -391,36 +390,118 @@ def day6_scan():
 
 
 # ------------------------------------------------------------------ Day 7
-@step("day7_meyerson", "meyerson_walk.geojson", "meyerson_water.geojson", "meyerson_point.json")
+TEN_MINUTES_M = 804.7                 # half a mile, the distance the Trust for Public Land uses for a 10-minute walk
+PARK_SIZES_ACRES = {"d_any": 0, "d_1ac": 1, "d_10ac": 10}
+PHILLY_GIS = "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services"
+WALKED_STREETS = {"primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+                  "unclassified", "residential", "living_street", "trunk", "trunk_link"}
+
+
+def arcgis_all(url, fields="*"):
+    """Every feature in an ArcGIS layer, one page at a time."""
+    frames, offset = [], 0
+    while True:
+        r = requests.get(url + "/query", timeout=180, params={
+            "where": "1=1", "outFields": fields, "outSR": 4326, "f": "geojson",
+            "resultOffset": offset, "resultRecordCount": 1000})
+        r.raise_for_status()
+        feats = r.json().get("features", [])
+        if not feats:
+            break
+        frames.append(gpd.GeoDataFrame.from_features(feats, crs=WGS84))
+        offset += len(feats)
+    return gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), geometry="geometry", crs=WGS84)
+
+
+def block_groups():
+    """Philadelphia block groups with population from the latest ACS 5-year release we can reach."""
+    z = RAW / "cb_2023_42_bg_500k.zip"
+    if not z.exists():
+        r = requests.get("https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_42_bg_500k.zip", timeout=300)
+        r.raise_for_status()
+        z.write_bytes(r.content)
+    bg = gpd.read_file(f"zip://{z.as_posix()}").to_crs(WGS84)
+    bg = bg[bg.COUNTYFP == "101"][["GEOID", "geometry"]].copy()
+    for year in (2024, 2023):
+        r = requests.get(f"https://api.census.gov/data/{year}/acs/acs5", timeout=120, params={
+            "get": "B01003_001E", "for": "block group:*", "in": "state:42 county:101 tract:*"})
+        if r.status_code == 200:
+            rows = r.json()
+            acs = pd.DataFrame(rows[1:], columns=rows[0])
+            acs["GEOID"] = acs.state + acs.county + acs.tract + acs["block group"]
+            acs["population"] = pd.to_numeric(acs.B01003_001E)
+            out = bg.merge(acs[["GEOID", "population"]], on="GEOID", how="left")
+            return out, year
+    raise RuntimeError(f"Census API answered {r.status_code}: {r.text[:200]}")
+
+
+@step("day7_ten_minute_test", "tenmin_streets.geojson", "tenmin_parks.geojson", "heat_tracts.geojson", "philly_bg_pop.geojson")
 def day7():
-    try:
-        lat, lon = ox.geocode("Meyerson Hall, University of Pennsylvania, Philadelphia, PA")
-        if abs(lat - MEYERSON[0]) > 0.003 or abs(lon - MEYERSON[1]) > 0.003:
-            raise ValueError("geocode landed too far away")
-        used = "geocoded"
-    except Exception as e:
-        print(f"       geocode not used ({e}), using the stored point")
-        lat, lon, used = *MEYERSON, "stored"
-    (WEEK / "meyerson_point.json").write_text(json.dumps({"lat": lat, "lon": lon, "source": used}))
-    G = ox.graph_from_point((lat, lon), dist=2600, network_type="walk", simplify=True, retain_all=False)
+    for old in ("meyerson_walk.geojson", "meyerson_water.geojson", "meyerson_point.json"):
+        (WEEK / old).unlink(missing_ok=True)      # left over from the earlier Day 7 idea
+
+    heat = arcgis_all(f"{PHILLY_GIS}/heat_vulnerability_ct/FeatureServer/0")
+    heat.columns = [c.lower() if c != "geometry" else c for c in heat.columns]
+    save(heat, "heat_tracts.geojson")
+
+    bg, acs_year = block_groups()
+    save(bg, "philly_bg_pop.geojson")
+
+    # Parks: neighboring parcels count as one park, so Fairmount Park is not split into pieces
+    ppr = arcgis_all(f"{PHILLY_GIS}/PPR_Properties/FeatureServer/0").to_crs(32618)
+    merged = ppr.geometry.buffer(5).union_all().buffer(-5)
+    parks = gpd.GeoDataFrame(geometry=gpd.GeoSeries([merged], crs=32618).explode(index_parts=False).values, crs=32618)
+    parks = parks[parks.area > 0].reset_index(drop=True)
+    parks["acres"] = parks.area / 4046.856
+    save(parks.round({"acres": 2}).to_crs(WGS84), "tenmin_parks.geojson")
+
+    # Walking network, a little past the city line so border streets can reach nearby parks
+    philly = places().loc["philly"].geometry
+    G = ox.graph_from_polygon(philly.buffer(0.012), network_type="walk", simplify=True, retain_all=False)
     U = G.to_undirected()
-    origin = nearest_node(U, lat, lon)
-    dist = nx.single_source_dijkstra_path_length(U, origin, weight="length")
+    nodes = gpd.GeoDataFrame({"node": list(U.nodes)}, crs=WGS84,
+                             geometry=gpd.points_from_xy([U.nodes[n]["x"] for n in U.nodes],
+                                                         [U.nodes[n]["y"] for n in U.nodes])).to_crs(32618)
+
+    # Shortest walk from every node to the nearest park of each size. A park counts once you reach its edge.
+    dists = {}
+    for col, acres in PARK_SIZES_ACRES.items():
+        chosen = parks[parks.acres >= acres]
+        door = gpd.GeoDataFrame(geometry=chosen.buffer(25), crs=32618)
+        sources = set(gpd.sjoin(nodes, door, predicate="within").node)
+        dists[col] = nx.multi_source_dijkstra_path_length(U, sources, weight="length")
+        print(f"       parks of {acres}+ acres: {len(chosen)} parks, {len(sources)} entry nodes")
+
+    # Keep ordinary streets, since that is where people live. Footpaths only helped people get there.
     rows = []
     for u, v, d in U.edges(data=True):
-        if u not in dist or v not in dist:
+        kind = d.get("highway")
+        kind = kind[0] if isinstance(kind, list) else kind
+        if kind not in WALKED_STREETS:
             continue
         geom = d.get("geometry") or LineString([(U.nodes[u]["x"], U.nodes[u]["y"]), (U.nodes[v]["x"], U.nodes[v]["y"])])
-        rows.append({"d0": round(min(dist[u], dist[v]), 1), "d1": round(max(dist[u], dist[v]), 1),
-                     "length": round(d.get("length", 0), 1), "geometry": geom})
-    edges = gpd.GeoDataFrame(rows, crs=WGS84)
-    save(edges, "meyerson_walk.geojson")
-    area = box(lon - 0.05, lat - 0.04, lon + 0.05, lat + 0.04)
-    w = only(osm(area, {"natural": "water"}, ("name",)), "Polygon", "MultiPolygon")
-    save(w, "meyerson_water.geojson")
-    return {"edges": len(edges), "water": len(w), "point": used,
-            "km_within_833m": round(float(edges[edges.d1 <= 833.3].length.sum() / 1000), 1),
-            "km_within_1667m": round(float(edges[edges.d1 <= 1666.7].length.sum() / 1000), 1)}
+        row = {"length": round(d.get("length", 0), 1), "geometry": geom}
+        for col, table in dists.items():
+            ends = [table[n] for n in (u, v) if n in table]
+            row[col] = round(min(ends) + d.get("length", 0) / 2) if ends else 99999
+        rows.append(row)
+    streets = gpd.GeoDataFrame(rows, crs=WGS84)
+    middle = gpd.GeoDataFrame(streets.drop(columns="geometry"), crs=WGS84, geometry=streets.geometry.interpolate(0.5, normalized=True))
+    joined = gpd.sjoin(middle, bg[["GEOID", "geometry"]], predicate="within", how="left")
+    streets["GEOID"] = joined.groupby(level=0).GEOID.first()
+    streets = streets[streets.GEOID.notna()]
+    save(streets, "tenmin_streets.geojson")
+
+    # Share of people within 10 minutes: each block group's people spread along its streets
+    pop = bg.set_index("GEOID").population
+    served = {}
+    for col in PARK_SIZES_ACRES:
+        near = streets[streets[col] <= TEN_MINUTES_M].groupby("GEOID").length.sum()
+        share = (near / streets.groupby("GEOID").length.sum()).reindex(pop.index).fillna(0)
+        served[col] = round(float((share * pop).sum() / pop.sum() * 100), 1)
+    return {"share_of_people_within_10_min": served, "published_tpl_any_park": 97, "parks": len(parks),
+            "street_edges": len(streets), "acs_year": acs_year, "people": int(pop.sum()),
+            "heat_fields": [c for c in heat.columns if c != "geometry"]}
 
 
 # ------------------------------------------------------------------ run
