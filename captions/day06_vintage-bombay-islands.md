@@ -1,12 +1,11 @@
-#30DayMapChallenge Day 6 · Vintage 🗺️
+#30DayMapChallenge Day 6: Vintage 🗺️
 
 Mumbai has never believed in coastlines.
 
-I studied architecture on this land, and the seven islands are the story everyone here knows. This 1843 map is where that picture comes from, and it was itself a guess at the old landscape. I bent today's shoreline over it in red. Read the fit as approximate, since old maps don't sit neatly on new ones, but you can still see how much of the city was once water.
+Before it was one city, it's said to have been seven islands. This 1843 map shows them, though even it was a guess at the old landscape. In red, today's shoreline.
 
-What's the oldest map you've seen of your city?
+Every shoreline is a draft. Who gets to write the next one?
 
-https://gautamik01.github.io/30-day-map-challenge-2026/output/day06_vintage-bombay-islands.png
-Map: prepared 1843 for Mr. Murphy, British Library via Wikimedia Commons. Coastline: OpenStreetMap.
+#teamMUSA
 
-#30DayMapChallenge #Mumbai #Bombay #HistoricMaps #ClimateAdaptation #Python #GIS #MUSA
+#Mumbai #ClimateChange #UrbanPlanning #Cartography #GIS

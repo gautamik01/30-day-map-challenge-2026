@@ -25,7 +25,7 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | 18 | Nov 18 | NULL | A | Counties with zero data centers | Quick |  |  |
 | 19 | Nov 19 | Smell | City |  |  |  |  |
 | 20 | Nov 20 | Hexagons | B | What AI Drinks: water stress in hexagons (moved from Day 3, 39% stat, notebook exists) |  |  | Notebook ready, rework to hexagons |
-| 21 | Nov 21 | OpenStreetMap | City | Learning to Ski from NYC and Philly: beginner terrain at ski areas within a day trip, from OSM trail tags, with drive times from both cities | Standard | Mapbox or static | Building |
+| 21 | Nov 21 | OpenStreetMap | City | Learning to Ski from NYC and Philly: beginner terrain at ski areas within a day trip, from OSM trail tags, with drive times from both cities | Standard | Mapbox or static | Placeholder notebook, data pending |
 | 22 | Nov 22 | Projections |  |  | Quick | Mapbox |  |
 | 23 | Nov 23 | Taste | City |  |  |  |  |
 | 24 | Nov 24 | Network | A | Fiber + power lines |  |  |  |
