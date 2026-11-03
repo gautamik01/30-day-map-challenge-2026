@@ -434,7 +434,54 @@
     }
   },
   "day7_parks_heat": {
+    "status": "ok",
+    "seconds": 3,
+    "parks": 495,
+    "parks_1ac": 332,
+    "parks_10ac": 87,
+    "heat_tracts": 384,
+    "heat_fields": [
+      "geoid10",
+      "name10",
+      "n_veryhigh",
+      "year",
+      "hsi_score",
+      "hei_score",
+      "hvi_score",
+      "objectid",
+      "shape__area",
+      "shape__length"
+    ],
+    "ppr_fields": [
+      "nested",
+      "official_name",
+      "label",
+      "alias",
+      "address_911",
+      "zip_code",
+      "alias_address",
+      "acreage",
+      "property_classification",
+      "ppr_use",
+      "ppr_prog_district",
+      "ppr_ops_district",
+      "council_district",
+      "police_district",
+      "program_sites",
+      "comments",
+      "objectid",
+      "site_name",
+      "park_name",
+      "ppr_ranger_district",
+      "ppr_park_id",
+      "ppr_site_id",
+      "ppr_asset_id",
+      "Shape__Area",
+      "Shape__Length"
+    ]
+  },
+  "day7_population": {
     "status": "FAILED",
-    "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+    "error": "KeyError: 'features'"
   }
 }
