@@ -331,6 +331,74 @@ def day4():
             "by_boro": g.boro.value_counts().to_dict(), "top_neighborhood_codes": g.nta.value_counts().head(12).to_dict() if "nta" in g else {}}
 
 
+def nyc_boroughs():
+    """Borough shapes with the rivers cut out. Official copy first, then a public backup."""
+    f = WEEK / "nyc_boroughs.geojson"
+    if not f.exists():
+        official = "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Borough_Boundary/FeatureServer/0/query"
+        backup = "https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/new-york-city-boroughs.geojson"
+        try:
+            r = requests.get(official, params={"where": "1=1", "outFields": "*", "outSR": 4326, "f": "geojson"}, timeout=120)
+            assert len(r.json()["features"]) == 5
+        except Exception:
+            print("       City Planning download failed, using the backup copy")
+            r = requests.get(backup, timeout=120)
+        f.write_bytes(r.content)
+        (WEEK / "nyc_boroughs_source.txt").write_text("official" if "arcgis" in r.url else "backup")
+    return gpd.read_file(f)
+
+
+def nyc_open_data(dataset, where=None, limit=300000):
+    """One NYC Open Data table as GeoJSON features."""
+    params = {"$limit": limit}
+    if where:
+        params["$where"] = where
+    r = requests.get(f"https://data.cityofnewyork.us/resource/{dataset}.geojson", params=params, timeout=600)
+    r.raise_for_status()
+    features = [x for x in r.json()["features"] if x.get("geometry")]
+    if not features:
+        raise ValueError("no features came back")
+    return gpd.GeoDataFrame.from_features(features, crs=WGS84)
+
+
+@step("day4_manhattan", "manhattan_parks.geojson", "manhattan_streets.geojson")
+def day4_manhattan():
+    """Parks and streets for the Manhattan close-up. City data first, OpenStreetMap if that fails."""
+    b = nyc_boroughs()
+    label = next(c for c in b.columns if b[c].astype(str).str.contains("Manhattan").any())
+    island = b[b[label].astype(str).str.contains("Manhattan")].union_all()
+
+    try:
+        parks = nyc_open_data("enfh-gkve")
+        parks_source = "NYC Parks"
+    except Exception as e:
+        print(f"       NYC Parks download failed ({type(e).__name__}), using OpenStreetMap")
+        parks = osm(box(*island.bounds), {"leisure": "park"}, ("name",)).rename(columns={"name": "signname"})
+        parks_source = "OpenStreetMap"
+    parks = only(parks[parks.intersects(island)], "Polygon", "MultiPolygon")
+    save(parks[[c for c in ("signname", "acres", "typecategory", "geometry") if c in parks.columns]], "manhattan_parks.geojson")
+
+    try:
+        try:
+            streets = nyc_open_data("inkn-q76z", where="boroughcode='1'")
+        except Exception:
+            print("       Filtered street request failed, downloading all five boroughs")
+            streets = nyc_open_data("inkn-q76z")
+        streets_source = "NYC Street Centerline"
+    except Exception as e:
+        print(f"       Street Centerline download failed ({type(e).__name__}), using OpenStreetMap")
+        streets = osm(box(*island.bounds), {"highway": STREETS}, ("highway", "name"))
+        streets_source = "OpenStreetMap"
+    streets = only(streets[streets.intersects(island)], "LineString", "MultiLineString")
+    name = next((c for c in ("full_street_name", "full_stree", "stname_label", "stname_lab", "street_name", "street_nam", "name") if c in streets.columns), None)
+    streets["street"] = streets[name] if name else ""
+    keep = [c for c in ("street", "rw_type", "highway", "geometry") if c in streets.columns]
+    save(streets[keep], "manhattan_streets.geojson")
+    return {"parks": len(parks), "parks_source": parks_source, "streets": len(streets), "streets_source": streets_source,
+            "street_columns": [c for c in streets.columns if c != "geometry"][:40],
+            "park_columns": [c for c in parks.columns if c != "geometry"][:40]}
+
+
 # ------------------------------------------------------------------ Day 5
 PHILLY_API = "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/LI_BUILDING_FOOTPRINTS/FeatureServer/0"
 
@@ -604,7 +672,7 @@ def day21_backdrop():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
+STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day4_manhattan, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
          day21_osm, day21_areas, day21_backdrop]
 
 if __name__ == "__main__":
