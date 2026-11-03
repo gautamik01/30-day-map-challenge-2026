@@ -2,7 +2,7 @@
   {
     "day": 1,
     "prompt": "Points",
-    "title": "WWhere AI Gets Built",
+    "title": "Where AI Gets Built",
     "subtitle": "US data centers today, and the AI campuses being built next",
     "series": "ai",
     "study": "A",
@@ -10,19 +10,6 @@
     "interactive": true,
     "file": "day01_points-ai.html",
     "preview": "../png_thumbnail/day01_points-ai.png",
-    "updated": "2026-11-01"
-  },
-  {
-    "day": 3,
-    "prompt": "Polygons",
-    "title": "What AI Drinks",
-    "subtitle": "39% of the new AI campuses sit where water is already scarce",
-    "series": "ai",
-    "study": "B",
-    "tool": "Python + Mapbox",
-    "interactive": true,
-    "file": "day03_polygons-water-ai.html",
-    "preview": "../png_thumbnail/day03_polygons-water-ai.png",
     "updated": "2026-11-01"
   }
 ]

@@ -6,14 +6,14 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | Day | Date | Prompt | Study | Idea | Effort | Tool | Status |
 |---|---|---|---|---|---|---|---|
 | 1 | Nov 1 | Points | A | Where AI Gets Built: every US data center + the new AI campuses | Standard | Mapbox | Posted |
-| 2 | Nov 2 | Lines | City |  |  |  |  |
-| 3 | Nov 3 | Polygons | B | What AI Drinks: data centers on water stress (WRI Aqueduct) | Standard | Mapbox | Notebook ready |
-| 4 | Nov 4 | Clusters | A | Data center alleys: where they bunch up |  |  |  |
-| 5 | Nov 5 | Sight | City |  |  |  |  |
-| 6 | Nov 6 | Vintage |  |  |  | ArcGIS Pro? |  |
-| 7 | Nov 7 | 10 minute map |  |  | Quick |  |  |
+| 2 | Nov 2 | Lines | City | Heartbreak Hill Has Never Met Hurricane Point: the Big Sur course and its climb, next to Heartbreak at the same scale | Quick | Python static | Building |
+| 3 | Nov 3 | Polygons | City | Downtown, Starring Parking: San Francisco parking lots in hot pink (OSM) | Quick | Python static | Building |
+| 4 | Nov 4 | Clusters | City | Job Hunting by Dosa Density: DBSCAN on Indian restaurants in the six target cities (OSM) | Quick | Python static | Building |
+| 5 | Nov 5 | Sight | City | What Billy Penn Can No Longer See: horizon blocked by towers taller than his hat | Standard | Python static | Building |
+| 6 | Nov 6 | Vintage | City | Bombay Was Seven Islands: the 1843 map with today's coastline over it | Standard | Python static | Building |
+| 7 | Nov 7 | 10 minute map | City | How Late Can I Leave for Class: 10 minutes from Meyerson Hall, walking vs running (OSM) | Quick | Python static | Building |
 | 8 | Nov 8 | Utopia | D | Where data centers *should* go |  |  |  |
-| 9 | Nov 9 | Urban-rural | A | Leaving the city for farmland |  |  |  |
+| 9 | Nov 9 | Urban-rural | A | Leaving the city for farmland, plus data center alleys (moved from Day 4) |  |  |  |
 | 10 | Nov 10 | Prompting only |  |  | Quick |  |  |
 | 11 | Nov 11 | Sound |  |  |  |  |  |
 | 12 | Nov 12 | Power | C | What AI Burns: power plants + main fuel near each site (EIA) | Punch | Mapbox (+ ArcGIS Pro option) | Notebook ready |
@@ -24,7 +24,7 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | 17 | Nov 17 | Light & dark | C | Night lights | Punch | Mapbox |  |
 | 18 | Nov 18 | NULL | A | Counties with zero data centers | Quick |  |  |
 | 19 | Nov 19 | Smell | City |  |  |  |  |
-| 20 | Nov 20 | Hexagons | B | Water stress in hexagons |  |  |  |
+| 20 | Nov 20 | Hexagons | B | What AI Drinks: water stress in hexagons (moved from Day 3, 39% stat, notebook exists) |  |  | Notebook ready, rework to hexagons |
 | 21 | Nov 21 | OpenStreetMap | City |  |  |  |  |
 | 22 | Nov 22 | Projections |  |  | Quick | Mapbox |  |
 | 23 | Nov 23 | Taste | City |  |  |  |  |
@@ -46,7 +46,7 @@ When a study has 2 or 3 maps, they get stitched into one scrolling study page fo
 | Study | Question | Maps |
 |---|---|---|
 | A · Where AI Gets Built | Where are data centers, and where are the new AI campuses going? | Points, Clusters, Urban-rural, NULL, Network |
-| B · What AI Drinks | Whose water do they share? | Polygons (water utilities), Hexagons (water stress), Water |
+| B · What AI Drinks | Whose water do they share? | Hexagons (water stress), Water |
 | C · What AI Burns | What powers them, and how hot is it getting? | Power, Light & dark, Raster (heat) |
 | D · Where AI Is at Risk | What climate risks do they face, and where should they go instead? | Inside out (wildfire), Utopia |
-| City · City Senses | The lighter thread | Lines, Sight, Interactions, Borgesian, Collaborative, Smell, OSM, Taste, Feeling, Pen & paper |
+| City · City Senses | The lighter thread | Lines, Polygons, Clusters, Sight, Vintage, 10 minute map, Interactions, Borgesian, Collaborative, Smell, OSM, Taste, Feeling, Pen & paper |
