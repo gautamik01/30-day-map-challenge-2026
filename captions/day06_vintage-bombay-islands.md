@@ -2,6 +2,10 @@
 
 Mumbai has never believed in coastlines.
 
-An 1843 map of Bombay's seven islands, with today's shoreline bent over it in red.
+Seven islands on an 1843 map, itself a guess at the old landscape. One city today, with its shoreline in red.
 
-#teamMUSA #Mumbai #HistoricMaps
+Every shoreline is a draft. Who gets to write the next one?
+
+#teamMUSA
+
+#Mumbai #HistoricMaps #ClimateAdaptation

@@ -1,7 +1,11 @@
 #30DayMapChallenge Day 5: Sight 👀
 
-12 towers now stand taller than Billy Penn. Lucky for him, they're all behind his back.
+12 towers now stand taller than William Penn on top of City Hall. All 12 are behind his back.
 
-Horizon lost to the skyline: 18%. Mapped in Python.
+They block 18% of his horizon. He's still looking at Penn Treaty Park, and he hasn't turned around once.
 
-#teamMUSA #Philadelphia #Skyline
+Which view would you protect in your city?
+
+#teamMUSA
+
+#Philadelphia #UrbanDesign #Skyline

@@ -1,7 +1,11 @@
 #30DayMapChallenge Day 3: Polygons 🏘️
 
-What can you build in San Francisco? Outside parks and public land, half the city says one- or two-family houses.
+Zoning is the map nobody looks at and everybody lives in.
 
-Official zoning data, mapped in Python.
+Outside its parks and public land, half of San Francisco is zoned for one- or two-family houses.
 
-#teamMUSA #UrbanPlanning #Zoning
+What does yours look like?
+
+#teamMUSA
+
+#UrbanPlanning #Zoning #SanFrancisco

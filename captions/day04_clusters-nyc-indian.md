@@ -1,7 +1,11 @@
 #30DayMapChallenge Day 4: Clusters 🍛
 
-Grad school taught me clustering. Naturally, I used it to find dinner.
+Grad school taught me clustering. I used it to find dinner.
 
-DBSCAN found 12 clusters among NYC's 314 Indian restaurants. Only 8 have "dosa" in the name.
+314 Indian restaurants in New York. DBSCAN found 12 clusters. Only 8 have "dosa" in the name, and I have notes.
 
-#teamMUSA #NYC #SpatialAnalysis
+Which spot did the algorithm miss?
+
+#teamMUSA
+
+#NYC #FoodMaps #Python

@@ -1,7 +1,11 @@
-#30DayMapChallenge Day 7: 10 minute map 🌳
+#30DayMapChallenge Day 7: 10 Minute Map 🌳
 
-Philly passes the 10-minute park test. So I asked for a bigger park.
+Philadelphia passes the 10-minute walk test. So I made the park bigger.
 
-In its most heat-vulnerable tracts, 98% of streets reach a park on foot. Only 32% reach one of 10 acres.
+In its most heat-vulnerable tracts, 98% of streets are within 10 minutes of a park. Only 32% reach one of 10 acres.
 
-#teamMUSA #Parks #ClimateAdaptation
+Ten acres is my line. Where's yours?
+
+#teamMUSA
+
+#Parks #ExtremeHeat #Philadelphia
