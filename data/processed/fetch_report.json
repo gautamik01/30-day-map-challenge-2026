@@ -47,10 +47,6 @@
     "golden_gate_park_km2": 4.063,
     "street_ways": 13337
   },
-  "day4_restaurants": {
-    "status": "FAILED",
-    "error": "ResponseStatusCodeError: 'overpass-api.de' responded: 502 Bad Gateway # 502 Gateway Timeout\n\nThis Overpass API server is currently at capacity. All query workers are busy\nand the request queue is full.\n\n## What to do\n\nRetry your request using exponential backoff: wait a short interval, then retry.\nIf the request fails again, double the wait time and retry again.\n\n## For heavy or automated use\n\nThis public endpoint is intended for browser-based and human-operated tools.\nFor automated or high-volume use, run a local Overpass API instance:\n\nhttps://github.com/b1tw153/Overpass-API/blob/main/README.md\n"
-  },
   "day5_city_footprints": {
     "status": "ok",
     "seconds": 2,
@@ -314,13 +310,131 @@
       3000
     ]
   },
-  "day7_meyerson": {
+  "day21_ski_osm": {
+    "status": "FAILED",
+    "error": "ResponseStatusCodeError: 'overpass-api.de' responded: 502 Bad Gateway # 502 Gateway Timeout\n\nThis Overpass API server is currently at capacity. All query workers are busy\nand the request queue is full.\n\n## What to do\n\nRetry your request using exponential backoff: wait a short interval, then retry.\nIf the request fails again, double the wait time and retry again.\n\n## For heavy or automated use\n\nThis public endpoint is intended for browser-based and human-operated tools.\nFor automated or high-volume use, run a local Overpass API instance:\n\nhttps://github.com/b1tw153/Overpass-API/blob/main/README.md\n"
+  },
+  "day21_ski_areas": {
+    "status": "FAILED",
+    "error": "DataSourceError: D:\\00_MUSA_EVERTHING\\30-day-map-challenge-2026\\data\\processed\\ski_runs_raw.geojson: No such file or directory"
+  },
+  "day21_ski_backdrop": {
     "status": "ok",
-    "seconds": 143,
-    "edges": 27601,
-    "water": 70,
-    "point": "geocoded",
-    "km_within_833m": 0.0,
-    "km_within_1667m": 0.0
+    "seconds": 6,
+    "relief_shape": [
+      1407,
+      1800
+    ],
+    "states": [
+      "CT",
+      "DE",
+      "MA",
+      "MD",
+      "NH",
+      "NJ",
+      "NY",
+      "PA",
+      "VA",
+      "VT",
+      "WV"
+    ]
+  },
+  "day3_zoning": {
+    "status": "ok",
+    "seconds": 9,
+    "districts": 10617,
+    "km2": 91.6,
+    "columns": [
+      ":id",
+      ":version",
+      ":created_at",
+      ":updated_at",
+      "zoning_sim",
+      "districtna",
+      "url",
+      "gen",
+      "zoning",
+      "codesectio"
+    ],
+    "sample": {
+      ":id": "row-wh8v-2jnq_wrsa",
+      ":version": "rv-idzj~yqcr~ciiq",
+      ":created_at": "2026-11-02T12:03:17.688Z",
+      ":updated_at": "2026-11-02T12:03:17.688Z",
+      "zoning_sim": "NCT-3",
+      "districtna": "MODERATE SCALE NEIGHBORHOOD COMMERCIAL TRANSIT DIS",
+      "url": "https://codelibrary.amlegal.com/codes/san_francisc",
+      "gen": "Mixed Use",
+      "zoning": "NCT-3",
+      "codesectio": "752"
+    },
+    "km2_by_code": {
+      "P": 28.138,
+      "RH-1": 15.525,
+      "RH-2": 8.97,
+      "RH-1(D)": 6.556,
+      "RTO-C": 2.917,
+      "RM-1": 2.895,
+      "RH-3": 2.484,
+      "PDR-2": 2.391,
+      "HP-RA": 1.922,
+      "NCD": 1.823,
+      "M-2": 1.644,
+      "TI-OS": 1.015,
+      "MB-RA": 1.014,
+      "C-2": 0.958,
+      "NCT": 0.891,
+      "RM-2": 0.839,
+      "PDR-1-G": 0.804,
+      "UMU": 0.731,
+      "RC-4": 0.677,
+      "RM-3": 0.659,
+      "RM-4": 0.447,
+      "RTO-1": 0.434,
+      "C-3-G": 0.41,
+      "M-1": 0.39,
+      "NC-1": 0.342,
+      "PM-R": 0.333,
+      "RTO-M": 0.329,
+      "C-3-O": 0.322,
+      "C-3-O(SD)": 0.322,
+      "CMUO": 0.319
+    }
+  },
+  "day4_nyc_indian": {
+    "status": "ok",
+    "seconds": 2,
+    "indian_restaurants": 314,
+    "without_location": 6,
+    "all_active_restaurants": 31422,
+    "cuisine_values": {
+      "Indian": 314
+    },
+    "dosa_in_name": 8,
+    "by_boro": {
+      "Manhattan": 148,
+      "Queens": 85,
+      "Brooklyn": 60,
+      "Bronx": 13,
+      "Staten Island": 8
+    },
+    "top_neighborhood_codes": {
+      "QN54": 21,
+      "MN17": 20,
+      "MN21": 14,
+      "MN22": 14,
+      "MN19": 13,
+      "MN13": 12,
+      "MN23": 11,
+      "MN15": 10,
+      "QN44": 10,
+      "MN12": 9,
+      "QN55": 8,
+      "MN20": 8
+    }
+  },
+  "day7_parks_heat": {
+    "status": "FAILED",
+    "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
   }
 }
