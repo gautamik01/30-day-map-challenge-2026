@@ -8,7 +8,7 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | 1 | Nov 1 | Points | A | Where AI Gets Built: every US data center + the new AI campuses | Standard | Mapbox | Posted |
 | 2 | Nov 2 | Lines | City | Big Sur Marathon: the course in plan and section, in three line weights | Quick | Python static | Building |
 | 3 | Nov 3 | Polygons | City | What San Francisco Lets You Build: official zoning districts (DataSF) | Quick | Python static | Building |
-| 4 | Nov 4 | Clusters | City | New York Has Twelve Little Indias: DBSCAN on Indian restaurants (NYC health department) | Quick | Python static | Building |
+| 4 | Nov 4 | Clusters | City | Where New York Goes for Indian: DBSCAN on Indian restaurants (NYC health department) | Quick | Python static | Building |
 | 5 | Nov 5 | Sight | City | What Billy Penn Can No Longer See: horizon blocked by towers taller than his hat | Standard | Python static | Building |
 | 6 | Nov 6 | Vintage | City | Bombay Was Seven Islands: the 1843 map with today's coastline over it | Standard | Python static | Building |
 | 7 | Nov 7 | 10 minute map | City | Philadelphia Passes the 10-Minute Test: walks to parks of different sizes, with heat-vulnerable tracts outlined (City of Philadelphia, OSM streets) | Standard | Python static | Building |

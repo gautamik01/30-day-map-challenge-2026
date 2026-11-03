@@ -2,7 +2,7 @@
 
 Heartbreak Hill is the climb everyone knows. Big Sur's Hurricane Point is more than five of them.
 
-I drew the marathon the way architects draw a site: plan on top, section underneath, three line weights and one color for the course. The elevation data says 510 ft of climbing in about two miles, against 96 ft at Heartbreak, with both drawn to the same scale.
+I drew the marathon the way architects draw a site, in plan and section, with three line weights and one color for the course. The elevation data says 510 ft of climbing in about two miles, against 96 ft at Heartbreak, with both drawn to the same scale.
 
 Which race course should I draw next?
 
