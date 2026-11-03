@@ -437,39 +437,6 @@ def arcgis_all(url, fields="*"):
     return gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), geometry="geometry", crs=WGS84)
 
 
-def block_groups():
-    """Philadelphia block groups with population from the latest ACS 5-year release we can reach."""
-    z = RAW / "cb_2023_42_bg_500k.zip"
-    if not z.exists():
-        r = requests.get("https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_42_bg_500k.zip", timeout=300)
-        r.raise_for_status()
-        z.write_bytes(r.content)
-    bg = gpd.read_file(f"zip://{z.as_posix()}").to_crs(WGS84)
-    bg = bg[bg.COUNTYFP == "101"][["GEOID", "geometry"]].copy()
-    for year in (2024, 2023):
-        r = requests.get(f"https://api.census.gov/data/{year}/acs/acs5", timeout=120, params={
-            "get": "B01003_001E", "for": "block group:*", "in": "state:42 county:101 tract:*"})
-        try:
-            rows = r.json()
-        except ValueError:
-            print(f"       Census API {year} did not answer with data (status {r.status_code})")
-            continue
-        acs = pd.DataFrame(rows[1:], columns=rows[0])
-        acs["GEOID"] = acs.state + acs.county + acs.tract + acs["block group"]
-        acs["population"] = pd.to_numeric(acs.B01003_001E)
-        return bg.merge(acs[["GEOID", "population"]], on="GEOID", how="left"), f"ACS {year} 5-year"
-
-    # Without an API key the Census may refuse, so fall back to the 2020 counts in its public map service
-    base = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer"
-    layers = requests.get(base, params={"f": "json"}, timeout=120).json()["layers"]
-    layer = next(l["id"] for l in layers if "Block Groups" in l["name"])
-    rows = requests.get(f"{base}/{layer}/query", timeout=180, params={
-        "where": "STATE='42' AND COUNTY='101'", "outFields": "GEOID,POP100", "returnGeometry": "false", "f": "json"}).json()["features"]
-    pop = pd.DataFrame([f["attributes"] for f in rows])
-    pop["population"] = pd.to_numeric(pop.POP100)
-    return bg.merge(pop[["GEOID", "population"]], on="GEOID", how="left"), "2020 Census"
-
-
 @step("day7_parks_heat", "tenmin_parks.geojson", "heat_tracts.geojson")
 def day7():
     """City data only. The walking analysis runs in the notebook, on the streets Day 5 already fetched."""
@@ -490,13 +457,6 @@ def day7():
     return {"parks": len(parks), "parks_1ac": int((parks.acres >= 1).sum()), "parks_10ac": int((parks.acres >= 10).sum()),
             "heat_tracts": len(heat), "heat_fields": [c for c in heat.columns if c != "geometry"],
             "ppr_fields": [c for c in ppr.columns if c != "geometry"]}
-
-
-@step("day7_population", "philly_bg_pop.geojson")
-def day7_population():
-    bg, source = block_groups()
-    save(bg, "philly_bg_pop.geojson")
-    return {"source": source, "people": int(bg.population.sum()), "block_groups": len(bg)}
 
 
 # ------------------------------------------------------------------ Day 21
@@ -644,7 +604,7 @@ def day21_backdrop():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7, day7_population,
+STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
          day21_osm, day21_areas, day21_backdrop]
 
 if __name__ == "__main__":

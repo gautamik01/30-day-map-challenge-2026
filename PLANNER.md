@@ -11,7 +11,7 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | 4 | Nov 4 | Clusters | City | New York Has Twelve Little Indias: DBSCAN on Indian restaurants (NYC health department) | Quick | Python static | Building |
 | 5 | Nov 5 | Sight | City | What Billy Penn Can No Longer See: horizon blocked by towers taller than his hat | Standard | Python static | Building |
 | 6 | Nov 6 | Vintage | City | Bombay Was Seven Islands: the 1843 map with today's coastline over it | Standard | Python static | Building |
-| 7 | Nov 7 | 10 minute map | City | Philadelphia Passes the 10-Minute Test: walking distance to parks of different sizes, with heat-vulnerable tracts outlined (PPR Properties, city Heat Vulnerability, OSM walk network, ACS) | Standard | Python static | Building |
+| 7 | Nov 7 | 10 minute map | City | Philadelphia Passes the 10-Minute Test: walks to parks of different sizes, with heat-vulnerable tracts outlined (City of Philadelphia, OSM streets) | Standard | Python static | Building |
 | 8 | Nov 8 | Utopia | D | Where data centers *should* go |  |  |  |
 | 9 | Nov 9 | Urban-rural | A | Leaving the city for farmland, plus data center alleys (moved from Day 4) |  |  |  |
 | 10 | Nov 10 | Prompting only |  |  | Quick |  |  |
