@@ -11,5 +11,83 @@
     "file": "day01_points-ai.html",
     "preview": "../png_thumbnail/day01_points-ai.png",
     "updated": "2026-11-01"
+  },
+  {
+    "day": 2,
+    "prompt": "Lines",
+    "title": "Big Sur Marathon",
+    "subtitle": "The course in plan and section, drawn in three line weights",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day02_lines-big-sur.png",
+    "preview": "../png_thumbnail/day02_lines-big-sur.png",
+    "updated": "2026-11-02"
+  },
+  {
+    "day": 3,
+    "prompt": "Polygons",
+    "title": "What San Francisco Lets You Build",
+    "subtitle": "50% of non-public land is zoned for one- or two-family houses",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day03_polygons-sf-zoning.png",
+    "preview": "../png_thumbnail/day03_polygons-sf-zoning.png",
+    "updated": "2026-11-02"
+  },
+  {
+    "day": 4,
+    "prompt": "Clusters",
+    "title": "Naan Stop in New York",
+    "subtitle": "314 Indian restaurants, 12 clusters",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day04_clusters-nyc-indian.png",
+    "preview": "../png_thumbnail/day04_clusters-nyc-indian.png",
+    "updated": "2026-11-02"
+  },
+  {
+    "day": 5,
+    "prompt": "Sight",
+    "title": "What Billy Penn Can No Longer See",
+    "subtitle": "18% of his horizon is gone",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day05_sight-billy-penn.png",
+    "preview": "../png_thumbnail/day05_sight-billy-penn.png",
+    "updated": "2026-11-02"
+  },
+  {
+    "day": 6,
+    "prompt": "Vintage",
+    "title": "Bombay Was Seven Islands",
+    "subtitle": "The 1843 map, with today's coastline drawn over it",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day06_vintage-bombay-islands.png",
+    "preview": "../png_thumbnail/day06_vintage-bombay-islands.png",
+    "updated": "2026-11-02"
+  },
+  {
+    "day": 7,
+    "prompt": "10 minute map",
+    "title": "Philadelphia Passes the 10-Minute Test",
+    "subtitle": "98% of streets in the most heat-vulnerable tracts reach a park in 10 minutes, 32% reach one of 10 acres",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day07_ten-minute-parks-philly.png",
+    "preview": "../png_thumbnail/day07_ten-minute-parks-philly.png",
+    "updated": "2026-11-02"
   }
 ]
