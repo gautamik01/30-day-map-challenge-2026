@@ -2,7 +2,7 @@
 poster.py : shared pieces for the static 4:5 maps (1080 x 1350).
 
 Fonts live next to this file, so every laptop draws the same poster.
-Fraunces, Inter and IM Fell English are all under the SIL Open Font License.
+Each map picks the type that suits its subject. All are under the SIL Open Font License.
 """
 from pathlib import Path
 
@@ -17,6 +17,18 @@ SANS = HERE / "InterMap-Regular.ttf"
 SANS_BOLD = HERE / "InterMap-SemiBold.ttf"
 OLD = HERE / "IMFellEnglish-Regular.ttf"
 OLD_ITALIC = HERE / "IMFellEnglish-Italic.ttf"
+SLAB = HERE / "ZillaSlab-Bold.ttf"             # trail signs and park maps
+BARLOW = HERE / "Barlow-Regular.ttf"
+BARLOW_BOLD = HERE / "Barlow-SemiBold.ttf"
+CINZEL = HERE / "Cinzel-Bold.ttf"              # carved in stone, for monuments
+LATO = HERE / "Lato-Regular.ttf"
+LATO_BOLD = HERE / "Lato-Bold.ttf"
+ABRIL = HERE / "AbrilFatface-Regular.ttf"      # high-contrast poster type
+YATRA = HERE / "YatraOne-Regular.ttf"          # hand-painted Indian signage
+POPPINS = HERE / "Poppins-Regular.ttf"
+POPPINS_BOLD = HERE / "Poppins-SemiBold.ttf"
+DM_SERIF = HERE / "DMSerifDisplay-Regular.ttf"
+BEBAS = HERE / "BebasNeue-Regular.ttf"         # vintage ski poster
 
 INK = "#0e1418"
 PAPER = "#eef3f4"
@@ -37,22 +49,27 @@ def page(bg=INK):
     return fig, ax
 
 
-def title(fig, text, subtitle=None, x=0.06, y=0.945, size=46, color=PAPER, sub_color=MUTED, sub_size=17, line=1.04):
+def title(fig, text, subtitle=None, x=0.06, y=0.945, size=46, color=PAPER, sub_color=MUTED, sub_size=17, line=1.04,
+          path=SERIF, sub_path=SANS):
     """Serif title, one short line under it. Returns the y just below the block."""
     lines = text.split("\n")
     step = size * line / 1350 * 100 / 72
     for i, t in enumerate(lines):
-        fig.text(x, y - i * step, t, color=color, fontproperties=font(SERIF, size), va="top")
+        fig.text(x, y - i * step, t, color=color, fontproperties=font(path, size), va="top")
     below = y - len(lines) * step - 0.008
     if subtitle:
         for j, s in enumerate(subtitle.split("\n")):
             fig.text(x, below - j * sub_size * 1.36 / 1350 * 100 / 72, s, color=sub_color,
-                     fontproperties=font(SANS, sub_size), va="top")
+                     fontproperties=font(sub_path, sub_size), va="top")
     return below
 
 
-def credit(fig, text, x=0.06, y=0.022, color=CREDIT_COLOR, ha="left", size=9.5):
-    fig.text(x, y, text, color=color, fontproperties=font(SANS, size), ha=ha, va="bottom")
+def credit(fig, text, x=0.06, y=0.02, color=CREDIT_COLOR, ha="left", size=9.5, path=SANS, name_path=SANS_BOLD, name_color=None):
+    """Her name, with the data credits under it."""
+    lines = text.count("\n") + 1
+    fig.text(x, y, text, color=color, fontproperties=font(path, size), ha=ha, va="bottom", linespacing=1.35)
+    fig.text(x, y + lines * size * 1.42 / 1350 * 100 / 72 + 0.003, "Map by Gautami Kasat", color=name_color or color,
+             fontproperties=font(name_path, size + 2.5), ha=ha, va="bottom")
 
 
 def glow(ax, x, y, color=PINK, width=2.4, zorder=6):

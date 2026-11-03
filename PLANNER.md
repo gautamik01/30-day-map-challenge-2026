@@ -6,8 +6,8 @@ Tool picks keep a few days for **Mapbox** (2026 sponsor) and **ArcGIS Pro** (tag
 | Day | Date | Prompt | Study | Idea | Effort | Tool | Status |
 |---|---|---|---|---|---|---|---|
 | 1 | Nov 1 | Points | A | Where AI Gets Built: every US data center + the new AI campuses | Standard | Mapbox | Posted |
-| 2 | Nov 2 | Lines | City | Heartbreak Hill Has Never Met Hurricane Point: the Big Sur course and its climb, next to Heartbreak at the same scale | Quick | Python static | Building |
-| 3 | Nov 3 | Polygons | City | Downtown, Starring Parking: San Francisco parking lots in hot pink (OSM) | Quick | Python static | Building |
+| 2 | Nov 2 | Lines | City | Big Sur Marathon: the course on contour lines, with Heartbreak Hill at the same scale | Quick | Python static | Building |
+| 3 | Nov 3 | Polygons | City | San Francisco Can't Agree on North: every city block colored by the way it points (OSM) | Quick | Python static | Building |
 | 4 | Nov 4 | Clusters | City | Job Hunting by Dosa Density: DBSCAN on Indian restaurants in the six target cities (OSM) | Quick | Python static | Building |
 | 5 | Nov 5 | Sight | City | What Billy Penn Can No Longer See: horizon blocked by towers taller than his hat | Standard | Python static | Building |
 | 6 | Nov 6 | Vintage | City | Bombay Was Seven Islands: the 1843 map with today's coastline over it | Standard | Python static | Building |
