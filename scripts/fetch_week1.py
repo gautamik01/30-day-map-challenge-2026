@@ -91,9 +91,25 @@ def save(gdf, name):
     round_coords(gdf).to_file(WEEK / name, driver="GeoJSON")
 
 
+OVERPASS = ["https://overpass-api.de/api", "https://overpass.kumi.systems/api", "https://overpass.private.coffee/api"]
+
+
 def osm(polygon, tags, columns=()):
-    """OSM features inside a polygon, with only the columns we want."""
-    g = ox.features_from_polygon(polygon, tags).reset_index()
+    """OSM features inside a polygon, with only the columns we want. Tries other OSM servers when one is overloaded."""
+    last = None
+    for url in OVERPASS:
+        ox.settings.overpass_url = url
+        ox.settings.overpass_rate_limit = url == OVERPASS[0]
+        try:
+            g = ox.features_from_polygon(polygon, tags).reset_index()
+            break
+        except Exception as e:
+            if type(e).__name__ == "InsufficientResponseError":
+                raise                                    # the server answered: there is just nothing here
+            last = e
+            print(f"       {url} failed ({type(e).__name__}), trying the next server")
+    else:
+        raise RuntimeError(f"every OSM server failed, last error: {last}")
     keep = [c for c in columns if c in g.columns]
     return g[keep + ["geometry"]].copy()
 
@@ -275,43 +291,44 @@ def day3():
             "golden_gate_park_km2": round(float(g.to_crs(32610).area.sum() / 1e6), 3), "street_ways": len(s)}
 
 
+@step("day3_zoning", "sf_zoning.geojson")
+def day3_zoning():
+    """San Francisco's official zoning districts, from DataSF."""
+    r = requests.get("https://data.sf.gov/api/v3/views/3i4a-hu95/query.geojson", params={"accessType": "DOWNLOAD"}, timeout=180)
+    if r.status_code != 200:
+        r = requests.get("https://data.sfgov.org/resource/3i4a-hu95.geojson", params={"$limit": 50000}, timeout=180)
+    r.raise_for_status()
+    g = gpd.GeoDataFrame.from_features(r.json()["features"], crs=WGS84)
+    g = only(g[g.geometry.notna()], "Polygon", "MultiPolygon")
+    g.columns = [c.lower() if c != "geometry" else c for c in g.columns]
+    save(g, "sf_zoning.geojson")
+    ea = g.to_crs(32610).area / 1e6
+    code = next((c for c in ("zoning_sim", "zoning", "districtname", "gen") if c in g.columns), None)
+    top = (ea.groupby(g[code]).sum().sort_values(ascending=False).head(30).round(3).to_dict()) if code else {}
+    return {"districts": len(g), "km2": round(float(ea.sum()), 1), "columns": [c for c in g.columns if c != "geometry"],
+            "sample": {c: str(g[c].iloc[0])[:50] for c in g.columns if c != "geometry"}, "km2_by_code": {str(k): v for k, v in top.items()}}
+
+
 # ------------------------------------------------------------------ Day 4
-INDIAN = r"(?:^|[;, _])(?:indian|south_indian|north_indian|punjabi|gujarati|keralan?|tamil|hyderabadi|bengali|andhra|chettinad|dosa|udupi)(?:$|[;, _])"
-
-
-@step("day4_restaurants", "indian_restaurants.geojson")
+@step("day4_nyc_indian", "nyc_indian.geojson")
 def day4():
-    frames, totals, errors = [], {}, {}
-    pl = places()
-    for key, row in pl.iterrows():
-        print(f"       {row['label']}")
-        try:
-            g = osm(query_shape(row.geometry), {"amenity": ["restaurant", "fast_food"]},
-                    ("id", "amenity", "name", "cuisine", "brand"))
-            pts = g.copy()
-            pts["geometry"] = pts.representative_point()
-            pts = pts[pts.within(row.geometry)].copy()
-            for col in ("name", "cuisine"):
-                if col not in pts:
-                    pts[col] = None
-            names = pts["name"].astype(object).where(pts["name"].notna(), "").astype(str).str.lower()
-            cuisines = pts["cuisine"].astype(object).where(pts["cuisine"].notna(), "").astype(str).str.lower()
-            by_cuisine = cuisines.str.contains(INDIAN, regex=True)
-            by_name = names.str.contains(r"\bdosas?\b|\bdosai\b", regex=True)
-            hit = pts[by_cuisine | by_name].copy()
-            hit["city"] = key
-            hit["dosa_named"] = by_name[hit.index]
-            frames.append(hit)
-            totals[key] = {"all_eateries": len(pts), "with_cuisine_tag": int(pts["cuisine"].notna().sum()), "indian": len(hit)}
-            print(f"         {totals[key]}")
-        except Exception as e:
-            errors[key] = f"{type(e).__name__}: {e}"
-            print(f"         failed: {errors[key]}")
-    if errors:
-        raise RuntimeError(f"cities failed, finished ones are cached so a rerun is quick: {errors}")
-    out = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), crs=WGS84)
-    save(out, "indian_restaurants.geojson")
-    return {"by_city": totals}
+    """Every active NYC restaurant the health department lists as Indian. One row per inspection, so we keep one per restaurant."""
+    url = "https://data.cityofnewyork.us/resource/43nn-pn8j.json"
+    r = requests.get(url, timeout=180, params={
+        "$select": "camis,dba,boro,zipcode,street,cuisine_description,latitude,longitude,nta",
+        "$where": "upper(cuisine_description) like '%INDIAN%'", "$limit": 100000})
+    r.raise_for_status()
+    df = pd.DataFrame(r.json()).drop_duplicates("camis")
+    df[["latitude", "longitude"]] = df[["latitude", "longitude"]].apply(pd.to_numeric, errors="coerce")
+    no_place = int((df.latitude.isna() | (df.latitude == 0)).sum())
+    df = df[df.latitude.notna() & (df.latitude != 0)]
+    g = gpd.GeoDataFrame(df.drop(columns=["latitude", "longitude"]), crs=WGS84, geometry=gpd.points_from_xy(df.longitude, df.latitude))
+    g["dosa_named"] = g.dba.fillna("").str.contains(r"\bdosas?\b|\bdosai\b", case=False, regex=True)
+    save(g, "nyc_indian.geojson")
+    all_active = requests.get(url, timeout=180, params={"$select": "count(distinct camis) as n"}).json()[0]["n"]
+    return {"indian_restaurants": len(g), "without_location": no_place, "all_active_restaurants": int(all_active),
+            "cuisine_values": df.cuisine_description.value_counts().to_dict(), "dosa_in_name": int(g.dosa_named.sum()),
+            "by_boro": g.boro.value_counts().to_dict(), "top_neighborhood_codes": g.nta.value_counts().head(12).to_dict() if "nta" in g else {}}
 
 
 # ------------------------------------------------------------------ Day 5
@@ -401,11 +418,7 @@ def day6_scan():
 
 
 # ------------------------------------------------------------------ Day 7
-TEN_MINUTES_M = 804.7                 # half a mile, the distance the Trust for Public Land uses for a 10-minute walk
-PARK_SIZES_ACRES = {"d_any": 0, "d_1ac": 1, "d_10ac": 10}
 PHILLY_GIS = "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services"
-WALKED_STREETS = {"primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-                  "unclassified", "residential", "living_street", "trunk", "trunk_link"}
 
 
 def arcgis_all(url, fields="*"):
@@ -446,8 +459,9 @@ def block_groups():
     raise RuntimeError(f"Census API answered {r.status_code}: {r.text[:200]}")
 
 
-@step("day7_ten_minute_test", "tenmin_streets.geojson", "tenmin_parks.geojson", "heat_tracts.geojson", "philly_bg_pop.geojson")
+@step("day7_parks_heat", "tenmin_parks.geojson", "heat_tracts.geojson", "philly_bg_pop.geojson")
 def day7():
+    """City and Census data only. The walking analysis runs in the notebook, on the streets Day 5 already fetched."""
     for old in ("meyerson_walk.geojson", "meyerson_water.geojson", "meyerson_point.json"):
         (WEEK / old).unlink(missing_ok=True)      # left over from the earlier Day 7 idea
 
@@ -463,56 +477,11 @@ def day7():
     merged = ppr.geometry.buffer(5).union_all().buffer(-5)
     parks = gpd.GeoDataFrame(geometry=gpd.GeoSeries([merged], crs=32618).explode(index_parts=False).values, crs=32618)
     parks = parks[parks.area > 0].reset_index(drop=True)
-    parks["acres"] = parks.area / 4046.856
-    save(parks.round({"acres": 2}).to_crs(WGS84), "tenmin_parks.geojson")
-
-    # Walking network, a little past the city line so border streets can reach nearby parks
-    philly = places().loc["philly"].geometry
-    G = ox.graph_from_polygon(philly.buffer(0.012), network_type="walk", simplify=True, retain_all=False)
-    U = G.to_undirected()
-    nodes = gpd.GeoDataFrame({"node": list(U.nodes)}, crs=WGS84,
-                             geometry=gpd.points_from_xy([U.nodes[n]["x"] for n in U.nodes],
-                                                         [U.nodes[n]["y"] for n in U.nodes])).to_crs(32618)
-
-    # Shortest walk from every node to the nearest park of each size. A park counts once you reach its edge.
-    dists = {}
-    for col, acres in PARK_SIZES_ACRES.items():
-        chosen = parks[parks.acres >= acres]
-        door = gpd.GeoDataFrame(geometry=chosen.buffer(25), crs=32618)
-        sources = set(gpd.sjoin(nodes, door, predicate="within").node)
-        dists[col] = nx.multi_source_dijkstra_path_length(U, sources, weight="length")
-        print(f"       parks of {acres}+ acres: {len(chosen)} parks, {len(sources)} entry nodes")
-
-    # Keep ordinary streets, since that is where people live. Footpaths only helped people get there.
-    rows = []
-    for u, v, d in U.edges(data=True):
-        kind = d.get("highway")
-        kind = kind[0] if isinstance(kind, list) else kind
-        if kind not in WALKED_STREETS:
-            continue
-        geom = d.get("geometry") or LineString([(U.nodes[u]["x"], U.nodes[u]["y"]), (U.nodes[v]["x"], U.nodes[v]["y"])])
-        row = {"length": round(d.get("length", 0), 1), "geometry": geom}
-        for col, table in dists.items():
-            ends = [table[n] for n in (u, v) if n in table]
-            row[col] = round(min(ends) + d.get("length", 0) / 2) if ends else 99999
-        rows.append(row)
-    streets = gpd.GeoDataFrame(rows, crs=WGS84)
-    middle = gpd.GeoDataFrame(streets.drop(columns="geometry"), crs=WGS84, geometry=streets.geometry.interpolate(0.5, normalized=True))
-    joined = gpd.sjoin(middle, bg[["GEOID", "geometry"]], predicate="within", how="left")
-    streets["GEOID"] = joined.groupby(level=0).GEOID.first()
-    streets = streets[streets.GEOID.notna()]
-    save(streets, "tenmin_streets.geojson")
-
-    # Share of people within 10 minutes: each block group's people spread along its streets
-    pop = bg.set_index("GEOID").population
-    served = {}
-    for col in PARK_SIZES_ACRES:
-        near = streets[streets[col] <= TEN_MINUTES_M].groupby("GEOID").length.sum()
-        share = (near / streets.groupby("GEOID").length.sum()).reindex(pop.index).fillna(0)
-        served[col] = round(float((share * pop).sum() / pop.sum() * 100), 1)
-    return {"share_of_people_within_10_min": served, "published_tpl_any_park": 97, "parks": len(parks),
-            "street_edges": len(streets), "acs_year": acs_year, "people": int(pop.sum()),
-            "heat_fields": [c for c in heat.columns if c != "geometry"]}
+    parks["acres"] = (parks.area / 4046.856).round(2)
+    save(parks.to_crs(WGS84), "tenmin_parks.geojson")
+    return {"parks": len(parks), "parks_1ac": int((parks.acres >= 1).sum()), "parks_10ac": int((parks.acres >= 10).sum()),
+            "acs_year": acs_year, "people": int(bg.population.sum()), "heat_tracts": len(heat),
+            "heat_fields": [c for c in heat.columns if c != "geometry"], "ppr_fields": [c for c in ppr.columns if c != "geometry"]}
 
 
 # ------------------------------------------------------------------ Day 21
@@ -660,11 +629,14 @@ def day21_backdrop():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day2_route, day2_boston, day2_terrain, day3, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
+STEPS = [day2_route, day2_boston, day2_terrain, day3, day3_zoning, day4, day5_city, day5_osm, day5_backdrop, day6, day6_scan, day7,
          day21_osm, day21_areas, day21_backdrop]
 
 if __name__ == "__main__":
     t0 = time.time()
+    names = {fn.step_name for fn in STEPS}
+    for old in [k for k in REPORT if k not in names]:
+        del REPORT[old]                # steps we no longer use
     wanted = sys.argv[1:]              # e.g. "day4" or "day7 day21". Nothing means every step.
     chosen = [fn for fn in STEPS if not wanted or any(fn.step_name.startswith(w + "_") for w in wanted)]
     if not chosen:
