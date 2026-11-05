@@ -1,0 +1,22 @@
+{
+ "blue_mountain_resort": {
+  "ski_area": "Blue Mountain Resort",
+  "area_id": "4bca16dce4783e4eab06c9a39ee02168c67ca488",
+  "slug": "blue_mountain_resort",
+  "bounds_3857": [
+   -8409044.284325857,
+   4982188.960746378,
+   -8403128.284325857,
+   4988155.960746378
+  ],
+  "dem_size": [
+   508,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 130.1,
+  "elev_max_m": 479.4,
+  "web_mb": 1.07
+ }
+}

@@ -547,44 +547,118 @@ def day7():
 # ------------------------------------------------------------------ Day 21
 SKI_BOX = (-78.6, 39.4, -72.3, 43.1)   # west, south, east, north: a long day trip from either city
 ORIGINS = {"nyc": (-73.9855, 40.7580), "philly": (-75.1636, 39.9522)}   # Times Square, City Hall (lon, lat)
-LIFTS = ["chair_lift", "gondola", "cable_car", "mixed_lift", "t-bar", "j-bar", "platter", "drag_lift", "rope_tow", "magic_carpet"]
+# ------------------------------------------------------------------ day 21: ski data from OpenSkiMap
+OPENSKIMAP = "https://tiles.openskimap.org/geojson"     # OpenStreetMap ski data, cleaned and joined to named ski areas
 
 
-def first_value(v):
-    return str(v).split(";")[0].strip().lower() if pd.notna(v) else "unrated"
+def openskimap_file(name):
+    """Download one world file into data/raw (git-ignored). Long downloads sometimes drop, so it retries."""
+    path = RAW / f"{name}.geojson"
+    if path.exists():
+        return path
+    part = path.with_suffix(".part")
+    for attempt in range(1, 6):
+        try:
+            with requests.get(f"{OPENSKIMAP}/{name}.geojson", stream=True, timeout=120,
+                              headers={"User-Agent": "30-day-map-challenge"}) as r:
+                r.raise_for_status()
+                with open(part, "wb") as out:
+                    for chunk in r.iter_content(1 << 20):
+                        out.write(chunk)
+            part.replace(path)
+            print(f"       {name}: {path.stat().st_size / 1e6:.0f} MB")
+            return path
+        except requests.RequestException as e:
+            print(f"       {name} attempt {attempt} failed ({type(e).__name__})")
+            time.sleep(15 * attempt)
+    raise RuntimeError(f"could not download {name}")
 
 
-@step("day21_ski_osm", "ski_runs_raw.geojson", "ski_lifts.geojson", "ski_area_shapes.geojson")
+def in_box(feature):
+    """True if the feature's bounds touch the search box."""
+    b = shapely.geometry.shape(feature["geometry"]).bounds
+    return b[2] >= SKI_BOX[0] and b[0] <= SKI_BOX[2] and b[3] >= SKI_BOX[1] and b[1] <= SKI_BOX[3]
+
+
+def box_features(name):
+    """Read a world file one feature at a time and keep only our box, so an 800 MB file stays light on memory."""
+    kept = []
+    with open(openskimap_file(name), encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("{") and not line.startswith('{"type": "FeatureCollection"'):
+                feature = json.loads(line)
+                if in_box(feature):
+                    kept.append(feature)
+    if not kept:
+        raise RuntimeError(f"nothing found in {name}: check the file format")
+    return kept
+
+
+def first_ski_area(p):
+    """The first ski area a run or lift belongs to, as (id, name)."""
+    areas = [a["properties"] for a in p.get("skiAreas") or []]
+    return (areas[0]["id"], areas[0]["name"]) if areas else (None, None)
+
+
+@step("day21_ski_osm", "ski_runs.geojson", "ski_lifts.geojson", "ski_area_shapes.geojson")
 def day21_osm():
-    area = box(*SKI_BOX)
-    usual = ox.settings.max_query_area_size
-    ox.settings.max_query_area_size = 1e11        # ski tags are sparse, so bigger query tiles are fine here
-    try:
-        runs = osm(area, {"piste:type": True}, ("id", "name", "piste:name", "piste:type", "piste:difficulty", "piste:grooming"))
-        lifts = only(osm(area, {"aerialway": LIFTS}, ("id", "name", "aerialway")), "LineString", "MultiLineString")
-        shapes = only(osm(area, {"landuse": "winter_sports"}, ("id", "name")), "Polygon", "MultiPolygon")
-    finally:
-        ox.settings.max_query_area_size = usual
-    runs = only(runs[runs["piste:type"].astype(str).str.contains("downhill")], "LineString", "MultiLineString", "Polygon", "MultiPolygon")
-    runs["difficulty"] = runs.get("piste:difficulty", pd.Series(index=runs.index, dtype=object)).map(first_value)
-    utm = runs.to_crs(32618).geometry
-    polygons = utm.geom_type.isin(["Polygon", "MultiPolygon"])
-    runs["len_m"] = np.where(polygons, utm.length / 2, utm.length).round(1)  # an area's outline is roughly twice its run
-    keep = [c for c in ("id", "name", "piste:name", "difficulty", "len_m", "geometry") if c in runs.columns]
-    save(runs[keep].rename(columns={"piste:name": "piste_name"}), "ski_runs_raw.geojson")
-    save(lifts, "ski_lifts.geojson")
-    save(shapes, "ski_area_shapes.geojson")
-    return {"downhill_runs": len(runs), "km": round(float(runs.len_m.sum() / 1000), 1), "lifts": len(lifts),
-            "named_area_shapes": int(shapes.get("name", pd.Series(dtype=str)).notna().sum()),
-            "difficulty": {k: int(v) for k, v in runs.difficulty.value_counts().items()}}
+    shapes = [f for f in box_features("ski_areas")
+              if f["properties"].get("status") == "operating" and "downhill" in (f["properties"].get("activities") or [])]
+    open_ids = {f["properties"]["id"] for f in shapes}
+
+    runs = []
+    for f in box_features("runs"):
+        p = f["properties"]
+        if "downhill" not in (p.get("uses") or []) or p.get("status") != "operating":
+            continue
+        area_id, area = first_ski_area(p)
+        if area_id and area_id not in open_ids:      # a run on a closed mountain is still tagged in OSM
+            continue
+        runs.append({"type": "Feature", "geometry": f["geometry"],
+                     "properties": {"name": p.get("name"), "difficulty": p.get("difficulty") or "unrated",
+                                    "lit": p.get("lit"), "area_id": area_id, "ski_area": area}})
+    lifts = []
+    for f in box_features("lifts"):
+        p = f["properties"]
+        area_id, area = first_ski_area(p)
+        if p.get("status") == "operating" and area_id in open_ids:
+            lifts.append({"type": "Feature", "geometry": f["geometry"],
+                          "properties": {"name": p.get("name"), "lift_type": p.get("liftType"), "area_id": area_id, "ski_area": area}})
+
+    def frame(features):
+        return gpd.GeoDataFrame.from_features(features, crs=WGS84)
+
+    runs_g, lifts_g = frame(runs), frame(lifts)
+    shapes_g = frame([{"type": "Feature", "geometry": f["geometry"],
+                       "properties": {"area_id": f["properties"]["id"], "ski_area": f["properties"].get("name"),
+                                      "website": ((f["properties"].get("websites") or [None])[0])}} for f in shapes])
+
+    # Where each ski area's lowest lift starts: that's roughly the base lodge, so that's where the drive should end.
+    base = {}
+    for f in lifts:
+        for c in shapely.geometry.shape(f["geometry"]).coords:
+            area_id = f["properties"]["area_id"]
+            if len(c) > 2 and c[2] is not None and (area_id not in base or c[2] < base[area_id][2]):
+                base[area_id] = c
+    shapes_g["base_lon"] = shapes_g.area_id.map(lambda a: base[a][0] if a in base else None)
+    shapes_g["base_lat"] = shapes_g.area_id.map(lambda a: base[a][1] if a in base else None)
+
+    save(runs_g, "ski_runs.geojson")
+    save(lifts_g, "ski_lifts.geojson")
+    save(shapes_g, "ski_area_shapes.geojson")
+    return {"open_ski_areas": len(shapes_g), "unnamed_areas": int(shapes_g.ski_area.isna().sum()), "downhill_runs": len(runs_g),
+            "lifts": len(lifts_g), "drawn_as_areas": int(runs_g.geom_type.isin(["Polygon", "MultiPolygon"]).sum()),
+            "difficulty": {k: int(v) for k, v in runs_g.difficulty.value_counts().items()}}
 
 
 def drive_minutes(lons, lats):
-    """Drive time and distance from each origin to each place. Mapbox when there is a token, else the public OSRM server."""
+    """Drive time and distance from each origin to each place, with no traffic. Mapbox when there is a token, else the public OSRM server."""
     from mapkit.paths import mapbox_token
     token = mapbox_token()
     keys = list(ORIGINS)
     out = {f"{k}_{m}": [] for k in keys for m in ("min", "miles")}
+    out["snap_m"] = []
     for i in range(0, len(lons), 23):
         batch = list(zip(lons[i:i + 23], lats[i:i + 23]))
         coords = ";".join(f"{x:.5f},{y:.5f}" for x, y in [ORIGINS[k] for k in keys] + batch)
@@ -605,55 +679,67 @@ def drive_minutes(lons, lats):
         for s, k in enumerate(keys):
             out[f"{k}_min"] += [None if v is None else round(v / 60) for v in data["durations"][s]]
             out[f"{k}_miles"] += [None if v is None else round(v / METERS_PER_MILE, 1) for v in data["distances"][s]]
+        out["snap_m"] += [round(d.get("distance", 0)) for d in data["destinations"]]   # how far the base sits from a road
         time.sleep(1.1)
     return out, ("Mapbox" if token else "OSRM")
 
 
-@step("day21_ski_areas", "ski_runs.geojson", "ski_areas.geojson")
+@step("day21_ski_areas", "ski_areas.geojson")
 def day21_areas():
-    from sklearn.cluster import DBSCAN
-    runs = gpd.read_file(WEEK / "ski_runs_raw.geojson").to_crs(32618)
+    runs = gpd.read_file(WEEK / "ski_runs.geojson").to_crs(32618)
     lifts = gpd.read_file(WEEK / "ski_lifts.geojson").to_crs(32618)
-    shapes = gpd.read_file(WEEK / "ski_area_shapes.geojson").to_crs(32618)
-    shapes = shapes[shapes["name"].notna()].reset_index(drop=True) if "name" in shapes else shapes.iloc[0:0]
+    shapes = gpd.read_file(WEEK / "ski_area_shapes.geojson")
 
-    # Each run joins the named ski area within 1.5 km. Runs with no named shape nearby get grouped by distance.
-    middle = gpd.GeoDataFrame(runs[["len_m"]], geometry=runs.representative_point(), crs=32618)
-    near = gpd.sjoin_nearest(middle, shapes[["name", "geometry"]], max_distance=1500, how="left")
-    near = near[~near.index.duplicated()]
-    runs["ski_area"] = near["name"]
-    loose = runs["ski_area"].isna()
-    if loose.any():
-        xy = np.c_[middle.geometry.x[loose], middle.geometry.y[loose]]
-        labels = DBSCAN(eps=1500, min_samples=3).fit_predict(xy)
-        runs.loc[loose, "ski_area"] = [f"Unnamed area {n}" if n >= 0 else None for n in labels]
-    runs = runs[runs["ski_area"].notna()].copy()
+    # 1. Length. A trail drawn as a shape counts as half its outline, unless a trail line already runs inside it.
+    is_shape = runs.geom_type.isin(["Polygon", "MultiPolygon"])
+    lines = runs[~is_shape]
+    doubled = gpd.sjoin(runs[is_shape][["geometry"]], gpd.GeoDataFrame(geometry=lines.representative_point(), crs=32618),
+                        predicate="contains").index.unique()
+    runs["len_m"] = np.where(is_shape, runs.length / 2, runs.length).round(1)
+    runs["counted"] = ~runs.index.isin(doubled)
 
+    # 2. Trails with no ski area join a named mountain within 1.5 km. Anything further stays off the ranking.
+    loose = runs[runs.area_id.isna()]
+    placed = runs[runs.area_id.notna()]
+    if len(loose) and len(placed):
+        near = gpd.sjoin_nearest(loose[["geometry"]], placed[["area_id", "ski_area", "geometry"]], max_distance=1500, how="left")
+        near = near[~near.index.duplicated()]
+        runs.loc[near.index, "area_id"] = near.area_id
+        runs.loc[near.index, "ski_area"] = near.ski_area
+
+    # 3. Totals per ski area
     rows = []
-    for name, g in runs.groupby("ski_area"):
+    for area_id, g in runs[runs.counted & runs.area_id.notna()].groupby("area_id"):
         km = g.groupby("difficulty").len_m.sum() / 1000
         rated = float(km.drop("unrated", errors="ignore").sum())
         beginner = float(km.get("novice", 0) + km.get("easy", 0))
-        hull = g.geometry.union_all().convex_hull
-        rows.append({"ski_area": name, "runs": len(g), "total_km": round(float(km.sum()), 2),
+        area_lifts = lifts[lifts.area_id == area_id]
+        rows.append({"area_id": area_id, "runs": len(g), "total_km": round(float(km.sum()), 2),
                      "bunny_km": round(float(km.get("novice", 0)), 2), "green_km": round(float(km.get("easy", 0)), 2),
                      "blue_km": round(float(km.get("intermediate", 0)), 2),
-                     "black_km": round(float(km.get("advanced", 0) + km.get("expert", 0) + km.get("freeride", 0)), 2),
+                     "black_km": round(float(sum(km.get(k, 0) for k in ("advanced", "expert", "freeride", "extreme"))), 2),
                      "unrated_km": round(float(km.get("unrated", 0)), 2), "beginner_km": round(beginner, 2),
                      "beginner_share": round(beginner / rated, 3) if rated else None,
-                     "lifts": int(lifts.distance(hull).lt(500).sum()), "geometry": hull.centroid})
-    areas = gpd.GeoDataFrame(rows, crs=32618).to_crs(WGS84)
-    times, service = drive_minutes(areas.geometry.x.tolist(), areas.geometry.y.tolist())
+                     "lifts": len(area_lifts), "magic_carpets": int((area_lifts.lift_type == "magic_carpet").sum()),
+                     "lit_km": round(float(g[g.lit == True].len_m.sum() / 1000), 2),   # noqa: E712
+                     "centre": g.geometry.union_all().centroid})
+    totals = pd.DataFrame(rows).merge(shapes.drop(columns="geometry"), on="area_id")
+    areas = gpd.GeoDataFrame(totals, geometry="centre", crs=32618).rename_geometry("geometry").to_crs(WGS84)
+
+    # 4. Drive to the base where we found one, otherwise to the middle of the trails
+    lons = areas.base_lon.fillna(areas.geometry.x).tolist()
+    lats = areas.base_lat.fillna(areas.geometry.y).tolist()
+    areas["geometry"] = gpd.points_from_xy(lons, lats, crs=WGS84)
+    times, service = drive_minutes(lons, lats)
     for col, values in times.items():
         areas[col] = values
     areas["closest_min"] = areas[["nyc_min", "philly_min"]].min(axis=1)
-    save(areas, "ski_areas.geojson")
-    save(runs.to_crs(WGS84), "ski_runs.geojson")
-    (WEEK / "ski_runs_raw.geojson").unlink(missing_ok=True)
+    save(areas.drop(columns=["base_lon", "base_lat"]), "ski_areas.geojson")
+
     day_trip = areas[areas.closest_min <= 180].sort_values("beginner_km", ascending=False)
     return {"areas": len(areas), "within_3h_of_either": len(day_trip), "drive_service": service,
-            "unnamed": int(areas["ski_area"].str.startswith("Unnamed").sum()),
-            "top_beginner": day_trip[["ski_area", "beginner_km", "total_km", "nyc_min", "philly_min"]].head(15).values.tolist()}
+            "far_from_a_road": areas.loc[areas.snap_m > 500, "ski_area"].tolist(),
+            "top_beginner": day_trip[["ski_area", "beginner_km", "total_km", "magic_carpets", "nyc_min", "philly_min"]].head(15).values.tolist()}
 
 
 @step("day21_ski_backdrop", "ski_relief.npz", "ski_states.geojson")

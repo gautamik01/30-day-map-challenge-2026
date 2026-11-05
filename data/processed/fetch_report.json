@@ -311,12 +311,155 @@
     ]
   },
   "day21_ski_osm": {
-    "status": "FAILED",
-    "error": "ResponseStatusCodeError: 'overpass-api.de' responded: 502 Bad Gateway # 502 Gateway Timeout\n\nThis Overpass API server is currently at capacity. All query workers are busy\nand the request queue is full.\n\n## What to do\n\nRetry your request using exponential backoff: wait a short interval, then retry.\nIf the request fails again, double the wait time and retry again.\n\n## For heavy or automated use\n\nThis public endpoint is intended for browser-based and human-operated tools.\nFor automated or high-volume use, run a local Overpass API instance:\n\nhttps://github.com/b1tw153/Overpass-API/blob/main/README.md\n"
+    "status": "ok",
+    "seconds": 124,
+    "open_ski_areas": 77,
+    "unnamed_areas": 0,
+    "downhill_runs": 2039,
+    "lifts": 371,
+    "drawn_as_areas": 482,
+    "difficulty": {
+      "intermediate": 708,
+      "easy": 596,
+      "advanced": 468,
+      "expert": 131,
+      "novice": 78,
+      "unrated": 50,
+      "freeride": 7,
+      "extreme": 1
+    }
   },
   "day21_ski_areas": {
-    "status": "FAILED",
-    "error": "DataSourceError: D:\\00_MUSA_EVERTHING\\30-day-map-challenge-2026\\data\\processed\\ski_runs_raw.geojson: No such file or directory"
+    "status": "ok",
+    "seconds": 5,
+    "areas": 64,
+    "within_3h_of_either": 39,
+    "drive_service": "Mapbox",
+    "far_from_a_road": [
+      "Montage Mountain Ski Area"
+    ],
+    "top_beginner": [
+      [
+        "Jiminy Peak Resort",
+        11.22,
+        18.71,
+        1,
+        180,
+        282
+      ],
+      [
+        "Mountain Creek",
+        8.73,
+        16.27,
+        3,
+        95,
+        164
+      ],
+      [
+        "Windham Mountain Club",
+        8.65,
+        29.6,
+        4,
+        162,
+        245
+      ],
+      [
+        "Belleayre Mountain Ski Center",
+        8.09,
+        42.07,
+        3,
+        156,
+        239
+      ],
+      [
+        "Camelback Mountain Resort",
+        7.45,
+        16.29,
+        6,
+        108,
+        123
+      ],
+      [
+        "Blue Mountain Resort",
+        7.08,
+        16.8,
+        9,
+        131,
+        110
+      ],
+      [
+        "Catamount Mountain Resort",
+        5.8,
+        18.03,
+        2,
+        150,
+        251
+      ],
+      [
+        "Hunter Mountain",
+        5.02,
+        30.95,
+        1,
+        155,
+        238
+      ],
+      [
+        "Shawnee Mountain",
+        4.31,
+        10.56,
+        4,
+        107,
+        136
+      ],
+      [
+        "Elk Mountain Ski Resort",
+        4.25,
+        16.67,
+        0,
+        169,
+        169
+      ],
+      [
+        "Liberty Mountain Resort",
+        4.23,
+        8.99,
+        3,
+        255,
+        178
+      ],
+      [
+        "Bear Creek Mountain Resort Ski Slopes",
+        3.61,
+        6.29,
+        0,
+        136,
+        87
+      ],
+      [
+        "Ski Butternut",
+        3.57,
+        12.14,
+        5,
+        170,
+        271
+      ],
+      [
+        "Montage Mountain Ski Area",
+        3.43,
+        12.91,
+        1,
+        148,
+        137
+      ],
+      [
+        "Big Boulder Ski Resort Area",
+        2.63,
+        8.27,
+        3,
+        135,
+        114
+      ]
+    ]
   },
   "day21_ski_backdrop": {
     "status": "ok",
@@ -479,5 +622,12 @@
       "Shape__Area",
       "Shape__Length"
     ]
+  },
+  "day4_manhattan": {
+    "status": "ok",
+    "parks_source": "NYC Parks",
+    "streets_source": "NYC Street Centerline",
+    "parks": 402,
+    "streets": 13583
   }
 }
