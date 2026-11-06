@@ -18,5 +18,765 @@
   "elev_min_m": 130.1,
   "elev_max_m": 479.4,
   "web_mb": 1.07
+ },
+ "hunter_mountain": {
+  "ski_area": "Hunter Mountain",
+  "area_id": "0220b9172bf819d9b5fbd07c2f2218a8cfabb864",
+  "slug": "hunter_mountain",
+  "bounds_3857": [
+   -8266840.998228351,
+   5188213.649804993,
+   -8258530.998228351,
+   5194693.649804993
+  ],
+  "dem_size": [
+   512,
+   399
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 454.2,
+  "elev_max_m": 1160.4,
+  "web_mb": 1.14
+ },
+ "bousquet_mountain": {
+  "ski_area": "Bousquet Mountain",
+  "area_id": "031a23bc9ebb837beed75b7c4237a2d966bb1684",
+  "slug": "bousquet_mountain",
+  "bounds_3857": [
+   -8160065.599861533,
+   5220755.199682489,
+   -8154890.599861533,
+   5225951.199682489
+  ],
+  "dem_size": [
+   510,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 293.9,
+  "elev_max_m": 615.1,
+  "web_mb": 1.0
+ },
+ "skytop_s_ski_hill": {
+  "ski_area": "Skytop\u2019s Ski Hill",
+  "area_id": "14a0068b11a27b95499c753958221389cd480440",
+  "slug": "skytop_s_ski_hill",
+  "bounds_3857": [
+   -8377400.657783447,
+   5045669.637125797,
+   -8372930.657783447,
+   5049974.637125797
+  ],
+  "dem_size": [
+   512,
+   493
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 415.4,
+  "elev_max_m": 627.7,
+  "web_mb": 0.86
+ },
+ "saw_creek_estates_ski_area": {
+  "ski_area": "Saw Creek Estates Ski Area",
+  "area_id": "158c669295c7409986fca606599a514559fd1a9e",
+  "slug": "saw_creek_estates_ski_area",
+  "bounds_3857": [
+   -8356964.140540853,
+   5028940.213786623,
+   -8352377.140540853,
+   5033182.213786623
+  ],
+  "dem_size": [
+   512,
+   473
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 202.0,
+  "elev_max_m": 377.8,
+  "web_mb": 0.9
+ },
+ "mountain_creek": {
+  "ski_area": "Mountain Creek",
+  "area_id": "1925d141bfd550bffbf608b766ebb3bed43eaa48",
+  "slug": "mountain_creek",
+  "bounds_3857": [
+   -8299115.857641513,
+   5034521.239936367,
+   -8291189.857641513,
+   5042651.239936367
+  ],
+  "dem_size": [
+   499,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 120.2,
+  "elev_max_m": 455.2,
+  "web_mb": 1.31
+ },
+ "mount_peter": {
+  "ski_area": "Mount Peter",
+  "area_id": "21e8d78976e4deca5e1dd1b65d361bafe03b3312",
+  "slug": "mount_peter",
+  "bounds_3857": [
+   -8272533.803102693,
+   5046444.274152546,
+   -8268018.803102693,
+   5051088.274152546
+  ],
+  "dem_size": [
+   498,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 158.9,
+  "elev_max_m": 422.8,
+  "web_mb": 0.99
+ },
+ "bear_creek_mountain_resort_ski_slopes": {
+  "ski_area": "Bear Creek Mountain Resort Ski Slopes",
+  "area_id": "3078e997deb12b6686a9f0db8a3865acd3c0b733",
+  "slug": "bear_creek_mountain_resort_ski_slopes",
+  "bounds_3857": [
+   -8421494.86611855,
+   4932463.8169827,
+   -8416649.86611855,
+   4937845.8169827
+  ],
+  "dem_size": [
+   461,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 135.3,
+  "elev_max_m": 351.7,
+  "web_mb": 0.88
+ },
+ "shawnee_mountain": {
+  "ski_area": "Shawnee Mountain",
+  "area_id": "355c556419de6098b79e1a9f6b714c000068a8fe",
+  "slug": "shawnee_mountain",
+  "bounds_3857": [
+   -8360354.499959932,
+   5014639.453264149,
+   -8354924.499959932,
+   5020345.453264149
+  ],
+  "dem_size": [
+   487,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 91.5,
+  "elev_max_m": 351.2,
+  "web_mb": 1.01
+ },
+ "thunder_ridge": {
+  "ski_area": "Thunder Ridge",
+  "area_id": "37fe3ad0ee6a598976687b5ed1c132c481d6188d",
+  "slug": "thunder_ridge",
+  "bounds_3857": [
+   -8193467.671151413,
+   5085052.488952327,
+   -8188340.671151413,
+   5090017.488952327
+  ],
+  "dem_size": [
+   512,
+   496
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 129.8,
+  "elev_max_m": 388.6,
+  "web_mb": 0.9
+ },
+ "spring_mountain_ski_area": {
+  "ski_area": "Spring Mountain Ski Area",
+  "area_id": "47d1fa18b3f1d3f92c6388cac59dd919c8d20784",
+  "slug": "spring_mountain_ski_area",
+  "bounds_3857": [
+   -8401861.512582548,
+   4902903.8870304795,
+   -8397064.512582548,
+   4907721.8870304795
+  ],
+  "dem_size": [
+   510,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 38.4,
+  "elev_max_m": 156.5,
+  "web_mb": 0.93
+ },
+ "jack_frost_mountain_resort": {
+  "ski_area": "Jack Frost Mountain Resort",
+  "area_id": "4fbb65912b802e995555462c3a3952bce5cce852",
+  "slug": "jack_frost_mountain_resort",
+  "bounds_3857": [
+   -8424145.548399204,
+   5026055.3064533435,
+   -8418853.548399204,
+   5031329.3064533435
+  ],
+  "dem_size": [
+   512,
+   510
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 420.4,
+  "elev_max_m": 611.8,
+  "web_mb": 0.92
+ },
+ "big_snow_american_dream": {
+  "ski_area": "Big Snow American Dream",
+  "area_id": "54abf7f24e6fa7826bd77434e177a01889045491",
+  "slug": "big_snow_american_dream",
+  "bounds_3857": [
+   -8247547.10010745,
+   4982316.042251395,
+   -8243428.10010745,
+   4986537.042251395
+  ],
+  "dem_size": [
+   500,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": -3.4,
+  "elev_max_m": 19.1,
+  "web_mb": 0.8
+ },
+ "pocono_ranch_lands_ski_mountain": {
+  "ski_area": "Pocono Ranch Lands Ski Mountain",
+  "area_id": "60197b2cea8c686007a04c8c1a161b3c5a5a8252",
+  "slug": "pocono_ranch_lands_ski_mountain",
+  "bounds_3857": [
+   -8346896.272863214,
+   5034210.386531514,
+   -8342441.272863214,
+   5038698.386531514
+  ],
+  "dem_size": [
+   508,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 185.2,
+  "elev_max_m": 401.1,
+  "web_mb": 0.96
+ },
+ "mohawk_mountain_ski_area": {
+  "ski_area": "Mohawk Mountain Ski Area",
+  "area_id": "6092f3086c206feb2645543b0e5283b23754e8b8",
+  "slug": "mohawk_mountain_ski_area",
+  "bounds_3857": [
+   -8163483.847523616,
+   5133694.49748788,
+   -8158212.847523616,
+   5138857.49748788
+  ],
+  "dem_size": [
+   512,
+   502
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 198.5,
+  "elev_max_m": 513.0,
+  "web_mb": 0.97
+ },
+ "roundtop_mountain_resort": {
+  "ski_area": "Roundtop Mountain Resort",
+  "area_id": "67139981d789d29cdb4da8f3c4818ab3b10e579e",
+  "slug": "roundtop_mountain_resort",
+  "bounds_3857": [
+   -8565992.706986398,
+   4878865.487430598,
+   -8560727.706986398,
+   4883944.487430598
+  ],
+  "dem_size": [
+   512,
+   494
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 150.9,
+  "elev_max_m": 411.6,
+  "web_mb": 0.9
+ },
+ "ski_butternut": {
+  "ski_area": "Ski Butternut",
+  "area_id": "693e9c8d76f05e298edc758bb6c41d7879498a1f",
+  "slug": "ski_butternut",
+  "bounds_3857": [
+   -8164651.96513197,
+   5184691.605474091,
+   -8159047.96513197,
+   5190655.605474091
+  ],
+  "dem_size": [
+   481,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 216.2,
+  "elev_max_m": 547.6,
+  "web_mb": 1.1
+ },
+ "elk_mountain_ski_resort": {
+  "ski_area": "Elk Mountain Ski Resort",
+  "area_id": "6be6628be711e925f71a19ff354cdd0acc2e9220",
+  "slug": "elk_mountain_ski_resort",
+  "bounds_3857": [
+   -8414012.30599156,
+   5115828.523002885,
+   -8408318.30599156,
+   5121987.523002885
+  ],
+  "dem_size": [
+   473,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 423.8,
+  "elev_max_m": 821.2,
+  "web_mb": 0.98
+ },
+ "liberty_mountain_resort": {
+  "ski_area": "Liberty Mountain Resort",
+  "area_id": "6fab99ca0f48e48b41acc39f35e85a4cc88c672a",
+  "slug": "liberty_mountain_resort",
+  "bounds_3857": [
+   -8615395.052339578,
+   4828334.435317373,
+   -8609851.052339578,
+   4833803.435317373
+  ],
+  "dem_size": [
+   512,
+   505
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 146.9,
+  "elev_max_m": 355.2,
+  "web_mb": 0.94
+ },
+ "big_bear_ski_resort": {
+  "ski_area": "Big Bear Ski Resort",
+  "area_id": "7adf49bcc5e9f369b1749003582b14effa4010c0",
+  "slug": "big_bear_ski_resort",
+  "bounds_3857": [
+   -8353784.313372938,
+   5087813.840957093,
+   -8348402.313372938,
+   5092676.840957093
+  ],
+  "dem_size": [
+   512,
+   463
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 186.5,
+  "elev_max_m": 409.8,
+  "web_mb": 0.97
+ },
+ "otis_ridge": {
+  "ski_area": "Otis Ridge",
+  "area_id": "89be4a538bd3cd39788d2b9685dc1238c4e3a8bd",
+  "slug": "otis_ridge",
+  "bounds_3857": [
+   -8140000.510017808,
+   5187888.033567239,
+   -8135113.510017808,
+   5192580.033567239
+  ],
+  "dem_size": [
+   512,
+   492
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 361.7,
+  "elev_max_m": 525.5,
+  "web_mb": 0.95
+ },
+ "eagle_rock_ski_resort": {
+  "ski_area": "Eagle Rock Ski Resort",
+  "area_id": "8a81240a529917fb4af5ce8ba3690608bcc561da",
+  "slug": "eagle_rock_ski_resort",
+  "bounds_3857": [
+   -8474734.377247212,
+   4999044.866652815,
+   -8469790.377247212,
+   5004159.866652815
+  ],
+  "dem_size": [
+   495,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 344.1,
+  "elev_max_m": 611.7,
+  "web_mb": 0.94
+ },
+ "ski_sundown": {
+  "ski_area": "Ski Sundown",
+  "area_id": "8e22fd1aad88b5e263f01a4e6a96a5c1382299e8",
+  "slug": "ski_sundown",
+  "bounds_3857": [
+   -8122532.310977288,
+   5141061.3825981645,
+   -8117117.310977288,
+   5145930.3825981645
+  ],
+  "dem_size": [
+   512,
+   460
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 104.7,
+  "elev_max_m": 356.5,
+  "web_mb": 0.98
+ },
+ "the_hideout": {
+  "ski_area": "The Hideout",
+  "area_id": "9c6d5e7496d30ae94bf1807226ec7a3162bea82a",
+  "slug": "the_hideout",
+  "bounds_3857": [
+   -8390964.167832717,
+   5073898.630716855,
+   -8386668.167832717,
+   5078266.630716855
+  ],
+  "dem_size": [
+   504,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 395.5,
+  "elev_max_m": 506.1,
+  "web_mb": 0.85
+ },
+ "victor_constant_ski_area": {
+  "ski_area": "Victor Constant Ski Area",
+  "area_id": "9ee72c96d65e73542ad4a5f177454aa86d409755",
+  "slug": "victor_constant_ski_area",
+  "bounds_3857": [
+   -8237887.17854326,
+   5067991.066921473,
+   -8233351.17854326,
+   5072956.066921473
+  ],
+  "dem_size": [
+   468,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": -0.7,
+  "elev_max_m": 426.2,
+  "web_mb": 1.07
+ },
+ "windham_mountain_club": {
+  "ski_area": "Windham Mountain Club",
+  "area_id": "9f11458d1b9a3f6758ba74fd6c9d8ac938c37d60",
+  "slug": "windham_mountain_club",
+  "bounds_3857": [
+   -8270040.99716066,
+   5201652.107139119,
+   -8262366.99716066,
+   5208285.107139119
+  ],
+  "dem_size": [
+   512,
+   443
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 440.3,
+  "elev_max_m": 936.2,
+  "web_mb": 1.08
+ },
+ "montage_mountain_ski_area": {
+  "ski_area": "Montage Mountain Ski Area",
+  "area_id": "a81d1a654cb6d27a2c57ab333b861e73cab51385",
+  "slug": "montage_mountain_ski_area",
+  "bounds_3857": [
+   -8425328.556510784,
+   5061748.465868259,
+   -8419460.556510784,
+   5067421.465868259
+  ],
+  "dem_size": [
+   512,
+   495
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 247.7,
+  "elev_max_m": 603.0,
+  "web_mb": 1.06
+ },
+ "villa_roma_ski_area": {
+  "ski_area": "Villa Roma Ski Area",
+  "area_id": "aa327edb54fb9f94c76350bd8c8ec9b9de7bc142",
+  "slug": "villa_roma_ski_area",
+  "bounds_3857": [
+   -8348022.1065545585,
+   5123198.382562152,
+   -8343546.1065545585,
+   5127983.382562152
+  ],
+  "dem_size": [
+   479,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 288.2,
+  "elev_max_m": 505.7,
+  "web_mb": 0.88
+ },
+ "holiday_mountain": {
+  "ski_area": "Holiday Mountain",
+  "area_id": "b899c8adf8c77b1dd1f0b52482a1c933c62c3a5b",
+  "slug": "holiday_mountain",
+  "bounds_3857": [
+   -8307879.890317048,
+   5102574.529259568,
+   -8302791.890317048,
+   5107428.529259568
+  ],
+  "dem_size": [
+   512,
+   488
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 314.1,
+  "elev_max_m": 488.4,
+  "web_mb": 0.94
+ },
+ "jiminy_peak_resort": {
+  "ski_area": "Jiminy Peak Resort",
+  "area_id": "c72edda705173b26fcdc210933239a43de5fc7b9",
+  "slug": "jiminy_peak_resort",
+  "bounds_3857": [
+   -8161414.956907734,
+   5240357.423234237,
+   -8154613.956907734,
+   5246600.423234237
+  ],
+  "dem_size": [
+   512,
+   470
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 315.7,
+  "elev_max_m": 738.5,
+  "web_mb": 1.12
+ },
+ "catamount_mountain_resort": {
+  "ski_area": "Catamount Mountain Resort",
+  "area_id": "cb083bf97c150cb981c781367693cfc615b98d51",
+  "slug": "catamount_mountain_resort",
+  "bounds_3857": [
+   -8182489.8098198455,
+   5183042.2417339515,
+   -8176420.8098198455,
+   5188607.2417339515
+  ],
+  "dem_size": [
+   512,
+   469
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 208.5,
+  "elev_max_m": 582.7,
+  "web_mb": 1.05
+ },
+ "campgaw_mountain_ski_area": {
+  "ski_area": "Campgaw Mountain Ski Area",
+  "area_id": "d18f425faeb966fb9058e4b67c11a90d96830ecd",
+  "slug": "campgaw_mountain_ski_area",
+  "bounds_3857": [
+   -8262014.714956159,
+   5018873.28415806,
+   -8257397.714956159,
+   5023298.28415806
+  ],
+  "dem_size": [
+   512,
+   491
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 68.9,
+  "elev_max_m": 250.7,
+  "web_mb": 0.92
+ },
+ "maple_ski_ridge": {
+  "ski_area": "Maple Ski Ridge",
+  "area_id": "d2a1487e12b6070aa90b7b76966675e9498fe0e3",
+  "slug": "maple_ski_ridge",
+  "bounds_3857": [
+   -8243788.05584224,
+   5281549.16922092,
+   -8238835.05584224,
+   5286373.16922092
+  ],
+  "dem_size": [
+   512,
+   499
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 106.5,
+  "elev_max_m": 318.5,
+  "web_mb": 0.97
+ },
+ "locust_lake_village_ski_hill": {
+  "ski_area": "Locust Lake Village Ski Hill",
+  "area_id": "d7527b55e96876b803b79d8f2ff6af8681336241",
+  "slug": "locust_lake_village_ski_hill",
+  "bounds_3857": [
+   -8413448.244611666,
+   5031172.3112143865,
+   -8409116.244611666,
+   5035531.3112143865
+  ],
+  "dem_size": [
+   509,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 496.9,
+  "elev_max_m": 632.1,
+  "web_mb": 0.83
+ },
+ "big_boulder_ski_resort_area": {
+  "ski_area": "Big Boulder Ski Resort Area",
+  "area_id": "d80406be9f977e44ccd65c57449b9ec22da23855",
+  "slug": "big_boulder_ski_resort_area",
+  "bounds_3857": [
+   -8418412.140937865,
+   5016840.29524891,
+   -8413435.140937865,
+   5021793.29524891
+  ],
+  "dem_size": [
+   512,
+   510
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 480.4,
+  "elev_max_m": 668.7,
+  "web_mb": 0.94
+ },
+ "belleayre_mountain_ski_center": {
+  "ski_area": "Belleayre Mountain Ski Center",
+  "area_id": "f16be64558f5124a26f4797260671c96ad2fde8b",
+  "slug": "belleayre_mountain_ski_center",
+  "bounds_3857": [
+   -8297933.7703322815,
+   5176900.492742883,
+   -8291234.7703322815,
+   5184301.492742883
+  ],
+  "dem_size": [
+   463,
+   512
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 450.3,
+  "elev_max_m": 1046.2,
+  "web_mb": 1.2
+ },
+ "camelback_mountain_resort": {
+  "ski_area": "Camelback Mountain Resort",
+  "area_id": "f34b05b63db9dcbcc7e3ba106a82072ec6a197f9",
+  "slug": "camelback_mountain_resort",
+  "bounds_3857": [
+   -8391378.353323111,
+   5016725.415885134,
+   -8385120.353323111,
+   5022017.415885134
+  ],
+  "dem_size": [
+   512,
+   433
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 298.7,
+  "elev_max_m": 649.3,
+  "web_mb": 1.04
+ },
+ "mount_southington_ski_area": {
+  "ski_area": "Mount Southington Ski Area",
+  "area_id": "f45fae331568dab0a9cc11b6e421d308b9526e11",
+  "slug": "mount_southington_ski_area",
+  "bounds_3857": [
+   -8120951.905252055,
+   5096100.2311038235,
+   -8115935.905252055,
+   5100834.2311038235
+  ],
+  "dem_size": [
+   512,
+   483
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 41.2,
+  "elev_max_m": 272.3,
+  "web_mb": 0.93
+ },
+ "powder_ridge_ski_area": {
+  "ski_area": "Powder Ridge Ski Area",
+  "area_id": "fac42701c8f1addc2ed860fcdfd84ef6ee0cab75",
+  "slug": "powder_ridge_ski_area",
+  "bounds_3857": [
+   -8100090.656999002,
+   5084109.025451605,
+   -8094990.656999002,
+   5088837.025451605
+  ],
+  "dem_size": [
+   512,
+   475
+  ],
+  "cell_m": 3,
+  "hillshade": "ArcGIS Pro multidirectional hillshade",
+  "elev_min_m": 58.3,
+  "elev_max_m": 256.4,
+  "web_mb": 0.89
  }
 }

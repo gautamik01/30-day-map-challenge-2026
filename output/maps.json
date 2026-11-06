@@ -41,6 +41,19 @@
   {
     "day": 4,
     "prompt": "Clusters",
+    "title": "Naan Stop in Manhattan",
+    "subtitle": "148 of New York's 314 Indian restaurants, in close-up",
+    "series": "city",
+    "study": null,
+    "tool": "Python",
+    "interactive": false,
+    "file": "day04_clusters-manhattan-indian.png",
+    "preview": "../png_thumbnail/day04_clusters-manhattan-indian.png",
+    "updated": "2026-11-03"
+  },
+  {
+    "day": 4,
+    "prompt": "Clusters",
     "title": "Naan Stop in New York",
     "subtitle": "314 Indian restaurants, 12 clusters",
     "series": "city",
@@ -54,15 +67,15 @@
   {
     "day": 5,
     "prompt": "Sight",
-    "title": "What Billy Penn Can No Longer See",
-    "subtitle": "18% of his horizon is gone",
+    "title": "Don't Turn Around, William Penn",
+    "subtitle": "All 12 towers above his hat stand behind his back",
     "series": "city",
     "study": null,
     "tool": "Python",
     "interactive": false,
     "file": "day05_sight-billy-penn.png",
     "preview": "../png_thumbnail/day05_sight-billy-penn.png",
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
   },
   {
     "day": 6,
@@ -89,5 +102,18 @@
     "file": "day07_ten-minute-parks-philly.png",
     "preview": "../png_thumbnail/day07_ten-minute-parks-philly.png",
     "updated": "2026-11-02"
+  },
+  {
+    "day": 21,
+    "prompt": "OpenStreetMap",
+    "title": "Learning to ski from NYC and Philly",
+    "subtitle": "",
+    "series": "city",
+    "study": null,
+    "tool": "Python + MapLibre + ArcGIS Pro",
+    "interactive": true,
+    "file": "day21_openstreetmap-ski.html",
+    "preview": "../png_thumbnail/day21_openstreetmap-ski.png",
+    "updated": "2026-11-05"
   }
 ]

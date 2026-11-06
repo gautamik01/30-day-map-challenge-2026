@@ -96,9 +96,17 @@ def load_mountains(only=None):
 
 
 def service_limit():
-    """The largest image the USGS service hands back in one request."""
-    info = requests.get(SERVICE, params={"f": "json"}, timeout=60).json()
-    return int(min(info.get("maxImageWidth", 4000), info.get("maxImageHeight", 4000)))
+    """The largest image the USGS service hands back in one request. The service times out now and then, so it retries,
+    then falls back to 4000 px, which every 3DEP image service has allowed for years."""
+    for attempt in range(1, 5):
+        try:
+            info = requests.get(SERVICE, params={"f": "json"}, timeout=60).json()
+            return int(min(info.get("maxImageWidth", 4000), info.get("maxImageHeight", 4000)))
+        except (requests.RequestException, ValueError) as e:       # ValueError covers a non-JSON answer such as a 504 page
+            print(f"       USGS service info attempt {attempt}: {type(e).__name__}")
+            time.sleep(20 * attempt)
+    print("       USGS service info unavailable, assuming 4000 px per image")
+    return 4000
 
 
 def download_dem(x0, y0, x1, y1, limit):
