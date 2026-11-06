@@ -19,8 +19,8 @@ Finished mountains are skipped, so it's safe to run again.
 Where things go (no new folders):
   data/raw/       the raw USGS grids (git-ignored)
   data/arcgis/    full-size DEM, hillshade and contours to open in ArcGIS Pro (git-ignored)
-  output/         day21_terrain_<mountain>_shade.jpg, _dem.bin, _contours.json for the web page
-  data/processed/ ski_terrain_index.json, which lists every mountain's files, bounds and elevations
+  data/processed/ day21_terrain_<mountain>_shade.jpg, _dem.bin, _contours.json, which the page in output/ loads as
+                  ../data/processed/, and ski_terrain_index.json, which lists every mountain's bounds and elevations
 """
 import argparse
 import io
@@ -38,7 +38,7 @@ from scipy import ndimage
 Image.MAX_IMAGE_PIXELS = None
 
 ROOT = Path(__file__).resolve().parents[1]
-PROCESSED, RAW, ARCGIS, OUTPUT = ROOT / "data" / "processed", ROOT / "data" / "raw", ROOT / "data" / "arcgis", ROOT / "output"
+PROCESSED, RAW, ARCGIS = ROOT / "data" / "processed", ROOT / "data" / "raw", ROOT / "data" / "arcgis"
 INDEX = PROCESSED / "ski_terrain_index.json"
 SERVICE = "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer"
 
@@ -240,7 +240,7 @@ def build(m, arcpy, limit):
                 c = np.round(simplify([p[:2] for p in part], 0.00002), 5).tolist()
                 feats.append({"type": "Feature", "properties": {"e": elev, "i": int(elev % INDEX_M == 0)},
                               "geometry": {"type": "LineString", "coordinates": c}})
-    contour_file = OUTPUT / f"day21_terrain_{s}_contours.json"
+    contour_file = PROCESSED / f"day21_terrain_{s}_contours.json"
     contour_file.write_text(json.dumps({"type": "FeatureCollection", "features": feats}, separators=(",", ":")), encoding="utf-8")
 
     # 6. web files, in web mercator so they sit exactly on the map
@@ -253,13 +253,13 @@ def build(m, arcpy, limit):
     a = arcpy.RasterToNumPyArray(out_dem, nodata_to_value=NODATA).astype("float32")
     a = fill_gaps(a, a == NODATA)
     small = resize(a, DEM_PX)
-    dem_file = OUTPUT / f"day21_terrain_{s}_dem.bin"
+    dem_file = PROCESSED / f"day21_terrain_{s}_dem.bin"
     np.round(small * 10).astype("<i2").tofile(dem_file)         # whole decimeters, north row first
 
     b = arcpy.RasterToNumPyArray(arcpy.Raster(str(shade_m)), nodata_to_value=NODATA).astype("float32")
     b = fill_gaps(b, b == NODATA)
     shade = resize(b, SHADE_PX)
-    shade_file = OUTPUT / f"day21_terrain_{s}_shade.jpg"
+    shade_file = PROCESSED / f"day21_terrain_{s}_shade.jpg"
     Image.fromarray(np.clip(shade, 0, 255).astype("uint8")).save(shade_file, quality=86, optimize=True)
 
     size_mb = sum(f.stat().st_size for f in (contour_file, dem_file, shade_file)) / 1e6

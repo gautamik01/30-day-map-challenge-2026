@@ -37,6 +37,7 @@ h1{font:400 clamp(44px,min(9.2vh,6.1vw),104px)/.9 var(--display);margin:0 0 16px
 #map{position:absolute;inset:0}
 #back{position:absolute;left:14px;top:14px;background:var(--ink);color:#fff;padding:9px 14px;font-weight:600;border-radius:3px;z-index:3}
 #hint{position:absolute;left:14px;top:60px;margin:0;font-size:13px;line-height:1.3;color:var(--ink);text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;z-index:3}
+#notice{position:absolute;right:14px;bottom:10px;width:min(360px,calc(100% - 28px));margin:0;font-size:13px;line-height:1.35;background:var(--ink);color:#fff;padding:8px 12px;border-radius:3px;z-index:4}
 /* the elevation profile: no box, no background, just a white halo so it reads over the terrain */
 #sec{position:absolute;left:14px;bottom:10px;width:min(320px,calc(100% - 28px));padding:6px 8px;z-index:3;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 5px #fff,0 0 8px #fff;pointer-events:none}
 #secDraw{pointer-events:auto}
@@ -84,15 +85,15 @@ h1{font:400 clamp(44px,min(9.2vh,6.1vw),104px)/.9 var(--display);margin:0 0 16px
   <div class="list" id="list"></div>
   <div class="foot"><strong>Map by Gautami Kasat</strong>Trails and lifts © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors via OpenSkiMap. Terrain USGS 3DEP, processed in ArcGIS Pro. Drive times Mapbox. State lines US Census.</div>
  </section>
- <main class="mapwrap"><div id="map"></div><button id="back" hidden>Show all ski areas</button><section id="sec" hidden aria-label="Trail elevation profile"><div class="sh"><strong id="secName"></strong><span id="secRead"></span></div><div id="secSvg"></div><div class="ss"><span id="secStats"></span></div></section><p id="hint" hidden>Right-drag to rotate. Height exaggerated 1.25 times.</p></main>
+ <main class="mapwrap"><div id="map"></div><button id="back" hidden>Show all ski areas</button><section id="sec" hidden aria-label="Trail elevation profile"><div class="sh"><strong id="secName"></strong><span id="secRead"></span></div><div id="secSvg"></div><div class="ss"><span id="secStats"></span></div></section><p id="hint" hidden>Right-drag to rotate. Height exaggerated 1.25 times.</p><p id="notice" hidden></p></main>
  <aside class="right">
   <h2 id="pname"></h2>
   <div class="draw" id="draw"></div>
   <div class="stats"><div><b id="sb"></b><span>bunny hill</span></div><div><b id="sg"></b><span>green trail</span></div><div><b id="sc"></b><span>magic carpets</span></div><div><b id="sn"></b><span>from New York</span></div><div><b id="sp"></b><span>from Philadelphia</span></div></div>
   <div><a class="site" id="site" href="#" target="_blank" rel="noopener">Open resort website</a></div>
   <div class="legend">
-   <div><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="#A5401B" stroke-width="5" stroke-linecap="round"/></svg>Bunny hill</div>
-   <div><svg viewBox="0 0 34 14"><path d="M2 7H33" stroke="#A5401B" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 6"/></svg>Green trail</div>
+   <div><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="#A5401B" stroke-width="3.4" stroke-linecap="round"/></svg>Bunny hill</div>
+   <div><svg viewBox="0 0 34 14"><path d="M2 7H33" stroke="#A5401B" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0.1 5.2"/></svg>Green trail</div>
    <div><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="#8c8c8c" stroke-width="1"/></svg>Everything else</div>
    <div><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="#000" stroke-width="1" stroke-dasharray="5 3"/></svg>Lift</div>
    <div><svg viewBox="0 0 34 14"><path d="M4 7H30" stroke="#000" stroke-width="3"/></svg>Magic carpet</div>
@@ -129,6 +130,13 @@ document.querySelectorAll('.row').forEach(el=>{
 $('back').addEventListener('click',reset);
 addEventListener('keydown',e=>{if(e.key==='Escape')reset()});
 
+/* Opened straight from disk, a browser will not hand the page its terrain files. Say so once, plainly. */
+const FROM_DISK=location.protocol==='file:';
+const DISK_NOTE='This page is opened from disk, so the mountain terrain files cannot load. Open it through a local web server or the live link.';
+const HIFAIL={};      // mountains whose terrain files failed to load this session, with the reason
+function notice(t){const n=$('notice');n.textContent=t;n.hidden=!t}
+if(FROM_DISK)notice(DISK_NOTE);
+
 /* the trail drawing on the right, fitted to its panel with a 1 km bar */
 function drawMountain(id){
   if(shown===id)return; shown=id;
@@ -144,12 +152,12 @@ function drawMountain(id){
   const bar=(1/111.32)*sc;   // one km in pixels: a degree of latitude is 111.32 km
   const runs=runsOf(id); let o='';
   for(const f of liftsOf(id)){const c=f.properties.cls==='carpet';o+=`<path d="${dOf(f.geometry)}" fill="none" stroke="#000" stroke-width="${c?3:.8}" ${c?'':'stroke-dasharray="5 3"'} opacity="${c?1:.55}"/>`}
-  for(const f of runs.filter(x=>x.properties.fill))o+=`<path d="${dOf(f.geometry)}" fill="${f.properties.cls==='rest'?'#8c8c8c':'#A5401B'}" opacity="${f.properties.cls==='rest'?.14:.2}"/>`;
+  for(const f of runs.filter(x=>x.properties.fill))o+=`<path d="${dOf(f.geometry)}" fill="${f.properties.cls==='rest'?'#8c8c8c':'#A5401B'}" opacity="${f.properties.cls==='rest'?.07:.09}"/>`;
   for(const cls of ['rest','green','bunny'])for(const f of runs.filter(x=>x.properties.cls===cls&&x.properties.draw)){
     const d=dOf(f.geometry),t=f.properties.tid;
     if(cls==='rest')o+=`<path class="v" data-t="${t}" d="${d}" fill="none" stroke="#8c8c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>`;
-    if(cls==='green')o+=`<path class="v" data-t="${t}" d="${d}" fill="none" stroke="#A5401B" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 5.6"/>`;
-    if(cls==='bunny')o+=`<path class="v" data-t="${t}" d="${d}" fill="none" stroke="#A5401B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    if(cls==='green')o+=`<path class="v" data-t="${t}" d="${d}" fill="none" stroke="#A5401B" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.8"/>`;
+    if(cls==='bunny')o+=`<path class="v" data-t="${t}" d="${d}" fill="none" stroke="#A5401B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
   for(const f of runs)o+=`<path class="h" data-t="${f.properties.tid}" d="${dOf(f.geometry)}" fill="none" stroke="transparent" stroke-width="12" style="cursor:pointer"/>`;
   const bx=W-pad-bar,by=H-8;
@@ -204,7 +212,7 @@ function hover(id,fromRow){
 let fromRowFlag=false;
 function drawLead(){
   const l=$('leadl');
-  if(!hovered||!fromRowFlag||!map||innerWidth<=900){l.setAttribute('visibility','hidden');return}
+  if(!hovered||!fromRowFlag||!map||selected||innerWidth<=900){l.setAttribute('visibility','hidden');return}
   const row=document.querySelector(`.row[data-id="${hovered}"]`).getBoundingClientRect(),m=$('map').getBoundingClientRect(),r=byId[hovered],p=map.project([r.lon,r.lat]);
   const x=m.left+p.x,y=m.top+p.y;
   if(x<m.left||x>m.right||y<m.top||y>m.bottom){l.setAttribute('visibility','hidden');return}
@@ -212,16 +220,20 @@ function drawLead(){
 }
 /* clicking: load the mountain's sharp terrain, then fly in looking uphill */
 async function select(id){
-  if(map&&D.hires[id]){try{await loadHi(id)}catch(e){console.warn('terrain files did not load for',id,e)}}
+  if(map&&D.hires[id]&&!FROM_DISK&&!HI[id]){try{await loadHi(id)}catch(e){HIFAIL[id]=String(e);console.warn('terrain files did not load for',id,e)}}
   selected=id;shown=null;fromRowFlag=false;drawMountain(id);
   pinnedT=null;hoverT=null;defaultT=longestBeginner(id);trailHover(null);
   document.querySelectorAll('.row').forEach(r=>r.classList.toggle('sel',r.dataset.id===id));
   document.querySelector(`.row[data-id="${id}"]`).scrollIntoView({block:'nearest'});
   $('back').hidden=false;
-  for(const k in markers)markers[k].getElement().classList.toggle('gone',k===id);
+  for(const k in markers)markers[k].getElement().classList.add('gone');        // no circles over the terrain or the profile
   $('map').classList.remove('fade');$('leadl').setAttribute('visibility','hidden');
+  notice(FROM_DISK?DISK_NOTE:HIFAIL[id]?`${byId[id].name}'s terrain files could not load, so this is the broader terrain only.`:'');
   if(!map)return;
   const r=byId[id],[w,s,e,n]=r.bounds;++flight;
+  focus=HI[id]?id:null;refreshDem();
+  if(map.getLayer('shade'))map.setLayoutProperty('shade','visibility',focus?'none':'visible');   // the sharp hillshade stands alone
+  map.setPaintProperty('bg','background-color','#fff');     // white beyond the horizon too, so the model sits on plain paper
   map.setTerrain({source:'dem',exaggeration:EX});map.dragRotate.enable();
   $('hint').hidden=false;
   const cam=map.cameraForBounds([[w,s],[e,n]],{padding:80,bearing:r.bearing});
@@ -234,7 +246,11 @@ function reset(){
   $('back').hidden=true;
   for(const k in markers)markers[k].getElement().classList.remove('gone');
   $('hint').hidden=true;
+  notice(FROM_DISK?DISK_NOTE:'');
   if(!map)return;
+  focus=null;refreshDem();
+  if(map.getLayer('shade'))map.setLayoutProperty('shade','visibility','visible');
+  map.setPaintProperty('bg','background-color','#ececec');
   map.dragRotate.disable();const me=++flight;
   const cam=map.cameraForBounds(home,{padding:30,bearing:0});
   map.flyTo({center:cam.center,zoom:cam.zoom,bearing:0,pitch:0,duration:reduce?0:1400,essential:true});
@@ -248,11 +264,25 @@ const dec=b=>{const s=atob(b),u=new Uint8Array(s.length);for(let i=0;i<s.length;
 const DEM={coarse:dec(D.dem.coarse),w:D.dem.w,h:D.dem.h,bb:D.dem.bb};
 function bil(a,w,h,u,v){u=Math.max(0,Math.min(w-1.001,u));v=Math.max(0,Math.min(h-1.001,v));const i=u|0,j=v|0,f=u-i,g=v-j,p=j*w+i;return (a[p]*(1-f)+a[p+1]*f)*(1-g)+(a[p+w]*(1-f)+a[p+w+1]*f)*g}
 const ORIGIN=Math.PI*6378137;
+const TERRAIN='../data/processed/';   // where each mountain's shade.jpg, dem.bin and contours.json live, relative to this page in output/
 const HI={};   // the ArcGIS Pro terrain, loaded the first time you click a mountain
+const HS={};   // each loaded mountain's snow hillshade canvas, by slug, that its map tiles are cut from
 let demVersion=0;
+function shadeTile(slug,z,x,y){   // one 256 px tile of a mountain's hillshade, transparent outside its box
+  const s=HS[slug],S=256,c=document.createElement('canvas');c.width=c.height=S;
+  if(s){
+    const span=2*ORIGIN/2**z,X0=x*span-ORIGIN,X1=X0+span,Y1=ORIGIN-y*span,Y0=Y1-span,[a,b,e,f]=s.pm;
+    const ox0=Math.max(X0,a),ox1=Math.min(X1,e),oy0=Math.max(Y0,b),oy1=Math.min(Y1,f);
+    if(ox1>ox0&&oy1>oy0){
+      const W=s.canvas.width,H=s.canvas.height,ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+      ctx.drawImage(s.canvas,(ox0-a)/(e-a)*W,(f-oy1)/(f-b)*H,(ox1-ox0)/(e-a)*W,(oy1-oy0)/(f-b)*H,(ox0-X0)/span*S,(Y1-oy1)/span*S,(ox1-ox0)/span*S,(oy1-oy0)/span*S);
+    }
+  }
+  return new Promise(res=>c.toBlob(b=>b.arrayBuffer().then(res),'image/png'));
+}
 async function loadHi(id){
   const info=D.hires[id]; if(!info||!map)return false; if(HI[id])return true;
-  const base='day21_terrain_'+info.slug+'_';
+  const base=TERRAIN+'day21_terrain_'+info.slug+'_';
   const [demBuf,shadeBlob,contours]=await Promise.all([
     fetch(base+'dem.bin').then(r=>{if(!r.ok)throw new Error(r.status);return r.arrayBuffer()}),
     fetch(base+'shade.jpg').then(r=>{if(!r.ok)throw new Error(r.status);return r.blob()}),
@@ -263,23 +293,47 @@ async function loadHi(id){
   // snow: the brightest tenth of the hillshade goes to white, shadows keep their real depth, and the edges fade out
   const hist=new Array(256).fill(0);for(let i=0;i<d.length;i+=4)hist[d[i]]++;
   let acc=0,top=230;const n90=d.length/4*.9;for(let v=0;v<256;v++){acc+=hist[v];if(acc>=n90){top=v;break}}
-  const fade=W*.035;
+  const fade=W*EDGE;      // the outer band melts into the white paper, so the terrain never ends in a square
   for(let j=0,o=0;j<H;j++)for(let i=0;i<W;i++,o+=4){
     const v=d[o],out=Math.max(55,255-Math.max(0,top-v)*1.25),e=Math.min(i,j,W-1-i,H-1-j)/fade,w=Math.min(1,e);
     d[o]=d[o+1]=d[o+2]=out;d[o+3]=v<6?0:Math.round(255*w*w*(3-2*w))}
   x.putImageData(im,0,0);
   const [a,b,e,f]=info.pm,corner=(mx,my)=>[mx/ORIGIN*180,Math.atan(Math.exp(my/6378137))*360/Math.PI-90];
-  const coords=[corner(a,f),corner(e,f),corner(e,b),corner(a,b)];
-  HI[id]={dem:new Int16Array(demBuf),nx:info.nx,ny:info.ny,pm:info.pm};
-  map.addSource('hs-'+info.slug,{type:'canvas',canvas:c,animate:false,coordinates:coords});
+  const nw=corner(a,f),se=corner(e,b);
+  const dem=new Int16Array(demBuf);let low=dem[0];for(let k=1;k<dem.length;k++)if(dem[k]<low)low=dem[k];
+  HI[id]={dem,nx:info.nx,ny:info.ny,pm:info.pm,base:low};      // base: the lowest cell, where the skirt around the model settles
+  /* The hillshade goes on as map tiles cut from this canvas, not as one picture: a single picture draped on 3D terrain
+     gets clipped along the terrain's own tile lines, which showed as hard straight edges. */
+  HS[info.slug]={canvas:c,pm:info.pm};
+  map.addSource('hs-'+info.slug,{type:'raster',tiles:['hs://'+info.slug+'/{z}/{x}/{y}'],tileSize:256,minzoom:8,maxzoom:15,bounds:[nw[0],se[1],se[0],nw[1]]});
   map.addLayer({id:'hs-'+info.slug,type:'raster',source:'hs-'+info.slug,minzoom:9,paint:{'raster-fade-duration':0,'raster-resampling':'linear','raster-opacity':['interpolate',['linear'],['zoom'],9.5,0,10.5,1]}},'state');
-  map.addSource('ct-'+info.slug,{type:'geojson',data:contours});
-  map.addLayer({id:'ct-'+info.slug,type:'line',source:'ct-'+info.slug,minzoom:10.5,layout:{'line-join':'round'},paint:{'line-color':'#000','line-opacity':['interpolate',['linear'],['zoom'],10.5,0,12,['case',['==',['get','i'],1],.42,.16]],'line-width':['case',['==',['get','i'],1],.8,.4]}},'slopefill');
+  map.addSource('ct-'+info.slug,{type:'geojson',data:fadeContours(contours,info.pm)});
+  map.addLayer({id:'ct-'+info.slug,type:'line',source:'ct-'+info.slug,minzoom:10.5,layout:{'line-join':'round'},paint:{'line-color':'#000','line-opacity':['interpolate',['linear'],['zoom'],10.5,0,12,['*',['case',['==',['get','i'],1],.42,.16],['get','o']]],'line-width':['case',['==',['get','i'],1],.8,.4]}},'slopefill');
   profCache={};scaleCache={};
-  demVersion++;
-  for(const s of ['dem','demshade'])map.getSource(s).setTiles(['dem://{z}/{x}/{y}?v='+demVersion]);
   return true;
 }
+const EDGE=.16;   // share of the terrain box, on each side, that fades out
+function fadeContours(fc,pm){
+  /* Contour lines reach the edge of the terrain box. Each line is cut into pieces that carry an opacity, 1 inside and
+     falling to 0 across the same band the hillshade fades over, so the lines die away with the terrain. */
+  const [a,b,e,f]=pm,fw=(e-a)*EDGE,out=[];
+  const fadeAt=c=>{const mx=c[0]/180*ORIGIN,my=Math.log(Math.tan((90+c[1])*Math.PI/360))*6378137,w=Math.max(0,Math.min(1,Math.min(mx-a,e-mx,my-b,f-my)/fw));return Math.round(w*w*(3-2*w)*10)/10};
+  for(const ft of fc.features){
+    const i=ft.properties.i,parts=ft.geometry.type==='LineString'?[ft.geometry.coordinates]:ft.geometry.coordinates;
+    for(const line of parts){
+      let cur=null,seg=[];
+      for(const c of line){
+        const o=fadeAt(c);
+        if(cur!==null&&o!==cur){seg.push(c);if(seg.length>1&&cur>0)out.push({type:'Feature',properties:{i,o:cur},geometry:{type:'LineString',coordinates:seg}});seg=[c]}
+        else seg.push(c);
+        cur=o;
+      }
+      if(seg.length>1&&cur>0)out.push({type:'Feature',properties:{i,o:cur},geometry:{type:'LineString',coordinates:seg}});
+    }
+  }
+  return {type:'FeatureCollection',features:out};
+}
+function refreshDem(){if(!map||!map.getSource('dem'))return;demVersion++;for(const s of ['dem','demshade'])map.getSource(s).setTiles(['dem://{z}/{x}/{y}?v='+demVersion])}
 function terrainH(mx,my){   // elevation in decimeters at a Web Mercator point
   const [bx0,by0,bx1,by1]=DEM.bb;
   let h=bil(DEM.coarse,DEM.w,DEM.h,(mx-bx0)/(bx1-bx0)*DEM.w-.5,(by1-my)/(by1-by0)*DEM.h-.5);
@@ -289,6 +343,21 @@ function terrainH(mx,my){   // elevation in decimeters at a Web Mercator point
   return h;
 }
 const elevAt=(lon,lat)=>terrainH(lon/180*ORIGIN,Math.log(Math.tan((90+lat)*Math.PI/360))*6378137)/10;
+/* The 3D surface while one mountain is in view. Inside its box the mountain's own grid is used as is. Outside, the
+   surface slopes smoothly down from the box edge to a flat plane at the mountain's lowest point, like the skirt of a
+   site model, so no coarse terrain and no wall of extruded edge shows around it. Only the mesh uses this; every
+   elevation the page reports still comes from elevAt above. */
+let focus=null;
+const SKIRT=.6;     // the slope down to the plane runs this share of the box size beyond the edge
+function meshH(mx,my){
+  const g=focus&&HI[focus];if(!g)return terrainH(mx,my);
+  const [a,b,e,f]=g.pm,w=e-a,h=f-b,un=(mx-a)/w,vn=(f-my)/h;
+  const cu=Math.max(0,Math.min(1,un)),cv=Math.max(0,Math.min(1,vn));
+  const edge=bil(g.dem,g.nx,g.ny,cu*g.nx-.5,cv*g.ny-.5);
+  if(un>=0&&un<=1&&vn>=0&&vn<=1)return edge;
+  const d=Math.hypot(Math.max(0,-un,un-1)*w,Math.max(0,-vn,vn-1)*h),t=Math.min(1,d/(SKIRT*Math.max(w,h))),s=t*t*(3-2*t);
+  return edge*(1-s)+g.base*s;
+}
 
 /* ---- the trail profile: walk the trail every 15 m, read the terrain, measure the slope */
 const STEP=15,SW=304,SH=56;
@@ -342,7 +411,8 @@ function renderSection(){
   for(let i=1;i<p.h.length;i++){const w=(.9+Math.min(p.g[i-1],40)/40*3.1).toFixed(2);o+=`<path d="M${X((i-1)*p.len/(p.h.length-1)).toFixed(1)} ${Y(p.h[i-1]).toFixed(1)}L${X(i*p.len/(p.h.length-1)).toFixed(1)} ${Y(p.h[i]).toFixed(1)}" stroke="${color}" stroke-width="${w}" stroke-linecap="round" fill="none"/>`}
   if(markI!=null){o+=`<circle cx="${X(markI*p.len/(p.h.length-1)).toFixed(1)}" cy="${Y(p.h[markI]).toFixed(1)}" r="4.5" fill="#A5401B" stroke="#fff" stroke-width="1.5"/>`}
   $('secSvg').innerHTML=`<svg id="secDraw" viewBox="0 0 ${SW+8} ${SVGH}" role="img" aria-label="Elevation along ${q.name||'this trail'}">${o}<rect width="${SW+8}" height="${SVGH}" fill="transparent" style="pointer-events:all"/></svg>`;
-  $('secStats').textContent=rough?`${q.label}. ${(p.len/1000).toFixed(2)} km long. Slope numbers appear once this mountain's sharp terrain is in.`:`${q.label}. ${(p.len/1000).toFixed(2)} km, ${Math.round(p.drop)} m drop, ${Math.round(p.avg)}% average, ${Math.round(p.steep)}% steepest. Thicker is steeper. Height drawn ${sc.ex.toFixed(1)} times.`;
+  const why=FROM_DISK?'Opened from disk, so slope numbers need a local web server or the live link.':HIFAIL[q.area_id]?'This mountain\'s terrain files could not load, so there are no slope numbers.':'Slope numbers appear once this mountain\'s terrain has loaded.';
+  $('secStats').textContent=rough?`${q.label}. ${(p.len/1000).toFixed(2)} km long. ${why}`:`${q.label}. ${(p.len/1000).toFixed(2)} km, ${Math.round(p.drop)} m drop, ${Math.round(p.avg)}% average, ${Math.round(p.steep)}% steepest. Thicker is steeper. Height drawn ${sc.ex.toFixed(1)} times.`;
   const svg=$('secDraw');
   svg.onmousemove=e=>{const b=svg.getBoundingClientRect(),d=((e.clientX-b.left)/b.width*(SW+8)-4)/sc.sx;markI=Math.max(0,Math.min(p.h.length-1,Math.round(d/p.len*(p.h.length-1))));placeSecPin(p.pts[markI]);queueSection()};
   svg.onmouseleave=()=>{markI=null;placeSecPin(null);queueSection()};
@@ -358,12 +428,16 @@ function demTile(z,x,y){   // one 256 px terrain tile in Mapbox's RGB height enc
   const S=256,c=document.createElement('canvas');c.width=c.height=S;const cx=c.getContext('2d'),im=cx.createImageData(S,S),d=im.data;
   const span=2*ORIGIN/2**z,X0=x*span-ORIGIN,Y1=ORIGIN-y*span,px=span/S;
   for(let j=0,o=0;j<S;j++){const my=Y1-(j+.5)*px;for(let i=0;i<S;i++,o+=4){const mx=X0+(i+.5)*px;
-    const h=terrainH(mx,my);
+    const h=meshH(mx,my);
     const v=Math.round((h/10+10000)*10);d[o]=(v>>16)&255;d[o+1]=(v>>8)&255;d[o+2]=v&255;d[o+3]=255}}
   cx.putImageData(im,0,0);return new Promise(res=>c.toBlob(b=>b.arrayBuffer().then(res),'image/png'));
 }
 const home=[[Math.min(...D.rows.map(r=>r.lon),-75.3)-.1,Math.min(...D.rows.map(r=>r.lat),39.95)-.08],[Math.max(...D.rows.map(r=>r.lon),-73.9)+.1,Math.max(...D.rows.map(r=>r.lat))+.08]];
-if(window.maplibregl)maplibregl.addProtocol('dem',async p=>{const m=p.url.match(/(\d+)\/(\d+)\/(\d+)/);return{data:await demTile(+m[1],+m[2],+m[3])}});
+const aborted=ac=>{if(ac&&ac.signal&&ac.signal.aborted)throw Object.assign(new Error('AbortError'),{name:'AbortError'})};
+if(window.maplibregl){
+  maplibregl.addProtocol('dem',async(p,ac)=>{const m=p.url.match(/(\d+)\/(\d+)\/(\d+)/);const data=await demTile(+m[1],+m[2],+m[3]);aborted(ac);return{data}});
+  maplibregl.addProtocol('hs',async(p,ac)=>{const m=p.url.match(/hs:\/\/([^/]+)\/(\d+)\/(\d+)\/(\d+)/);const data=await shadeTile(m[1],+m[2],+m[3],+m[4]);aborted(ac);return{data}});
+}
 if(!window.maplibregl){$('map').innerHTML='<p style="padding:24px;max-width:36ch">The map library did not load. Check your connection and reload this page.</p>'}
 else{
   const canvas=document.createElement('canvas');
@@ -375,6 +449,8 @@ else{
       style:{version:8,sources:{},layers:[{id:'bg',type:'background',paint:{'background-color':'#ececec'}}]}});
     map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');
     map.dragRotate.disable();map.touchZoomRotate.disableRotation();
+    /* a terrain tile that was still being made when the view moved on is dropped by the map library; that is routine, not an error */
+    map.on('error',e=>{const err=e&&e.error;if(err&&(err.name==='AbortError'||err.message==='AbortError'))return;console.error(err||e)});
     map.on('load',()=>{
       map.addSource('land',{type:'geojson',data:D.land});
       map.addLayer({id:'land',type:'fill',source:'land',paint:{'fill-color':'#fff'}});
@@ -388,14 +464,16 @@ else{
       map.addSource('lifts',{type:'geojson',data:D.lifts});
       const W=(a,b,c)=>['interpolate',['linear'],['zoom'],7,a,11,b,15,c];
       const cls=c=>['all',['==',['get','cls'],c],['==',['get','draw'],1]];
-      map.addLayer({id:'slopefill',type:'fill',source:'runs',filter:['==',['get','fill'],1],paint:{'fill-color':['case',['==',['get','cls'],'rest'],'#8c8c8c','#A5401B'],'fill-opacity':['case',['==',['get','cls'],'rest'],.14,.2]}});
+      /* a slope drawn as a shape gets a faint wash, so nearby runs still read as separate lines */
+      map.addLayer({id:'slopefill',type:'fill',source:'runs',filter:['==',['get','fill'],1],paint:{'fill-color':['case',['==',['get','cls'],'rest'],'#8c8c8c','#A5401B'],'fill-opacity':['case',['==',['get','cls'],'rest'],.07,.09]}});
       map.addLayer({id:'rest',type:'line',source:'runs',filter:cls('rest'),layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#8c8c8c','line-width':W(.3,.8,1.6)}});
       map.addLayer({id:'lift',type:'line',source:'lifts',filter:['==',['get','cls'],'lift'],paint:{'line-color':'#000','line-opacity':.55,'line-width':W(.2,.6,1.1),'line-dasharray':[5,3]}});
       map.addLayer({id:'carpet',type:'line',source:'lifts',filter:['==',['get','cls'],'carpet'],paint:{'line-color':'#000','line-width':W(.4,1.6,4)}});
-      map.addLayer({id:'glow',type:'line',source:'runs',filter:['all',['in',['get','cls'],['literal',['green','bunny']]],['==',['get','draw'],1]],layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-opacity':.16,'line-blur':3,'line-width':W(3,8,14)}});
-      map.addLayer({id:'green',type:'line',source:'runs',filter:cls('green'),layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-width':W(.9,2.2,4),'line-dasharray':[.1,2]}});
-      map.addLayer({id:'bunny',type:'line',source:'runs',filter:cls('bunny'),layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-width':W(1.6,3.6,7)}});
-      map.addLayer({id:'hi',type:'line',source:'runs',filter:['==',['get','tid'],-1],layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#000','line-width':W(2,4,7)}});
+      /* the soft glow helps beginner trails show on the overview; it is gone by the time a mountain fills the view */
+      map.addLayer({id:'glow',type:'line',source:'runs',filter:['all',['in',['get','cls'],['literal',['green','bunny']]],['==',['get','draw'],1]],layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-opacity':['interpolate',['linear'],['zoom'],9.5,.16,10.5,0],'line-blur':3,'line-width':W(3,8,14)}});
+      map.addLayer({id:'green',type:'line',source:'runs',filter:cls('green'),layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-width':W(.9,1.8,3),'line-dasharray':[.1,2]}});
+      map.addLayer({id:'bunny',type:'line',source:'runs',filter:cls('bunny'),layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#A5401B','line-width':W(1.2,2.2,3.6)}});
+      map.addLayer({id:'hi',type:'line',source:'runs',filter:['==',['get','tid'],-1],layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#000','line-width':W(2,3.2,5)}});
       map.addLayer({id:'hit',type:'line',source:'runs',filter:['==',['get','draw'],1],paint:{'line-color':'#000','line-opacity':0,'line-width':14}});
       /* shapes are hover targets only when no trail line runs inside them; otherwise the line is the trail */
       map.addLayer({id:'hitfill',type:'fill',source:'runs',filter:['all',['==',['get','fill'],1],['==',['get','draw'],1]],paint:{'fill-color':'#000','fill-opacity':0}});
