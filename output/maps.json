@@ -41,19 +41,6 @@
   {
     "day": 4,
     "prompt": "Clusters",
-    "title": "Naan Stop in Manhattan",
-    "subtitle": "148 of New York's 314 Indian restaurants, in close-up",
-    "series": "city",
-    "study": null,
-    "tool": "Python",
-    "interactive": false,
-    "file": "day04_clusters-manhattan-indian.png",
-    "preview": "../png_thumbnail/day04_clusters-manhattan-indian.png",
-    "updated": "2026-11-03"
-  },
-  {
-    "day": 4,
-    "prompt": "Clusters",
     "title": "Naan Stop in New York",
     "subtitle": "314 Indian restaurants, 12 clusters",
     "series": "city",

@@ -17,7 +17,67 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 130.1,
   "elev_max_m": 479.4,
-  "web_mb": 1.07
+  "web_mb": 1.07,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_blue_mountain_resort_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 12,
+   "nhd_river_areas": 2,
+   "nhd_streams": 12,
+   "nhd_dropped_by_ftype": {
+    "558": 15
+   },
+   "osm_polygons": 8,
+   "osm_already_in_nhd": 2,
+   "osm_added": 5,
+   "osm_left_to_nhd": 1,
+   "osm_waterways": 4,
+   "osm_waterways_not_in_nhd": 0,
+   "written": 31
+  },
+  "trees_file": "day21_terrain_blue_mountain_resort_trees.png",
+  "trees_px": [
+   508,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   98
+  ],
+  "canopy_mean": 63.9,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 33.3,
+   "beside_trail": 62.4
+  }
  },
  "hunter_mountain": {
   "ski_area": "Hunter Mountain",
@@ -37,7 +97,68 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 454.2,
   "elev_max_m": 1160.4,
-  "web_mb": 1.14
+  "web_mb": 1.14,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_hunter_mountain_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 26,
+   "nhd_river_areas": 1,
+   "nhd_streams": 93,
+   "nhd_dropped_by_ftype": {
+    "558": 71,
+    "334": 3
+   },
+   "osm_polygons": 33,
+   "osm_already_in_nhd": 20,
+   "osm_added": 8,
+   "osm_left_to_nhd": 5,
+   "osm_waterways": 99,
+   "osm_waterways_not_in_nhd": 3,
+   "written": 128
+  },
+  "trees_file": "day21_terrain_hunter_mountain_trees.png",
+  "trees_px": [
+   512,
+   399
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 73.7,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 46.3,
+   "beside_trail": 72.8
+  }
  },
  "bousquet_mountain": {
   "ski_area": "Bousquet Mountain",
@@ -57,7 +178,69 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 293.9,
   "elev_max_m": 615.1,
-  "web_mb": 1.0
+  "web_mb": 1.0,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_bousquet_mountain_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 22,
+   "nhd_river_areas": 0,
+   "nhd_streams": 44,
+   "nhd_dropped_by_ftype": {
+    "466": 17,
+    "558": 20,
+    "334": 1
+   },
+   "osm_polygons": 9,
+   "osm_already_in_nhd": 4,
+   "osm_added": 5,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 25,
+   "osm_waterways_not_in_nhd": 6,
+   "written": 71
+  },
+  "trees_file": "day21_terrain_bousquet_mountain_trees.png",
+  "trees_px": [
+   510,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 64.4,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 53.6,
+   "beside_trail": 71.6
+  }
  },
  "skytop_s_ski_hill": {
   "ski_area": "Skytop\u2019s Ski Hill",
@@ -77,7 +260,69 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 415.4,
   "elev_max_m": 627.7,
-  "web_mb": 0.86
+  "web_mb": 0.86,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_skytop_s_ski_hill_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 8,
+   "nhd_river_areas": 0,
+   "nhd_streams": 23,
+   "nhd_dropped_by_ftype": {
+    "466": 8,
+    "558": 10,
+    "334": 2
+   },
+   "osm_polygons": 5,
+   "osm_already_in_nhd": 3,
+   "osm_added": 2,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 10,
+   "osm_waterways_not_in_nhd": 2,
+   "written": 33
+  },
+  "trees_file": "day21_terrain_skytop_s_ski_hill_trees.png",
+  "trees_px": [
+   512,
+   493
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 75.4,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 47.6,
+   "beside_trail": 74.1
+  }
  },
  "saw_creek_estates_ski_area": {
   "ski_area": "Saw Creek Estates Ski Area",
@@ -97,7 +342,68 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 202.0,
   "elev_max_m": 377.8,
-  "web_mb": 0.9
+  "web_mb": 0.9,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_saw_creek_estates_ski_area_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 5,
+   "nhd_river_areas": 0,
+   "nhd_streams": 11,
+   "nhd_dropped_by_ftype": {
+    "466": 9,
+    "558": 3
+   },
+   "osm_polygons": 3,
+   "osm_already_in_nhd": 2,
+   "osm_added": 1,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 10,
+   "osm_waterways_not_in_nhd": 1,
+   "written": 17
+  },
+  "trees_file": "day21_terrain_saw_creek_estates_ski_area_trees.png",
+  "trees_px": [
+   512,
+   473
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   95
+  ],
+  "canopy_mean": 71.9,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 50.4,
+   "beside_trail": 69.4
+  }
  },
  "mountain_creek": {
   "ski_area": "Mountain Creek",
@@ -117,7 +423,69 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 120.2,
   "elev_max_m": 455.2,
-  "web_mb": 1.31
+  "web_mb": 1.31,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_mountain_creek_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 70,
+   "nhd_river_areas": 1,
+   "nhd_streams": 231,
+   "nhd_dropped_by_ftype": {
+    "334": 54,
+    "558": 83,
+    "428": 20
+   },
+   "osm_polygons": 63,
+   "osm_already_in_nhd": 44,
+   "osm_added": 17,
+   "osm_left_to_nhd": 2,
+   "osm_waterways": 84,
+   "osm_waterways_not_in_nhd": 8,
+   "written": 319
+  },
+  "trees_file": "day21_terrain_mountain_creek_trees.png",
+  "trees_px": [
+   499,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   97
+  ],
+  "canopy_mean": 63.6,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 53.6,
+   "beside_trail": 70.3
+  }
  },
  "mount_peter": {
   "ski_area": "Mount Peter",
@@ -137,7 +505,67 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 158.9,
   "elev_max_m": 422.8,
-  "web_mb": 0.99
+  "web_mb": 0.99,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_mount_peter_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 23,
+   "nhd_river_areas": 0,
+   "nhd_streams": 17,
+   "nhd_dropped_by_ftype": {
+    "558": 11
+   },
+   "osm_polygons": 3,
+   "osm_already_in_nhd": 3,
+   "osm_added": 0,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 1,
+   "osm_waterways_not_in_nhd": 1,
+   "written": 40
+  },
+  "trees_file": "day21_terrain_mount_peter_trees.png",
+  "trees_px": [
+   498,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 64.7,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 31.0,
+   "beside_trail": 56.0
+  }
  },
  "bear_creek_mountain_resort_ski_slopes": {
   "ski_area": "Bear Creek Mountain Resort Ski Slopes",
@@ -157,7 +585,67 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 135.3,
   "elev_max_m": 351.7,
-  "web_mb": 0.88
+  "web_mb": 0.88,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_bear_creek_mountain_resort_ski_slopes_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 21,
+   "nhd_river_areas": 0,
+   "nhd_streams": 19,
+   "nhd_dropped_by_ftype": {
+    "558": 7
+   },
+   "osm_polygons": 27,
+   "osm_already_in_nhd": 10,
+   "osm_added": 16,
+   "osm_left_to_nhd": 1,
+   "osm_waterways": 11,
+   "osm_waterways_not_in_nhd": 0,
+   "written": 56
+  },
+  "trees_file": "day21_terrain_bear_creek_mountain_resort_ski_slopes_trees.png",
+  "trees_px": [
+   461,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 59.4,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 42.5,
+   "beside_trail": 65.5
+  }
  },
  "shawnee_mountain": {
   "ski_area": "Shawnee Mountain",
@@ -177,7 +665,68 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 91.5,
   "elev_max_m": 351.2,
-  "web_mb": 1.01
+  "web_mb": 1.01,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_shawnee_mountain_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 12,
+   "nhd_river_areas": 1,
+   "nhd_streams": 11,
+   "nhd_dropped_by_ftype": {
+    "558": 19,
+    "334": 3
+   },
+   "osm_polygons": 13,
+   "osm_already_in_nhd": 8,
+   "osm_added": 4,
+   "osm_left_to_nhd": 1,
+   "osm_waterways": 44,
+   "osm_waterways_not_in_nhd": 30,
+   "written": 28
+  },
+  "trees_file": "day21_terrain_shawnee_mountain_trees.png",
+  "trees_px": [
+   487,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   97
+  ],
+  "canopy_mean": 71.2,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 58.2,
+   "beside_trail": 76.7
+  }
  },
  "thunder_ridge": {
   "ski_area": "Thunder Ridge",
@@ -197,7 +746,68 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 129.8,
   "elev_max_m": 388.6,
-  "web_mb": 0.9
+  "web_mb": 0.9,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_thunder_ridge_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 18,
+   "nhd_river_areas": 3,
+   "nhd_streams": 38,
+   "nhd_dropped_by_ftype": {
+    "558": 29,
+    "334": 5
+   },
+   "osm_polygons": 12,
+   "osm_already_in_nhd": 9,
+   "osm_added": 3,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 23,
+   "osm_waterways_not_in_nhd": 0,
+   "written": 62
+  },
+  "trees_file": "day21_terrain_thunder_ridge_trees.png",
+  "trees_px": [
+   512,
+   496
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   96
+  ],
+  "canopy_mean": 63.3,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 59.6,
+   "beside_trail": 64.5
+  }
  },
  "spring_mountain_ski_area": {
   "ski_area": "Spring Mountain Ski Area",
@@ -217,7 +827,67 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 38.4,
   "elev_max_m": 156.5,
-  "web_mb": 0.93
+  "web_mb": 0.93,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_spring_mountain_ski_area_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 23,
+   "nhd_river_areas": 1,
+   "nhd_streams": 28,
+   "nhd_dropped_by_ftype": {
+    "558": 44
+   },
+   "osm_polygons": 26,
+   "osm_already_in_nhd": 15,
+   "osm_added": 8,
+   "osm_left_to_nhd": 3,
+   "osm_waterways": 107,
+   "osm_waterways_not_in_nhd": 3,
+   "written": 60
+  },
+  "trees_file": "day21_terrain_spring_mountain_ski_area_trees.png",
+  "trees_px": [
+   510,
+   512
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   95
+  ],
+  "canopy_mean": 44.0,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 57.9,
+   "beside_trail": 73.0
+  }
  },
  "jack_frost_mountain_resort": {
   "ski_area": "Jack Frost Mountain Resort",
@@ -237,7 +907,69 @@
   "hillshade": "ArcGIS Pro multidirectional hillshade",
   "elev_min_m": 420.4,
   "elev_max_m": 611.8,
-  "web_mb": 0.92
+  "web_mb": 0.92,
+  "landscape_sources": [
+   {
+    "layer": "water",
+    "name": "USGS National Hydrography Dataset, large-scale layers (The National Map)",
+    "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+    "version": "USGS TNM \u2013 National Hydrography Dataset.  Data Refreshed October, 2026.",
+    "license": "Public domain, U.S. Geological Survey"
+   },
+   {
+    "layer": "water",
+    "name": "OpenStreetMap water polygons, only the ponds NHD lacks (Overpass API)",
+    "url": "https://www.openstreetmap.org/copyright",
+    "version": "fetched 2026-11-05",
+    "license": "ODbL 1.0, (c) OpenStreetMap contributors"
+   },
+   {
+    "layer": "trees",
+    "name": "NLCD Tree Canopy Cover 2025, v2025-6 (USDA Forest Service, published through MRLC)",
+    "url": "https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/docs/v2025-6/nlcd_tcc_conus_2025_v2025-6_wgs84.zip",
+    "page": "https://www.mrlc.gov/data/type/nlcd-tree-canopy-cover",
+    "version": "v2025-6, data year 2025, released 2026",
+    "access": "read by byte range from the Forest Service server",
+    "citation": "USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT.",
+    "license": "Public domain (U.S. Government work). The file's metadata: can be used without additional permissions or fees; cite USDA Forest Service. 2026. USFS NLCD Percent Tree Canopy CONUS v2025-6. Salt Lake City, UT."
+   }
+  ],
+  "landscape_date": "2026-11-05",
+  "water_file": "day21_terrain_jack_frost_mountain_resort_water.json",
+  "water_counts": {
+   "nhd_lakes_ponds": 1,
+   "nhd_river_areas": 1,
+   "nhd_streams": 19,
+   "nhd_dropped_by_ftype": {
+    "466": 10,
+    "403": 4,
+    "558": 21
+   },
+   "osm_polygons": 11,
+   "osm_already_in_nhd": 2,
+   "osm_added": 9,
+   "osm_left_to_nhd": 0,
+   "osm_waterways": 13,
+   "osm_waterways_not_in_nhd": 0,
+   "written": 30
+  },
+  "trees_file": "day21_terrain_jack_frost_mountain_resort_trees.png",
+  "trees_px": [
+   512,
+   510
+  ],
+  "trees_scale": "pixel value = tree canopy percent 0 to 100 as published; 254 = masked by NLCD (water and the like); 255 = no data",
+  "canopy_range": [
+   0,
+   95
+  ],
+  "canopy_mean": 70.6,
+  "canopy_percent_cells": 1.0,
+  "canopy_masked_cells": 0.0,
+  "trail_canopy": {
+   "on_trail": 46.7,
+   "beside_trail": 63.8
+  }
  },
  "big_snow_american_dream": {
   "ski_area": "Big Snow American Dream",
