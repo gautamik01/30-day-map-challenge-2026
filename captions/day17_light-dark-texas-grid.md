@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Title | Who Keeps Texas On After Dark? |
+| Title | Texas Electricity, Day and Night |
 | Series | Physical Footprint of AI (energy thread) |
 | Interactive | no (MP4 animation) |
-| Live map | output/day17_light-dark-texas-grid.mp4 |
+| Live map | output/day17_light-dark-texas-grid.mp4 (GIF: output/day17_light-dark-texas-grid.gif) |
 | Code | https://github.com/gautamik01/30-day-map-challenge-2026/blob/main/scripts/day17_light_dark_texas_grid.ipynb |
 | Posted | (date) |
 
@@ -18,6 +18,8 @@ Every summer evening, Texas's biggest midday power source switches off. It's the
 On July 27, solar made 44% of the state grid's power at midday. Between 6:30 and 8:30 PM it fell from 26 GW to almost nothing, and the grid had two hours to replace it.
 
 Batteries took the first hit: 9.2 GW at 8:30 PM, 11% of all the power in Texas at that moment. Gas did the rest, climbing to 47% after dark, while the wind quietly picked up.
+
+Across the whole day, renewables made 43% of the state's electricity: 60% at their morning high, 24% at their low after sunset.
 
 I mapped that one day hour by hour. The land darkens with the real sun, and every plant glows with how hard its fuel is working.
 
@@ -39,4 +41,4 @@ Hourly generation by fuel: U.S. Energy Information Administration, Form EIA-930,
 
 ## Alt text
 
-An animated map of Texas over 24 hours on July 27, 2026. The land turns from dark to light and back with the sun. Yellow solar plants glow at midday and fade at sunset, while orange gas plants and purple batteries brighten after dark. A chart along the bottom shows the day's power mix by fuel.
+An animated map of Texas, with its major cities and dashed county lines, over 24 hours on July 27, 2026. The land turns from dark to light and back with the sun. Yellow solar plants glow at midday and fade at sunset, while orange gas plants and purple batteries brighten after dark. A chart along the bottom shows the day's power mix by fuel.
