@@ -405,7 +405,8 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
     sources           data credits, shown inside About
     Each Layer becomes a legend switch (click to show/hide) and points get hover cards built from Layer.popup.
     projection: 'mercator' | 'globe' | 'albers' | 'equalEarth' | 'naturalEarth' | 'winkelTripel'
-    style: 'dark' keeps the dark panel; 'light' / 'standard' / 'satellite' switch the panel to light
+    style: 'dark' keeps the dark panel; 'light' / 'standard' / 'satellite' switch the panel to light;
+           'none' = no basemap at all (no token or key needed), just a dark background under your layers
     highlight: a word in the title to make glow, e.g. highlight="AI"
     kicker:    optional small label above the title, e.g. kicker=style.UMBRELLA
     tiles:     True shows the legend as stat tiles instead of a list (off by default)
@@ -440,6 +441,8 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
         ))
 
     (s_, w_), (n_, e_) = _bounds(layers, bounds)
+    if style == "none":                                   # no basemap: nothing to fetch, no token, no key
+        use_mapbox = False
     if use_mapbox:
         lib = ('<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">'
                '<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>')
@@ -447,8 +450,13 @@ def mapbox(layers, *, title, subtitle="", about="", sources="", series="ai", bou
     else:
         lib = ('<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">'
                '<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>')
-        style_url, basemap = S.MAPLIBRE_FALLBACK[style], "Basemap © CARTO © OpenStreetMap"
-        print("No Mapbox token found, using the free MapLibre fallback. Add mapbox_token.txt for real Mapbox.")
+        if style == "none":
+            style_url = {"version": 8, "sources": {},
+                         "layers": [{"id": "bg", "type": "background", "paint": {"background-color": pal["paper"]}}]}
+            basemap = ""
+        else:
+            style_url, basemap = S.MAPLIBRE_FALLBACK[style], "Basemap © CARTO © OpenStreetMap"
+            print("No Mapbox token found, using the free MapLibre fallback. Add mapbox_token.txt for real Mapbox.")
 
     cfg = dict(tiles=bool(tiles), mapbox=use_mapbox, token=token, style=style_url, projection=projection, pitch=pitch,
                bearing=bearing, bounds=[[w_, s_], [e_, n_]], layers=cfg_layers)
