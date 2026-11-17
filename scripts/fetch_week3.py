@@ -283,20 +283,28 @@ def _get(url, dest=None, params=None, timeout=300):
 
 
 def _arcgis(layer_url, fields="*", where="1=1", page=2000):
-    """Every feature of an ArcGIS feature layer, in pages, as a GeoDataFrame (WGS84)."""
-    parts, offset = [], 0
+    """Every feature of an ArcGIS feature layer as a GeoDataFrame (WGS84).
+    Pages by OBJECTID (not by offset, which some servers quietly cut short) and checks the total."""
+    expected = _get(f"{layer_url}/query", params={"where": where, "returnCountOnly": "true", "f": "json"}).json().get("count")
+    oid = next((f["name"] for f in _get(layer_url, params={"f": "json"}).json().get("fields", [])
+                if f.get("type") == "esriFieldTypeOID"), "OBJECTID")
+    out_fields = fields if fields == "*" or oid in fields.split(",") else f"{fields},{oid}"
+    parts, last, got = [], -1, 0
     while True:
-        r = _get(f"{layer_url}/query", params={"where": where, "outFields": fields, "outSR": 4326, "f": "geojson",
-                                                "resultOffset": offset, "resultRecordCount": page,
-                                                "orderByFields": "OBJECTID"}).json()
+        r = _get(f"{layer_url}/query", params={"where": f"({where}) AND {oid} > {last}", "outFields": out_fields,
+                                                "outSR": 4326, "f": "geojson", "orderByFields": oid,
+                                                "resultRecordCount": page}).json()
         feats = r.get("features", [])
-        if feats:
-            parts.append(gpd.GeoDataFrame.from_features(feats, crs=WGS84))
-        if len(feats) < page and not r.get("properties", {}).get("exceededTransferLimit"):
+        if not feats:
             break
-        offset += len(feats)
-        if offset % 20000 < page:
-            print(f"         ... {offset:,} so far")
+        g = gpd.GeoDataFrame.from_features(feats, crs=WGS84)
+        parts.append(g)
+        got += len(g)
+        last = int(max(f.get("id") or f["properties"].get(oid) for f in feats))
+        if got % 50000 < len(g):
+            print(f"         ... {got:,} of {expected:,}" if expected else f"         ... {got:,}")
+    if expected is not None and got != expected:
+        raise RuntimeError(f"Got {got:,} features but the server says {expected:,}. Run the step again.")
     return pd.concat(parts, ignore_index=True) if parts else gpd.GeoDataFrame(geometry=[], crs=WGS84)
 
 
