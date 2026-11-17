@@ -21,7 +21,7 @@ Batteries took the first hit: 9.2 GW at 8:30 PM, 11% of all the power in Texas a
 
 Across the whole day, renewables made 43% of the state's electricity: 60% at their morning high, 24% at their low after sunset.
 
-I mapped that one day hour by hour. The land darkens with the real sun, and every plant glows with how hard its fuel is working.
+I mapped that one day hour by hour. Every power plant shifts from grey to full colour as its fuel works harder.
 
 Batteries are the newcomer on this grid. How long until they can cover the whole night shift?
 
@@ -37,8 +37,8 @@ Weitzman School of Design · MUSA · U.S. Energy Information Administration
 
 ## Data credits
 
-Hourly generation by fuel: U.S. Energy Information Administration, Form EIA-930, ERCOT balancing authority (EIA's adjusted values). Power plants: EIA-860M, September 2026. Texas boundary: US Census Bureau. Sun position computed from date and time. Each plant glows with its fuel's grid-wide output that hour, not its own meter.
+Hourly generation by fuel: U.S. Energy Information Administration, Form EIA-930, ERCOT balancing authority (EIA's adjusted values). Power plants: EIA-860M, September 2026. Texas boundary: US Census Bureau. Each plant's colour follows its fuel's grid-wide output that hour relative to the day's peak, not its own meter.
 
 ## Alt text
 
-An animated map of Texas, with its major cities and dashed county lines, over 24 hours on July 27, 2026. The land turns from dark to light and back with the sun. Yellow solar plants glow at midday and fade at sunset, while orange gas plants and purple batteries brighten after dark. A chart along the bottom shows the day's power mix by fuel.
+An animated map of Texas, with its major cities and dashed county lines, over 24 hours on July 27, 2026. Yellow solar plants light up at midday and fade to grey at sunset, while orange gas plants and purple batteries brighten after dark. A chart along the bottom shows the day's power mix by fuel.
