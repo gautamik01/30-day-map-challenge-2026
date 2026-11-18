@@ -10,5 +10,11 @@
     "source": "WRI Aqueduct 4.0",
     "day": 3,
     "updated": "2026-11-01"
+  },
+  "gtd_cat": {
+    "about": "Aqueduct groundwater table decline category of the basin",
+    "source": "WRI Aqueduct 4.0",
+    "day": 20,
+    "updated": "2026-11-17"
   }
 }

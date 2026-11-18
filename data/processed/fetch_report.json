@@ -733,9 +733,9 @@
   },
   "day18_road_only": {
     "status": "ok",
-    "seconds": 243,
+    "seconds": 163,
     "counties": 3109,
-    "transit_stops": 484000,
+    "transit_stops": 673251,
     "amtrak_stations": 1036,
     "amtrak_route_pieces": 49,
     "ipcd_terminals": 15488,
@@ -751,7 +751,7 @@
       "MODE_FERRY",
       "MODE_BIKE"
     ],
-    "counties_with_no_transit_stop": 1858,
+    "counties_with_no_transit_stop": 1837,
     "size_mb": 2.26
   },
   "day19_philly_coffee": {
