@@ -143,19 +143,6 @@
     "updated": "2026-11-17"
   },
   {
-    "day": 19,
-    "prompt": "Smell",
-    "title": "Where Philly Smells Like Coffee",
-    "subtitle": "259 coffee spots that aren't Starbucks, 30 that are; coffee within 250 m on 13% of streets",
-    "series": "city",
-    "study": null,
-    "tool": "Python",
-    "interactive": false,
-    "file": "day19_smell-philly-coffee.png",
-    "preview": "../png_thumbnail/day19_smell-philly-coffee.png",
-    "updated": "2026-11-17"
-  },
-  {
     "day": 20,
     "prompt": "Hexagons",
     "title": "What AI Drinks",
