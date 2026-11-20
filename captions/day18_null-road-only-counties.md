@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Title | Counties Without Public Transit |
+| Title | Counties Without Fixed-Route Transit (revised Nov 20, 2026) |
 | Series | City Senses |
 | Study | (none yet) |
 | Interactive | yes |
@@ -46,7 +46,7 @@ Counties Without Public Transit. (what it shows, data source, tool)
 
 ## Data credits
 
-Transit stops: BTS National Transit Map (NTAD). Amtrak stations and routes: BTS NTAD. Intercity bus, rail and ferry terminals: BTS Intermodal Passenger Connectivity Database. Counties: US Census Bureau.
+Transit stops: BTS National Transit Map (NTAD). Amtrak stations and routes: BTS NTAD. Intercity bus, rail and ferry terminals: BTS Intermodal Passenger Connectivity Database. Dial-a-ride: FTA National Transit Database, 2025 Demand Response Geographic Area Coverage (Counties and Places; Passenger Eligibility and Fares). Counties and population: US Census Bureau (2023 counties, Vintage 2024 Population Estimates).
 
 ## Alt text
 

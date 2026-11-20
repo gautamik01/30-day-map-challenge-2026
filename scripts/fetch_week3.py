@@ -427,17 +427,27 @@ def _socrata_csv(view, dest):
                             f"Export > CSV, save it as data/raw/{dest.name}, then run again.")
 
 
-def _norm(s):
-    import re
-    import unicodedata
-    s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower().strip()
-    s = re.sub(r"\bsaint\b", "st", s).replace(".", "").replace("'", "").replace("-", " ")
-    return re.sub(r"\s+", " ", s)
-
-
-def _strip_suffix(s):
-    import re
-    return re.sub(r"\s+(county|parish|borough|census area|city and borough|municipality|planning region)$", "", s)
+def _dr_by_county(dr, elig=None):
+    """One row per county from the NTD demand-response coverage table (one row per agency, service type and place).
+    A county counts if any place in it is wholly or partly served. With the eligibility table, a service is
+    'open to anyone' when the agency reports no passenger eligibility requirement for that service type."""
+    dr = dr.copy()
+    dr["geoid"] = dr.county_geo_id.str.zfill(5)
+    info = {"dr_services": int(dr[["ntd_id", "service_type_code"]].drop_duplicates().shape[0]),
+            "dr_agencies_total": int(dr.ntd_id.nunique())}
+    if elig is not None:
+        e = elig[["ntd_id", "service_type_code", "has_psgnr_elig_rqmt_flag"]].drop_duplicates(["ntd_id", "service_type_code"])
+        dr = dr.merge(e, on=["ntd_id", "service_type_code"], how="left")
+        info["services_without_eligibility_row"] = int(dr[dr.has_psgnr_elig_rqmt_flag.isna()][["ntd_id", "service_type_code"]]
+                                                      .drop_duplicates().shape[0])
+        dr["open"] = dr.has_psgnr_elig_rqmt_flag.str.lower().eq("false")
+    g = dr.groupby("geoid")
+    out = pd.DataFrame({"dr_agencies": g.ntd_id.nunique(),
+                        "dr_names": g.reportername.agg(lambda s: "; ".join(sorted(set(s.str.strip())))),
+                        "dr_any_whole_place": g.geo_service_level_desc.agg(lambda s: bool(s.str.contains("Wholly").any()))})
+    if elig is not None:
+        out["dr_open_agencies"] = dr[dr.open].groupby("geoid").ntd_id.nunique().reindex(out.index).fillna(0).astype(int)
+    return out.reset_index(), info
 
 
 @step("day18b_dial_a_ride", "ntd_dr_counties.csv", "county_population.csv")
@@ -503,94 +513,17 @@ def day18b():
         if size_mb(p) < 25:
             pd.read_csv(p, dtype=str).to_csv(PROCESSED / f"ntd_dr_{k}.csv", index=False)
     dr = pd.read_csv(raw["coverage"], dtype=str)
+    elig = pd.read_csv(raw["eligibility"], dtype=str) if "eligibility" in raw else None
     cols = list(dr.columns)
     print(f"         NTD coverage: {len(dr):,} rows, columns: {cols}")
-    info["ntd_columns"] = cols
-    info["ntd_rows"] = len(dr)
-
-    states_abb = set(allc.state_abb)
-    name_to_abb = {_norm(n): a for n, a in zip(allc.get("STATE_NAME", allc.state_abb), allc.state_abb)}
-    def as_abb(v):
-        v = str(v).strip()
-        return v.upper() if v.upper() in states_abb else name_to_abb.get(_norm(v))
-
-    # which rows are counties (some tables hold counties and places in one column, with a type column)
-    type_col = next((c for c in cols if dr[c].nunique() <= 12 and dr[c].astype(str).str.contains("county", case=False).any()
-                     and dr[c].astype(str).str.contains("place", case=False).any()), None)
-    rows = dr[dr[type_col].astype(str).str.contains("county", case=False)] if type_col else dr
-    info["type_column"] = type_col
-
-    # lookup: (state, name) -> geoid, by full Census name ("Fairfax County", "Fairfax city") and short name ("Fairfax")
-    full, short = {}, {}
-    for g, a, n, nl, lsad in zip(allc.geoid, allc.state_abb, allc.county_name, allc.get("NAMELSAD", allc.county_name),
-                                 allc.get("LSAD", pd.Series([""] * len(allc)))):
-        full[(a, _norm(nl))] = g
-        short.setdefault((a, _norm(n)), []).append((g, str(lsad)))
-
-    def match(a, name):
-        if a is None or pd.isna(name):
-            return None, "no state"
-        k = _norm(name)
-        if (a, k) in full:
-            return full[(a, k)], "ok"
-        hits = short.get((a, _strip_suffix(k)), [])
-        if len(hits) == 1:
-            return hits[0][0], "ok"
-        if len(hits) > 1:            # e.g. "Fairfax" in VA is both a county and a city: take the county, and say so
-            county = [g for g, l in hits if l == "06"]
-            return (county[0] if county else None), "ambiguous"
-        return None, "no match"
-
-    state_cols = [c for c in cols if dr[c].dropna().map(as_abb).notna().mean() > 0.8]
-    name_cols = [c for c in cols if c not in state_cols and c != type_col and dr[c].nunique() > 50]
-    best = None
-    for sc in state_cols:
-        for nc in name_cols:
-            pairs = rows[[sc, nc]].dropna().drop_duplicates()
-            if pairs.empty:
-                continue
-            ok = sum(match(as_abb(s), n)[1] in ("ok", "ambiguous") for s, n in zip(pairs[sc], pairs[nc]))
-            rate = ok / len(pairs)
-            if best is None or rate > best[2]:
-                best = (sc, nc, rate)
-    if best is None or best[2] < 0.85:
-        raise ValueError(f"Couldn't find the county column with confidence (best guess {best}). "
-                         f"Paste this whole message to Claude. Columns: {cols}. First rows:\n{dr.head(5).to_string()}")
-    sc, nc, rate = best
-    info.update(state_column=sc, county_column=nc, county_match_rate=round(rate, 4))
-
-    agency_col = next((c for c in cols if "ntd id" in c.lower() or "ntd_id" in c.lower()), None) \
-        or next((c for c in cols if "agency" in c.lower()), None)
-    agency_name = next((c for c in cols if c != agency_col and "agency" in c.lower()
-                        and ("name" in c.lower() or c.lower().strip() == "agency")), agency_col)
-    mode_col = next((c for c in cols if c.lower() in ("mode", "mode name", "mode_name")), None)
-    tos_col = next((c for c in cols if "type of service" in c.lower() or c.lower() in ("tos", "type_of_service")), None)
-    info.update(agency_id_column=agency_col, agency_name_column=agency_name, mode_column=mode_col, tos_column=tos_col)
-
-    m = rows[rows[nc].notna()].copy()
-    m["geoid"], m["how"] = zip(*[match(as_abb(s), n) for s, n in zip(m[sc], m[nc])])
-    bad = m[m.geoid.isna()][[sc, nc]].drop_duplicates()
-    amb = m[m.how == "ambiguous"][[sc, nc]].drop_duplicates()
-    info["unmatched_county_names"] = [f"{s}: {n}" for s, n in bad.head(40).itertuples(index=False)]
-    info["unmatched_count"] = len(bad)
-    info["ambiguous_taken_as_county"] = [f"{s}: {n}" for s, n in amb.head(40).itertuples(index=False)]
-    m = m[m.geoid.notna()]
-
-    g = m.groupby("geoid")
-    out = pd.DataFrame({"dr_agencies": g[agency_col].nunique()})
-    out["dr_names"] = g[agency_name].agg(lambda s: "; ".join(sorted(set(s.dropna().astype(str).str.strip()))))
-    if mode_col:
-        out["dr_modes"] = g[mode_col].agg(lambda s: ", ".join(sorted(set(s.dropna().astype(str)))))
-    if tos_col:
-        out["dr_tos"] = g[tos_col].agg(lambda s: ", ".join(sorted(set(s.dropna().astype(str)))))
-    out = out.reset_index()
+    info.update(ntd_columns=cols, ntd_rows=len(dr))
+    if "county_geo_id" not in cols or "ntd_id" not in cols:
+        raise ValueError(f"Expected county_geo_id and ntd_id columns (the 2025 NTD layout). Paste this to Claude: {cols}")
+    out, extra = _dr_by_county(dr, elig)
     out.to_csv(PROCESSED / "ntd_dr_counties.csv", index=False)
-
-    if type_col and agency_col:                    # agencies that listed places but no county at all
-        with_county = set(rows[agency_col].dropna())
-        info["agencies_listing_places_only"] = int(dr.loc[~dr[agency_col].isin(with_county), agency_col].nunique())
-    info.update(dr_agencies_total=int(dr[agency_col].nunique()) if agency_col else None,
-                counties_with_dr_all=len(out), counties_with_dr_lower48=int(out.geoid.isin(l48).sum()))
+    info.update(extra)
+    info.update(counties_with_dr_lower48=int(out.geoid.isin(l48).sum()),
+                counties_not_in_census=sorted(set(out.geoid) - set(allc.geoid)))
     return info
 
 

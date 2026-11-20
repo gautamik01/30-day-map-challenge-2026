@@ -823,28 +823,10 @@
       "county_state_name"
     ],
     "ntd_rows": 37478,
-    "type_column": null,
-    "state_column": "county_state_name",
-    "county_column": "county_name",
-    "county_match_rate": 0.9972,
-    "agency_id_column": "state_parent_ntd_id",
-    "agency_name_column": "state_parent_ntd_id",
-    "mode_column": null,
-    "tos_column": null,
-    "unmatched_county_names": [
-      "Virgin Islands: St. Croix Island",
-      "Virgin Islands: St. John Island",
-      "Virgin Islands: St. Thomas Island",
-      "Guam: Guam",
-      "Northern Marianas: Saipan Municipality",
-      "American Samoa: Eastern District",
-      "American Samoa: Manu'a District",
-      "American Samoa: Western District"
-    ],
-    "unmatched_count": 8,
-    "ambiguous_taken_as_county": [],
-    "dr_agencies_total": 51,
+    "dr_agencies_total": 1931,
     "counties_with_dr_all": 2861,
-    "counties_with_dr_lower48": 2802
+    "counties_with_dr_lower48": 2802,
+    "dr_services": 2076,
+    "services_without_eligibility_row": 0
   }
 }
