@@ -494,7 +494,10 @@ def day18b():
             print(f"         eligibility: {e}")
             raw.pop("eligibility")
     m = re.search(r"(20\d\d)", raw["coverage"].name)
-    info.update(ntd_file=raw["coverage"].name, ntd_year=int(m.group(1)) if m else None)
+    if not m:
+        raise ValueError(f"Put the report year in the file name so the map can say which year it is, "
+                         f"e.g. rename '{raw['coverage'].name}' to '2025 Counties and Places.csv'")
+    info.update(ntd_file=raw["coverage"].name, ntd_year=int(m.group(1)))
     for k, p in raw.items():                        # small: copy into processed so they can be checked from GitHub
         print(f"         {k}: {p.name}")
         if size_mb(p) < 25:
