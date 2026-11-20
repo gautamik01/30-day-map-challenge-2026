@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Title | Counties Without Fixed-Route Transit (revised Nov 20, 2026) |
+| Title | The Landscape of Public Transit in the US (revised Nov 20, 2026; first posted as Counties Without Public Transit) |
 | Series | City Senses |
 | Study | (none yet) |
 | Interactive | yes |
