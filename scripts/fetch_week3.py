@@ -15,6 +15,7 @@ What each step needs in data/raw/
     day15  NOAA Coastal Relief Model export for Monterey Bay (exportImage.tiff, GeoTIFF)
     day17  nothing: downloads EIA's hourly grid file itself (big, about 150 MB, kept in data/raw)
     day18  nothing: downloads BTS transit stops, Amtrak, intercity terminals and Census counties itself
+    day18b nothing: downloads FTA's NTD dial-a-ride coverage (2024) and Census county population itself
     day19  nothing: asks OpenStreetMap for Philadelphia's cafés (if it fails, the server is busy: run again later)
     day20  the WRI Aqueduct 4.0 folder you unzipped for the water map (the .gdb)
 """
@@ -403,6 +404,179 @@ def day18():
             "size_mb": size_mb(PROCESSED / "counties_connectivity.geojson")}
 
 
+# ------------------------------------------------------------------ Day 18b · dial-a-ride (NTD) and population
+# FTA National Transit Database, 2024 report year (issued Sep 2025), on the DOT open data portal
+NTD_DR = {"coverage": "qifj-zz6e",       # Demand Response Geographic Area Coverage (Counties and Places)
+          "eligibility": "i3pw-uwab",    # ... (Passenger Eligibility and Requirements)
+          "schedules": "uk25-sge7"}      # ... (Service Schedules)
+PEP = [(2024, "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/totals/co-est2024-alldata.csv"),
+       (2023, "https://www2.census.gov/programs-surveys/popest/datasets/2020-2023/counties/totals/co-est2023-alldata.csv")]
+
+
+def _socrata_csv(view, dest):
+    if dest.exists():
+        return dest
+    for url in (f"https://data.transportation.gov/api/views/{view}/rows.csv?accessType=DOWNLOAD",
+                f"https://data.transportation.gov/api/v3/views/{view}/export.csv?accessType=DOWNLOAD"):
+        try:
+            return _get(url, dest, timeout=600)
+        except Exception as e:
+            print(f"         {url} failed ({e})")
+    raise FileNotFoundError(f"Couldn't download NTD table {view}. Open data.transportation.gov/d/{view}, "
+                            f"Export > CSV, save it as data/raw/{dest.name}, then run again.")
+
+
+def _norm(s):
+    import re
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower().strip()
+    s = re.sub(r"\bsaint\b", "st", s).replace(".", "").replace("'", "").replace("-", " ")
+    return re.sub(r"\s+", " ", s)
+
+
+def _strip_suffix(s):
+    import re
+    return re.sub(r"\s+(county|parish|borough|census area|city and borough|municipality|planning region)$", "", s)
+
+
+@step("day18b_dial_a_ride", "ntd_dr_counties.csv", "county_population.csv")
+def day18b():
+    from mapkit import ai
+    allc = ai.load_counties()                 # all states, for matching (Census 2023 cartographic counties)
+    l48 = set(_counties_l48().geoid)
+    info = {}
+
+    # ---------------- population: Census Population Estimates (PEP) county totals
+    for year, url in PEP:
+        dest = RAW / url.rsplit("/", 1)[1]
+        try:
+            if not dest.exists():
+                _get(url, dest)
+            break
+        except Exception as e:
+            print(f"         {dest.name} not available ({e})")
+    else:
+        raise FileNotFoundError("Couldn't download Census county population. Save co-est2024-alldata.csv from "
+                                "census.gov (Population Estimates > County Population Totals) into data/raw/, then run again.")
+    pep = pd.read_csv(dest, dtype=str, encoding="latin-1")
+    pep = pep[pep.SUMLEV == "050"]
+    pop = pd.DataFrame({"geoid": pep.STATE.str.zfill(2) + pep.COUNTY.str.zfill(3),
+                        "pop": pd.to_numeric(pep[f"POPESTIMATE{year}"]).astype(int)})
+    if "ALAND" not in allc.columns:
+        raise KeyError(f"The Census county file has no ALAND column: {list(allc.columns)}")
+    land = allc[["geoid", "ALAND"]].assign(land_sqmi=lambda d: pd.to_numeric(d.ALAND) / 2_589_988.110336)
+    pop = pop.merge(land[["geoid", "land_sqmi"]], on="geoid", how="outer", indicator=True)
+    missing = pop[(pop._merge == "right_only") & pop.geoid.isin(l48)].geoid.tolist()
+    if missing:
+        raise ValueError(f"{len(missing)} Lower-48 counties have no population row (first few: {missing[:10]})")
+    pop = pop[pop._merge != "left_only"].drop(columns="_merge")
+    pop["pop"] = pop["pop"].astype("Int64")
+    pop.to_csv(PROCESSED / "county_population.csv", index=False)
+    info.update(pop_year=year, pop_file=dest.name, pop_us_total=int(pop["pop"].sum()),
+                pop_lower48=int(pop[pop.geoid.isin(l48)]["pop"].sum()))
+
+    # ---------------- dial-a-ride: NTD Demand Response coverage
+    raw = {"coverage": _socrata_csv(NTD_DR["coverage"], RAW / "ntd_dr_coverage_2024.csv")}
+    for k in ("eligibility", "schedules"):          # kept for checking, not used on the map yet
+        try:
+            raw[k] = _socrata_csv(NTD_DR[k], RAW / f"ntd_dr_{k}_2024.csv")
+        except Exception as e:
+            print(f"         {k}: {e}")
+    for k, p in raw.items():                        # small: copy into processed so they can be checked from GitHub
+        if size_mb(p) < 25:
+            pd.read_csv(p, dtype=str).to_csv(PROCESSED / p.name, index=False)
+    dr = pd.read_csv(raw["coverage"], dtype=str)
+    cols = list(dr.columns)
+    print(f"         NTD coverage: {len(dr):,} rows, columns: {cols}")
+    info["ntd_columns"] = cols
+    info["ntd_rows"] = len(dr)
+
+    states_abb = set(allc.state_abb)
+    name_to_abb = {_norm(n): a for n, a in zip(allc.get("STATE_NAME", allc.state_abb), allc.state_abb)}
+    def as_abb(v):
+        v = str(v).strip()
+        return v.upper() if v.upper() in states_abb else name_to_abb.get(_norm(v))
+
+    # which rows are counties (some tables hold counties and places in one column, with a type column)
+    type_col = next((c for c in cols if dr[c].nunique() <= 12 and dr[c].astype(str).str.contains("county", case=False).any()
+                     and dr[c].astype(str).str.contains("place", case=False).any()), None)
+    rows = dr[dr[type_col].astype(str).str.contains("county", case=False)] if type_col else dr
+    info["type_column"] = type_col
+
+    # lookup: (state, name) -> geoid, by full Census name ("Fairfax County", "Fairfax city") and short name ("Fairfax")
+    full, short = {}, {}
+    for g, a, n, nl, lsad in zip(allc.geoid, allc.state_abb, allc.county_name, allc.get("NAMELSAD", allc.county_name),
+                                 allc.get("LSAD", pd.Series([""] * len(allc)))):
+        full[(a, _norm(nl))] = g
+        short.setdefault((a, _norm(n)), []).append((g, str(lsad)))
+
+    def match(a, name):
+        if a is None or pd.isna(name):
+            return None, "no state"
+        k = _norm(name)
+        if (a, k) in full:
+            return full[(a, k)], "ok"
+        hits = short.get((a, _strip_suffix(k)), [])
+        if len(hits) == 1:
+            return hits[0][0], "ok"
+        if len(hits) > 1:            # e.g. "Fairfax" in VA is both a county and a city: take the county, and say so
+            county = [g for g, l in hits if l == "06"]
+            return (county[0] if county else None), "ambiguous"
+        return None, "no match"
+
+    state_cols = [c for c in cols if dr[c].dropna().map(as_abb).notna().mean() > 0.8]
+    name_cols = [c for c in cols if c not in state_cols and c != type_col and dr[c].nunique() > 50]
+    best = None
+    for sc in state_cols:
+        for nc in name_cols:
+            pairs = rows[[sc, nc]].dropna().drop_duplicates()
+            if pairs.empty:
+                continue
+            ok = sum(match(as_abb(s), n)[1] in ("ok", "ambiguous") for s, n in zip(pairs[sc], pairs[nc]))
+            rate = ok / len(pairs)
+            if best is None or rate > best[2]:
+                best = (sc, nc, rate)
+    if best is None or best[2] < 0.85:
+        raise ValueError(f"Couldn't find the county column with confidence (best guess {best}). "
+                         f"Paste this whole message to Claude. Columns: {cols}. First rows:\n{dr.head(5).to_string()}")
+    sc, nc, rate = best
+    info.update(state_column=sc, county_column=nc, county_match_rate=round(rate, 4))
+
+    agency_col = next((c for c in cols if "ntd id" in c.lower() or "ntd_id" in c.lower()), None) \
+        or next((c for c in cols if "agency" in c.lower()), None)
+    agency_name = next((c for c in cols if c != agency_col and "agency" in c.lower()
+                        and ("name" in c.lower() or c.lower().strip() == "agency")), agency_col)
+    mode_col = next((c for c in cols if c.lower() in ("mode", "mode name", "mode_name")), None)
+    tos_col = next((c for c in cols if "type of service" in c.lower() or c.lower() in ("tos", "type_of_service")), None)
+    info.update(agency_id_column=agency_col, agency_name_column=agency_name, mode_column=mode_col, tos_column=tos_col)
+
+    m = rows[rows[nc].notna()].copy()
+    m["geoid"], m["how"] = zip(*[match(as_abb(s), n) for s, n in zip(m[sc], m[nc])])
+    bad = m[m.geoid.isna()][[sc, nc]].drop_duplicates()
+    amb = m[m.how == "ambiguous"][[sc, nc]].drop_duplicates()
+    info["unmatched_county_names"] = [f"{s}: {n}" for s, n in bad.head(40).itertuples(index=False)]
+    info["unmatched_count"] = len(bad)
+    info["ambiguous_taken_as_county"] = [f"{s}: {n}" for s, n in amb.head(40).itertuples(index=False)]
+    m = m[m.geoid.notna()]
+
+    g = m.groupby("geoid")
+    out = pd.DataFrame({"dr_agencies": g[agency_col].nunique()})
+    out["dr_names"] = g[agency_name].agg(lambda s: "; ".join(sorted(set(s.dropna().astype(str).str.strip()))))
+    if mode_col:
+        out["dr_modes"] = g[mode_col].agg(lambda s: ", ".join(sorted(set(s.dropna().astype(str)))))
+    if tos_col:
+        out["dr_tos"] = g[tos_col].agg(lambda s: ", ".join(sorted(set(s.dropna().astype(str)))))
+    out = out.reset_index()
+    out.to_csv(PROCESSED / "ntd_dr_counties.csv", index=False)
+
+    if type_col and agency_col:                    # agencies that listed places but no county at all
+        with_county = set(rows[agency_col].dropna())
+        info["agencies_listing_places_only"] = int(dr.loc[~dr[agency_col].isin(with_county), agency_col].nunique())
+    info.update(dr_agencies_total=int(dr[agency_col].nunique()) if agency_col else None,
+                counties_with_dr_all=len(out), counties_with_dr_lower48=int(out.geoid.isin(l48).sum()))
+    return info
+
+
 # ------------------------------------------------------------------ Day 19 · Philly coffee
 @step("day19_philly_coffee", "philly_coffee.geojson")
 def day19():
@@ -446,13 +620,13 @@ def day20():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day13_eia, day13_uspvdb, day15, day17, day18, day19, day20]
+STEPS = [day13_eia, day13_uspvdb, day15, day17, day18, day18b, day19, day20]
 
 if __name__ == "__main__":
     wanted = [a.lower() for a in sys.argv[1:]]
     chosen = [fn for fn in STEPS if not wanted or any(fn.step_name.startswith(w + "_") for w in wanted)]
     if not chosen:
-        sys.exit(f"No step matches {wanted}. Try day13, day15, day17, day18, day19 or day20.")
+        sys.exit(f"No step matches {wanted}. Try day13, day15, day17, day18, day18b, day19 or day20.")
     for fn in chosen:
         fn()
     print("\nDone. Commit the new files in data/processed/ (GitHub Desktop: commit, then Push origin).")
