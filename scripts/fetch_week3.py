@@ -15,7 +15,8 @@ What each step needs in data/raw/
     day15  NOAA Coastal Relief Model export for Monterey Bay (exportImage.tiff, GeoTIFF)
     day17  nothing: downloads EIA's hourly grid file itself (big, about 150 MB, kept in data/raw)
     day18  nothing: downloads BTS transit stops, Amtrak, intercity terminals and Census counties itself
-    day18b nothing: downloads FTA's NTD dial-a-ride coverage (2024) and Census county population itself
+    day18b the NTD dial-a-ride CSVs from transit.dot.gov (Counties and Places, Passenger Eligibility), any year;
+           if missing it downloads the 2024 ones. Downloads Census county population itself
     day19  nothing: asks OpenStreetMap for Philadelphia's cafés (if it fails, the server is busy: run again later)
     day20  the WRI Aqueduct 4.0 folder you unzipped for the water map (the .gdb)
 """
@@ -476,15 +477,28 @@ def day18b():
                 pop_lower48=int(pop[pop.geoid.isin(l48)]["pop"].sum()))
 
     # ---------------- dial-a-ride: NTD Demand Response coverage
-    raw = {"coverage": _socrata_csv(NTD_DR["coverage"], RAW / "ntd_dr_coverage_2024.csv")}
-    for k in ("eligibility", "schedules"):          # kept for checking, not used on the map yet
+    # Newest first: CSVs you saved from transit.dot.gov (e.g. the 2025 page), else download the 2024 tables.
+    import re
+    def newest(*pats):
+        hits = [h for pat in pats for h in RAW.rglob(pat) if h.is_file()]
+        yr = lambda h: int(m.group(1)) if (m := re.search(r"(20\d\d)", h.name)) else 0
+        return max(hits, key=lambda h: (yr(h), h.stat().st_mtime)) if hits else None
+    raw = {"coverage": newest("*Counties*and*Places*.csv", "*Counties_and_Places*.csv"),
+           "eligibility": newest("*Passenger*Eligibility*.csv")}
+    if raw["coverage"] is None:
+        raw["coverage"] = _socrata_csv(NTD_DR["coverage"], RAW / "ntd_dr_coverage_2024.csv")
+    if raw["eligibility"] is None:
         try:
-            raw[k] = _socrata_csv(NTD_DR[k], RAW / f"ntd_dr_{k}_2024.csv")
+            raw["eligibility"] = _socrata_csv(NTD_DR["eligibility"], RAW / "ntd_dr_eligibility_2024.csv")
         except Exception as e:
-            print(f"         {k}: {e}")
+            print(f"         eligibility: {e}")
+            raw.pop("eligibility")
+    m = re.search(r"(20\d\d)", raw["coverage"].name)
+    info.update(ntd_file=raw["coverage"].name, ntd_year=int(m.group(1)) if m else None)
     for k, p in raw.items():                        # small: copy into processed so they can be checked from GitHub
+        print(f"         {k}: {p.name}")
         if size_mb(p) < 25:
-            pd.read_csv(p, dtype=str).to_csv(PROCESSED / p.name, index=False)
+            pd.read_csv(p, dtype=str).to_csv(PROCESSED / f"ntd_dr_{k}.csv", index=False)
     dr = pd.read_csv(raw["coverage"], dtype=str)
     cols = list(dr.columns)
     print(f"         NTD coverage: {len(dr):,} rows, columns: {cols}")
