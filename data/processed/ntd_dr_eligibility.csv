@@ -1,0 +1,2077 @@
+state_parent_ntd_id,ntd_id,reportername,reportertypeshort,mode_code,service_type_code,states_served,serve_own_ntdid_flag,has_psgnr_elig_rqmt_flag,minadvanceresreq,fare_amount
+,00001,King County,Full Reporter,DR,PT,WA,false,true,0 Hours,2.75
+,00001,King County,Full Reporter,DR,TX,WA,false,false,1 Days,1.75
+,00002,Spokane Transit Authority,Full Reporter,DR,DO,WA,true,false,1 Days,2
+,00002,Spokane Transit Authority,Full Reporter,DR,PT,WA,true,false,1 Days,2
+,00003,Pierce County Transportation Benefit Area Authority,Full Reporter,DR,DO,WA,true,false,1 Days,1.75
+,00003,Pierce County Transportation Benefit Area Authority,Full Reporter,DR,PT,WA,true,true,0 Hours,2
+,00005,City of Everett,Full Reporter,DR,DO,WA,false,true,1 Days,2
+,00006,City of Yakima,Full Reporter,DR,PT,WA,true,false,1 Days,2
+,00007,Lane Transit District,Full Reporter,DR,PT,OR,true,true,1 Days,3.5
+,00007,Lane Transit District,Full Reporter,DR,TX,OR,true,false,3 Hours,0
+,00008,Tri-County Metropolitan Transportation District of Oregon,Full Reporter,DR,PT,OR,false,false,1 Days,2.8
+,00008,Tri-County Metropolitan Transportation District of Oregon,Full Reporter,DR,TN,OR,true,false,1 Days,2.8
+,00008,Tri-County Metropolitan Transportation District of Oregon,Full Reporter,DR,TX,OR,true,false,1 Days,2.8
+,00010,Klamath Tribes,Reduced Reporter,DR,DO,OR,true,false,2 Days,0
+,00011,Valley Regional Transit,Full Reporter,DR,DO,ID,true,true,1 Days,0
+,00011,Valley Regional Transit,Full Reporter,DR,PT,ID,true,true,1 Days,1.5
+,00012,Municipality of Anchorage,Full Reporter,DR,PT,AK,true,true,1 Days,3.5
+,00015,Snoqualmie Indian Tribe,Reduced Reporter,DR,DO,WA,true,false,72 Hours,0
+,00016,City of Longview,Full Reporter,DR,PT,WA,true,false,1 Days,1
+,00017,Stillaguamish Tribe of Indians,Reduced Reporter,DR,DO,WA,true,false,1 Days,0
+,00018,Ben Franklin Transit,Full Reporter,DR,DO,WA,true,false,1 Days,1.5
+,00018,Ben Franklin Transit,Full Reporter,DR,PT,WA,true,true,1 Hours,1.5
+,00019,Intercity Transit,Full Reporter,DR,DO,WA,true,false,1 Days,0
+,00020,Kitsap County Public Transportation Benefit Area Authority,Full Reporter,DR,DO,WA,true,false,1 Days,2
+,00020,Kitsap County Public Transportation Benefit Area Authority,Full Reporter,DR,TX,WA,true,false,1 Days,2
+,00021,Whatcom Transportation Authority,Full Reporter,DR,DO,WA,true,false,1 Days,1
+,00022,City of Pocatello,Reduced Reporter,DR,DO,ID,true,true,1 Days,1
+,00024,Clark County Public Transportation Benefit Area Authority,Full Reporter,DR,DO,"OR,WA",true,false,0 Days,1.25
+,00025,Salem Area Mass Transit District,Full Reporter,DR,PT,OR,true,true,1 Days,3.2
+,00029,Snohomish County Public Transportation Benefit Area Corporation,Full Reporter,DR,PT,WA,true,false,1 Days,2.5
+,00030,Chickaloon Native Village,Reduced Reporter,DR,DO,AK,true,false,1 Days,4
+,00033,Senior Services of Snohomish County,Reduced Reporter,DR,DO,WA,true,false,1 Days,2
+,00034,Rogue Valley Transportation District,Full Reporter,DR,PT,OR,true,false,1 Days,4
+,00043,Chelan Douglas PTBA,Full Reporter,DR,DO,WA,true,true,1 Hours,0
+,00043,Chelan Douglas PTBA,Full Reporter,DR,PT,WA,true,false,1 Days,0
+,00044,Skagit Transit,Full Reporter,DR,DO,WA,true,true,1 Days,2
+,00045,Fairbanks North Star Borough,Reduced Reporter,DR,DO,AK,true,true,2 Hours,2
+,00046,City of Wilsonville,Full Reporter,DR,DO,OR,false,true,1 Days,0
+,00048,City of Lewiston,Reduced Reporter,DR,DO,ID,true,false,1 Days,2
+,00051,Asotin County Public Transportation Benefit Area,Reduced Reporter,DR,DO,"ID,WA",true,false,1 Days,1.5
+,00053,Coeur d'Alene Tribe,Reduced Reporter,DR,DO,ID,true,false,1 Days,0
+,00055,Kootenai County,Reduced Reporter,DR,PT,ID,false,true,1 Days,0
+,00057,Central Oregon Intergovernmental Council,Full Reporter,DR,DO,OR,true,false,1 Days,0
+,00057,Central Oregon Intergovernmental Council,Full Reporter,DR,PT,OR,true,false,1 Days,0
+,00059,Josephine County,Reduced Reporter,DR,DO,OR,true,true,1 Days,2
+,00061,City of Albany,Reduced Reporter,DR,DO,OR,true,false,1 Days,0
+,00064,Valley Transit,Reduced Reporter,DR,DO,WA,true,false,1 Days,0
+,00065,Benton County,Reduced Reporter,DR,PT,OR,false,true,1 Days,0
+,00085,Gulkana Village Council,Reduced Reporter,DR,DO,AK,true,false,1 Days,5
+,00103,Squaxin Island Tribe,Reduced Reporter,DR,DO,WA,true,true,1 Days,0
+,00111,Confederated Tribes and Bands of The Yakama Nation,Reduced Reporter,DR,DO,WA,true,false,1 Days,0
+,00127,Cowlitz Indian Tribe,Reduced Reporter,DR,DO,WA,true,false,0 Days,0
+,00135,Nez Perce Tribe,Reduced Reporter,DR,DO,ID,true,false,3 Days,0.7
+,00143,Asa'carsarmiut Tribe,Reduced Reporter,DR,DO,AK,true,false,0 Hours,3
+,00207,Spokane Tribe of Indians,Reduced Reporter,DR,DO,WA,true,false,3 Days,0
+,00239,Ketchikan Indian Community,Reduced Reporter,DR,DO,AK,true,false,1 Days,0
+,00279,Hydaburg Cooperative Association,Reduced Reporter,DR,DO,AK,true,false,1 Days,15
+0R03,00282,Garfield County Transportation Program,Rural Reporter,DR,DO,"ID,WA",true,false,1 Days,0
+0R03,00286,Rural Resources Community Action,Rural Reporter,DR,DO,WA,true,false,0 Hours,0
+0R03,00287,People for People Moses Lake,Rural Reporter,DR,DO,WA,true,false,1 Days,0
+0R03,00294,City of Pullman,Rural Reporter,DR,DO,WA,true,false,1 Days,0.8
+0R02,00296,Tillamook County Transportation District,Rural Reporter,DR,DO,OR,true,true,1 Hours,0
+,00297,People for People Yakima,Reduced Reporter,DR,DO,WA,true,false,2 Days,0
+0R03,00298,Island Transit,Rural Reporter,DR,DO,WA,true,false,2 Hours,0
+0R03,00299,Klickitat County Senior Services,Rural Reporter,DR,DO,"OR,WA",true,false,1 Days,4
+0R02,00300,City of Silverton,Rural Reporter,DR,DO,OR,true,false,1 Days,2
+0R03,00303,Clallam Transit System,Rural Reporter,DR,DO,WA,true,false,1 Days,0
+0R02,00307,Coos County Area Transit,Rural Reporter,DR,DO,OR,true,true,1 Days,3
+0R02,00308,Curry County Public Transit Service District,Rural Reporter,DR,DO,OR,true,false,2 Hours,4
+0R03,00309,Grant County Transportation Authority,Rural Reporter,DR,DO,WA,true,true,1 Days,0
+0R03,00309,Grant County Transportation Authority,Rural Reporter,DR,PT,WA,true,true,1 Days,0
+0R02,00310,Lincoln County Transportation Service District,Rural Reporter,DR,DO,OR,true,false,1 Days,1
+0R01,00311,Mountain Rides Transportation Authority,Rural Reporter,DR,DO,ID,true,false,1 Days,0
+0R03,00312,Hopesource,Rural Reporter,DR,DO,WA,false,false,1 Days,0
+0R02,00313,Grant County Transportation District,Rural Reporter,DR,DO,OR,true,false,2 Hours,2
+0R03,00314,Grays Harbor Transit,Rural Reporter,DR,DO,WA,true,true,1 Days,0
+0R03,00315,Mason County Transportation Authority,Rural Reporter,DR,DO,WA,true,false,1 Days,0
+0R03,00316,Jefferson Transit,Rural Reporter,DR,DO,WA,true,true,1 Days,0
+0R03,00317,Mt Si Senior Center,Rural Reporter,DR,DO,WA,false,false,1 Days,1
+0R02,00319,Hood River County Transportation District,Rural Reporter,DR,DO,OR,true,false,0 Days,2
+0R02,00321,Yamhill County,Rural Reporter,DR,PT,OR,true,true,1 Days,0
+0R03,00322,Pacific Transit,Rural Reporter,DR,DO,"OR,WA",true,false,1 Days,1
+0R02,00323,Malheur Council on Aging and Community Services,Rural Reporter,DR,DO,"ID,OR",true,true,1 Days,3
+,00327,Valley Transit,Reduced Reporter,DR,DO,AK,true,false,0 Hours,3
+,00330,City of Canby,Reduced Reporter,DR,PT,OR,true,false,1 Days,1
+0R02,00331,Sunset Empire Transportation District,Rural Reporter,DR,DO,OR,true,false,2 Days,2
+0R03,00332,Okanogan County Transportation & Nutrition,Rural Reporter,DR,DO,WA,false,true,1 Days,2
+0R03,00336,Skamania County Senior Services,Rural Reporter,DR,DO,WA,true,false,1 Days,2
+0R02,00339,Basin Transit Service,Rural Reporter,DR,DO,OR,true,false,1 Days,1.5
+0R04,00340,"Senior Citizens of Kodiak, Inc.",Rural Reporter,DR,DO,AK,true,false,1 Days,2
+0R01,00341,Selkirks-Pend Oreille Transit Authority,Rural Reporter,DR,DO,ID,true,true,1 Days,0
+0R02,00343,Community Connection of Northeast Oregon,Rural Reporter,DR,DO,OR,true,false,1 Days,0
+0R01,00347,"Regional Public Transportation, Inc.",Rural Reporter,DR,DO,ID,true,false,1 Days,1.5
+0R02,00348,"Senior Citizens of Sweet Home, Inc.",Rural Reporter,DR,DO,OR,true,false,1 Days,1
+0R04,00354,"Catholic Community Service, Sitka",Rural Reporter,DR,DO,AK,true,true,1 Days,2
+0R04,00358,Ketchikan Gateway Borough,Rural Reporter,DR,DO,AK,true,false,1 Days,2
+0R02,00359,City of Pendleton,Rural Reporter,DR,PT,OR,true,false,1 Days,1
+0R02,00360,City of Woodburn,Rural Reporter,DR,DO,OR,true,true,1 Days,0
+,00363,Clackamas County,Reduced Reporter,DR,DO,OR,true,true,1 Days,0
+0R03,00364,Lewis County Transit,Rural Reporter,DR,DO,WA,true,false,1 Days,0
+0R03,00371,Wahkiakum County,Rural Reporter,DR,DO,WA,true,true,2 Days,0
+,00373,Treasure Valley Transit,Reduced Reporter,DR,DO,ID,true,false,1 Days,5
+0R02,00374,Harney County,Rural Reporter,DR,PT,OR,true,false,4 Hours,1
+0R02,00375,Columbia County,Rural Reporter,DR,DO,OR,true,false,1 Days,3
+,00376,"Ride Connection, Inc.",Full Reporter,DR,DO,OR,true,true,4 Days,0
+,00376,"Ride Connection, Inc.",Full Reporter,DR,TX,OR,true,true,4 Days,0
+0R02,00377,City of Lebanon,Rural Reporter,DR,DO,OR,true,false,1 Hours,0
+0R04,00378,"Central Area Rural Transit System, Inc.",Rural Reporter,DR,DO,AK,true,false,1 Days,2.5
+0R04,00378,"Central Area Rural Transit System, Inc.",Rural Reporter,DR,TX,AK,true,false,1 Days,2.5
+0R03,00383,Columbia County Public Transportation,Rural Reporter,DR,DO,WA,true,false,1 Days,0
+0R03,00386,Special Mobility Services,Rural Reporter,DR,DO,WA,true,false,1 Days,1
+0R02,00389,City of Sandy,Rural Reporter,DR,PT,OR,true,true,1 Days,1
+0R04,00391,City and Borough of Juneau,Rural Reporter,DR,PT,AK,true,false,1 Days,0
+0R02,00396,Mid-Columbia Economic Development District,Rural Reporter,DR,DO,OR,true,false,1 Days,2
+0R03,00398,Coastal Community Action Program,Rural Reporter,DR,DO,WA,true,false,7 Days,0
+0R04,00399,Sunshine Transit,Rural Reporter,DR,DO,AK,true,false,2 Hours,0
+0R01,00403,Lemhi Ride,Rural Reporter,DR,DO,ID,true,false,1 Days,2
+0R01,00404,Shoshone County,Rural Reporter,DR,DO,ID,true,false,1 Days,0
+,00407,Muckleshoot Indian Tribe,Reduced Reporter,DR,DO,WA,true,false,1 Days,0
+0R02,00409,Morrow County,Rural Reporter,DR,DO,OR,true,false,4 Hours,0
+,00419,Kenaitze Indian Tribe,Reduced Reporter,DR,DO,AK,true,false,1 Days,0
+,00420,Native Village of Unalakleet,Reduced Reporter,DR,DO,AK,true,false,0 Hours,0
+0R02,00459,Umpqua Public Transportation District,Rural Reporter,DR,PT,OR,true,true,1 Days,3
+,00463,Petersburg Indian Association,Reduced Reporter,DR,DO,AK,true,false,1 Hours,0
+0R02,00464,Lane Council of Governments,Rural Reporter,DR,PT,OR,true,false,1 Days,15
+,00472,City of Twin Falls,Reduced Reporter,DR,PT,ID,true,true,0 Hours,2
+,00473,City of Idaho Falls,Reduced Reporter,DR,PT,ID,true,false,0 Hours,4
+,10001,Rhode Island Public Transit Authority,Full Reporter,DR,DO,"MA,RI",true,true,1 Days,4
+,10001,Rhode Island Public Transit Authority,Full Reporter,DR,TX,"MA,RI",true,false,1 Days,4
+,10002,Manchester Transit Authority,Reduced Reporter,DR,DO,NH,true,true,1 Days,4
+,10003,Massachusetts Bay Transportation Authority,Full Reporter,DR,PT,MA,false,true,1 Days,3.35
+,10004,Brockton Area Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Days,3
+,10005,Lowell Regional Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Days,0
+,10006,Southeastern Regional Transit Authority,Full Reporter,DR,PT,MA,true,false,1 Days,3
+,10007,Berkshire Regional Transit Authority,Full Reporter,DR,PT,MA,true,false,1 Days,2.5
+,10008,Pioneer Valley Transit Authority,Full Reporter,DR,PT,"CT,MA",true,false,1 Days,0
+,10013,Merrimack Valley Regional Transit Authority,Full Reporter,DR,PT,MA,true,false,1 Days,0
+,10014,Worcester Regional Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Days,0
+,10014,Worcester Regional Transit Authority,Full Reporter,DR,TX,MA,true,true,1 Days,0
+,10015,Lewiston-Auburn Transit Committee,Reduced Reporter,DR,PT,ME,true,false,1 Days,3
+,10016,Greater Portland Transit District,Full Reporter,DR,DO,ME,true,false,0 Hours,2
+,10017,Greater Hartford Transit District,Full Reporter,DR,PT,CT,false,false,1 Days,3.5
+,10040,Southeast Area Transit District,Full Reporter,DR,DO,CT,true,false,1 Days,3.5
+,10040,Southeast Area Transit District,Full Reporter,DR,PT,CT,true,true,1 Days,3.5
+,10042,Valley Transit District,Full Reporter,DR,DO,CT,false,false,1 Days,3.5
+,10049,Greater New Haven Transit District,Full Reporter,DR,DO,CT,false,false,1 Days,3.5
+,10050,Greater Bridgeport Transit Authority,Full Reporter,DR,PT,CT,true,false,1 Days,3.5
+,10051,Housatonic Area Regional Transit,Full Reporter,DR,DO,CT,true,true,1 Days,1
+,10053,Cape Ann Transportation Authority,Full Reporter,DR,PT,MA,true,true,1 Days,2
+,10057,Norwalk Transit District,Full Reporter,DR,DO,CT,false,true,1 Days,3.5
+,10057,Norwalk Transit District,Full Reporter,DR,PT,CT,false,true,1 Days,3.5
+,10061,Montachusett Regional Transit Authority,Full Reporter,DR,PT,MA,true,false,24 Hours,2
+,10061,Montachusett Regional Transit Authority,Full Reporter,DR,TX,MA,true,false,24 Hours,2
+,10064,Greater Attleboro-Taunton Regional Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Hours,1.5
+,10066,Green Mountain Transit Authority,Full Reporter,DR,DO,VT,true,true,1 Days,0
+,10066,Green Mountain Transit Authority,Full Reporter,DR,PT,VT,true,true,1 Days,4
+,10069,"Regional Transportation Program, Inc.",Reduced Reporter,DR,DO,ME,false,true,1 Days,3
+,10086,Cooperative Alliance for Seacoast Transportation,Full Reporter,DR,DO,"ME,NH",true,true,1 Days,3
+,10087,City of Nashua,Full Reporter,DR,PT,NH,true,true,1 Days,2.5
+,10096,City of Bangor,Reduced Reporter,DR,DO,ME,true,false,1 Days,3
+,10098,"Western Maine Transportation Services, Inc.",Reduced Reporter,DR,DO,ME,true,true,1 Days,3
+,10099,York County Community Action Corporation,Reduced Reporter,DR,DO,ME,true,false,1 Days,2
+,10105,Cape Cod Regional Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Days,3
+,10105,Cape Cod Regional Transit Authority,Full Reporter,DR,TX,MA,true,false,1 Days,3
+,10107,Milford Transit District,Full Reporter,DR,DO,CT,true,false,1 Days,3
+,10118,MetroWest Regional Transit Authority,Full Reporter,DR,PT,MA,true,true,1 Days,0
+,10128,Connecticut Department of Transportation- CTTransit Waterbury- NET,Full Reporter,DR,DO,CT,true,false,1 Days,3.5
+1R01,10131,Northwestern CT Transit District,Rural Reporter,DR,DO,CT,true,false,1 Days,2
+,10134,Penquis Community Action Program,Reduced Reporter,DR,DO,ME,true,true,2 Days,2.5
+1R04,10137,"Advance Transit, Inc. NH",Rural Reporter,DR,DO,"NH,VT",true,false,1 Days,0
+,10140,Estuary Transit District,Reduced Reporter,DR,DO,CT,true,true,1 Days,3.5
+1R03,10142,"Aroostook Regional Transportation Systems, Inc.",Rural Reporter,DR,DO,ME,false,false,1 Days,3
+1R06,10143,Tri-Valley Transit Inc,Rural Reporter,DR,DO,VT,true,true,1 Days,0
+1R06,10144,"Southeast Vermont Transit, Inc",Rural Reporter,DR,DO,VT,true,true,1 Days,0
+1R02,10145,Martha's Vineyard Transit Authority,Rural Reporter,DR,PT,MA,true,false,1 Days,0
+1R06,10148,Rural Community Transportation,Rural Reporter,DR,DO,VT,false,true,1 Days,0
+1R06,10148,Rural Community Transportation,Rural Reporter,DR,TX,VT,true,true,1 Days,0
+,10149,Windham Region Transit District,Reduced Reporter,DR,DO,CT,true,false,1 Days,3
+1R06,10151,Green Mountain Community Network,Rural Reporter,DR,DO,VT,true,true,1 Days,0
+1R06,10154,Marble Valley Regional Transit District,Rural Reporter,DR,DO,VT,true,true,1 Days,0
+1R03,10155,Kennebec Valley Community Action Program,Rural Reporter,DR,DO,ME,true,false,1 Days,5
+1R01,10156,Northeastern Connecticut Transit District,Rural Reporter,DR,DO,CT,true,false,1 Days,1
+1R04,10159,"VNA Home Healthcare, Hospice & Community Service",Rural Reporter,DR,DO,NH,true,false,1 Days,1
+1R04,10161,Belknap-Merrimack CAP/Concord Area Transit,Rural Reporter,DR,DO,NH,true,false,1 Days,0
+1R02,10162,Nantucket Regional Transit Authority,Rural Reporter,DR,PT,MA,true,true,1 Days,0
+1R03,10169,Waldo Community Action Partners,Rural Reporter,DR,DO,ME,true,false,2 Days,3
+1R04,10172,"Tri-County CAP, Inc./North Country Transit",Rural Reporter,DR,DO,NH,true,false,1 Days,3
+1R02,10173,Franklin Regional Transit Authority,Rural Reporter,DR,PT,MA,true,true,0 Days,3
+,10174,Vermont Association for the Blind and Visually Impaired,Reduced Reporter,DR,DO,VT,true,true,3 Days,0
+,10174,Vermont Association for the Blind and Visually Impaired,Reduced Reporter,DR,PT,VT,true,true,1 Days,0
+1R03,10177,"West's Transportation, Inc.",Rural Reporter,DR,DO,ME,false,true,1 Days,10
+,10178,Town of Bedford,Reduced Reporter,DR,DO,MA,true,false,2 Hours,2
+,10184,The Mashpee Wampanoag Tribe,Reduced Reporter,DR,DO,MA,true,false,3 Hours,0
+,11140,Houlton Band of Maliseet Indians,Reduced Reporter,DR,DO,ME,true,false,2 Days,0
+,11146,Aroostook Band of Micmacs,Reduced Reporter,DR,DO,ME,true,false,1 Hours,0
+1R04,11156,Southwestern Community Services Transportation,Rural Reporter,DR,DO,NH,true,false,1 Days,1.5
+1R03,11161,"Downeast Community Partners, Inc.",Rural Reporter,DR,DO,ME,true,false,1 Days,2
+,20002,Capital District Transportation Authority,Full Reporter,DR,DO,NY,true,false,1 Days,2.5
+,20002,Capital District Transportation Authority,Full Reporter,DR,PT,NY,true,false,1 Days,2.5
+,20003,Broome County,Full Reporter,DR,DO,NY,true,true,1 Days,3
+,20004,Niagara Frontier Transportation Authority,Full Reporter,DR,DO,NY,true,false,1 Days,4
+,20005,Chemung County,Reduced Reporter,DR,PT,"NY,PA",true,true,1 Days,15
+,20006,City of Long Beach,Full Reporter,DR,DO,NY,true,true,2 Hours,1
+,20008,MTA New York City Transit,Full Reporter,DR,PT,NY,false,false,1 Days,2.9
+,20010,Dutchess County,Full Reporter,DR,DO,NY,true,false,1 Days,0.75
+,20018,Central New York Regional Transportation Authority,Full Reporter,DR,DO,NY,true,true,1 Days,2
+,20018,Central New York Regional Transportation Authority,Full Reporter,DR,PT,NY,true,true,1 Days,2
+,20071,Town of Huntington,Full Reporter,DR,DO,NY,false,false,1 Days,4
+,20072,Suffolk County,Full Reporter,DR,PT,NY,true,true,0 Hours,4
+,20076,Westchester County,Full Reporter,DR,PT,NY,true,true,1 Days,5
+,20076,Westchester County,Full Reporter,DR,TX,NY,true,false,1 Days,5
+,20080,New Jersey Transit Corporation,Full Reporter,DR,PT,NJ,true,true,1 Days,1.45
+,20084,County of Rockland,Full Reporter,DR,DO,NY,false,true,1 Days,0
+,20096,Putnam County,Full Reporter,DR,PT,NY,true,false,0 Hours,3.25
+,20113,Regional Transit Service,Full Reporter,DR,DO,NY,true,true,0 Hours,2
+,20143,Town of Newburgh,Reduced Reporter,DR,DO,NY,true,false,1 Days,1
+,20178,Ulster County,Full Reporter,DR,DO,NY,true,false,0 Days,0
+,20182,Town of Highlands,Reduced Reporter,DR,DO,NY,true,false,1 Hours,1
+,20183,Town of Monroe,Reduced Reporter,DR,DO,NY,true,false,2 Days,2
+,20187,Village of Kiryas Joel,Reduced Reporter,DR,DO,NY,true,false,1 Days,6
+,20193,Cumberland County,Reduced Reporter,DR,DO,NJ,true,false,2 Days,0
+,20195,Gloucester County,Reduced Reporter,DR,PT,NJ,true,false,1 Days,0
+,20199,County of Atlantic,Full Reporter,DR,DO,NJ,true,true,2 Days,0
+,20203,Cape May County,Reduced Reporter,DR,DO,NJ,true,false,3 Days,0
+,20206,County of Nassau,Full Reporter,DR,PT,NY,false,true,0 Hours,4
+,20209,Somerset County,Full Reporter,DR,DO,NJ,true,false,1 Days,2
+,20210,Morris County,Reduced Reporter,DR,DO,NJ,true,false,0 Hours,0
+,20211,County of Mercer,Reduced Reporter,DR,DO,NJ,true,false,3 Days,0
+,20212,County of Hunterdon,Reduced Reporter,DR,PT,NJ,true,false,1 Days,0
+,20214,Town of Warwick,Reduced Reporter,DR,DO,NY,true,false,1 Days,2
+,20215,City of Watertown NY,Reduced Reporter,DR,PT,NY,true,true,1 Days,3
+,20216,Orange County,Reduced Reporter,DR,PT,NY,true,true,1 Days,0.75
+,20227,Town of Wallkill,Reduced Reporter,DR,DO,NY,true,false,1 Days,3
+,20232,"Gadabout Transportation Services, Inc.",Reduced Reporter,DR,DO,NY,false,true,1 Days,3
+2R02,20925,Lewis County,Rural Reporter,DR,PT,NY,true,false,1 Days,3
+2R02,20926,Schoharie County,Rural Reporter,DR,DO,NY,true,false,1 Days,2
+2R01,20928,Warren County,Rural Reporter,DR,PT,NJ,true,true,2 Days,0
+2R02,20931,Greene County,Rural Reporter,DR,PT,NY,true,false,1 Days,3
+,20933,Monmouth County,Reduced Reporter,DR,DO,NJ,true,false,2 Days,2
+2R02,20937,Sullivan County,Rural Reporter,DR,PT,NY,true,false,1 Days,0
+2R02,20939,Clinton County,Rural Reporter,DR,DO,NY,true,false,1 Days,10
+2R02,20942,Oswego County,Rural Reporter,DR,PT,NY,true,false,1 Days,2
+2R01,20944,Salem County,Rural Reporter,DR,PT,NJ,true,false,2 Days,3
+2R02,20945,Schuyler County,Rural Reporter,DR,PT,NY,true,false,24 Hours,2
+2R01,20950,Sussex County,Rural Reporter,DR,DO,NJ,true,false,2 Days,1
+2R02,20953,City of Hornell,Rural Reporter,DR,DO,NY,true,false,2 Hours,3
+2R02,20954,Town of Goshen,Rural Reporter,DR,DO,NY,true,false,1 Days,2
+2R02,20959,Chautauqua County,Rural Reporter,DR,DO,NY,true,false,1 Hours,4.5
+2R02,20960,City of Oneonta,Rural Reporter,DR,DO,NY,true,false,24 Hours,2
+2R02,20973,Town of Montgomery,Rural Reporter,DR,DO,NY,true,false,1 Days,1
+2R02,20981,City of Gloversville,Rural Reporter,DR,DO,NY,true,false,1 Days,4
+2R02,20988,City of Port Jervis,Rural Reporter,DR,DO,NY,true,false,1 Days,1
+2R02,20992,Franklin County,Rural Reporter,DR,PT,NY,true,false,1 Days,3
+,30001,Kanawha Valley Regional Transportation Authority,Full Reporter,DR,DO,WV,true,false,0 Days,1.16
+,30002,The Tri-State Transit Authority,Full Reporter,DR,DO,WV,true,false,1 Days,2
+,30003,Mid-Ohio Valley Transit Authority,Reduced Reporter,DR,DO,WV,true,false,1 Days,0.35
+,30006,Greater Richmond Transit Company,Full Reporter,DR,DO,VA,true,false,0 Hours,0
+,30006,Greater Richmond Transit Company,Full Reporter,DR,PT,VA,true,false,1 Days,0
+,30007,Greater Roanoke Transit Company,Full Reporter,DR,PT,VA,true,false,1 Days,3.5
+,30008,Greater Lynchburg Transit Company,Full Reporter,DR,DO,VA,true,false,1 Days,4
+,30009,City of Petersburg,Reduced Reporter,DR,DO,VA,true,false,1 Days,0
+,30010,Lehigh and Northampton Transportation Authority,Full Reporter,DR,PT,PA,true,true,1 Days,4
+,30011,Altoona Metro Transit,Full Reporter,DR,DO,PA,true,false,1 Days,3.5
+,30012,Cambria County Transit Authority,Full Reporter,DR,DO,PA,true,true,1 Days,3
+,30012,Cambria County Transit Authority,Full Reporter,DR,PT,PA,true,true,0 Hours,0
+,30013,Erie Metropolitan Transit Authority,Full Reporter,DR,DO,PA,true,false,1 Days,20
+,30015,Luzerne County Transportation Authority,Full Reporter,DR,DO,PA,true,true,1 Days,3.5
+,30019,Southeastern Pennsylvania Transportation Authority,Full Reporter,DR,PT,PA,true,true,1 Days,4.25
+,30022,Pittsburgh Regional Transit,Full Reporter,DR,PT,PA,true,true,1 Days,3.15
+,30023,Beaver County Transit Authority,Full Reporter,DR,DO,PA,true,true,1 Days,22.5
+,30025,County of Lackawanna Transit System,Full Reporter,DR,DO,PA,true,true,1 Days,3.75
+,30025,County of Lackawanna Transit System,Full Reporter,DR,PT,PA,true,false,1 Days,3.75
+,30030,Washington Metropolitan Area Transit Authority,Full Reporter,DR,PT,"DC,MD,VA",true,false,1 Days,4.5
+,30034,Maryland Transit Administration,Full Reporter,DR,DO,MD,false,false,1 Days,1.85
+,30034,Maryland Transit Administration,Full Reporter,DR,PT,MD,false,false,1 Days,1.85
+,30034,Maryland Transit Administration,Full Reporter,DR,TN,MD,false,false,1 Days,1.85
+,30034,Maryland Transit Administration,Full Reporter,DR,TX,MD,true,false,1 Days,1.85
+,30035,Ohio Valley Regional Transportation Authority,Full Reporter,DR,DO,"OH,WV",true,false,1 Days,2.6
+,30040,City of Annapolis,Reduced Reporter,DR,DO,MD,true,false,1 Days,4
+3R03,30041,Board of Commissioners of Allegany County Maryland,Rural Reporter,DR,DO,MD,true,false,11 Hours,3
+,30042,Washington County,Reduced Reporter,DR,DO,MD,true,false,1 Days,2
+,30044,Westmoreland County Transit Authority,Full Reporter,DR,DO,PA,true,true,1 Days,17.65
+,30045,"JAUNT, Inc.",Full Reporter,DR,DO,VA,false,true,1 Days,0
+,30048,County of Howard,Reduced Reporter,DR,PT,MD,true,false,0 Hours,2
+,30051,"Montgomery County, Maryland",Full Reporter,DR,DO,MD,true,true,1 Hours,0
+,30053,City of Bristol Virginia,Reduced Reporter,DR,DO,VA,true,false,1 Days,2
+,30054,Centre Area Transportation Authority,Full Reporter,DR,PT,PA,true,false,1 Days,4.5
+,30055,Mercer County Regional Council of Governments,Reduced Reporter,DR,DO,PA,true,true,1 Days,1
+3R06,30069,City of Danville,Rural Reporter,DR,DO,VA,true,false,1 Hours,4
+,30070,Potomac and Rappahannock Transportation Commission,Full Reporter,DR,PT,VA,true,false,0 Hours,0
+,30071,City of Alexandria,Full Reporter,DR,PT,"DC,VA",true,false,1 Days,0
+,30071,City of Alexandria,Full Reporter,DR,TN,"DC,VA",true,false,1 Days,0
+,30072,"Frederick County, Maryland",Full Reporter,DR,DO,MD,true,true,1 Days,0
+,30074,Harford County Maryland,Reduced Reporter,DR,DO,MD,true,true,1 Days,1
+,30075,Delaware Transit Corporation,Full Reporter,DR,DO,DE,true,true,1 Days,4
+,30075,Delaware Transit Corporation,Full Reporter,DR,PT,DE,true,true,1 Days,4
+,30076,Williamsburg Area Transit Authority,Full Reporter,DR,DO,VA,false,false,1 Days,3
+,30077,Borough of Pottstown,Full Reporter,DR,PT,PA,true,false,1 Hours,5
+,30080,"Arlington County, Virginia",Full Reporter,DR,PT,"DC,MD,VA",false,true,1 Days,4.5
+,30081,Loudoun County,Full Reporter,DR,PT,VA,true,false,24 Hours,0
+,30083,Transportation District Commission of Hampton Roads,Full Reporter,DR,PT,VA,true,false,1 Days,3.5
+,30083,Transportation District Commission of Hampton Roads,Full Reporter,DR,TN,VA,true,false,1 Days,3.5
+,30083,Transportation District Commission of Hampton Roads,Full Reporter,DR,TX,VA,true,false,1 Days,3.5
+,30085,"Prince George's County, Maryland",Full Reporter,DR,DO,MD,true,false,0 Days,0
+,30085,"Prince George's County, Maryland",Full Reporter,DR,TN,MD,true,false,2 Hours,0
+,30087,County of Fayette,Full Reporter,DR,DO,PA,true,true,1 Days,1.9
+,30088,"County Commissioners of Charles County, MD",Full Reporter,DR,PT,MD,true,false,1 Days,0
+,30089,Monongalia County Urban Mass Transit Authority,Reduced Reporter,DR,DO,WV,true,true,2 Hours,0.75
+,30090,Eastern Panhandle Transit Authority,Reduced Reporter,DR,DO,WV,true,false,1 Days,4
+,30091,Town of Blacksburg,Full Reporter,DR,DO,VA,true,true,1 Days,0
+,30092,"The County Commissioners of Carroll County, Maryland",Reduced Reporter,DR,PT,MD,true,false,2 Hours,5
+,30093,City of Hazleton,Reduced Reporter,DR,PT,PA,true,false,1 Days,1.5
+,30094,City of Harrisonburg,Full Reporter,DR,DO,VA,true,false,1 Days,0
+,30095,County of Lebanon Transit Authority,Full Reporter,DR,DO,PA,true,false,1 Days,2.5
+,30096,The Tri-County Council for the Lower Eastern Shore of Maryland,Full Reporter,DR,DO,MD,true,true,1 Days,5
+,30099,City of Winchester,Reduced Reporter,DR,DO,VA,true,false,0 Hours,1.5
+,30108,Cecil County Government,Reduced Reporter,DR,DO,MD,true,false,17 Hours,2.5
+,30109,St. Mary's County Government,Reduced Reporter,DR,DO,MD,true,true,1 Days,2
+,30111,Washington County Transportation Authority,Full Reporter,DR,PT,PA,false,false,1 Hours,3
+3R06,30114,Accomack-Northhampton Transportation District Comm,Rural Reporter,DR,DO,VA,true,false,1 Days,0
+3R06,30115,"New River Valley Senior Services, Inc.",Rural Reporter,DR,DO,VA,true,false,1 Days,1.5
+3R03,30117,"Garrett County Community Action Committee, Inc",Rural Reporter,DR,DO,MD,true,false,1 Days,3
+3R06,30118,Virginia Regional Transit,Rural Reporter,DR,DO,VA,true,false,1 Days,0
+3R05,30119,Central West Virginia Transit Authority,Rural Reporter,DR,DO,WV,true,true,1 Days,0.5
+3R05,30121,City of Bluefield,Rural Reporter,DR,DO,WV,true,true,1 Days,0
+3R05,30122,Randolph County Senior Center,Rural Reporter,DR,DO,WV,true,false,1 Days,2.5
+,30123,District Three Governmental Cooperative,Reduced Reporter,DR,DO,VA,true,false,1 Hours,0
+3R04,30124,Warren County Transit Authority,Rural Reporter,DR,DO,PA,true,true,1 Days,20
+3R04,30127,Schuylkill Transportation System,Rural Reporter,DR,DO,PA,true,true,1 Days,22.5
+,30129,Anne Arundel County,Full Reporter,DR,PT,MD,true,true,1 Days,0
+,30130,Baltimore County Department of Public Works Transportation,Reduced Reporter,DR,DO,MD,true,false,1 Days,0
+,30131,"Board of County Commissioners of Calvert County, Maryland",Reduced Reporter,DR,DO,MD,true,false,1 Days,0
+3R06,30132,Mountain Empire Older Citizens,Rural Reporter,DR,DO,VA,true,false,24 Hours,1.5
+3R05,30135,Potomac Valley Transit Authority,Rural Reporter,DR,DO,WV,true,false,1 Days,2
+3R04,30137,Monroe County Transportation Authority,Rural Reporter,DR,DO,PA,true,true,1 Days,23
+3R05,30138,Barbour Co. Senior Center,Rural Reporter,DR,DO,WV,true,false,1 Days,2.25
+3R05,30140,Mountain Transit Authority,Rural Reporter,DR,DO,WV,true,false,1 Days,2
+,30141,Butler Transit Authority,Reduced Reporter,DR,PT,PA,true,false,24 Hours,3
+3R06,30142,Lake Country Area Agency on Aging,Rural Reporter,DR,DO,VA,true,true,1 Days,1.5
+3R05,30149,Fairmont Marion County Transit Authority,Rural Reporter,DR,DO,WV,true,false,1 Days,1
+3R04,30151,New Castle Area Transit Authority,Rural Reporter,DR,PT,PA,true,false,1 Days,2
+3R03,30155,Mayor and City Council Town of Ocean City,Rural Reporter,DR,DO,MD,true,true,1 Days,4
+3R05,30162,Little Kanawha Transit Authority,Rural Reporter,DR,DO,WV,true,false,1 Days,1
+3R06,30165,Town of Farmville,Rural Reporter,DR,DO,VA,true,false,1 Days,0.5
+3R04,30170,Endless Mountains Transportation Authority,Rural Reporter,DR,DO,PA,true,true,1 Days,41.65
+3R06,30172,Bay Aging,Rural Reporter,DR,DO,VA,true,false,24 Hours,2
+3R04,30177,Indiana County Transit Authority,Rural Reporter,DR,DO,PA,true,true,1 Days,24
+3R05,30183,Tri River Transit,Rural Reporter,DR,DO,WV,true,false,3 Days,1
+3R04,30185,Crawford Area Transportation Authority,Rural Reporter,DR,DO,PA,false,true,1 Days,21.65
+3R05,30190,"Preston County Sr. Cit, Inc.",Rural Reporter,DR,DO,WV,true,false,2 Hours,1
+,30192,Queen Anne's County,Reduced Reporter,DR,DO,MD,true,false,2 Days,0
+3R04,30194,Mid-County Transit Authority,Rural Reporter,DR,DO,PA,true,true,1 Days,20
+3R04,30196,Area Transportation Authority of North Central PA,Rural Reporter,DR,DO,PA,true,true,1 Days,3.5
+,30198,City of Suffolk,Reduced Reporter,DR,PT,VA,true,true,1 Days,3
+,30199,New River Transit Authority,Reduced Reporter,DR,PT,WV,true,false,1 Days,1.5
+,30202,South Central Transit Authority,Full Reporter,DR,DO,PA,true,true,1 Days,5
+,30202,South Central Transit Authority,Full Reporter,DR,PT,PA,true,true,1 Days,5
+,30205,"Transit Management of Central Maryland, Inc.",Full Reporter,DR,DO,MD,true,true,1 Days,4
+,30205,"Transit Management of Central Maryland, Inc.",Full Reporter,DR,TX,MD,true,true,1 Days,4
+,30206,Susquehanna Regional Transportation Authority,Full Reporter,DR,DO,PA,true,false,1 Days,3.6
+,30206,Susquehanna Regional Transportation Authority,Full Reporter,DR,PT,PA,true,false,1 Days,3.6
+,30207,RIVER VALLEY TRANSIT AUTHORITY,Full Reporter,DR,PT,PA,true,false,1 Days,4
+,30208,"University of Maryland, College Park",Reduced Reporter,DR,DO,MD,true,false,1 Hours,0
+3R03,30571,Delmarva Community Services Inc.,Rural Reporter,DR,DO,MD,true,false,1 Days,4
+,30989,Central Shenandoah Planning District Commission,Reduced Reporter,DR,PT,VA,true,false,1 Days,0.5
+,30990,Airport Corridor Transportation Association,Reduced Reporter,DR,PT,PA,true,false,1 Hours,0.25
+3R04,31028,"Allied Coordinated Transportation Services, Inc.",Rural Reporter,DR,DO,PA,false,true,1 Days,15.25
+,31029,"Blair Senior Services, Inc.",Reduced Reporter,DR,DO,PA,false,true,1 Days,18
+3R04,31031,"Call-A-Ride Service, Inc.",Rural Reporter,DR,DO,PA,true,true,1 Days,22.75
+3R04,31032,Clarion County,Rural Reporter,DR,PT,PA,true,true,1 Days,23.05
+3R04,31034,Forest County,Rural Reporter,DR,DO,PA,true,true,1 Days,27.99
+3R04,31035,Wayne County,Rural Reporter,DR,DO,PA,true,true,1 Days,53.35
+,31036,"STEP, Inc.",Full Reporter,DR,DO,PA,true,true,1 Days,25
+3R04,31038,Pike County,Rural Reporter,DR,DO,PA,true,true,1 Days,15
+3R04,31039,Huntingdon-Bedford-Fulton Area Agency on Aging,Rural Reporter,DR,DO,PA,true,true,1 Days,30
+3R04,31040,Greene County - PA,Rural Reporter,DR,DO,PA,true,true,1 Days,15
+3R04,31041,County of Butler,Rural Reporter,DR,PT,PA,true,true,2 Days,23.4
+,31042,Centre County,Reduced Reporter,DR,DO,PA,true,true,1 Days,19.5
+3R04,31044,Somerset County,Rural Reporter,DR,PT,PA,true,true,1 Days,16
+3R04,31045,Susquehanna County,Rural Reporter,DR,PT,PA,true,true,1 Days,36.65
+,40001,Chattanooga Area Regional Transportation Authority,Full Reporter,DR,DO,TN,true,true,1 Days,3
+,40002,City of Knoxville,Full Reporter,DR,DO,TN,true,false,1 Days,2
+,40003,City of Memphis,Full Reporter,DR,DO,TN,true,false,1 Days,2
+,40004,Metropolitan Transit Authority,Full Reporter,DR,DO,TN,true,false,1 Days,3.7
+,40004,Metropolitan Transit Authority,Full Reporter,DR,TX,TN,true,false,1 Days,3.7
+,40006,Cape Fear Public Transportation Authority,Full Reporter,DR,DO,NC,true,false,1 Days,4
+,40007,City of Raleigh,Full Reporter,DR,PT,NC,false,false,1 Days,2.5
+,40008,City of Charlotte North Carolina,Full Reporter,DR,DO,"NC,SC",true,false,1 Days,3.5
+,40008,City of Charlotte North Carolina,Full Reporter,DR,PT,NC,true,true,0 Hours,2.2
+,40009,City of Fayetteville,Full Reporter,DR,DO,NC,true,false,1 Days,2
+,40010,City of Gastonia,Reduced Reporter,DR,DO,NC,true,false,0 Days,2.5
+,40011,City of High Point,Reduced Reporter,DR,DO,NC,true,true,1 Days,2.5
+,40012,City of Winston Salem,Full Reporter,DR,PT,NC,true,true,1 Days,1
+,40014,Ms Coast Transportation Authority,Full Reporter,DR,DO,MS,true,true,1 Days,2
+,40015,"City of Jackson, MS",Full Reporter,DR,PT,MS,true,false,1 Days,3
+,40016,City of Ashland,Reduced Reporter,DR,DO,"KY,WV",true,false,1 Days,1.5
+,40017,Lexington Transit Authority,Full Reporter,DR,PT,KY,true,false,1 Days,1.6
+,40018,Transit Authority of River City,Full Reporter,DR,PT,"IN,KY",true,true,1 Days,3
+,40018,Transit Authority of River City,Full Reporter,DR,TX,"IN,KY",true,true,1 Days,3
+,40019,Transit Authority of Northern Kentucky,Full Reporter,DR,DO,KY,true,true,1 Days,2.5
+,40021,City of Albany,Full Reporter,DR,DO,GA,true,false,1 Days,2.5
+,40022,Metropolitan Atlanta Rapid Transit Authority,Full Reporter,DR,PT,GA,true,false,1 Days,4
+,40023,Augusta Richmond County Transit Department,Full Reporter,DR,PT,GA,true,false,1 Days,2.5
+,40024,Columbus Consolidated Government,Reduced Reporter,DR,DO,GA,true,false,1 Days,2.5
+,40025,Chatham Area Transit Authority,Full Reporter,DR,DO,GA,true,false,1 Days,2
+,40026,Manatee County Board of County Commissioners,Full Reporter,DR,DO,FL,true,true,1 Days,0
+,40027,Pinellas Suncoast Transit Authority,Full Reporter,DR,PT,FL,true,true,0 Hours,4.5
+,40027,Pinellas Suncoast Transit Authority,Full Reporter,DR,TN,FL,true,false,1 Days,4.5
+,40027,Pinellas Suncoast Transit Authority,Full Reporter,DR,TX,FL,true,true,0 Days,4.5
+,40028,Lee County,Full Reporter,DR,DO,FL,true,false,1 Days,3
+,40029,Broward County Board of County Commissioners,Full Reporter,DR,PT,FL,false,true,1 Days,3.5
+,40030,"City of Gainesville, FL",Full Reporter,DR,PT,FL,true,false,1 Days,3
+,40031,Lakeland Area Mass Transit District,Full Reporter,DR,DO,FL,true,true,1 Days,2
+,40031,Lakeland Area Mass Transit District,Full Reporter,DR,PT,FL,true,true,2 Hours,2
+,40032,County of Volusia,Full Reporter,DR,PT,FL,true,false,1 Hours,3.5
+,40034,County of Miami-Dade,Full Reporter,DR,PT,FL,false,false,1 Days,3.5
+,40035,Central Florida Regional Transportation Authority,Full Reporter,DR,DO,FL,true,false,0 Hours,2
+,40035,Central Florida Regional Transportation Authority,Full Reporter,DR,PT,FL,true,true,1 Days,4
+,40036,City of Tallahassee,Full Reporter,DR,DO,FL,true,false,1 Days,2.5
+,40036,City of Tallahassee,Full Reporter,DR,PT,FL,true,false,1 Days,2.5
+,40036,City of Tallahassee,Full Reporter,DR,TX,FL,true,false,1 Days,2.5
+,40037,"Board of County Commissioners, Palm Beach County",Full Reporter,DR,PT,FL,false,true,1 Days,3.5
+,40038,"Escambia County Board of County Commissioners, FL",Full Reporter,DR,DO,FL,true,true,1 Days,2.5
+,40038,"Escambia County Board of County Commissioners, FL",Full Reporter,DR,PT,FL,true,false,1 Days,2.5
+,40040,Jacksonville Transportation Authority,Full Reporter,DR,PT,FL,true,true,1 Days,3
+,40041,Hillsborough Area Regional Transit Authority,Full Reporter,DR,DO,FL,true,false,1 Days,4
+,40041,Hillsborough Area Regional Transit Authority,Full Reporter,DR,TX,FL,true,false,1 Days,4
+,40042,Birmingham-Jefferson County Transit Authority,Full Reporter,DR,DO,AL,true,true,1 Hours,2
+,40042,Birmingham-Jefferson County Transit Authority,Full Reporter,DR,PT,AL,true,false,1 Hours,1.5
+,40043,City of Mobile,Full Reporter,DR,DO,AL,true,true,1 Days,2.5
+,40044,City of Montgomery,Full Reporter,DR,DO,AL,true,false,1 Days,4
+,40045,Tuscaloosa County Parking and Transit Authority,Reduced Reporter,DR,DO,AL,true,true,1 Days,2
+,40046,Sarasota County,Full Reporter,DR,PT,FL,true,true,0 Hours,3
+,40047,Athens-Clarke County Unified Government,Full Reporter,DR,DO,GA,true,false,1 Days,0
+,40049,City of Gadsden,Reduced Reporter,DR,DO,AL,true,false,1 Days,2
+,40051,Town of Chapel Hill,Full Reporter,DR,DO,NC,true,false,1 Days,0
+,40053,Greenville Transit Authority,Full Reporter,DR,DO,SC,true,false,1 Days,1.5
+,40054,City of Johnson City,Reduced Reporter,DR,DO,TN,true,true,1 Days,2
+,40055,City of Bristol Tennessee,Reduced Reporter,DR,DO,TN,true,true,1 Days,0.6
+,40056,Pee Dee Regional Transportation Authority,Full Reporter,DR,DO,SC,true,true,1 Days,0
+,40057,Jackson Transit Authority,Full Reporter,DR,DO,TN,true,true,1 Days,2.5
+,40058,City of Rome,Full Reporter,DR,DO,GA,true,false,1 Days,2.25
+,40060,City of Hattiesburg,Reduced Reporter,DR,DO,MS,true,true,1 Days,0.5
+,40063,Brevard Board of County Commissioners,Full Reporter,DR,DO,FL,true,true,1 Days,1.5
+,40064,East Alabama Regional Planning and Development Commission,Reduced Reporter,DR,PT,AL,true,true,1 Days,1
+,40068,Northwest Alabama Council of Local Governments,Reduced Reporter,DR,DO,AL,true,false,1 Days,3
+,40071,"City of Huntsville, Alabama",Full Reporter,DR,DO,AL,true,false,1 Days,2
+,40073,Lee-Russell Council of Governments,Reduced Reporter,DR,DO,AL,true,true,1 Days,0
+,40074,Pasco County Board of County Commissioners,Full Reporter,DR,DO,FL,true,true,1 Days,3
+,40078,Cobb County,Full Reporter,DR,PT,GA,true,false,1 Days,4
+,40080,City of Kingsport,Reduced Reporter,DR,DO,TN,true,false,0 Hours,2
+,40082,County of Douglas,Full Reporter,DR,DO,GA,true,false,1 Hours,0
+,40082,County of Douglas,Full Reporter,DR,PT,GA,true,false,1 Days,1
+,40086,Metropolitan Bus Authority,Full Reporter,DR,DO,PR,true,false,1 Days,1.5
+,40087,City of Durham,Full Reporter,DR,PT,NC,true,false,1 Days,0
+,40087,City of Durham,Full Reporter,DR,TN,NC,true,false,1 Days,0
+,40092,City of Clarksville,Reduced Reporter,DR,DO,"KY,TN",true,false,1 Days,2.5
+,40093,City of Greensboro,Full Reporter,DR,PT,NC,true,true,1 Days,2.5
+,40094,Alternativa de Transporte Integrado,Full Reporter,DR,PT,PR,true,false,1 Days,0
+,40095,City of Greenville,Reduced Reporter,DR,PT,NC,true,false,7 Hours,0
+,40096,City of Rocky Mount,Reduced Reporter,DR,PT,NC,true,true,1 Days,7
+,40097,"Council on Aging of St. Lucie, Inc.",Reduced Reporter,DR,DO,FL,true,false,2 Days,0
+,40100,Santee Wateree Regional Transportation Authority,Full Reporter,DR,DO,SC,true,false,2 Days,1
+,40102,Waccamaw Regional Transportation Authority,Full Reporter,DR,DO,SC,true,false,1 Days,2
+,40103,Southeast Alabama Regional Planning and Development Commission,Reduced Reporter,DR,DO,AL,true,false,1 Days,3
+,40103,Southeast Alabama Regional Planning and Development Commission,Reduced Reporter,DR,PT,AL,true,false,1 Days,0
+,40103,Southeast Alabama Regional Planning and Development Commission,Reduced Reporter,DR,TX,AL,true,false,1 Days,0
+,40104,Indian River County,Full Reporter,DR,PT,FL,true,false,1 Days,0
+,40108,Research Triangle Regional Public Transportation Authority,Full Reporter,DR,DO,NC,false,false,1 Days,5
+,40110,Charleston Area Regional Transportation Authority,Full Reporter,DR,PT,SC,true,false,1 Days,4
+,40110,Charleston Area Regional Transportation Authority,Full Reporter,DR,TN,SC,true,false,1 Hours,5
+,40114,Municipality of Aguada,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40115,Municipality of Caguas,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40117,Municipality of Vega Baja,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40121,Municipality of Hormigueros,Reduced Reporter,DR,DO,PR,true,true,1 Days,0
+,40122,Municipality of Cayey,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40123,Municipality of Gurabo,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40124,Municipality of Cidra,Reduced Reporter,DR,DO,PR,true,true,7 Days,0
+,40125,Municipality of Carolina,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40126,Municipality of Humacao,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40128,Okaloosa County Board of County Commissioners,Full Reporter,DR,PT,FL,true,false,1 Days,3
+,40129,Charlotte County Government,Full Reporter,DR,PT,FL,true,false,2 Hours,0
+,40130,Macon-Bibb County Transit Authority,Reduced Reporter,DR,DO,GA,true,true,1 Days,2.5
+,40131,Davidson County,Reduced Reporter,DR,PT,NC,true,false,1 Days,0
+,40132,Goldsboro-Wayne Transportation Authority,Reduced Reporter,DR,DO,NC,true,true,1 Days,2
+,40133,Guilford County,Reduced Reporter,DR,DO,NC,true,true,1 Days,2.5
+,40137,Municipality of Bayamon,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40138,Gwinnett County Board of Commissioners,Full Reporter,DR,PT,GA,true,true,0 Hours,3
+,40140,Collier County,Full Reporter,DR,PT,FL,true,false,1 Days,3
+,40141,Central Midlands Regional Transportation Authority,Full Reporter,DR,PT,SC,true,true,1 Days,4
+,40143,Town of Cary,Reduced Reporter,DR,PT,NC,true,true,1 Days,0
+,40144,City of Gainesville,Reduced Reporter,DR,DO,GA,true,false,0 Hours,2
+,40145,Municipality of Manati,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40146,Hernando County Board of County Commissioners,Reduced Reporter,DR,PT,FL,true,true,1 Days,2.5
+,40150,Municipality of Barceloneta,Reduced Reporter,DR,DO,PR,true,false,2 Hours,0
+,40151,Municipality of Hatillo,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40155,"St Johns County, Florida",Reduced Reporter,DR,DO,FL,true,false,1 Days,2
+,40158,Lake County Board of County Commissioners,Full Reporter,DR,PT,FL,true,true,1 Days,2
+,40160,Municipality of Camuy,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40161,Cherokee County Board of Commissioners,Reduced Reporter,DR,DO,GA,true,false,1 Hours,3
+,40162,Franklin Transit Authority,Reduced Reporter,DR,PT,TN,true,false,1 Hours,3
+,40163,Municipality of Catano,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40164,Municipality of Fajardo,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40165,Municipality of Juncos,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40167,City of Concord,Reduced Reporter,DR,PT,NC,true,true,1 Days,2
+,40170,Southeast Tennessee Human Resource Agency,Reduced Reporter,DR,DO,TN,true,false,2 Days,1
+,40171,Knoxville-Knox County Community Action Committee,Full Reporter,DR,DO,TN,true,false,1 Days,2
+,40172,Western Piedmont Regional Transit Authority,Full Reporter,DR,DO,NC,true,false,1 Days,2.5
+,40174,Municipality of Yauco,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40180,University of Georgia,Full Reporter,DR,DO,GA,true,true,1 Days,0
+,40181,Henry County,Reduced Reporter,DR,DO,GA,true,false,1 Days,2
+,40182,Municipality of Toa Baja,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40183,Municipality of San Sebastian,Reduced Reporter,DR,DO,PR,true,true,1 Days,0
+,40184,City of Bowling Green,Reduced Reporter,DR,PT,KY,true,true,1 Days,4
+,40185,Bay County Transportation Planning Organization,Full Reporter,DR,PT,FL,true,true,1 Days,1.5
+,40187,York County Council on Aging,Reduced Reporter,DR,DO,SC,false,true,1 Days,2.5
+,40188,Government of the Virgin Islands,Reduced Reporter,DR,DO,VI,true,false,1 Days,4
+,40190,"East Tennessee Human Resource Agency, Inc.",Reduced Reporter,DR,DO,TN,true,false,1 Days,3
+,40191,Transit Authority of Central Kentucky,Full Reporter,DR,DO,KY,true,false,1 Days,1.75
+,40192,Martin County,Full Reporter,DR,PT,FL,true,false,1 Days,3
+,40193,"City of Hinesville, Georgia",Reduced Reporter,DR,DO,GA,true,false,1 Days,0
+,40194,Municipality of Mayaguez,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40195,Municipality of San Lorenzo,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40197,Municipality of Lares,Reduced Reporter,DR,DO,PR,true,true,1 Days,0
+,40198,Municipality of Dorado,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40199,Autonomous Municipality of Vega Alta,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40201,Municipality of Guaynabo,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40204,Mid-Cumberland Human Resource Agency,Reduced Reporter,DR,DO,TN,false,false,1 Days,3
+,40205,The County of Iredell,Reduced Reporter,DR,DO,NC,true,true,1 Days,1
+,40209,Hoke County,Reduced Reporter,DR,DO,NC,true,false,1 Days,1
+4R06,40210,Craven County,Rural Reporter,DR,DO,NC,true,false,2 Days,3.25
+,40213,Autauga County,Reduced Reporter,DR,DO,AL,true,false,1 Days,4
+,40214,Cabarrus County,Reduced Reporter,DR,DO,NC,true,true,1 Days,3
+,40214,Cabarrus County,Reduced Reporter,DR,PT,NC,true,true,1 Days,3
+,40215,Union County,Reduced Reporter,DR,DO,NC,true,false,48 Hours,0
+,40215,Union County,Reduced Reporter,DR,PT,NC,true,false,48 Hours,0
+,40217,Rowan County,Reduced Reporter,DR,DO,NC,true,true,3 Days,2
+,40220,Pitt County,Reduced Reporter,DR,DO,NC,false,false,1 Days,9
+,40221,Gaston County,Reduced Reporter,DR,DO,NC,true,true,3 Days,6.35
+,40222,Wake County,Full Reporter,DR,PT,NC,true,true,1 Days,4
+,40223,Cumberland County,Reduced Reporter,DR,PT,NC,true,true,1 Days,2.5
+,40224,Buncombe County,Full Reporter,DR,PT,NC,false,true,1 Days,2
+,40225,Alamance County Transportation Authority,Reduced Reporter,DR,DO,NC,true,true,2 Days,0
+4R06,40226,"Mountain Projects, Inc.",Rural Reporter,DR,DO,NC,true,true,2 Days,3
+,40227,Onslow United Transit System,Reduced Reporter,DR,DO,NC,false,false,1 Days,2
+,40228,Mecklenburg County,Full Reporter,DR,DO,NC,true,false,3 Days,1.5
+,40228,Mecklenburg County,Full Reporter,DR,TX,NC,true,false,3 Days,1.5
+,40229,Henderson County,Reduced Reporter,DR,PT,NC,true,false,24 Hours,1.5
+,40231,Orange County,Reduced Reporter,DR,DO,NC,true,true,2 Days,3
+,40233,City of Salisbury,Reduced Reporter,DR,DO,NC,true,false,1 Days,2
+,40234,Autonomous Municipality of Ponce,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40235,"Aiken Area Council on Aging, Inc.",Reduced Reporter,DR,DO,SC,false,true,1 Days,1.25
+,40237,Lancaster County Council on Aging,Reduced Reporter,DR,DO,SC,true,false,3 Days,2
+,40241,City of Miramar,Reduced Reporter,DR,DO,FL,true,false,0 Days,0
+,40244,"Spartanburg Regional Health Services, Inc.",Full Reporter,DR,DO,SC,false,true,1 Days,3
+,40252,City Of Burlington,Reduced Reporter,DR,PT,NC,true,true,1 Hours,1
+,40256,City of Margate,Reduced Reporter,DR,DO,FL,true,false,7 Days,0
+,40265,North Central Alabama Regional Council of Governments,Reduced Reporter,DR,DO,AL,true,false,1 Days,2
+,40268,Municipality of Ciales,Reduced Reporter,DR,DO,PR,true,false,7 Days,0
+,40269,Municipality of Añasco,Reduced Reporter,DR,DO,PR,true,true,2 Days,0
+,40273,Brevard Alzheimer's Foundation Inc.,Reduced Reporter,DR,DO,FL,true,false,7 Days,0
+,40274,Town of Morrisville,Reduced Reporter,DR,PT,NC,true,false,1 Hours,0
+,40276,City of Valdosta,Reduced Reporter,DR,PT,GA,true,true,1 Hours,2
+,40277,Town of Apex,Reduced Reporter,DR,PT,NC,true,false,1 Days,0
+,40279,Municipality of Canovanas,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,40281,Municipality of Lajas,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+4R03,40903,Macon County,Rural Reporter,DR,PT,GA,true,false,1 Days,2
+4R03,40904,Rabun County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R03,40905,Three Rivers Regional Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R01,40907,Blount County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,1.5
+4R03,40908,Heard County,Rural Reporter,DR,DO,GA,true,false,1 Days,1
+4R04,40909,"Middle Kentucky River Area Development Council, Inc.",Rural Reporter,DR,DO,KY,true,false,24 Hours,1
+,40910,Peach County,Reduced Reporter,DR,PT,GA,true,false,1 Days,3
+4R03,40912,Crisp County,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R06,40913,Graham County,Rural Reporter,DR,DO,NC,true,false,1 Days,0
+4R06,40915,Duplin County,Rural Reporter,DR,DO,NC,true,false,2 Days,0
+4R06,40918,Wilkes Transportation Authority,Rural Reporter,DR,DO,NC,true,false,15 Hours,5
+4R02,40920,Ride Solution,Rural Reporter,DR,DO,FL,true,true,1 Days,1
+4R06,40921,Randolph County Senior Adult Association Inc.,Rural Reporter,DR,DO,NC,true,false,3 Days,1
+4R06,40921,Randolph County Senior Adult Association Inc.,Rural Reporter,DR,TX,NC,true,false,3 Days,0
+4R05,40922,"South Central Community Action Agency, Inc.",Rural Reporter,DR,DO,MS,true,false,2 Days,5
+4R02,40923,Liberty County Board of County Commissioners,Rural Reporter,DR,DO,FL,true,true,3 Days,0
+4R03,40924,Warren County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,1.5
+4R03,40925,Pulaski County,Rural Reporter,DR,DO,GA,true,false,1 Days,1
+4R01,40926,Escambia County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,3
+,40928,Baldwin County Commission,Full Reporter,DR,DO,AL,true,false,1 Hours,2.5
+4R06,40929,Rockingham County Council on Aging,Rural Reporter,DR,DO,NC,true,false,3 Days,2
+4R03,40931,Baldwin County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R06,40933,Sampson County,Rural Reporter,DR,DO,NC,true,false,2 Days,2
+4R06,40934,Polk County Transportation Authority,Rural Reporter,DR,DO,NC,true,false,3 Days,3
+4R03,40936,Wilkinson County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R06,40938,"Pender Adult Services, Inc.",Rural Reporter,DR,DO,NC,true,false,2 Days,3
+4R04,40941,"Rural Transit Enterprises Coordinated, Inc.",Rural Reporter,DR,DO,KY,true,false,24 Hours,1
+4R06,40942,Lincoln County,Rural Reporter,DR,DO,NC,true,true,12 Hours,0
+,40943,Community and Senior Services of Johnston County Inc.,Reduced Reporter,DR,DO,NC,true,true,1 Days,6
+4R06,40944,Carteret County,Rural Reporter,DR,DO,NC,true,false,1 Days,3
+4R03,40945,Putnam County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R03,40946,Jones County,Rural Reporter,DR,PT,GA,true,false,1 Days,1
+4R06,40947,Gates County,Rural Reporter,DR,DO,NC,true,false,1 Days,2
+4R04,40948,Bluegrass Community Action Agency,Rural Reporter,DR,DO,KY,true,false,24 Hours,1.75
+,40950,First Tennessee Human Resource Agency,Reduced Reporter,DR,DO,TN,true,false,1 Days,5
+4R03,40951,Burke County,Rural Reporter,DR,DO,GA,true,false,1 Days,4
+4R07,40952,Williamsburg County,Rural Reporter,DR,DO,SC,true,false,1 Days,2
+4R04,40953,"Pennyrile Allied Community Services, Inc.",Rural Reporter,DR,DO,KY,true,false,24 Hours,1.25
+4R08,40954,South Central Tennessee Development District,Rural Reporter,DR,DO,TN,true,false,1 Days,2
+4R05,40955,Hinds County Human Resource Agency,Rural Reporter,DR,DO,MS,true,false,2 Days,5
+4R03,40956,Dodge County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R05,40957,N-Route,Rural Reporter,DR,DO,MS,true,true,2 Days,4
+,40958,Municipality of Orocovis,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+4R06,40959,Washington County,Rural Reporter,DR,DO,NC,true,false,3 Days,1
+4R01,40960,Etowah County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,8
+4R03,40961,Lincoln County,Rural Reporter,DR,DO,GA,true,false,1 Days,2.5
+4R01,40963,Madison County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,10
+4R01,40965,Cullman County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,1
+4R02,40968,Gulf County ARC,Rural Reporter,DR,DO,FL,true,true,1 Days,3
+4R05,40969,Madison County Citizens Services Agency,Rural Reporter,DR,DO,MS,true,false,2 Days,4
+4R04,40971,Licking Valley CAP,Rural Reporter,DR,DO,KY,true,false,72 Hours,6
+4R04,40972,Gateway Community Services Organization,Rural Reporter,DR,DO,KY,true,false,48 Hours,1
+4R07,40974,Bamberg County Office On Aging,Rural Reporter,DR,DO,SC,true,false,2 Days,2
+4R06,40976,Madison County Transportation Authority,Rural Reporter,DR,DO,NC,true,true,1 Days,0
+4R03,40977,Jefferson County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R08,40978,Upper-Cumberland Human Resource Agency,Rural Reporter,DR,DO,TN,true,true,1 Days,1
+4R04,40979,"KY River Foothills Development Council, Inc.",Rural Reporter,DR,DO,KY,true,false,24 Hours,4
+4R01,40982,"H.EL.P., Inc.",Rural Reporter,DR,DO,AL,true,false,1 Days,1
+4R06,40983,Rutherford County,Rural Reporter,DR,DO,NC,true,true,1 Days,0
+4R06,40984,Western Carolina Community Action,Rural Reporter,DR,DO,NC,false,false,2 Days,0
+4R03,40985,Banks County,Rural Reporter,DR,DO,GA,true,false,1 Days,4
+4R01,40986,Dekalb County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,0
+4R05,40987,Copiah County Human Resource Agency,Rural Reporter,DR,DO,MS,true,false,2 Days,0
+4R07,40988,Edgefield County Senior Citizens Council,Rural Reporter,DR,DO,SC,true,false,3 Days,5
+4R08,40989,Southeast Tennessee Human Resource Agency-Rural Division,Rural Reporter,DR,DO,TN,true,false,3 Days,3
+4R06,40990,Martin County,Rural Reporter,DR,DO,NC,true,false,1 Days,0
+4R06,40993,Wilson County,Rural Reporter,DR,PT,NC,true,false,15 Hours,2
+4R03,40994,Habersham County,Rural Reporter,DR,DO,GA,true,false,1 Days,1
+4R06,40996,Caswell County,Rural Reporter,DR,DO,NC,true,false,1 Days,2.5
+4R04,40997,Owen County Fiscal Court,Rural Reporter,DR,DO,KY,true,false,72 Hours,3
+,40999,Sumter County Board of County Commissioners,Reduced Reporter,DR,PT,FL,true,true,2 Days,1
+4R07,41002,Generations Unlimited,Rural Reporter,DR,DO,SC,true,false,1 Days,1.25
+4R07,41003,Fairfield County Transit System,Rural Reporter,DR,DO,SC,true,false,1 Hours,1
+4R06,41004,Chatham Transit Network,Rural Reporter,DR,DO,NC,true,false,2 Days,2
+4R04,41006,Sandy Valley Transportation Services,Rural Reporter,DR,DO,KY,true,false,72 Hours,5
+4R03,41007,Dade County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R03,41008,Jenkins County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R01,41009,City of Guntersville,Rural Reporter,DR,DO,AL,true,false,1 Days,1
+4R06,41010,Person County,Rural Reporter,DR,DO,NC,true,false,19 Hours,2
+4R03,41012,Chattooga County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+,41013,Paducah Transit Authority,Reduced Reporter,DR,DO,"IL,KY",true,true,1 Days,1.75
+4R03,41017,Dooly County,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R03,41019,Troup County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R08,41020,Delta Human Resource Agency,Rural Reporter,DR,DO,TN,true,false,3 Days,2
+4R03,41021,Elbert County,Rural Reporter,DR,DO,GA,true,false,1 Days,12.5
+4R07,41022,Newberry County Council on Aging,Rural Reporter,DR,DO,SC,false,false,3 Days,0
+4R04,41023,Daniel Boone Development Council,Rural Reporter,DR,DO,KY,true,false,24 Hours,6
+4R05,41024,Mississippi Valley State University,Rural Reporter,DR,DO,MS,true,false,2 Days,2
+,41027,Bartow County,Reduced Reporter,DR,DO,GA,true,false,1 Days,1
+4R06,41028,Scotland County,Rural Reporter,DR,DO,NC,true,true,2 Days,0
+4R06,41029,Ashe County Transportation Authority Inc,Rural Reporter,DR,DO,NC,true,false,24 Hours,3
+4R05,41030,Mississippi State University,Rural Reporter,DR,DO,MS,true,true,1 Days,0
+4R06,41031,Greene County,Rural Reporter,DR,DO,NC,true,false,1 Days,0
+4R03,41033,Towns County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R06,41034,"Beaufort County Developmental Center, Inc.",Rural Reporter,DR,DO,NC,true,false,18 Hours,6
+4R03,41035,City of Cedartown,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R02,41037,"Suwannee River Economic Council, Inc.",Rural Reporter,DR,DO,FL,true,true,1 Days,0
+4R06,41038,Hyde County Private Non-Profit Transp. Corp. Inc.,Rural Reporter,DR,DO,NC,true,false,19 Hours,1.25
+4R05,41039,Northeast Mississippi Community Services,Rural Reporter,DR,DO,MS,true,false,2 Days,6
+4R03,41041,Greene County Commission,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R07,41042,McCormick County Senior Center,Rural Reporter,DR,DO,SC,true,false,1 Days,2
+4R06,41043,Mitchell County Transportation Authority,Rural Reporter,DR,DO,NC,true,false,1 Days,5
+4R05,41044,Community Development Inc.,Rural Reporter,DR,DO,MS,true,false,2 Days,3
+4R06,41045,Dare County,Rural Reporter,DR,DO,NC,true,false,2 Days,3
+4R03,41046,Taliaferro County Board of Commissioners,Rural Reporter,DR,DO,GA,true,false,1 Days,2.5
+4R06,41048,Kerr Area Transportation Authority,Rural Reporter,DR,DO,NC,true,false,1 Days,4
+4R02,41050,Suwannee Valley Transit Authority,Rural Reporter,DR,DO,FL,true,true,2 Days,2
+4R05,41051,"Five County Child Development Program, Inc.",Rural Reporter,DR,DO,MS,true,false,2 Days,3
+4R05,41052,City of Oxford,Rural Reporter,DR,DO,MS,true,true,2 Days,0
+4R04,41053,Murray-Calloway County Transit Authority,Rural Reporter,DR,DO,KY,true,false,24 Hours,1
+4R03,41055,McDuffie County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R03,41057,Dawson County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R06,41058,Brunswick Transit System Inc.,Rural Reporter,DR,DO,NC,true,true,2 Days,3
+4R02,41060,City of Key West,Rural Reporter,DR,DO,FL,true,true,1 Hours,2
+4R03,41062,Hancock County,Rural Reporter,DR,DO,GA,true,false,1 Days,2.5
+,41064,Moore County,Reduced Reporter,DR,DO,NC,true,false,2 Days,4
+4R03,41065,Twiggs County,Rural Reporter,DR,PT,GA,true,false,1 Days,2
+4R06,41066,Swain County Focal Point on Aging Inc,Rural Reporter,DR,DO,NC,true,false,1 Days,1
+,41068,Flagler County,Reduced Reporter,DR,DO,FL,true,false,1 Days,2
+4R06,41069,Cherokee County,Rural Reporter,DR,DO,NC,true,false,1 Days,10
+4R03,41074,Glascock County,Rural Reporter,DR,DO,GA,true,false,1 Days,1.5
+4R01,41076,St. Clair County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,2
+4R03,41077,Taylor County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R03,41078,Morgan County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+,41080,Marion County Senior Services,Reduced Reporter,DR,DO,FL,false,true,1 Days,1.2
+4R06,41082,Transp. Administration of Cleveland County. Inc,Rural Reporter,DR,DO,NC,true,false,1 Days,0
+4R01,41084,Alabama Tombigbee Regional Planning Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,5
+4R03,41085,Haralson County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+,41086,Catoosa County,Reduced Reporter,DR,DO,GA,true,false,1 Days,0
+,41088,Forsyth County Board of Commissioners,Reduced Reporter,DR,DO,GA,true,false,0 Hours,3
+4R01,41089,City of Eufaula,Rural Reporter,DR,DO,AL,true,false,1 Days,2
+,41090,"Louisville WHEELS Transportation, Inc",Reduced Reporter,DR,DO,KY,false,true,1 Days,4
+4R02,41091,"Calhoun County Senior Citizens Association, Inc.",Rural Reporter,DR,DO,FL,true,true,1 Days,5
+,41092,Lowcountry Regional Transportation Authority,Reduced Reporter,DR,DO,SC,true,true,1 Days,3.75
+4R04,41094,Northeast KY Area Development Council,Rural Reporter,DR,DO,KY,true,true,2 Hours,5
+4R05,41096,Claiborne County Human Resource Agency,Rural Reporter,DR,DO,MS,true,false,2 Days,2
+4R04,41098,"Harlan County Community Action Agency, Inc.",Rural Reporter,DR,DO,KY,true,false,24 Hours,3
+4R03,41103,Wheeler County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R03,41104,Talbot County,Rural Reporter,DR,DO,GA,true,false,1 Days,5
+,41105,"Audubon Area Community Services, Inc.",Reduced Reporter,DR,DO,KY,false,true,24 Hours,1.1
+4R08,41106,Northwest Tennessee Human Resource Agency,Rural Reporter,DR,DO,TN,true,false,5 Days,1
+4R01,41107,Chilton County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,1.5
+4R03,41108,Lower Chattahoochee Regional Transit Authority,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R06,41111,Albemarle Regional Health Services,Rural Reporter,DR,DO,NC,true,true,2 Days,0
+4R03,41112,Coastal Regional Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,5
+4R06,41113,Anson County,Rural Reporter,DR,DO,NC,true,true,24 Hours,5
+4R06,41115,Transylvania County,Rural Reporter,DR,DO,NC,true,true,1 Days,1
+4R06,41115,Transylvania County,Rural Reporter,DR,TX,NC,true,true,1 Days,0
+,41118,Birmingham Regional Paratransit Consortium,Reduced Reporter,DR,DO,AL,true,true,1 Days,4
+4R06,41119,Harnett County,Rural Reporter,DR,DO,NC,true,false,2 Days,3
+4R04,41120,City of Frankfort,Rural Reporter,DR,DO,KY,true,false,24 Hours,0
+4R05,41121,City of Natchez,Rural Reporter,DR,DO,MS,true,false,2 Days,3
+4R01,41123,Lawrence County Aging-Rural Transit System,Rural Reporter,DR,DO,AL,true,false,1 Days,5
+4R06,41124,Richmond Interagency Transportation Inc.,Rural Reporter,DR,DO,NC,true,false,2 Days,4
+4R01,41125,Covington County,Rural Reporter,DR,DO,AL,true,false,1 Days,2
+4R06,41127,AppalCart,Rural Reporter,DR,DO,NC,true,true,12 Hours,1
+4R01,41129,Pike Area Transit System,Rural Reporter,DR,DO,AL,true,false,1 Days,2
+4R06,41130,Avery County Transportation Authority,Rural Reporter,DR,DO,NC,true,false,1 Days,3
+4R06,41131,Choanoke Public Transportation Authority,Rural Reporter,DR,DO,NC,true,false,1 Days,2
+,41133,Coweta County,Reduced Reporter,DR,DO,GA,true,false,1 Days,3
+4R06,41134,"Yadkin Valley Economic Development District, Inc.",Rural Reporter,DR,DO,NC,true,false,1 Days,3
+4R08,41136,City of Pigeon Forge,Rural Reporter,DR,DO,TN,true,false,0 Days,1
+4R06,41137,Alleghany County,Rural Reporter,DR,DO,NC,true,true,24 Hours,1
+,41138,Whitfield County,Reduced Reporter,DR,DO,GA,true,false,1 Days,4
+4R03,41139,Columbia County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,4.5
+4R03,41140,Clay County,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R03,41142,Wayne County,Rural Reporter,DR,DO,GA,true,false,1 Days,4
+4R06,41143,Yancey County Transportation Authority,Rural Reporter,DR,DO,NC,true,false,1 Days,0.7
+4R03,41144,Hart County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R03,41145,Union County,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R07,41146,Senior Services Incorporated of Chester County,Rural Reporter,DR,DO,SC,true,false,2 Days,2
+4R02,41148,"Wakulla Senior Center, Inc.",Rural Reporter,DR,DO,FL,true,false,2 Days,6
+4R03,41149,City of Americus,Rural Reporter,DR,PT,GA,true,false,1 Days,3.5
+4R06,41150,Lee County,Rural Reporter,DR,DO,NC,true,true,1 Days,5
+4R08,41151,Southwest Human Resource Agency,Rural Reporter,DR,DO,TN,true,false,1 Days,5
+4R02,41153,Big Bend Transit,Rural Reporter,DR,DO,FL,false,false,1 Days,3
+4R03,41154,Jackson County,Rural Reporter,DR,DO,GA,true,false,1 Days,4
+4R03,41156,Wilcox County,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+,41157,County of Citrus,Reduced Reporter,DR,DO,FL,true,false,2 Days,5
+4R03,41158,Lumpkin County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R06,41160,Clay County,Rural Reporter,DR,DO,NC,true,false,2 Days,1
+4R06,41162,Lenoir County,Rural Reporter,DR,DO,NC,true,true,15 Hours,5
+4R04,41165,Central Kentucky Community Action Council,Rural Reporter,DR,DO,KY,true,false,24 Hours,1.75
+4R06,41166,Bladen County,Rural Reporter,DR,DO,NC,true,true,1 Days,1
+4R06,41167,Jackson County,Rural Reporter,DR,DO,NC,true,false,17 Hours,1
+4R03,41168,Wilkes County Commission,Rural Reporter,DR,DO,GA,true,false,1 Days,3
+4R02,41170,Baker Council on Aging,Rural Reporter,DR,DO,FL,true,true,1 Days,0
+4R03,41171,Walker County,Rural Reporter,DR,DO,GA,true,false,1 Days,4
+4R06,41172,Columbus County,Rural Reporter,DR,PT,NC,true,false,16 Hours,3
+4R01,41173,Walker County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,2
+4R03,41176,Crawford County,Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R03,41177,Southwest Georgia RC,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R04,41178,"Leslie, Knott, Letcher & Perry Community Action",Rural Reporter,DR,DO,KY,true,false,24 Hours,5
+4R04,41179,Fulton County Transit Authority,Rural Reporter,DR,DO,KY,true,false,24 Hours,1.75
+4R01,41180,Jackson County,Rural Reporter,DR,DO,AL,true,false,1 Days,5
+4R06,41181,Stanly County,Rural Reporter,DR,DO,NC,true,false,2 Days,1.5
+,41182,Municipality of Comerio,Reduced Reporter,DR,DO,PR,true,false,0 Hours,0
+4R05,41183,"Aaron E. Henry Community Health Services Center, Inc.",Rural Reporter,DR,DO,MS,true,true,2 Days,12
+4R02,41184,Levy County,Rural Reporter,DR,DO,FL,true,true,8 Hours,3
+4R03,41185,Thomas County,Rural Reporter,DR,DO,GA,true,false,1 Days,1
+4R02,41186,"Tri-County Community Council, Inc",Rural Reporter,DR,DO,FL,true,true,1 Days,1
+4R06,41187,Robeson County,Rural Reporter,DR,DO,NC,true,false,1 Days,3
+4R01,41188,Area Referral & Information Services for the Elderly,Rural Reporter,DR,DO,AL,true,false,1 Days,6
+4R03,41190,Paulding County,Rural Reporter,DR,DO,GA,true,false,1 Days,0
+4R06,41191,Macon County,Rural Reporter,DR,DO,NC,true,true,1 Days,2.5
+4R05,41192,"Bolivar County Council On Aging, Inc.",Rural Reporter,DR,DO,MS,true,false,2 Days,2
+4R03,41196,Bleckley County,Rural Reporter,DR,PT,GA,true,false,1 Days,2.5
+4R02,41198,"Jackson County Transportation, Inc.",Rural Reporter,DR,DO,FL,true,true,8 Hours,10
+,41199,Board of County Commissioners of St. Lucie County,Full Reporter,DR,PT,FL,true,false,1 Days,0
+,41200,Municipality of Villalba,Reduced Reporter,DR,DO,PR,true,false,1 Days,0
+,44907,Catawba Indian Nation,Reduced Reporter,DR,DO,SC,true,false,2 Days,0
+,44913,Eastern Band of Cherokee Indians,Reduced Reporter,DR,DO,NC,true,false,1 Hours,1
+,44919,Poarch Band of Creek Indians,Reduced Reporter,DR,DO,AL,true,false,1 Days,0
+,44925,Mississippi Band of Choctaw Indians,Reduced Reporter,DR,DO,MS,true,false,1 Days,1.5
+4R01,44926,West Alabama Rural Public Transportation,Rural Reporter,DR,DO,AL,true,false,1 Days,4
+4R05,44928,"DJ Transit, Inc.",Rural Reporter,DR,DO,MS,true,false,1 Days,2
+4R06,44931,"City of Wilson, NC",Rural Reporter,DR,PT,NC,true,false,0 Days,2.5
+,44932,City of Tamarac,Reduced Reporter,DR,DO,FL,true,true,0 Hours,0
+4R02,44938,Central Florida Regional Planning Council,Rural Reporter,DR,DO,FL,true,true,2 Days,0
+4R04,44939,Carroll County Wellness Transit,Rural Reporter,DR,DO,KY,true,false,72 Hours,0
+4R09,44942,Municipality of Coamo,Rural Reporter,DR,DO,PR,true,false,2 Days,0
+4R03,44945,"North Georgia Community Action, Inc.",Rural Reporter,DR,DO,GA,true,false,1 Days,2
+4R05,44946,"Mount Zion Economic Community Center, Inc.",Rural Reporter,DR,DO,MS,true,true,3 Days,2
+4R05,44948,Noxubee County Human Resource Agency,Rural Reporter,DR,DO,MS,true,true,2 Days,5
+4R01,44949,Macon County Commission,Rural Reporter,DR,DO,AL,true,false,1 Days,5
+,44953,Municipality of Arroyo,Reduced Reporter,DR,DO,PR,true,false,3 Days,0
+4R09,44968,Municipality of Salinas,Rural Reporter,DR,DO,PR,true,false,2 Days,0
+4R06,44977,McDowell Transit,Rural Reporter,DR,DO,NC,true,false,1 Days,2.5
+4R05,44978,"Sunflower-Humphreys Counties Progress, Inc.",Rural Reporter,DR,DO,MS,true,false,2 Days,5
+4R05,44979,"Central Mississippi, Incorporated",Rural Reporter,DR,DO,MS,true,false,2 Days,0
+4R02,44980,Hendry Co. BOCC,Rural Reporter,DR,DO,FL,true,false,2 Days,2
+4R03,44982,Southern Georgia Regional Commission,Rural Reporter,DR,PT,GA,true,false,1 Days,3
+4R05,44983,Philadelphia Transit,Rural Reporter,DR,DO,MS,true,false,1 Days,3
+4R04,44984,City of Henderson KY,Rural Reporter,DR,DO,KY,true,true,24 Hours,1
+4R01,44987,Washington County,Rural Reporter,DR,DO,AL,true,false,1 Days,13
+4R01,44988,City of Fayette,Rural Reporter,DR,DO,AL,true,false,1 Days,4
+,50001,City of Appleton,Full Reporter,DR,PT,WI,true,true,2 Hours,4
+,50002,City of Green Bay,Full Reporter,DR,PT,WI,true,true,0 Hours,2
+,50003,City of Kenosha,Full Reporter,DR,PT,WI,true,false,1 Hours,4
+,50004,City of La Crosse,Full Reporter,DR,PT,"MN,WI",true,true,1 Days,3
+,50005,City of Madison,Full Reporter,DR,TX,WI,true,false,1 Days,3.25
+,50006,"City of Racine, Wisconsin",Full Reporter,DR,DO,WI,true,true,1 Days,4
+,50008,Milwaukee County,Full Reporter,DR,PT,WI,true,false,1 Days,4
+,50009,"City of Oshkosh, Wisconsin",Reduced Reporter,DR,TX,WI,true,true,1 Days,3
+,50010,METRO Regional Transit Authority,Full Reporter,DR,DO,OH,true,true,1 Days,2.5
+,50010,METRO Regional Transit Authority,Full Reporter,DR,PT,OH,true,true,1 Days,2.5
+,50011,Stark Area Regional Transit Authority,Full Reporter,DR,DO,OH,true,false,1 Days,2.25
+,50012,Southwest Ohio Regional Transit Authority,Full Reporter,DR,DO,OH,false,false,1 Days,4.4
+,50013,Red Cliff Band of Lake Superior Chippewa,Reduced Reporter,DR,DO,WI,false,false,1 Hours,1
+,50014,Forest County Potawatomi Community,Reduced Reporter,DR,DO,WI,true,false,1 Days,0
+,50015,The Greater Cleveland Regional Transit Authority,Full Reporter,DR,DO,OH,true,false,1 Days,2.75
+,50015,The Greater Cleveland Regional Transit Authority,Full Reporter,DR,PT,OH,true,false,1 Days,2.75
+,50016,Central Ohio Transit Authority,Full Reporter,DR,DO,OH,false,false,0 Hours,3
+,50016,Central Ohio Transit Authority,Full Reporter,DR,PT,OH,true,true,1 Days,3.5
+,50017,Greater Dayton Regional Transit Authority,Full Reporter,DR,DO,OH,true,true,1 Days,4
+,50019,City of Middletown,Reduced Reporter,DR,DO,OH,true,false,1 Days,0
+,50020,"City of Springfield, Ohio",Reduced Reporter,DR,PT,OH,true,true,0 Hours,2
+,50021,Portage Area Regional Transportation Authority,Full Reporter,DR,DO,OH,true,false,1 Days,6
+,50022,Toledo Area Regional Transit Authority,Full Reporter,DR,DO,OH,true,true,1 Hours,3
+,50022,Toledo Area Regional Transit Authority,Full Reporter,DR,TX,OH,true,false,1 Days,3
+,50024,Western Reserve Transit Authority,Full Reporter,DR,DO,OH,true,true,1 Days,0
+,50025,Duluth Transit Authority,Full Reporter,DR,DO,"MN,WI",true,false,1 Days,3
+,50026,City of Moorhead,Full Reporter,DR,PT,MN,true,true,1 Days,3
+,50028,St. Cloud Metropolitan Transit Commission,Full Reporter,DR,DO,MN,true,false,1 Days,2.5
+,50029,Bay Metropolitan Transit Authority,Full Reporter,DR,DO,MI,true,false,2 Hours,1.5
+,50030,City of Battle Creek,Reduced Reporter,DR,DO,MI,true,true,1 Hours,3
+,50031,Suburban Mobility Authority for Regional Transportation,Full Reporter,DR,DO,MI,true,true,1 Days,3
+,50031,Suburban Mobility Authority for Regional Transportation,Full Reporter,DR,PT,MI,true,true,1 Hours,4.5
+,50032,Mass Transportation Authority,Full Reporter,DR,DO,MI,true,true,1 Days,3.5
+,50032,Mass Transportation Authority,Full Reporter,DR,PT,MI,true,true,1 Days,1
+,50033,Interurban Transit Partnership,Full Reporter,DR,PT,MI,true,true,1 Days,3.5
+,50034,City of Jackson Transportation Authority,Full Reporter,DR,DO,MI,true,true,1 Days,4
+,50035,Central County Transportation Authority,Full Reporter,DR,PT,MI,true,true,0 Hours,12
+,50036,Capital Area Transportation Authority,Full Reporter,DR,DO,MI,true,false,1 Days,2.5
+,50036,Capital Area Transportation Authority,Full Reporter,DR,PT,MI,true,false,0 Hours,2.5
+,50037,County of Muskegon,Reduced Reporter,DR,DO,MI,true,false,1 Days,2
+,50037,County of Muskegon,Reduced Reporter,DR,PT,MI,true,false,0 Hours,4
+,50038,City of Niles,Reduced Reporter,DR,DO,MI,true,false,1 Hours,2
+,50039,Saginaw Transit Authority Regional Service,Full Reporter,DR,DO,MI,true,true,1 Days,2
+,50040,Ann Arbor Area Transportation Authority,Full Reporter,DR,PT,MI,true,true,1 Hours,3
+,50041,City of Anderson,Reduced Reporter,DR,DO,IN,true,false,1 Days,2
+,50042,City of East Chicago,Reduced Reporter,DR,DO,IN,true,false,1 Hours,0
+,50043,City of Evansville,Full Reporter,DR,DO,IN,true,true,1 Days,1.5
+,50043,City of Evansville,Full Reporter,DR,PT,IN,true,false,1 Hours,2
+,50044,Fort Wayne Public Transportation Corporation,Full Reporter,DR,PT,IN,true,true,1 Days,3
+,50045,Gary Public Transportation Corporation,Full Reporter,DR,DO,IN,true,false,1 Days,2.5
+,50047,Bloomington-Normal Public Transit System,Full Reporter,DR,DO,IL,true,false,0 Hours,1.25
+,50050,Indianapolis and Marion County Public Transportation,Full Reporter,DR,PT,IN,true,true,3 Days,3.5
+,50051,Greater Lafayette Public Transportation Corporation,Full Reporter,DR,DO,IN,true,false,1 Days,2
+,50052,South Bend Public Transportation Corporation,Full Reporter,DR,DO,IN,true,false,8 Hours,2
+,50053,City of Terre Haute,Full Reporter,DR,DO,IN,true,true,1 Days,0
+,50054,Muncie Indiana Transit System,Full Reporter,DR,DO,IN,true,false,1 Days,1
+,50056,Greater Peoria Mass Transit District,Full Reporter,DR,PT,IL,true,false,1 Days,2
+,50057,Rock Island County Metropolitan Mass Transit District,Full Reporter,DR,DO,IL,true,false,2 Hours,1
+,50057,Rock Island County Metropolitan Mass Transit District,Full Reporter,DR,PT,IL,true,false,4 Hours,2
+,50058,Rockford Mass Transit District,Full Reporter,DR,DO,IL,false,true,1 Days,3
+,50059,Springfield Mass Transit District,Full Reporter,DR,DO,IL,true,false,1 Days,2.5
+,50060,Champaign-Urbana Mass Transit District,Full Reporter,DR,DO,IL,true,false,1 Days,2
+,50060,Champaign-Urbana Mass Transit District,Full Reporter,DR,PT,IL,true,false,1 Days,2
+,50061,"City of Decatur, Il",Full Reporter,DR,PT,IL,true,false,1 Hours,2
+,50088,City of Sheboygan,Reduced Reporter,DR,DO,WI,true,false,1 Days,3
+,50090,Richland County Transit,Reduced Reporter,DR,PT,OH,true,true,1 Hours,4
+,50091,"City of Wausau, Wisconsin",Reduced Reporter,DR,DO,WI,true,true,1 Days,2.5
+,50092,"City of Rochester, Minnesota",Full Reporter,DR,PT,MN,true,false,1 Days,3
+,50092,"City of Rochester, Minnesota",Full Reporter,DR,TX,MN,true,true,1 Days,3
+,50093,Lima Allen County Regional Transit Authority,Reduced Reporter,DR,DO,OH,true,false,1 Hours,2
+,50095,Lorain County,Reduced Reporter,DR,PT,OH,true,false,1 Hours,9
+,50096,City of Waukesha,Full Reporter,DR,DO,WI,true,false,1 Days,4
+,50098,City of Michigan,Reduced Reporter,DR,DO,IN,true,false,1 Days,2
+,50099,City of Eau Claire,Full Reporter,DR,PT,WI,true,false,1 Days,3.5
+,50103,North Township of Lake County,Reduced Reporter,DR,DO,IN,true,true,14 Days,0
+,50108,City of Janesville,Reduced Reporter,DR,PT,WI,true,false,1 Days,3
+,50109,City of Beloit,Reduced Reporter,DR,PT,"IL,WI",true,true,1 Days,3
+,50110,Bloomington Public Transportation Corporation,Full Reporter,DR,DO,IN,true,true,0 Hours,2
+,50110,Bloomington Public Transportation Corporation,Full Reporter,DR,TN,IN,true,true,0 Hours,2
+,50113,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,DO,IL,true,false,1 Days,3.5
+,50113,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,PT,IL,true,true,1 Days,3.5
+,50113,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,TN,IL,true,true,1 Days,3.5
+,50113,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,TX,IL,true,true,1 Days,3.5
+,50117,Laketran,Full Reporter,DR,DO,OH,true,false,1 Days,2.5
+,50119,City of Detroit,Full Reporter,DR,PT,MI,true,false,1 Days,2.5
+,50131,"Opportunity Enterprises, Inc.",Reduced Reporter,DR,DO,IN,true,false,1 Days,15
+,50132,Twin Cities Area Transportation Authority,Reduced Reporter,DR,DO,MI,true,true,1 Hours,2
+,50133,City of Chippewa Falls,Reduced Reporter,DR,PT,WI,true,false,1 Hours,3
+,50142,Steel Valley Regional Transit Authority,Reduced Reporter,DR,DO,OH,true,false,1 Days,1
+,50145,City of Kokomo,Full Reporter,DR,DO,IN,true,true,1 Days,0
+,50146,Madison County Transit District,Full Reporter,DR,PT,IL,true,true,1 Days,2
+,50148,Blue Water Area Transportation Commission,Full Reporter,DR,DO,MI,true,true,1 Hours,0.8
+,50148,Blue Water Area Transportation Commission,Full Reporter,DR,PT,MI,true,true,1 Days,1.5
+,50149,Michiana Area Council of Governments,Full Reporter,DR,PT,"IN,MI",true,false,1 Days,2
+,50152,City of Onalaska,Reduced Reporter,DR,PT,WI,true,false,0 Hours,4
+,50154,Metropolitan Council,Full Reporter,DR,PT,MN,false,true,0 Hours,3.5
+,50157,Butler County Regional Transit Authority,Full Reporter,DR,DO,OH,true,true,1 Days,5
+,50159,River Valley Metro Mass Transit District,Full Reporter,DR,PT,IL,true,false,1 Days,2
+,50160,County of Washington,Reduced Reporter,DR,PT,WI,true,false,1 Days,7.51
+5R06,50161,Ozaukee County,Rural Reporter,DR,PT,WI,true,true,1 Days,3.5
+,50162,"City of La Porte, Indiana",Reduced Reporter,DR,DO,IN,true,false,1 Days,3.25
+,50163,"Licking County, Ohio",Full Reporter,DR,DO,OH,true,false,2 Hours,4
+,50164,City of Sandusky,Reduced Reporter,DR,PT,OH,true,true,72 Hours,5
+,50165,Greene County Transit Board,Full Reporter,DR,PT,OH,true,false,2 Days,4
+,50166,"Clermont County, Ohio",Full Reporter,DR,DO,OH,true,false,1 Days,2.35
+,50166,"Clermont County, Ohio",Full Reporter,DR,PT,OH,true,false,1 Days,2.35
+,50167,"South Lake County Community Services, Inc.",Reduced Reporter,DR,DO,IN,true,false,2 Days,5
+5R05,50169,"Miami County, Ohio",Rural Reporter,DR,PT,OH,true,false,1 Days,4
+,50171,"Fond du Lac, Wisconsin",Reduced Reporter,DR,PT,WI,true,false,1 Hours,4
+,50171,"Fond du Lac, Wisconsin",Reduced Reporter,DR,TX,WI,true,true,1 Hours,5
+,50174,City of Danville,Reduced Reporter,DR,PT,IL,true,true,1 Days,2
+,50176,City of DeKalb,Full Reporter,DR,PT,IL,true,false,1 Days,1
+,50177,City of Columbus,Reduced Reporter,DR,DO,IN,true,false,1 Hours,0
+,50179,"Porter County Aging and Community Services, Inc.",Reduced Reporter,DR,DO,IN,true,false,2 Days,1
+,50180,Livingston County Board of Commissioners,Reduced Reporter,DR,DO,MI,true,false,1 Hours,2
+,50182,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,PT,IL,false,false,1 Days,3.25
+,50182,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,TN,IL,false,false,1 Days,3.25
+,50182,"Pace, the Suburban Bus Division of the Regional Transportation Authority",Full Reporter,DR,TX,IL,false,false,1 Days,3.25
+,50184,Macatawa Area Express Transportation Authority,Full Reporter,DR,DO,MI,true,false,1 Days,2.3
+,50186,Lawrence County Port Authority,Reduced Reporter,DR,PT,OH,true,false,1 Days,20
+,50194,Boone County Council on Aging,Reduced Reporter,DR,DO,IL,true,false,1 Days,2
+,50195,City of Shelby,Reduced Reporter,DR,DO,OH,true,false,1 Hours,2
+,50196,Harbor Transit Multi-Modal Transportation System,Reduced Reporter,DR,DO,MI,true,false,1 Hours,1.5
+,50198,Medina County,Full Reporter,DR,DO,OH,true,false,1 Days,4
+,50198,Medina County,Full Reporter,DR,TX,OH,true,false,1 Days,4
+,50199,Delaware County Transit Board,Full Reporter,DR,DO,OH,true,false,0 Hours,2
+,50200,County of Warren,Reduced Reporter,DR,PT,OH,true,false,48 Hours,3
+,50201,Hancock County Senior Services,Reduced Reporter,DR,DO,IN,true,false,1 Days,4
+5R06,50202,City of West Bend,Rural Reporter,DR,PT,WI,true,false,1 Hours,5.5
+,50205,City of Mankato,Reduced Reporter,DR,DO,MN,true,false,1 Days,3
+,50207,City of Midland,Reduced Reporter,DR,DO,MI,true,false,1 Hours,2
+,50208,Midland County Board of Commissioners,Reduced Reporter,DR,DO,MI,true,false,1 Days,3
+5R06,50210,City of Hartford,Rural Reporter,DR,DO,WI,true,false,0 Hours,4.25
+5R01,50211,Rides Mass Transit District,Rural Reporter,DR,DO,IL,true,true,1 Days,2.5
+,50215,Voluntary Action Center,Reduced Reporter,DR,DO,IL,true,false,2 Days,1
+5R03,50217,Iosco Transit Corporation,Rural Reporter,DR,DO,MI,true,false,1 Days,2.25
+5R01,50219,City of Ottawa,Rural Reporter,DR,DO,IL,true,false,2 Days,2.5
+5R06,50220,City of Shawano,Rural Reporter,DR,PT,WI,true,true,1 Hours,4.5
+5R01,50221,Bond County,Rural Reporter,DR,PT,IL,true,false,1 Hours,2
+5R01,50223,CRIS Rural Mass Transit District,Rural Reporter,DR,DO,IL,false,false,1 Days,4
+5R03,50224,Caro Transit Authority,Rural Reporter,DR,DO,MI,true,true,1 Days,3
+5R03,50225,Arenac Public Transit Authority,Rural Reporter,DR,DO,MI,true,false,1 Days,2
+5R06,50226,Dunn County Transit Commission,Rural Reporter,DR,DO,WI,true,true,2 Hours,1
+5R03,50227,Shiawassee Area Transportation Agency,Rural Reporter,DR,DO,MI,true,false,1 Hours,9
+5R06,50229,City of Richland Center,Rural Reporter,DR,TX,WI,true,true,1 Hours,3.5
+5R02,50230,"Boone County Senior Services, Inc.",Rural Reporter,DR,DO,IN,true,false,0 Hours,4
+5R04,50231,Rainbow Rider Transit Board,Rural Reporter,DR,DO,MN,true,false,1 Hours,2
+5R01,50232,City of Macomb,Rural Reporter,DR,DO,IL,true,false,1 Days,2
+5R03,50233,Thunderbay Transportation Authority,Rural Reporter,DR,DO,MI,true,false,1 Days,1.5
+5R01,50234,Carroll County,Rural Reporter,DR,PT,IL,true,false,1 Days,10
+5R06,50235,City of Monroe,Rural Reporter,DR,PT,WI,true,false,1 Hours,4.25
+5R01,50237,Rock Island County,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+5R06,50239,City of Black River Falls,Rural Reporter,DR,PT,WI,true,false,1 Hours,7
+5R03,50240,Schoolcraft Transit Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,2
+5R03,50241,Eastern Upper Peninsula Transportation Authority,Rural Reporter,DR,DO,MI,true,false,2 Days,4.8
+5R03,50242,Roscommon County Transportation Authority,Rural Reporter,DR,DO,MI,true,false,2 Hours,2
+5R03,50244,Isabella County Transportation Commission,Rural Reporter,DR,DO,MI,true,false,0 Hours,2
+5R02,50246,Marshall County Council on Aging,Rural Reporter,DR,DO,IN,true,false,0 Hours,2.5
+5R02,50248,Steuben County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,4
+5R02,50249,City of Richmond,Rural Reporter,DR,DO,IN,true,true,0 Hours,1.75
+5R01,50252,Macoupin County,Rural Reporter,DR,DO,IL,true,false,1 Days,5
+5R01,50253,Grundy County,Rural Reporter,DR,DO,IL,true,false,1 Hours,4
+5R05,50255,Carroll County Transit,Rural Reporter,DR,DO,OH,true,false,1 Days,4
+,50256,Access Johnson County,Reduced Reporter,DR,DO,IN,true,false,1 Days,6
+5R06,50257,City of Marshfield,Rural Reporter,DR,PT,WI,true,true,1 Hours,5
+5R01,50258,City of Quincy,Rural Reporter,DR,DO,IL,true,true,1 Days,1
+5R03,50260,Eaton County Transportation Authority,Rural Reporter,DR,DO,MI,true,true,1 Days,2
+5R04,50262,"Morris, City of",Rural Reporter,DR,DO,MN,true,false,1 Hours,1.5
+5R01,50263,Bureau County,Rural Reporter,DR,PT,IL,true,false,1 Days,4
+5R03,50265,"Marshall, City of",Rural Reporter,DR,DO,MI,true,false,2 Hours,3
+5R06,50266,City of Viroqua,Rural Reporter,DR,PT,WI,true,false,1 Hours,2.75
+5R03,50268,City of Hillsdale,Rural Reporter,DR,DO,MI,true,false,0 Hours,3
+5R01,50269,Champaign County,Rural Reporter,DR,PT,IL,true,false,2 Days,2
+5R02,50272,Madison County Council of Governments,Rural Reporter,DR,DO,IN,true,false,2 Days,4
+5R05,50275,Knox Area Transit,Rural Reporter,DR,DO,OH,true,false,1 Hours,1
+5R02,50276,Four Rivers Resource Services,Rural Reporter,DR,DO,IN,true,false,1 Days,4
+5R06,50277,Village of Plover,Rural Reporter,DR,PT,WI,true,false,1 Hours,2
+5R05,50278,Athens Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,1
+5R02,50280,Rush County Senior Services,Rural Reporter,DR,DO,IN,true,false,1 Days,2
+5R02,50281,Cass County Transportation,Rural Reporter,DR,DO,IN,true,false,0 Hours,2
+5R03,50282,Kalkaska Public Transit Authority,Rural Reporter,DR,DO,MI,true,false,2 Hours,2
+5R01,50283,Warren County,Rural Reporter,DR,DO,IL,true,false,2 Hours,1
+5R05,50284,Champaign Transit System,Rural Reporter,DR,DO,OH,true,false,1 Days,2
+5R03,50285,Cheboygan County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,0 Hours,4
+5R06,50286,Grant County,Rural Reporter,DR,DO,WI,true,false,1 Days,2
+5R02,50289,Cardinal Services,Rural Reporter,DR,DO,IN,true,false,1 Days,3
+5R06,50290,City of Ripon,Rural Reporter,DR,PT,WI,true,false,1 Hours,4.75
+5R06,50291,Village of Prairie du Sac,Rural Reporter,DR,TX,WI,true,false,1 Hours,4.5
+5R05,50292,Bowling Green Transit,Rural Reporter,DR,DO,OH,true,false,1 Hours,4
+5R06,50295,Rusk County Transit Commission,Rural Reporter,DR,DO,WI,true,false,1 Hours,1.5
+5R04,50297,Kanabec County,Rural Reporter,DR,DO,MN,true,false,1 Days,3
+5R05,50298,Ottawa County Transportation Agency,Rural Reporter,DR,DO,OH,true,false,0 Hours,4
+5R01,50301,Henry County,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+5R06,50303,City of River Falls,Rural Reporter,DR,PT,WI,true,false,1 Hours,2.75
+5R01,50304,Fulton County,Rural Reporter,DR,PT,IL,true,false,1 Days,1
+5R02,50305,LaGrange County Council on Aging,Rural Reporter,DR,DO,IN,true,false,2 Days,5
+5R02,50307,LifeStream Services,Rural Reporter,DR,DO,IN,true,false,0 Hours,2
+5R02,50308,Area 10 Council on Aging of Monroe County,Rural Reporter,DR,DO,IN,true,false,3 Days,3
+5R03,50310,Cass County Transportation Authority,Rural Reporter,DR,PT,MI,true,false,1 Days,5.5
+5R03,50313,Charlevoix County Board of Commissioners,Rural Reporter,DR,DO,MI,true,true,0 Hours,2
+,50314,Clinton Area Transit System,Full Reporter,DR,DO,MI,true,false,0 Hours,2
+5R01,50315,Shawnee Mass Transit District,Rural Reporter,DR,DO,IL,true,false,1 Days,2
+5R05,50316,Wilmington Transit System,Rural Reporter,DR,DO,OH,true,false,0 Hours,2
+5R06,50318,City of Baraboo,Rural Reporter,DR,PT,WI,true,false,1 Hours,6
+5R06,50319,City of Watertown,Rural Reporter,DR,PT,WI,true,false,1 Hours,4
+5R04,50321,Volunteer Interfaith Network Effort,Rural Reporter,DR,DO,MN,true,false,1 Days,5
+5R04,50322,"Brainerd, City of",Rural Reporter,DR,DO,MN,true,false,3 Hours,3
+5R02,50324,LifeTime Resources,Rural Reporter,DR,DO,IN,true,false,0 Hours,3
+5R01,50327,South Central Illinois Mass Transit District,Rural Reporter,DR,DO,IL,true,false,1 Days,1
+5R01,50328,Kankakee County,Rural Reporter,DR,PT,IL,true,false,0 Hours,2
+5R01,50329,Woodford County,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+5R02,50330,DeKalb County Council on Aging,Rural Reporter,DR,DO,IN,true,false,0 Hours,5
+5R04,50334,"Prairie Five CAC, Inc.",Rural Reporter,DR,DO,MN,true,false,3 Hours,2
+5R03,50335,Greater Lapeer Transportation Authority,Rural Reporter,DR,DO,MI,true,false,2 Hours,1.5
+5R06,50336,City of Waupaca,Rural Reporter,DR,PT,WI,true,false,1 Hours,5
+5R03,50337,Branch Area Transit Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,1.3
+5R01,50338,McLean County,Rural Reporter,DR,PT,IL,true,false,0 Hours,0
+5R01,50339,Monroe Randolph Transit District,Rural Reporter,DR,DO,IL,true,false,1 Days,6
+5R03,50340,Otsego County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,0 Hours,4
+5R05,50341,South East Area Transit,Rural Reporter,DR,DO,OH,true,false,0 Days,2
+5R05,50341,South East Area Transit,Rural Reporter,DR,PT,OH,true,false,0 Days,2
+,50342,Hendricks County Sycamore Services,Full Reporter,DR,DO,IN,true,false,1 Days,4
+5R05,50343,Perry County Transit,Rural Reporter,DR,DO,OH,true,false,1 Days,2
+5R03,50344,Ogemaw County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,24 Hours,1.5
+5R01,50345,Effingham County,Rural Reporter,DR,PT,IL,true,false,0 Hours,3
+5R03,50346,Sanilac County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,24 Hours,3
+5R02,50347,Blue River Services,Rural Reporter,DR,DO,IN,true,false,0 Hours,2
+5R04,50349,"Winona, City of",Rural Reporter,DR,DO,MN,true,false,1 Days,2
+5R06,50350,City of Waupun,Rural Reporter,DR,PT,WI,true,false,1 Hours,4
+5R01,50352,Kendall County,Rural Reporter,DR,PT,IL,true,false,2 Days,3
+5R04,50353,"Tri-Valley Opportunity Council, Inc.",Rural Reporter,DR,DO,MN,true,false,3 Hours,2
+5R02,50354,City of Huntingburg,Rural Reporter,DR,DO,IN,true,false,0 Hours,1.5
+5R03,50355,Barry County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,2 Hours,1
+5R03,50356,Delta Area Transit Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,2
+5R02,50358,City of New Castle,Rural Reporter,DR,DO,IN,true,false,0 Hours,0
+5R06,50359,City of Stevens Point,Rural Reporter,DR,DO,WI,true,true,1 Days,1.25
+5R06,50360,City of New Richmond,Rural Reporter,DR,PT,WI,true,false,1 Hours,3
+5R02,50361,Huntington County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,4
+5R05,50363,Scioto County/Access Scioto County,Rural Reporter,DR,DO,OH,true,false,1 Days,1
+5R01,50364,Jo Daviess County,Rural Reporter,DR,DO,IL,true,false,1 Days,1
+5R02,50365,Area IV Agency on Aging and Community Action Programs,Rural Reporter,DR,DO,IN,true,false,2 Days,5
+5R06,50366,Door County,Rural Reporter,DR,DO,WI,true,false,1 Hours,7
+5R06,50366,Door County,Rural Reporter,DR,TX,WI,true,false,1 Hours,2
+5R03,50369,Manistee County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,1 Hours,2
+5R03,50370,Huron County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,0 Hours,2.5
+5R03,50371,Ontonagon County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,0 Hours,1
+5R03,50374,Cadillac/Wexford Transit Authority,Rural Reporter,DR,DO,MI,true,false,0 Hours,3
+5R06,50375,City of Whitewater,Rural Reporter,DR,PT,WI,true,false,1 Hours,3.25
+5R05,50377,Hancock Area Transportation Services,Rural Reporter,DR,DO,OH,true,true,0 Hours,2
+5R04,50379,Becker County,Rural Reporter,DR,DO,MN,true,false,1 Hours,1.5
+5R05,50382,Ashland Public Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,3
+5R03,50383,Van Buren County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,24 Hours,0
+5R04,50384,Brown County,Rural Reporter,DR,DO,MN,true,false,1 Days,1.5
+5R01,50385,Hancock County,Rural Reporter,DR,DO,IL,true,false,1 Days,2.5
+5R03,50386,City of Houghton,Rural Reporter,DR,DO,MI,true,false,1 Hours,2
+5R02,50387,Union County Council on Aging,Rural Reporter,DR,DO,IN,true,false,2 Days,1
+5R05,50388,Marion Area Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,1.25
+5R02,50389,Orange County First Chance Center,Rural Reporter,DR,DO,IN,true,false,3 Days,4
+5R05,50390,Ashtabula County Transportation System,Rural Reporter,DR,PT,OH,true,false,1 Days,2
+5R06,50391,City of Edgerton,Rural Reporter,DR,PT,WI,true,false,1 Hours,3.5
+5R02,50392,YMCA of Vincennes,Rural Reporter,DR,DO,IN,true,false,1 Days,3
+5R04,50394,Trailblazer Joint Powers Board,Rural Reporter,DR,DO,MN,true,false,1 Hours,2
+5R03,50395,Gladwin County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,1 Hours,3
+5R06,50396,City of Jefferson,Rural Reporter,DR,PT,WI,true,true,1 Hours,4
+5R04,50397,Hubbard County,Rural Reporter,DR,DO,MN,true,false,3 Hours,1.5
+5R03,50398,City of Belding,Rural Reporter,DR,DO,MI,true,false,0 Hours,3
+5R06,50400,City of Fort Atkinson,Rural Reporter,DR,PT,WI,true,false,1 Hours,5
+5R06,50401,Bay Area Rural Transit Commission,Rural Reporter,DR,DO,WI,true,true,1 Days,2
+5R02,50403,Wells County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,2
+5R03,50404,City of Greenville,Rural Reporter,DR,DO,MI,true,false,0 Hours,3.5
+5R06,50405,City of Wisconsin Rapids,Rural Reporter,DR,PT,WI,true,true,1 Hours,3.5
+,50406,Lancaster Public Transit System,Reduced Reporter,DR,DO,OH,true,false,1 Hours,2
+5R02,50407,City of Bedford,Rural Reporter,DR,DO,IN,true,false,1 Days,0
+5R03,50408,"Hancock, City of",Rural Reporter,DR,DO,MI,true,false,0 Hours,2.5
+5R06,50409,Clintonville Transit Commission,Rural Reporter,DR,PT,WI,true,false,1 Hours,3
+5R05,50410,Fayette County Transportation Program,Rural Reporter,DR,DO,OH,true,false,0 Hours,2
+5R01,50411,Logan County,Rural Reporter,DR,PT,IL,true,false,0 Hours,0
+5R01,50412,City of Freeport,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+,50413,Bay Area Transportation Authority,Full Reporter,DR,DO,MI,true,false,1 Days,6
+5R01,50414,West Central Mass Transit District,Rural Reporter,DR,DO,IL,true,false,1 Days,2
+5R05,50415,Greenville Transit System,Rural Reporter,DR,DO,OH,true,false,0 Hours,4
+5R03,50416,Mecosta Osceola Transit Authority,Rural Reporter,DR,DO,MI,true,true,1 Days,2
+5R06,50418,City of Tomah,Rural Reporter,DR,PT,WI,true,false,1 Hours,4.25
+5R01,50420,Tazewell County,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+5R05,50421,Morgan County Transit,Rural Reporter,DR,DO,OH,true,false,2 Days,1
+5R02,50422,Noble County Council on Aging,Rural Reporter,DR,DO,IN,true,false,2 Days,4
+5R01,50425,Piatt County,Rural Reporter,DR,DO,IL,true,false,1 Days,4
+5R03,50427,Marquette County Transit Authority,Rural Reporter,DR,DO,MI,true,true,1 Days,2.6
+5R04,50428,Semcac,Rural Reporter,DR,DO,MN,true,false,1 Days,2
+5R05,50429,Chillicothe Transit System,Rural Reporter,DR,DO,OH,true,false,0 Hours,0
+5R04,50430,"Fosston, City of",Rural Reporter,DR,DO,MN,true,false,3 Hours,1
+5R06,50431,City of Platteville,Rural Reporter,DR,PT,WI,true,true,1 Hours,5
+5R06,50432,County of Kenosha,Rural Reporter,DR,PT,WI,true,false,1 Days,5
+5R05,50433,Great Lakes Community Action Partnership,Rural Reporter,DR,DO,OH,true,false,0 Hours,2
+5R05,50434,Pickaway Area Rural Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,3
+5R06,50435,City of Lake Mills,Rural Reporter,DR,PT,WI,true,false,1 Hours,3
+5R03,50436,St. Joseph County Transportation Authority,Rural Reporter,DR,DO,MI,true,false,1 Days,8
+5R03,50437,City of Big Rapids,Rural Reporter,DR,DO,MI,true,false,0 Hours,2.5
+5R05,50438,Logan Transit System,Rural Reporter,DR,DO,OH,true,false,0 Hours,2
+5R05,50440,Seneca-Crawford Area Transportation,Rural Reporter,DR,DO,OH,true,false,2 Days,2
+5R02,50441,Living Wells in Wabash County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,2
+5R02,50444,White County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,0
+5R04,50446,Wadena County,Rural Reporter,DR,DO,MN,true,false,2 Hours,1.5
+5R01,50447,Coles County,Rural Reporter,DR,PT,IL,true,false,1 Hours,4
+5R04,50448,Watonwan County,Rural Reporter,DR,DO,MN,true,false,1 Days,1.5
+5R04,50450,"Cedar Valley Services, Inc.",Rural Reporter,DR,DO,MN,true,false,1 Days,2.5
+5R03,50452,Antrim County Board of Commissioners,Rural Reporter,DR,DO,MI,true,false,1 Days,1.5
+5R03,50453,Clare County Transit Corporation,Rural Reporter,DR,DO,MI,true,false,0 Hours,3
+5R02,50454,Miami County YMCA,Rural Reporter,DR,DO,IN,true,false,1 Days,3
+5R03,50455,Gogebic County Transit,Rural Reporter,DR,DO,MI,true,false,1 Hours,1.5
+5R03,50456,County of Allegan,Rural Reporter,DR,PT,MI,true,false,1 Days,2
+5R03,50457,Benzie Transportation Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,3
+5R01,50458,Whiteside County,Rural Reporter,DR,PT,IL,true,false,2 Hours,0
+5R03,50459,Ludington Mass Transportation Authority,Rural Reporter,DR,DO,MI,true,false,0 Hours,1
+5R06,50461,City of Manitowoc,Rural Reporter,DR,PT,WI,true,true,1 Days,1.5
+5R05,50462,Harrison County Rural Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,2
+5R03,50463,Berrien County Board of Commissioners,Rural Reporter,DR,PT,MI,true,false,1 Days,6
+5R05,50464,Pike County/Community Action Transit System,Rural Reporter,DR,DO,OH,true,false,1 Hours,1
+5R06,50466,City of Beaver Dam,Rural Reporter,DR,PT,WI,true,false,1 Hours,4
+5R02,50468,Whitley County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,6
+5R06,50470,City of Portage,Rural Reporter,DR,PT,WI,true,false,1 Hours,5.5
+5R04,50471,"Southwestern MN Opportunity Council, Inc.",Rural Reporter,DR,DO,MN,true,false,3 Hours,2.5
+5R03,50473,Lenawee Public Transportation Authority,Rural Reporter,DR,PT,MI,true,false,1 Hours,3
+5R04,50474,"Tri-County Action Program, Inc.",Rural Reporter,DR,DO,MN,true,false,3 Hours,2
+5R03,50476,Yates Township,Rural Reporter,DR,DO,MI,true,false,1 Hours,0.75
+5R06,50478,City of Marinette,Rural Reporter,DR,TX,"MI,WI",true,false,1 Hours,5
+5R05,50481,Columbiana County/Community Action Rural Transit System,Rural Reporter,DR,DO,OH,true,false,0 Days,1
+5R06,50482,City of Prairie du Chien,Rural Reporter,DR,PT,"IA,WI",true,false,1 Hours,4
+5R02,50483,Franklin County Senior Services,Rural Reporter,DR,DO,IN,true,false,1 Days,2.5
+5R02,50484,Fulton County Council on Aging,Rural Reporter,DR,DO,IN,true,false,0 Hours,2
+5R02,50485,City of Marion,Rural Reporter,DR,DO,IN,true,true,1 Days,0
+5R03,50487,City of Sault Sainte Marie,Rural Reporter,DR,DO,MI,true,false,1 Days,4
+5R04,50489,Paul Bunyan Transit,Rural Reporter,DR,DO,MN,true,false,3 Hours,1.5
+5R06,50490,City of Reedsburg,Rural Reporter,DR,PT,WI,true,false,1 Hours,4.5
+5R06,50491,City of Medford,Rural Reporter,DR,PT,WI,true,false,1 Hours,2.75
+5R03,50492,City of Alma,Rural Reporter,DR,DO,MI,true,false,0 Hours,2
+5R02,50493,West Central Indiana Economic Development District,Rural Reporter,DR,DO,IN,true,false,0 Hours,0
+5R03,50494,City of Dowagiac,Rural Reporter,DR,PT,MI,true,false,0 Hours,4
+5R03,50495,Interurban Transit Authority,Rural Reporter,DR,DO,MI,true,false,0 Hours,1
+5R01,50496,Shelby County,Rural Reporter,DR,PT,IL,true,false,0 Hours,3
+5R05,50497,Shelby Public Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,2.5
+5R02,50499,Paul Philippe Resource Center,Rural Reporter,DR,DO,IN,true,false,1 Days,8
+5R02,50501,City of Seymour,Rural Reporter,DR,DO,IN,true,false,1 Days,2
+5R01,50502,City of Galesburg,Rural Reporter,DR,DO,IL,true,true,2 Days,1
+5R03,50503,Crawford County Transportation Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,1
+5R04,50504,Productive Alternatives,Rural Reporter,DR,DO,MN,true,false,1 Hours,2
+5R06,50505,City of Merrill,Rural Reporter,DR,DO,WI,true,false,1 Hours,2
+5R06,50506,City of Berlin,Rural Reporter,DR,PT,WI,true,true,1 Hours,3
+5R06,50507,Sawyer County/LCO Transit Commission,Rural Reporter,DR,DO,WI,true,true,1 Days,3
+5R04,50510,"Three Rivers Community Action, Inc.",Rural Reporter,DR,DO,MN,true,false,1 Days,2.5
+5R03,50511,ALTRAN Transit Authority,Rural Reporter,DR,DO,MI,true,false,1 Hours,3
+5R06,50513,City of Mauston,Rural Reporter,DR,PT,WI,true,false,1 Hours,3.75
+5R03,50514,City of Ionia,Rural Reporter,DR,DO,MI,true,false,0 Hours,1.5
+,50516,City of Plymouth,Full Reporter,DR,PT,MN,true,false,0 Hours,3
+,50517,City of Maple Grove,Full Reporter,DR,PT,MN,true,false,1 Hours,3
+,50518,SouthWest Transit,Full Reporter,DR,PT,MN,true,false,0 Hours,5
+,50519,Minnesota Valley Transit Authority,Full Reporter,DR,PT,MN,true,false,3 Hours,3
+5R04,50520,"Arrowhead Economic Opportunity Agency, Inc.",Rural Reporter,DR,DO,MN,true,false,1 Hours,3
+,50522,Lake Erie Transportation Commission,Full Reporter,DR,DO,"MI,OH",true,true,2 Hours,1
+,50523,Sault Ste. Marie Tribe of Chippewa Indians,Reduced Reporter,DR,DO,MI,true,true,1 Days,0
+,50524,YWCA Madison Inc.,Reduced Reporter,DR,DO,WI,true,true,1 Days,3
+,50525,Hamilton County,Reduced Reporter,DR,PT,IN,true,false,1 Days,3
+,50527,Bloom Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,0
+,50528,Calumet Township,Reduced Reporter,DR,DO,IL,true,true,1 Days,0
+,50530,City of Palos Heights,Reduced Reporter,DR,DO,IL,true,false,2 Hours,2
+,50531,Grant Township,Reduced Reporter,DR,DO,IL,true,false,24 Hours,2
+,50532,Hanover Township,Reduced Reporter,DR,DO,IL,true,true,1 Days,0
+,50533,McHenry Township,Reduced Reporter,DR,DO,IL,true,true,1 Days,0
+,50534,Orland Township,Reduced Reporter,DR,DO,IL,true,false,1 Hours,6
+,50536,Village of Fox Lake,Reduced Reporter,DR,DO,IL,true,true,2 Hours,1
+,50537,Village of Harwood Heights,Reduced Reporter,DR,DO,IL,true,false,1 Hours,0
+,50538,Village of Melrose Park,Reduced Reporter,DR,DO,IL,true,false,1 Days,0
+,50540,Village of River Grove,Reduced Reporter,DR,DO,IL,true,false,2 Days,0
+,50542,Waukegan Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,0
+,50543,Wheeling Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,2
+,50544,Worth Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,3
+,50545,Village of Bellwood,Reduced Reporter,DR,DO,IL,true,false,1 Days,0
+,50546,Moraine Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,4
+,50547,Town of Cicero,Reduced Reporter,DR,DO,IL,true,true,2 Days,0
+,50548,Rich Township,Reduced Reporter,DR,DO,IL,true,true,1 Hours,3
+,50549,Village of Orland Park,Reduced Reporter,DR,DO,IL,true,true,4 Hours,4
+,50550,Village of Orland Hills,Reduced Reporter,DR,DO,IL,true,false,24 Hours,1
+,50551,City of Oak Forest,Reduced Reporter,DR,DO,IL,true,false,1 Hours,0
+,50552,Lemont Township,Reduced Reporter,DR,DO,IL,true,false,2 Days,1
+,50553,Lake Villa Township,Reduced Reporter,DR,DO,IL,true,false,1 Days,1
+,50554,Lisle Township,Reduced Reporter,DR,DO,IL,true,true,2 Days,3
+,50555,Palatine Township,Reduced Reporter,DR,DO,IL,true,true,3 Days,2
+,50556,Washington Township,Reduced Reporter,DR,DO,IL,true,false,2 Days,2
+,50557,Bremen Township,Reduced Reporter,DR,DO,IL,true,true,1 Days,2
+,50559,Village of Forest Park,Reduced Reporter,DR,DO,IL,true,true,1 Days,2
+,50562,Village of Elmwood Park,Reduced Reporter,DR,DO,IL,true,false,1 Days,0
+,50563,Village of Crestwood,Reduced Reporter,DR,DO,IL,true,false,1 Hours,2.25
+,50564,Village of Park Forest,Reduced Reporter,DR,PT,IL,true,false,1 Hours,3
+,50565,City of Berwyn,Reduced Reporter,DR,DO,IL,true,false,5 Days,1
+,50566,Village of Schaumburg,Reduced Reporter,DR,PT,IL,true,true,1 Hours,4
+,50567,City of Palos Hills,Reduced Reporter,DR,DO,IL,true,true,1 Days,2
+,50568,City of Wood Dale,Reduced Reporter,DR,DO,IL,true,false,1 Days,3
+,50570,Maine Township Government,Reduced Reporter,DR,DO,IL,true,false,2 Days,0
+,55222,Grand Portage Reservation Tribal Council,Reduced Reporter,DR,DO,MN,true,false,1 Hours,0
+,55228,Menominee Indian Tribe of Wisconsin,Reduced Reporter,DR,DO,WI,true,true,1 Hours,1.25
+,55234,Red Lake Band of the Chippewa,Reduced Reporter,DR,DO,MN,true,false,1 Hours,1
+,55246,Fond du Lac Reservation,Reduced Reporter,DR,DO,MN,true,false,2 Hours,2
+,55252,Bois Forte Band of Chippewa,Reduced Reporter,DR,DO,MN,true,false,1 Hours,0
+,55258,Leech Lake Band of Ojibwe,Reduced Reporter,DR,DO,MN,true,false,2 Hours,2
+,55276,Oneida Tribe of Indians of Wisconsin,Reduced Reporter,DR,DO,WI,true,false,1 Hours,1.5
+,55300,Lac du Flambeau Band of Lake Superior Chippewa Indians,Reduced Reporter,DR,DO,WI,true,false,0 Hours,0.75
+5R01,55307,Sangamon County,Rural Reporter,DR,DO,IL,true,false,1 Hours,2
+,55308,City of Stoughton,Reduced Reporter,DR,PT,WI,true,false,0 Days,4
+5R02,55310,Kankakee-Iroquois Regional Planning Commission,Rural Reporter,DR,DO,IN,true,false,1 Days,1
+5R01,55313,Marshall County,Rural Reporter,DR,PT,IL,true,false,1 Days,3
+5R04,55314,Central Community Transit Joint Powers Board,Rural Reporter,DR,DO,MN,true,false,1 Days,2
+5R01,55315,Douglas County (Illinois),Rural Reporter,DR,PT,IL,true,false,1 Hours,4
+5R01,55316,Jersey County,Rural Reporter,DR,PT,IL,true,false,1 Days,4
+5R06,55318,County of Walworth,Rural Reporter,DR,PT,WI,true,false,1 Days,6
+5R06,55319,Oneida-Vilas Transit Commission,Rural Reporter,DR,DO,WI,true,false,1 Days,3.25
+5R04,55320,Faribault-Martin Counties Joint Powers,Rural Reporter,DR,DO,MN,true,false,3 Hours,2
+5R03,55321,Peoples Express,Rural Reporter,DR,DO,MI,true,false,3 Days,2
+5R03,55322,Western-Washtenaw Area Value Express,Rural Reporter,DR,DO,MI,true,false,1 Hours,2.5
+,55323,Pioneer Resources,Reduced Reporter,DR,DO,MI,true,true,5 Days,0
+5R04,55325,Minnesota River Valley Transit,Rural Reporter,DR,DO,MN,true,false,1 Days,3
+5R04,55326,"United Community Action Partnership, Inc.",Rural Reporter,DR,DO,MN,true,false,3 Hours,2
+5R03,55440,Key Opportunities,Rural Reporter,DR,DO,MI,true,false,1 Days,20
+5R03,55453,"Chippewa-Luce-Mackinac Community Action Human Resources, Inc",Rural Reporter,DR,DO,MI,true,false,1 Days,4
+5R05,55469,Coshocton County Coordinated Transportation Agency,Rural Reporter,DR,DO,OH,true,false,2 Days,0
+5R05,55474,"FRS Transportation, Inc",Rural Reporter,DR,DO,OH,true,false,1 Days,1
+5R05,55480,Henry County Transportation Network,Rural Reporter,DR,DO,OH,true,false,1 Days,2
+5R05,55491,Morrow County Area Transit,Rural Reporter,DR,DO,OH,true,false,2 Days,2
+5R05,55493,"Preble County Council on Aging, Inc.",Rural Reporter,DR,DO,OH,true,false,1 Days,3
+5R05,55657,Access Tusc,Rural Reporter,DR,DO,OH,true,false,2 Days,3
+5R02,55664,Shelby Senior Services,Rural Reporter,DR,DO,IN,true,false,0 Hours,4
+5R02,55665,Brown County YMCA,Rural Reporter,DR,DO,IN,true,false,1 Days,5
+5R05,55668,Meigs County Public Transit,Rural Reporter,DR,DO,OH,true,false,0 Hours,0
+5R06,55670,City of Hudson,Rural Reporter,DR,PT,WI,true,false,1 Hours,3.5
+5R02,55676,Adams County Council on Aging,Rural Reporter,DR,DO,IN,true,false,1 Days,5
+5R01,55679,Reagan Mass Transit District,Rural Reporter,DR,DO,IL,true,false,1 Days,2
+5R02,55680,"Tipton County Council on Aging, Inc.",Rural Reporter,DR,DO,IN,true,false,1 Days,0
+5R05,55681,City of Wooster,Rural Reporter,DR,PT,OH,true,false,0 Days,1
+5R05,55682,Gallia County Jobs and Family Service,Rural Reporter,DR,DO,OH,true,false,1 Days,0
+5R05,55683,Washington Morgan Community Action,Rural Reporter,DR,DO,OH,true,false,0 Days,1
+,60001,City of Amarillo,Reduced Reporter,DR,DO,TX,true,true,1 Days,2
+,60002,Chickasaw Nation,Reduced Reporter,DR,DO,OK,true,false,1 Days,2
+,60003,Choctaw Nation of Oklahoma,Reduced Reporter,DR,DO,OK,true,false,5 Days,0
+,60004,Citizen Potawatomi Nation,Reduced Reporter,DR,DO,OK,true,false,24 Hours,0
+,60005,Comanche Nation,Reduced Reporter,DR,DO,OK,true,false,1 Days,6
+,60006,City of El Paso,Full Reporter,DR,PT,TX,true,false,1 Days,2.5
+,60007,Fort Worth Transportation Authority,Full Reporter,DR,DO,TX,true,false,1 Days,4
+,60007,Fort Worth Transportation Authority,Full Reporter,DR,PT,TX,true,false,1 Days,2
+,60008,"Metropolitan Transit Authority of Harris County, Texas",Full Reporter,DR,DO,TX,true,true,1 Days,1.25
+,60008,"Metropolitan Transit Authority of Harris County, Texas",Full Reporter,DR,PT,TX,true,true,1 Days,1.25
+,60008,"Metropolitan Transit Authority of Harris County, Texas",Full Reporter,DR,TX,TX,true,true,1 Days,1.25
+,60009,City of Laredo,Full Reporter,DR,DO,TX,true,false,1 Days,1.25
+,60010,City of Lubbock,Full Reporter,DR,DO,TX,true,true,0 Hours,2
+,60011,VIA Metropolitan Transit,Full Reporter,DR,DO,TX,true,false,1 Days,2
+,60011,VIA Metropolitan Transit,Full Reporter,DR,PT,TX,true,false,1 Days,2
+,60011,VIA Metropolitan Transit,Full Reporter,DR,TX,TX,true,false,1 Days,2
+,60012,City of Waco,Full Reporter,DR,DO,TX,true,true,1 Days,3
+,60013,City of Port Arthur,Reduced Reporter,DR,DO,TX,true,false,1 Days,2.5
+,60014,City of Brownsville,Full Reporter,DR,DO,TX,true,true,1 Days,2
+,60015,City of Galveston,Full Reporter,DR,TX,TX,true,false,1 Days,2
+,60016,City of Beaumont,Full Reporter,DR,PT,TX,true,false,1 Days,2.5
+,60017,Central Oklahoma Transportation and Parking Authority,Full Reporter,DR,DO,OK,true,false,1 Days,3.5
+,60018,Metropolitan Tulsa Transit Authority,Full Reporter,DR,DO,OK,true,false,0 Hours,2
+,60019,City of Albuquerque,Full Reporter,DR,DO,NM,true,true,0 Days,0
+,60022,Capital Area Transit System,Full Reporter,DR,PT,LA,true,false,1 Days,1.75
+,60023,City of Lake Charles,Reduced Reporter,DR,DO,LA,true,false,1 Days,1
+,60024,City of Shreveport,Full Reporter,DR,DO,LA,true,false,1 Days,0
+,60025,City of Alexandria,Reduced Reporter,DR,DO,LA,true,false,1 Days,0.75
+,60026,City of Monroe,Reduced Reporter,DR,DO,LA,true,false,1 Days,1.25
+,60032,New Orleans Regional Transit Authority,Full Reporter,DR,DO,LA,true,false,1 Days,2
+,60033,Rock Region Metropolitan Transit Authority,Full Reporter,DR,DO,AR,true,false,1 Days,2.7
+,60033,Rock Region Metropolitan Transit Authority,Full Reporter,DR,PT,AR,true,false,1 Days,2.7
+,60034,City of Pine Bluff,Reduced Reporter,DR,DO,AR,true,true,1 Days,2
+,60035,City of Wichita Falls,Reduced Reporter,DR,DO,TX,true,false,1 Days,3
+,60038,Lafayette City-Parish Consolidated Government,Full Reporter,DR,PT,LA,true,false,24 Hours,1.5
+,60040,City of Abilene,Reduced Reporter,DR,DO,TX,true,false,1 Days,3
+,60041,City of Arlington,Full Reporter,DR,DO,TX,true,false,0 Hours,2
+,60041,City of Arlington,Full Reporter,DR,PT,TX,true,false,0 Hours,2
+,60041,City of Arlington,Full Reporter,DR,TN,TX,true,false,0 Hours,3
+,60048,Capital Metropolitan Transportation Authority,Full Reporter,DR,PT,TX,true,true,1 Days,1.75
+,60049,City of Las Cruces NM,Reduced Reporter,DR,DO,NM,true,true,1 Days,0
+,60051,Corpus Christi Regional Transportation Authority,Full Reporter,DR,PT,TX,true,false,1 Days,1.25
+,60056,Dallas Area Rapid Transit,Full Reporter,DR,PT,TX,true,false,1 Days,3
+,60056,Dallas Area Rapid Transit,Full Reporter,DR,TN,TX,true,false,0 Hours,3
+,60059,Brazos Transit District,Full Reporter,DR,DO,TX,true,true,1 Hours,3.5
+,60062,"University of Arkansas, Fayetteville",Reduced Reporter,DR,DO,AR,true,false,1 Days,0
+,60068,City of Grand Prairie,Reduced Reporter,DR,DO,TX,true,false,2 Days,0
+,60068,City of Grand Prairie,Reduced Reporter,DR,PT,TX,true,false,0 Hours,3
+,60072,Ozark Regional Transit,Reduced Reporter,DR,DO,AR,true,true,1 Days,1.25
+,60077,City of Santa Fe,Full Reporter,DR,DO,NM,true,true,1 Days,2
+,60080,Terrebonne Parish Consolidated Government,Reduced Reporter,DR,DO,LA,true,false,1 Days,2
+,60081,City of Longview,Reduced Reporter,DR,DO,TX,true,false,1 Days,2.5
+,60086,City of Fort Smith,Reduced Reporter,DR,DO,AR,true,true,1 Days,2.5
+,60088,Jefferson Parish,Full Reporter,DR,PT,LA,true,true,1 Days,3
+,60089,City of Tyler,Reduced Reporter,DR,DO,TX,true,false,0 Hours,1
+,60089,City of Tyler,Reduced Reporter,DR,PT,TX,true,false,1 Days,1.5
+,60090,Lower Rio Grande Valley Development Council,Full Reporter,DR,DO,TX,true,false,1 Days,3
+,60091,Hill Country Transit District,Full Reporter,DR,DO,TX,true,false,0 Hours,2
+,60091,Hill Country Transit District,Full Reporter,DR,TN,TX,true,false,0 Hours,2
+,60093,Texarkana Urban Transit District,Reduced Reporter,DR,DO,"AR,TX",true,false,1 Days,2.5
+,60094,City of Lawton,Reduced Reporter,DR,DO,OK,true,true,1 Days,3
+,60095,Golden Crescent Regional Planning Commission,Full Reporter,DR,DO,TX,true,true,1 Days,1
+,60095,Golden Crescent Regional Planning Commission,Full Reporter,DR,PT,TX,true,false,1 Days,2
+,60097,Midland-Odessa Urban Transit District,Reduced Reporter,DR,DO,TX,true,false,1 Days,2.5
+,60099,City of McAllen,Reduced Reporter,DR,DO,TX,true,false,1 Days,1
+,60100,City of Farmington,Reduced Reporter,DR,PT,NM,true,true,1 Hours,2
+,60101,Denton County Transportation Authority,Full Reporter,DR,DO,TX,true,true,1 Days,3
+,60101,Denton County Transportation Authority,Full Reporter,DR,PT,TX,true,false,0 Hours,1.5
+,60101,Denton County Transportation Authority,Full Reporter,DR,TX,TX,true,false,1 Days,5
+,60102,Concho Valley Transit District,Full Reporter,DR,DO,TX,true,true,1 Days,2
+,60103,"Fort Bend County, Texas",Full Reporter,DR,PT,TX,true,false,1 Days,1
+,60104,City of Jonesboro,Reduced Reporter,DR,DO,AR,true,false,1 Days,2.5
+,60105,City of Hot Springs,Reduced Reporter,DR,DO,AR,true,false,1 Days,2.5
+,60107,"Texoma Area Paratransit System, Inc",Full Reporter,DR,PT,TX,true,false,2 Days,1.5
+,60108,Harris County,Full Reporter,DR,TX,TX,true,true,1 Hours,22
+,60109,St. Tammany Parish Government,Reduced Reporter,DR,PT,LA,true,false,1 Days,1.5
+,60111,Rio Metro Regional Transit District,Full Reporter,DR,DO,NM,true,true,1 Days,0
+,60112,River Parishes Transit Authority,Reduced Reporter,DR,PT,LA,true,false,1 Days,2
+,60113,City of Cleburne,Reduced Reporter,DR,DO,TX,true,false,1 Days,3
+,60114,STAR Transit,Full Reporter,DR,DO,TX,true,true,1 Days,6
+,60115,Public Transit Services,Reduced Reporter,DR,DO,TX,true,false,1 Days,2
+,60116,"SPAN, Incorporated",Reduced Reporter,DR,DO,TX,true,false,2 Days,6
+,60118,City of Edmond,Reduced Reporter,DR,PT,OK,true,false,1 Days,0
+,60125,City of Round Rock,Reduced Reporter,DR,PT,TX,true,false,1 Hours,2
+6R02,60127,Plaquemines Parish Government,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+,60129,City of Conroe,Reduced Reporter,DR,DO,TX,true,false,1 Days,2
+,60130,Alamo Area Council of Governments,Reduced Reporter,DR,DO,TX,true,false,1 Days,2
+,60132,"St Martin, Iberia, Lafayette Community Action Agency",Reduced Reporter,DR,DO,LA,true,false,1 Days,20
+,60134,The Woodlands Township,Full Reporter,DR,DO,TX,true,false,1 Days,0
+6R02,60135,Pointe Coupee Parish Government,Rural Reporter,DR,DO,LA,true,false,1 Days,1
+6R01,60136,"Mid-Delta Transit Community Services, Inc.",Rural Reporter,DR,DO,AR,true,false,1 Days,3
+,60138,North Central Regional Transit District,Reduced Reporter,DR,DO,NM,true,false,1 Days,1
+6R01,60140,"Area Agency on Aging of Southeast Arkansas, Inc.",Rural Reporter,DR,DO,AR,true,false,2 Days,5.42
+6R05,60142,Heart of Texas Council of Governments,Rural Reporter,DR,DO,TX,true,false,1 Days,2
+6R05,60143,Rolling Plains Management Corporation,Rural Reporter,DR,DO,TX,true,false,2 Days,35
+6R05,60145,Ark-Tex Council of Governments,Rural Reporter,DR,DO,TX,true,false,1 Days,1
+6R04,60146,"United Community Action Program, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Days,1.5
+6R05,60147,Kleberg County,Rural Reporter,DR,DO,TX,true,false,1 Days,2
+6R03,60148,Village of Milan,Rural Reporter,DR,DO,NM,true,false,1 Hours,0.75
+6R04,60150,Pontotoc County Public Transit Authority,Rural Reporter,DR,DO,OK,true,false,1 Days,3
+6R03,60151,Grant County,Rural Reporter,DR,DO,NM,true,false,1 Days,2
+6R05,60152,City of Del Rio,Rural Reporter,DR,DO,TX,true,true,1 Days,1.5
+6R02,60154,Red River Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,1
+6R05,60155,South East Texas Regional Planning Commission,Rural Reporter,DR,DO,TX,true,true,1 Days,3
+6R03,60157,City of Socorro,Rural Reporter,DR,DO,NM,true,false,1 Hours,0.5
+6R05,60159,"South Plains Community Action Association, Inc.",Rural Reporter,DR,DO,TX,true,false,1 Days,6
+6R04,60160,OSU-Stillwater Community Transit,Rural Reporter,DR,DO,OK,true,false,1 Hours,1.5
+6R01,60161,City of Eureka Springs,Rural Reporter,DR,DO,AR,true,false,1 Days,3
+6R02,60163,Jefferson Davis Police Jury,Rural Reporter,DR,DO,LA,true,false,2 Days,0
+6R02,60164,Beauregard Parish City of DeRidder,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R04,60165,Community Action Development Corporation,Rural Reporter,DR,DO,OK,true,false,3 Days,4
+6R03,60167,City of Roswell,Rural Reporter,DR,DO,NM,true,false,1 Days,0.25
+6R02,60168,Washington Parish Government,Rural Reporter,DR,DO,LA,true,false,2 Days,0
+6R02,60169,City of Ville Platte Evangeline Parish,Rural Reporter,DR,DO,LA,true,false,1 Days,1
+6R04,60172,"KI BOIS Community Action Foundation, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Hours,1
+6R05,60175,"Rural Economic Assistance League, Inc.",Rural Reporter,DR,DO,TX,true,false,0 Hours,1
+6R05,60176,"Senior Center Resources and Public Transit, Inc.",Rural Reporter,DR,DO,TX,true,false,1 Days,2
+,60179,El Paso County,Full Reporter,DR,PT,TX,true,false,1 Days,2.5
+6R02,60180,East Feliciana Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,0.7
+6R04,60181,City of Guymon,Rural Reporter,DR,DO,OK,true,false,1 Hours,1
+6R04,60183,"Delta Community Action Foundation, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Hours,2.5
+6R03,60184,City of Carlsbad,Rural Reporter,DR,DO,NM,true,true,2 Hours,2
+6R05,60185,Webb County,Rural Reporter,DR,DO,TX,true,false,1 Days,1.5
+6R05,60186,East Texas Council of Governments,Rural Reporter,DR,DO,TX,true,false,1 Days,2
+6R01,60189,"NW Arkansas Economical Development District, Inc.",Rural Reporter,DR,DO,AR,true,false,0 Hours,3
+6R03,60190,City of Hobbs,Rural Reporter,DR,DO,NM,true,false,1 Days,2
+6R04,60191,Lift Community Action Agency Inc,Rural Reporter,DR,DO,OK,true,false,1 Hours,2
+,60192,Panhandle Community Services,Reduced Reporter,DR,DO,TX,true,false,1 Days,2
+6R04,60193,Town of Beaver,Rural Reporter,DR,DO,OK,true,false,1 Hours,1
+6R02,60194,Webster Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,4
+6R02,60195,St Martin Parish Government,Rural Reporter,DR,DO,LA,true,false,2 Days,0.5
+,60196,Tangipahoa Voluntary Council on Aging,Reduced Reporter,DR,DO,LA,false,false,1 Days,9
+6R02,60198,Calcasieu Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,2 Days,0.8
+6R02,60199,City of Franklin St. Mary Parish,Rural Reporter,DR,DO,LA,true,false,2 Days,2
+6R02,60200,Livingston Parish Council,Rural Reporter,DR,DO,LA,true,false,2 Days,0
+6R05,60202,"Aspermont Small Business Development Center, Inc.",Rural Reporter,DR,DO,TX,true,false,1 Days,0.1
+6R04,60203,Muskogee County Public Transit Authority,Rural Reporter,DR,DO,OK,true,false,1 Hours,4
+6R01,60204,"Crowley's Ridge Development Council, Inc.",Rural Reporter,DR,DO,AR,true,false,1 Days,8
+6R04,60205,"Inca Community Services, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Hours,1
+,60206,"Zia Therapy Center, Inc.",Reduced Reporter,DR,DO,NM,true,true,24 Hours,1
+6R02,60207,Assumption Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R02,60209,Caldwell Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R02,60211,Vermilion Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,2 Days,2
+6R04,60214,Logan County Historical Society,Rural Reporter,DR,DO,OK,true,false,2 Hours,3
+6R03,60215,Incorporated County of Los Alamos,Rural Reporter,DR,DO,NM,true,true,0 Hours,0
+6R02,60217,City of West Monroe/West Ouachita Parish,Rural Reporter,DR,DO,LA,true,false,1 Days,0.5
+6R04,60220,Washita Valley Community Action Council,Rural Reporter,DR,DO,OK,true,false,1 Days,2.5
+6R02,60222,St. James Parish Government,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R03,60225,City of Clovis,Rural Reporter,DR,DO,NM,true,false,4 Hours,0.75
+6R04,60226,Northern Oklahoma Development Authority,Rural Reporter,DR,DO,OK,true,false,3 Days,1.5
+,60227,City of Enid,Reduced Reporter,DR,DO,OK,true,false,1 Days,2
+6R02,60229,Lincoln Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,2.5
+6R02,60231,St. Landry Government,Rural Reporter,DR,DO,LA,true,false,1 Days,4.5
+6R02,60232,Terrebonne Parish Consolidated Government,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R04,60233,"Southwest Oklahoma Community Action Group, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Hours,2.5
+6R02,60234,Claiborne Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,2 Days,1
+6R02,60235,Cameron Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R03,60236,City of Las Vegas,Rural Reporter,DR,DO,NM,true,false,1 Days,1
+6R03,60237,Town of Red River,Rural Reporter,DR,DO,NM,true,false,1 Hours,0
+6R05,60238,Colorado Valley Transit District,Rural Reporter,DR,DO,TX,true,true,1 Days,5
+6R05,60243,"West Texas Opportunities, Inc.",Rural Reporter,DR,DO,TX,true,false,1 Days,1
+6R03,60244,Golden Spread Rural Frontier Coalition,Rural Reporter,DR,DO,NM,true,false,1 Hours,5
+,60246,Central Arkansas Development Council,Full Reporter,DR,DO,AR,true,false,1 Days,3
+6R02,60247,Avoyelles Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,4
+6R02,60249,Allen Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,3
+6R01,60250,Black River Area Development Corporation,Rural Reporter,DR,DO,AR,true,false,0 Hours,1
+6R02,60251,Bienville Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,2
+6R03,60253,City of Portales,Rural Reporter,DR,DO,NM,true,false,1 Days,1
+,60256,Southwest Area Regional Transit District,Reduced Reporter,DR,DO,TX,true,false,1 Days,2
+6R01,60257,"Area Agency on Aging of Western Arkansas, Inc.",Rural Reporter,DR,DO,AR,true,false,2 Days,3
+6R04,60258,"Big Five Community Services, Inc.",Rural Reporter,DR,DO,OK,true,false,1 Hours,2
+6R04,60259,Central Oklahoma Community Action Agency,Rural Reporter,DR,DO,OK,true,false,1 Days,4
+,60260,"Community Services, Inc.",Reduced Reporter,DR,DO,TX,true,false,1 Days,4
+6R02,60261,Desoto Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,2 Days,1
+6R05,60262,Central Texas Rural Transit District,Rural Reporter,DR,DO,TX,true,false,1 Days,1
+6R02,60263,Vernon Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,8
+6R05,60264,"The Transit System, Inc.",Rural Reporter,DR,DO,TX,true,false,1 Days,10
+6R04,60266,Grand Gateway EDA/ Pelivan,Rural Reporter,DR,DO,OK,true,true,1 Days,1
+,60270,City of McKinney,Full Reporter,DR,PT,TX,true,true,0 Hours,3.15
+,60270,City of McKinney,Full Reporter,DR,TN,TX,true,true,0 Hours,5
+,60275,Gulf Coast Transit District,Reduced Reporter,DR,DO,TX,true,true,0 Hours,1
+,60277,Otoe-Missouria Tribe,Reduced Reporter,DR,DO,OK,true,false,1 Days,3
+,60280,City of Socorro,Reduced Reporter,DR,DO,TX,true,false,2 Hours,0
+,60620,Pueblo of Laguna,Reduced Reporter,DR,DO,NM,true,false,24 Hours,0.75
+,66146,Ponca Tribe of Oklahoma,Reduced Reporter,DR,DO,OK,true,false,1 Days,2
+,66152,Pueblo of Santa Ana,Reduced Reporter,DR,DO,NM,true,false,1 Hours,0
+,66158,Seminole Nation of Oklahoma,Reduced Reporter,DR,DO,OK,true,false,1 Days,0
+,66164,Kiowa Tribe,Reduced Reporter,DR,DO,OK,true,false,1 Days,4
+,66170,Muscogee (Creek) Nation,Reduced Reporter,DR,DO,OK,true,false,1 Days,0.5
+,66176,United Keetoowah Band of Cherokee Indians in Oklahoma,Reduced Reporter,DR,DO,OK,true,false,1 Hours,1
+,66188,Ohkay Owingeh Pueblo,Reduced Reporter,DR,DO,NM,true,false,0 Hours,0
+,66194,Cheyenne & Arapaho Tribes,Reduced Reporter,DR,DO,OK,true,false,3 Days,0
+6R02,66267,Iberville Sheriff's Office,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R02,66268,Madison Parish Policy Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,1
+6R05,66271,Capital Area Rural Transportation System,Rural Reporter,DR,DO,TX,true,false,1 Days,6
+6R02,66273,St. Helena Council on Aging,Rural Reporter,DR,DO,LA,true,false,1 Days,0
+6R04,66274,"MAGB Transportation, Inc.",Rural Reporter,DR,DO,OK,true,false,3 Days,1
+6R05,66276,McLennan County,Rural Reporter,DR,DO,TX,true,false,1 Days,5
+6R05,66276,McLennan County,Rural Reporter,DR,PT,TX,true,false,1 Days,5
+6R02,66282,Rapides Parish Police Jury,Rural Reporter,DR,DO,LA,true,false,1 Days,1
+6R02,66337,West Feliciana Parish Council,Rural Reporter,DR,DO,LA,true,false,2 Days,2
+,66341,City of Norman,Reduced Reporter,DR,PT,OK,true,false,0 Hours,2
+,66343,City of San Marcos,Reduced Reporter,DR,PT,TX,true,false,1 Days,0
+6R02,66346,Rapides Area Planning Commission,Rural Reporter,DR,DO,LA,true,false,1 Days,1.5
+,66348,Tunica-Biloxi Tribe of Louisiana Tribal Office,Reduced Reporter,DR,DO,LA,true,false,1 Days,0
+,70001,City of Lincoln,Full Reporter,DR,DO,NE,true,true,1 Days,2.5
+,70002,Regional Metropolitan Transit Authority of Omaha,Full Reporter,DR,DO,"IA,NE",true,true,1 Days,2.5
+,70003,City of Springfield,Full Reporter,DR,DO,MO,true,false,1 Days,2
+,70004,Winnebago Tribe of Nebraska,Reduced Reporter,DR,DO,"IA,NE",true,false,1 Days,2.5
+,70005,Kansas City Area Transportation Authority,Full Reporter,DR,DO,MO,true,false,1 Hours,0
+,70005,Kansas City Area Transportation Authority,Full Reporter,DR,PT,"KS,MO",false,false,1 Hours,4
+,70005,Kansas City Area Transportation Authority,Full Reporter,DR,TX,KS,true,true,1 Hours,5
+,70006,Bi-State Development Agency of the Missouri-Illinois Metropolitan District,Full Reporter,DR,DO,MO,true,false,1 Days,2
+,70006,Bi-State Development Agency of the Missouri-Illinois Metropolitan District,Full Reporter,DR,PT,MO,true,false,0 Hours,2
+,70008,City of Cedar Rapids,Full Reporter,DR,PT,IA,true,false,1 Hours,3
+,70010,Des Moines Area Regional Transit Authority,Full Reporter,DR,DO,IA,true,true,1 Days,3.5
+,70010,Des Moines Area Regional Transit Authority,Full Reporter,DR,TN,IA,true,true,1 Days,3.5
+,70010,Des Moines Area Regional Transit Authority,Full Reporter,DR,TX,IA,true,true,1 Days,3.5
+,70011,City of Dubuque,Reduced Reporter,DR,DO,"IA,IL",true,false,1 Days,3
+,70012,City of Sioux City,Full Reporter,DR,PT,"NE,SD",true,false,1 Days,3.6
+,70013,Metropolitan Transit Authority of Black Hawk County,Reduced Reporter,DR,DO,IA,true,false,1 Days,3
+,70014,Topeka Metropolitan Transit Authority,Full Reporter,DR,DO,KS,true,false,1 Days,4
+,70014,Topeka Metropolitan Transit Authority,Full Reporter,DR,PT,KS,true,false,1 Days,4
+,70014,Topeka Metropolitan Transit Authority,Full Reporter,DR,TX,KS,true,false,1 Days,4
+,70015,City of Wichita,Full Reporter,DR,DO,KS,true,false,1 Days,3.5
+,70016,City of Columbia,Full Reporter,DR,DO,MO,true,false,1 Days,0
+,70019,University of Iowa,Full Reporter,DR,DO,IA,true,true,1 Hours,0
+,70032,"City of St. Joseph, Missouri",Reduced Reporter,DR,DO,"KS,MO",true,true,1 Hours,0.5
+,70035,Johnson County Kansas,Full Reporter,DR,PT,KS,true,false,1 Days,0
+,70035,Johnson County Kansas,Full Reporter,DR,TX,"KS,MO",true,false,1 Hours,5
+,70040,City of Joplin,Reduced Reporter,DR,DO,MO,true,false,1 Days,4
+,70043,City of Jefferson,Reduced Reporter,DR,DO,MO,true,false,1 Days,3
+,70045,"County of Johnson, Iowa",Full Reporter,DR,DO,IA,false,true,1 Days,2
+,70046,City of Independence,Reduced Reporter,DR,PT,MO,true,false,0 Hours,4
+,70046,City of Independence,Reduced Reporter,DR,TX,MO,true,false,1 Days,4
+,70047,"Unified Government of Wyandotte County and Kansas City, KS",Reduced Reporter,DR,DO,KS,true,false,0 Hours,6
+,70048,City of Lawrence,Full Reporter,DR,PT,KS,false,false,1 Hours,0
+,70049,River Bend Transit,Full Reporter,DR,DO,IA,false,true,1 Days,1.75
+,70051,Cape Girardeau County Transit Authority,Reduced Reporter,DR,DO,"IL,MO",true,true,0 Hours,7
+,70053,"Flint Hills Area Transportation Agency, Inc",Reduced Reporter,DR,DO,KS,true,true,1 Days,2
+,70054,County of Sedgwick,Reduced Reporter,DR,DO,KS,true,false,1 Days,3
+,70054,County of Sedgwick,Reduced Reporter,DR,TX,KS,true,false,1 Days,32.5
+,70055,City of Derby,Reduced Reporter,DR,DO,KS,true,false,1 Days,2
+,70056,"Butler, County of",Reduced Reporter,DR,DO,KS,true,false,1 Days,0.5
+7R04,70058,Senior Services Inc.,Rural Reporter,DR,DO,NE,true,false,0 Hours,3
+7R02,70060,"Developmental Services of Northwest Kansas, Inc.",Rural Reporter,DR,DO,KS,true,false,24 Hours,3
+7R02,70062,Thomas County,Rural Reporter,DR,DO,KS,true,false,0 Days,1
+7R03,70063,"Dunklin County Transit Service, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,6
+7R01,70064,Iowa Northland Regional Council of Governments,Rural Reporter,DR,DO,IA,true,false,1 Days,8
+,70066,Heart of Iowa Regional Transit Agency,Full Reporter,DR,DO,IA,false,true,0 Hours,2.5
+7R04,70069,Schuyler,Rural Reporter,DR,DO,NE,true,false,0 Hours,2
+7R02,70070,Finney County,Rural Reporter,DR,DO,KS,true,false,1 Days,1
+7R02,70072,Morris County,Rural Reporter,DR,DO,KS,true,false,24 Hours,2
+7R04,70073,Midland Area Agency,Rural Reporter,DR,DO,NE,true,false,2 Days,12
+7R04,70074,City Of Sidney,Rural Reporter,DR,DO,NE,true,false,0 Hours,1.5
+7R04,70076,Blue River AAA,Rural Reporter,DR,DO,NE,true,false,1 Days,6
+7R02,70078,Southeast Kansas Community Action Program,Rural Reporter,DR,DO,KS,true,false,1 Hours,0
+7R04,70081,Mid-Nebraska Community Action,Rural Reporter,DR,DO,NE,true,false,1 Days,3
+7R02,70084,Norton County Senior Citizens,Rural Reporter,DR,DO,KS,true,false,0 Days,2
+7R03,70085,City of Mount Vernon,Rural Reporter,DR,DO,MO,true,false,0 Hours,1
+7R02,70086,Rush County,Rural Reporter,DR,DO,KS,true,true,24 Hours,2
+7R02,70087,Lincoln County,Rural Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,70088,Rooks County,Rural Reporter,DR,DO,KS,true,false,24 Hours,2
+,70089,City of Bonner Springs,Reduced Reporter,DR,DO,KS,true,false,1 Hours,1
+7R03,70091,"Southeast Missouri Transportation, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,2
+7R02,70094,City of Wakeeney,Rural Reporter,DR,DO,KS,true,false,24 Hours,1.75
+7R02,70096,Linn County,Rural Reporter,DR,DO,KS,true,false,24 Hours,15
+7R03,70099,Licking Bridge Builders Senior Center,Rural Reporter,DR,DO,MO,true,false,1 Days,1
+7R04,70100,Stratton Industrial Commission,Rural Reporter,DR,DO,NE,true,false,1 Days,4
+7R01,70101,City of Muscatine,Rural Reporter,DR,DO,IA,true,true,1 Days,1
+7R02,70102,Decatur County,Rural Reporter,DR,DO,KS,true,false,0 Days,0
+7R02,70103,Jefferson County Service Organization,Rural Reporter,DR,DO,KS,true,false,1 Days,15
+7R02,70105,City of Smith Center,Rural Reporter,DR,DO,KS,true,false,0 Days,1
+7R03,70106,"Ray County Transportation, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,2.25
+7R04,70107,City of Alliance,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R01,70108,City of Fort Dodge,Rural Reporter,DR,PT,IA,true,true,0 Hours,3
+7R02,70109,Osage County,Rural Reporter,DR,DO,KS,true,false,1 Days,4
+7R04,70112,Southeast Nebraska Community Action Partnership,Rural Reporter,DR,DO,NE,true,false,1 Days,8
+7R04,70113,Commmunity Memorial Health Center Burwell,Rural Reporter,DR,DO,NE,true,false,1 Days,11
+7R03,70114,"Ripley County Transit, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,0
+7R02,70115,City of Hoisington,Rural Reporter,DR,DO,KS,true,false,1 Hours,1
+7R02,70120,City of Herington,Rural Reporter,DR,DO,KS,true,false,0 Days,1.5
+7R04,70121,Butler County Senior Service Program,Rural Reporter,DR,DO,NE,true,false,0 Hours,2.75
+7R02,70122,Pottawatomie County,Rural Reporter,DR,DO,KS,true,false,1 Days,1
+7R02,70123,City of Great Bend,Rural Reporter,DR,DO,KS,true,false,0 Days,1.5
+7R04,70125,City of Neligh,Rural Reporter,DR,DO,NE,true,false,1 Hours,1
+7R04,70126,Perkins County Public Transit,Rural Reporter,DR,DO,NE,true,false,0 Hours,1.25
+7R04,70127,Ogallala Transit System,Rural Reporter,DR,DO,NE,true,false,2 Hours,1.5
+7R04,70128,Chase County,Rural Reporter,DR,DO,NE,true,false,1 Days,1.5
+7R01,70129,Siouxland Interstate Metropolitan Planning Council,Rural Reporter,DR,DO,"IA,NE,SD",true,false,1 Days,4
+7R04,70130,Valley County Hospital,Rural Reporter,DR,DO,NE,true,false,0 Hours,3
+7R02,70132,Doniphan County,Rural Reporter,DR,DO,KS,true,false,0 Days,10
+,70133,"OATS, Inc.",Reduced Reporter,DR,DO,MO,true,true,1 Days,2
+7R03,70134,City of Nevada,Rural Reporter,DR,DO,MO,true,false,0 Hours,4
+7R02,70135,Tri-Valley Developmental Services,Rural Reporter,DR,DO,KS,true,false,1 Days,2.5
+7R01,70136,"Delaware, Dubuque & Jackson County Regional Transit Authority",Rural Reporter,DR,DO,IA,true,false,1 Days,2
+7R02,70137,Sunflower Diversified Services,Rural Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,70139,City of Dodge City,Rural Reporter,DR,DO,KS,true,true,24 Hours,1
+7R03,70140,"Mississippi County Transit System, Inc.",Rural Reporter,DR,DO,MO,true,false,0 Hours,5
+7R02,70141,Pratt County,Rural Reporter,DR,DO,KS,true,false,1 Hours,1
+7R02,70144,Chase County,Rural Reporter,DR,DO,KS,true,false,1 Hours,0
+7R02,70145,"OCCK, Inc.",Rural Reporter,DR,DO,KS,true,true,24 Hours,2
+7R02,70146,Ottawa County,Rural Reporter,DR,DO,KS,true,false,1 Days,0.5
+7R04,70148,Saline County Area Transit,Rural Reporter,DR,DO,NE,true,false,1 Days,6
+7R03,70152,City of Carthage,Rural Reporter,DR,DO,MO,true,false,0 Hours,3
+7R04,70153,City of North Platte,Rural Reporter,DR,DO,NE,true,false,1 Days,5
+7R03,70155,City of West Plains,Rural Reporter,DR,DO,MO,true,false,0 Hours,1.5
+7R04,70156,Community Concern,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R02,70158,Elk County Council on Aging,Rural Reporter,DR,DO,KS,true,false,1 Days,5
+7R02,70163,"Paola Senior Citizen Center, Inc.",Rural Reporter,DR,DO,KS,true,false,0 Days,2
+7R04,70164,Lancaster Co Rural Transit,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R03,70165,City of Houston,Rural Reporter,DR,DO,MO,true,false,0 Hours,0
+7R02,70167,Ellsworth County,Rural Reporter,DR,DO,KS,true,false,24 Hours,1
+7R03,70168,"Scott County Transit System, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,0
+7R02,70171,City of Wilson,Rural Reporter,DR,DO,KS,true,false,24 Hours,0.5
+7R01,70173,City of Clinton,Rural Reporter,DR,DO,IA,true,false,1 Days,1
+7R03,70177,City of El Dorado Springs,Rural Reporter,DR,DO,MO,true,false,0 Hours,1
+7R02,70178,"Lakemary Center, Inc",Rural Reporter,DR,DO,KS,true,false,1 Days,10
+7R02,70179,McPherson County,Rural Reporter,DR,DO,KS,true,false,0 Days,1
+7R02,70180,Reno County,Rural Reporter,DR,DO,KS,true,true,1 Days,2
+7R04,70181,City Of Tecumseh,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R04,70182,Phelps County Senior Citizen,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R04,70183,Scotts Bluff Public Transit,Rural Reporter,DR,DO,NE,true,false,0 Days,3.5
+7R02,70184,City of Louisburg,Rural Reporter,DR,DO,KS,true,false,0 Days,4
+7R01,70185,North Iowa Area Council of Governments,Rural Reporter,DR,DO,IA,false,false,1 Days,4
+7R02,70186,Greenwood County,Rural Reporter,DR,DO,KS,true,false,24 Hours,1
+7R02,70187,Twin Rivers Developmental Supports Inc.,Rural Reporter,DR,DO,KS,true,false,24 Hours,4
+7R04,70188,City of Fremont,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R03,70189,City of Clinton,Rural Reporter,DR,DO,MO,true,false,1 Days,1
+7R02,70191,City of Phillipsburg,Rural Reporter,DR,DO,KS,true,false,1 Hours,2
+7R04,70192,Loup City,Rural Reporter,DR,DO,NE,true,false,1 Hours,1
+7R04,70193,City of Plainview Handivan,Rural Reporter,DR,DO,NE,true,false,0 Hours,1.5
+7R04,70194,Cambridge Memorial Hospital,Rural Reporter,DR,DO,NE,true,false,0 Hours,2
+7R01,70195,Northeast Iowa Community Action Corporation,Rural Reporter,DR,DO,IA,true,false,2 Days,3.5
+7R02,70196,Republic County,Rural Reporter,DR,DO,KS,true,false,1 Days,0
+7R02,70197,Lane County,Rural Reporter,DR,DO,KS,true,false,1 Days,1
+7R02,70199,Logan County,Rural Reporter,DR,DO,KS,true,false,24 Hours,2
+7R04,70200,Kimball County Public Transit,Rural Reporter,DR,DO,"CO,NE,WY",true,false,0 Hours,2
+,70201,"Independence, Inc.",Reduced Reporter,DR,DO,KS,true,false,5 Days,3
+7R04,70202,Wolf Memorial Good Samaritan Center,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R04,70203,Morrill County Handi Bus,Rural Reporter,DR,DO,NE,true,false,1 Days,3
+7R02,70204,Anderson County,Rural Reporter,DR,DO,KS,true,false,0 Days,3
+7R04,70205,Blue Valley Community Action Partnership,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R02,70206,Kingman County,Rural Reporter,DR,DO,KS,true,false,2 Days,14
+7R02,70208,Marshall County,Rural Reporter,DR,DO,"KS,NE",true,false,24 Hours,5
+7R02,70209,Four County,Rural Reporter,DR,DO,KS,true,false,2 Days,2
+7R02,70210,Rice County,Rural Reporter,DR,DO,KS,true,false,0 Days,1.5
+7R03,70211,City of Lamar,Rural Reporter,DR,DO,MO,true,false,0 Hours,4
+7R04,70212,Cedar County Transit,Rural Reporter,DR,DO,NE,true,false,0 Hours,3
+7R02,70213,Nemaha County,Rural Reporter,DR,DO,KS,true,false,24 Hours,1
+7R04,70214,City of Columbus Transit,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R02,70215,City of Goodland,Rural Reporter,DR,DO,KS,true,false,0 Days,1.5
+7R04,70216,Avera Creighton Hospital,Rural Reporter,DR,DO,NE,true,false,1 Days,1
+7R01,70217,Southeast Iowa Regional Planning Commission,Rural Reporter,DR,DO,IA,true,false,1 Days,3
+7R02,70218,Wabaunsee County,Rural Reporter,DR,DO,KS,true,false,0 Days,7
+7R01,70219,Region Six Planning Commission,Rural Reporter,DR,DO,IA,false,false,1 Days,15
+7R04,70220,Avera St.Anthony's Hospital,Rural Reporter,DR,DO,NE,true,false,2 Days,1
+7R01,70221,Southern Iowa Trolley,Rural Reporter,DR,DO,IA,true,false,1 Days,4
+7R02,70222,Coffey County,Rural Reporter,DR,DO,KS,true,false,24 Hours,4
+7R04,70223,Senior Information Center York,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R01,70224,Region 12 Council of Governments,Rural Reporter,DR,DO,IA,true,false,1 Days,7
+7R02,70225,Franklin County,Rural Reporter,DR,DO,KS,true,false,24 Hours,1.5
+7R02,70226,Class LTD,Rural Reporter,DR,DO,KS,true,false,1 Days,3
+7R02,70227,City of Liberal,Rural Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,70228,Harper County,Rural Reporter,DR,DO,KS,true,false,1 Hours,7
+7R04,70232,City Of McCook Public Transit,Rural Reporter,DR,DO,NE,true,false,0 Hours,2
+7R04,70233,Wayne Public Transit,Rural Reporter,DR,DO,NE,true,false,0 Hours,1.5
+7R02,70235,Cowley County,Rural Reporter,DR,DO,KS,true,false,0 Days,2
+7R02,70238,Harvey County,Rural Reporter,DR,DO,KS,true,false,24 Hours,8
+7R01,70240,Regional Transit Authority,Rural Reporter,DR,DO,IA,true,true,1 Days,4
+7R01,70240,Regional Transit Authority,Rural Reporter,DR,TX,IA,true,true,1 Days,2.5
+7R02,70241,City of Russell,Rural Reporter,DR,DO,KS,true,false,0 Days,1
+7R01,70242,10-15 Regional Transit Agency,Rural Reporter,DR,DO,IA,true,true,1 Days,2
+7R04,70244,City of Benkelman,Rural Reporter,DR,DO,NE,true,false,1 Hours,1
+7R02,70245,Community Senior Service Center,Rural Reporter,DR,DO,KS,true,false,0 Days,2
+7R04,70246,Seward County Public Transit,Rural Reporter,DR,DO,NE,true,false,0 Hours,2
+7R04,70247,City of Crawford,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R02,70248,Lyon County,Rural Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,70250,Clay County Task Force,Rural Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,70251,The Guidance Center,Rural Reporter,DR,DO,KS,true,false,1 Hours,2
+7R04,70253,Saunders County Transportation,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R02,70255,Solomon Valley,Rural Reporter,DR,DO,KS,true,false,1 Days,0.5
+7R01,70256,Mid Iowa Development Association Council of Governments,Rural Reporter,DR,DO,IA,true,false,0 Hours,3.5
+7R03,70257,Macon Area Chamber of Commerce,Rural Reporter,DR,DO,MO,true,false,0 Hours,2
+7R01,70258,Southwest Iowa Planning Council,Rural Reporter,DR,DO,IA,true,false,0 Hours,2.5
+7R02,70259,Futures Unlimited,Rural Reporter,DR,DO,KS,true,false,0 Days,2
+7R03,70263,"SERVE, Inc.",Rural Reporter,DR,DO,MO,true,false,1 Days,2
+7R04,70265,City of Chadron,Rural Reporter,DR,DO,NE,true,false,0 Hours,1
+7R02,70266,City of Kingman,Rural Reporter,DR,DO,KS,true,false,1 Days,1
+7R02,70267,Project Concern,Rural Reporter,DR,DO,KS,true,false,1 Days,3
+7R02,70268,Gove County,Rural Reporter,DR,DO,KS,true,false,0 Days,0
+,70273,Sac and Fox Nation of Missouri,Reduced Reporter,DR,DO,"KS,NE",true,false,1 Days,5
+,70274,City of Grand Island,Reduced Reporter,DR,PT,NE,true,false,1 Days,2
+,70277,Linn County,Reduced Reporter,DR,DO,IA,false,true,1 Days,2
+,77063,Ponca Tribe of Nebraska,Reduced Reporter,DR,DO,"IA,SD",true,false,1 Days,2
+,77069,Santee Sioux Nation,Reduced Reporter,DR,DO,"NE,SD",true,false,0 Hours,0
+,77075,Prairie Band Potawatomi Nation,Reduced Reporter,DR,DO,KS,true,false,1 Days,2
+7R02,77076,Rawlins County,Rural Reporter,DR,DO,KS,true,false,24 Hours,0
+,77077,Omaha Tribe of Nebraska,Reduced Reporter,DR,DO,NE,true,true,1 Days,3
+7R04,77078,Garden County,Rural Reporter,DR,DO,NE,true,false,0 Hours,4
+7R02,77079,Northeast Kansas Area Agency on Aging,Rural Reporter,DR,DO,KS,true,false,1 Days,4
+7R02,77082,Cheyenne County,Rural Reporter,DR,DO,KS,true,false,24 Hours,0
+7R02,77083,"Multi Community Diversified Services, Inc.",Rural Reporter,DR,DO,KS,true,false,24 Hours,1.6
+7R04,77085,Nance Trans,Rural Reporter,DR,DO,NE,true,false,1 Hours,3
+7R04,77087,Callaway District Hospital,Rural Reporter,DR,DO,NE,true,false,0 Hours,10
+7R01,77089,Jones County,Rural Reporter,DR,DO,IA,true,false,1 Days,4
+7R01,77090,Benton County,Rural Reporter,DR,DO,IA,true,false,1 Days,2.5
+7R01,77091,Washington County,Rural Reporter,DR,DO,IA,true,false,1 Days,4
+7R01,77092,Iowa County,Rural Reporter,DR,DO,IA,true,false,1 Days,3
+7R04,77093,"St. Francis Services, LLC",Rural Reporter,DR,DO,NE,true,false,0 Days,2
+7R02,77094,Community Health Center of Southeast Kansas Inc,Rural Reporter,DR,DO,"KS,OK",true,false,0 Days,0
+7R04,77095,County of Hall,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R04,77096,Harlan County Health,Rural Reporter,DR,DO,NE,true,false,1 Days,2
+7R02,77097,Allen Regional Transit Inc,Rural Reporter,DR,DO,KS,true,false,1 Days,3
+,80001,Utah Transit Authority,Full Reporter,DR,DO,UT,true,false,1 Days,4
+,80001,Utah Transit Authority,Full Reporter,DR,PT,UT,true,false,1 Days,2.5
+,80002,City of Sioux Falls,Full Reporter,DR,PT,SD,true,true,1 Days,2.5
+,80003,City of Fargo,Full Reporter,DR,DO,"MN,ND",true,true,1 Days,4
+,80004,City of Billings,Full Reporter,DR,DO,MT,true,false,1 Days,3.5
+,80005,City of Colorado Springs,Full Reporter,DR,PT,CO,true,false,1 Days,3.5
+,80006,Denver Regional Transportation District,Full Reporter,DR,PT,CO,true,true,1 Days,4.5
+,80007,City of Pueblo,Full Reporter,DR,PT,CO,true,false,1 Days,2.5
+,80008,City of Grand Forks,Full Reporter,DR,DO,"MN,ND",true,true,1 Days,3
+,80009,Missoula Urban Transportation District,Full Reporter,DR,DO,MT,true,false,1 Days,0
+,80010,"Greeley, City Of",Reduced Reporter,DR,PT,CO,true,false,1 Days,3
+,80011,City of Fort Collins,Full Reporter,DR,PT,CO,true,true,1 Days,0
+,80011,City of Fort Collins,Full Reporter,DR,TX,CO,true,true,1 Days,0
+,80012,Great Falls Transit District,Full Reporter,DR,DO,MT,true,false,1 Days,2
+,80013,City of Casper,Reduced Reporter,DR,DO,WY,true,false,1 Days,2
+,80014,City of Rapid City,Reduced Reporter,DR,DO,SD,true,true,1 Days,3
+,80015,Shoshone and Arapaho Tribes,Reduced Reporter,DR,DO,WY,true,false,1 Days,0
+,80016,County of Mesa,Reduced Reporter,DR,PT,CO,true,true,1 Days,3
+,80018,Fort Peck Tribes,Reduced Reporter,DR,DO,MT,true,false,1 Hours,0.5
+,80019,Bis-Man Transit Board,Reduced Reporter,DR,PT,ND,true,false,1 Days,3
+,80020,The City of Cheyenne,Reduced Reporter,DR,DO,WY,true,false,1 Days,1.5
+,80025,"City of Loveland, Colorado",Full Reporter,DR,TX,CO,true,false,1 Days,2
+,80026,City of St. George,Reduced Reporter,DR,DO,UT,true,true,1 Days,2
+,80028,Cache Valley Transit District,Full Reporter,DR,DO,UT,true,false,1 Days,0
+,80110,Fargo Park District,Reduced Reporter,DR,DO,"MN,ND",true,false,1 Hours,3
+8R03,80114,Stark County Council on Aging / Elder Care,Rural Reporter,DR,DO,ND,true,false,0 Hours,4
+8R01,80115,Prowers County,Rural Reporter,DR,DO,CO,true,false,1 Days,3
+8R04,80116,City of Mitchell,Rural Reporter,DR,DO,SD,true,false,1 Days,2
+8R02,80117,Garfield County,Rural Reporter,DR,DO,MT,true,false,1 Days,1
+8R05,80120,"South Big Horn Senior Citizens, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,2
+8R05,80121,Fremont County Association of Governments,Rural Reporter,DR,DO,WY,true,false,1 Days,2
+8R03,80122,Devils Lake,Rural Reporter,DR,DO,ND,true,false,0 Hours,3
+8R03,80124,"James River Senior Citizens Center, Inc.",Rural Reporter,DR,DO,ND,true,false,0 Hours,2.5
+8R03,80125,South Central Adult Services,Rural Reporter,DR,DO,ND,true,false,1 Hours,2
+8R03,80125,South Central Adult Services,Rural Reporter,DR,TX,ND,true,false,0 Hours,4.5
+8R04,80126,City of Aberdeen,Rural Reporter,DR,DO,SD,true,false,1 Days,3
+8R03,80129,Pembina County Meals and Transportation,Rural Reporter,DR,DO,ND,true,false,1 Days,4
+8R03,80130,Dickey County Senior Citizens,Rural Reporter,DR,DO,ND,true,false,1 Hours,1
+8R05,80132,"Crook County Senior Services, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,3
+8R02,80134,Liberty County,Rural Reporter,DR,DO,MT,true,false,1 Hours,0
+8R02,80135,Carter County,Rural Reporter,DR,DO,MT,true,false,1 Days,0
+,80137,"Helena, City of",Reduced Reporter,DR,DO,MT,true,false,0 Hours,3
+8R02,80139,Rosebud Health Care Center,Rural Reporter,DR,DO,MT,true,false,2 Days,5
+8R05,80140,University of Wyoming,Rural Reporter,DR,DO,WY,true,false,1 Days,0
+8R02,80142,Ravalli County Council on Aging,Rural Reporter,DR,DO,MT,true,false,1 Days,5
+8R02,80144,"Liberty Place, Inc.",Rural Reporter,DR,DO,MT,true,false,1 Days,5
+8R01,80150,Gunnison Valley Rural Transportation Authority,Rural Reporter,DR,PT,CO,true,false,2 Hours,0
+8R05,80151,Buffalo Senior Center Inc.,Rural Reporter,DR,DO,WY,true,false,1 Days,1
+8R03,80152,Nutrition United,Rural Reporter,DR,DO,ND,true,false,1 Hours,1
+8R04,80153,People's Transit,Rural Reporter,DR,DO,SD,true,false,1 Days,3.5
+8R04,80154,City of Brandon,Rural Reporter,DR,DO,SD,true,false,1 Days,2
+8R04,80158,City of Dell Rapids,Rural Reporter,DR,DO,SD,true,false,1 Hours,2
+8R01,80159,Mountain Express,Rural Reporter,DR,DO,CO,true,true,1 Days,0
+8R01,80159,Mountain Express,Rural Reporter,DR,PT,CO,true,false,0 Hours,15
+8R03,80160,Williston Council for the Aging,Rural Reporter,DR,DO,ND,true,false,1 Days,3
+8R01,80161,Summit County,Rural Reporter,DR,DO,CO,false,false,1 Days,0
+8R01,80162,East Central Council of Local Governments,Rural Reporter,DR,DO,CO,true,true,1 Days,85
+8R05,80163,Campbell County Senior Citizens Association Inc,Rural Reporter,DR,DO,WY,true,false,1 Days,4
+8R02,80164,Sanders County Council on Aging,Rural Reporter,DR,DO,MT,true,false,1 Days,1.3
+8R02,80166,Urban Transportation District of Dawson County,Rural Reporter,DR,DO,MT,true,false,2 Hours,1
+8R02,80167,Powder River County,Rural Reporter,DR,DO,MT,true,true,1 Days,1
+8R01,80168,Dolores County,Rural Reporter,DR,DO,CO,true,false,24 Hours,15
+8R04,80171,Community Coordinated Transportation Systems,Rural Reporter,DR,DO,SD,true,true,1 Days,2
+8R02,80172,"Lincoln County Transportation Service, Inc.",Rural Reporter,DR,DO,MT,true,false,1 Days,8
+8R02,80173,"Mineral County Pioneer Council, Inc.",Rural Reporter,DR,DO,MT,true,false,1 Days,3
+8R02,80174,Silver Bow County,Rural Reporter,DR,DO,MT,true,true,1 Days,0
+8R01,80179,City of Burlington,Rural Reporter,DR,DO,CO,true,false,1 Days,0.25
+8R02,80181,Custer County,Rural Reporter,DR,DO,MT,true,false,1 Hours,1
+8R04,80182,Rural Office of Community Services,Rural Reporter,DR,DO,SD,true,false,1 Days,2
+8R02,80183,Valley County,Rural Reporter,DR,DO,MT,true,false,2 Hours,1
+8R05,80185,Riverton Senior Center,Rural Reporter,DR,DO,WY,true,false,1 Days,5
+8R01,80186,City of Steamboat Springs,Rural Reporter,DR,DO,CO,true,true,1 Days,0
+8R01,80186,City of Steamboat Springs,Rural Reporter,DR,PT,CO,true,false,0 Hours,0
+8R04,80187,Brookings Area Transit Authority,Rural Reporter,DR,DO,SD,true,false,1 Days,3
+8R05,80188,Southern Teton Area Rapid Transit,Rural Reporter,DR,DO,WY,true,false,1 Days,0
+8R05,80188,Southern Teton Area Rapid Transit,Rural Reporter,DR,PT,WY,true,false,1 Hours,0
+8R01,80189,"Southern Colorado Community Action Agency, Inc.",Rural Reporter,DR,DO,CO,true,false,2 Days,4
+8R04,80190,"East Dakota Transit, Inc.",Rural Reporter,DR,DO,SD,true,false,1 Days,2
+8R05,80193,Senior Citizens Council,Rural Reporter,DR,DO,WY,true,false,1 Days,5.5
+8R03,80196,Kenmare Wheels & Meals,Rural Reporter,DR,DO,ND,true,false,1 Hours,1.5
+8R05,80199,"North Big Horn Senior Center, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,2
+8R01,80201,Montezuma County,Rural Reporter,DR,DO,CO,true,false,1 Days,3
+8R02,80205,Daniels Memorial Healthcare Foundation,Rural Reporter,DR,DO,MT,true,false,1 Days,1
+8R01,80206,City of Durango,Rural Reporter,DR,DO,CO,true,true,1 Days,1
+8R05,80209,"Hot Springs County Senior Citizens Center, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,0
+8R01,80211,Town of Limon,Rural Reporter,DR,DO,CO,true,false,1 Days,1
+8R05,80216,Converse County Aging Services,Rural Reporter,DR,DO,WY,true,false,1 Days,5
+8R05,80218,Sweetwater County Transit Authority,Rural Reporter,DR,DO,WY,true,false,1 Days,2
+8R02,80220,Flathead County,Rural Reporter,DR,DO,MT,true,false,1 Hours,1
+8R01,80221,Northeastern Colorado Association of Local Governments,Rural Reporter,DR,DO,CO,true,false,24 Hours,3
+8R05,80223,"Lander Senior Citizens Center, Inc.",Rural Reporter,DR,DO,WY,true,false,24 Hours,2
+8R02,80224,Phillips Transit Authority,Rural Reporter,DR,DO,MT,true,true,1 Hours,1
+8R01,80225,City of La Junta,Rural Reporter,DR,DO,CO,true,false,1 Hours,1
+8R01,80227,Huerfano/Las Animas Area Council of Governments,Rural Reporter,DR,DO,CO,true,false,1 Days,2
+8R03,80228,Kidder-Emmons County Senior Services,Rural Reporter,DR,DO,ND,true,false,1 Days,1.5
+8R03,80233,Cavalier County Senior Meals & Services,Rural Reporter,DR,DO,ND,true,false,1 Days,1.5
+,80235,"Human Resource Development Council District IX, Inc.",Reduced Reporter,DR,DO,MT,true,false,1 Days,0
+8R02,80236,Fergus County Council on Aging,Rural Reporter,DR,DO,MT,true,false,1 Days,1.5
+8R01,80237,Neighbor to Neighbor Volunteers,Rural Reporter,DR,DO,CO,true,false,24 Hours,0
+8R03,80238,West River Transit,Rural Reporter,DR,DO,ND,true,false,1 Days,3
+8R06,80248,Cedar City,Rural Reporter,DR,DO,UT,true,false,1 Days,2
+8R03,80249,Benson County Transportation,Rural Reporter,DR,DO,ND,true,false,1 Days,10
+8R05,80252,Eppson Center for Seniors,Rural Reporter,DR,DO,WY,true,false,2 Days,6
+8R04,80253,"West River Transit Authority, Inc.",Rural Reporter,DR,DO,SD,false,false,1 Days,2
+8R02,80254,"Glen-wood, Inc.",Rural Reporter,DR,DO,MT,true,false,0 Hours,40
+8R02,80255,Big Sky Transportation District,Rural Reporter,DR,PT,MT,true,false,1 Days,5
+8R01,80256,Town of Mountain Village,Rural Reporter,DR,DO,CO,true,false,24 Hours,0
+8R05,80257,"Uinta Senior Citizens, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,3
+8R02,80259,Richland County,Rural Reporter,DR,DO,MT,true,false,1 Hours,0
+8R06,80260,Uintah Basin Association of Governments,Rural Reporter,DR,DO,UT,true,false,1 Days,0
+8R03,80261,Can-Do Transportation,Rural Reporter,DR,DO,ND,true,false,1 Hours,3
+8R02,80262,City of Laurel,Rural Reporter,DR,DO,MT,true,false,1 Days,1.25
+8R05,80264,"Cody Council on Aging, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,3
+,80267,"Senior Resource Development Agency, Pueblo, Inc.",Reduced Reporter,DR,DO,CO,true,false,3 Days,0
+8R03,80268,Southwest Transportation Services,Rural Reporter,DR,DO,ND,true,false,1 Days,2
+8R02,80269,"West Yellowstone Foundation, Inc.",Rural Reporter,DR,DO,MT,true,false,1 Days,8
+8R03,80270,Golden Valley/Billings County Council On Aging,Rural Reporter,DR,DO,ND,true,false,8 Hours,8
+8R04,80271,"Yankton Transit, Inc.",Rural Reporter,DR,DO,SD,true,false,1 Days,2.5
+8R01,80274,"Canon City Golden Age Council, Inc",Rural Reporter,DR,DO,CO,true,false,3 Days,4
+8R01,80275,City of Cripple Creek,Rural Reporter,DR,DO,CO,true,false,0 Hours,0
+8R05,80278,"Carbon County Senior Services, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,3
+8R01,80280,Archuleta County,Rural Reporter,DR,DO,CO,true,false,24 Hours,2
+8R06,80284,Park City Municipal Corporation,Rural Reporter,DR,DO,UT,true,false,1 Hours,0
+,80285,Via Mobility Services,Full Reporter,DR,DO,CO,true,true,1 Hours,6
+8R05,80287,Goshen County Senior Friendship Center,Rural Reporter,DR,DO,WY,true,false,4 Hours,2
+8R05,80288,Weston County Senior Services,Rural Reporter,DR,DO,WY,true,false,1 Days,0
+8R01,80289,Roaring Fork Transportation Authority,Rural Reporter,DR,DO,CO,false,true,1 Days,0
+8R03,80290,Hazen Busing Project,Rural Reporter,DR,DO,ND,true,false,0 Hours,1
+8R03,80296,Walsh County Transportation Program,Rural Reporter,DR,DO,ND,true,false,1 Days,3.5
+,80298,Community Coordinated Transportation System,Reduced Reporter,DR,DO,SD,true,false,1 Days,2.5
+,80299,"Silver Key Senior Services, Inc",Reduced Reporter,DR,DO,CO,false,false,1 Hours,0
+8R05,80301,Rendezvous Pointe,Rural Reporter,DR,DO,WY,true,false,1 Days,5
+,80302,Souris Basin Transit,Reduced Reporter,DR,DO,ND,false,false,1 Days,3
+,80303,City of Minot,Reduced Reporter,DR,PT,ND,true,false,1 Days,3
+8R05,80304,"Services for Seniors, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,1
+,88128,Spirit Lake Tribe,Reduced Reporter,DR,DO,ND,true,false,1 Days,1
+,88134,Confederated Salish and Kootenai Tribes,Reduced Reporter,DR,DO,MT,true,false,1 Days,2
+,88140,Sitting Bull College,Reduced Reporter,DR,DO,"ND,SD",true,false,1 Hours,0.1
+,88146,Turtle Mountain Band of Chippewa Indian,Reduced Reporter,DR,DO,ND,true,false,1 Days,0
+,88152,Blackfeet Nation,Reduced Reporter,DR,DO,MT,true,false,0 Hours,3
+,88158,Cheyenne River Sioux Tribe,Reduced Reporter,DR,PT,SD,true,false,1 Days,2
+,88164,Chippewa Cree Tribe,Reduced Reporter,DR,DO,MT,true,false,5 Days,0
+,88170,Fort Belknap Indian Community,Reduced Reporter,DR,DO,MT,true,false,1 Hours,5
+,88176,Lower Brule Sioux Tribe,Reduced Reporter,DR,DO,SD,true,false,1 Days,1
+,88182,Rosebud Sioux Tribe,Reduced Reporter,DR,DO,SD,true,false,1 Hours,10
+,88194,Yankton Sioux Tribe,Reduced Reporter,DR,DO,SD,true,false,12 Hours,1
+,88200,Ute Tribe,Reduced Reporter,DR,DO,UT,true,false,1 Hours,1
+,88201,Sisseton-Wahpeton Oyate,Reduced Reporter,DR,PT,"MN,SD",true,false,2 Hours,5
+8R01,88215,"Montrose County Senior Citizens Transportation, Inc.",Rural Reporter,DR,DO,CO,true,false,2 Hours,10
+8R02,88216,City of Dillon,Rural Reporter,DR,DO,MT,true,false,1 Hours,0
+8R02,88217,Fallon County,Rural Reporter,DR,DO,MT,true,false,1 Hours,1
+8R02,88218,Powell County,Rural Reporter,DR,DO,MT,true,false,1 Hours,1
+8R05,88219,"Powell Senior Citizens A-Go Go, Inc.",Rural Reporter,DR,DO,WY,true,false,1 Days,5
+8R03,88222,Wildrose Public Transportation,Rural Reporter,DR,DO,ND,true,false,1 Days,3
+8R05,88224,Washakie County Senior Citizens Center,Rural Reporter,DR,DO,WY,true,false,1 Days,1.5
+8R01,88225,Town of Winter Park,Rural Reporter,DR,PT,CO,true,false,1 Days,0
+8R01,88230,Teller Senior Coalition,Rural Reporter,DR,DO,CO,true,true,48 Hours,5
+8R06,88239,High Valley Transit District,Rural Reporter,DR,PT,UT,true,false,0 Hours,0
+,88288,"Disability Services, Inc.",Reduced Reporter,DR,DO,CO,true,true,2 Hours,0
+8R02,88293,Park County,Rural Reporter,DR,DO,MT,true,false,5 Days,0
+8R04,88297,"Community Transit of Watertown/Sisseton, Inc.",Rural Reporter,DR,DO,SD,true,false,0 Days,3
+8R01,88298,Town of Vail,Rural Reporter,DR,DO,CO,true,false,1 Days,0
+8R02,88303,Red Lodge Area Community Foundation,Rural Reporter,DR,DO,MT,true,false,0 Hours,0
+8R01,88305,Eagle Valley Transportation Authority,Rural Reporter,DR,DO,CO,true,false,1 Days,0
+8R06,88306,City of Moab,Rural Reporter,DR,PT,UT,true,false,0 Hours,0
+8R02,88307,"Western Montana Area VI Agency on Aging, Inc.",Rural Reporter,DR,DO,MT,true,false,1 Days,5
+,90001,Regional Transportation Commission of Washoe County,Full Reporter,DR,PT,NV,true,false,0 Hours,0.51
+,90001,Regional Transportation Commission of Washoe County,Full Reporter,DR,TN,NV,true,false,1 Days,0.48
+,90001,Regional Transportation Commission of Washoe County,Full Reporter,DR,TX,NV,true,false,1 Days,2.96
+,90002,City and County of Honolulu,Full Reporter,DR,PT,HI,true,false,1 Days,2.25
+,90002,City and County of Honolulu,Full Reporter,DR,TX,HI,true,false,1 Days,2.25
+,90004,Golden Empire Transit District,Full Reporter,DR,DO,CA,true,true,1 Days,3
+,90006,Santa Cruz Metropolitan Transit District,Full Reporter,DR,DO,CA,true,false,1 Days,4
+,90008,City of Santa Monica,Full Reporter,DR,TN,CA,true,false,0 Hours,1.5
+,90009,San Mateo County Transit District,Full Reporter,DR,PT,CA,false,false,0 Hours,4.25
+,90009,San Mateo County Transit District,Full Reporter,DR,TX,CA,true,false,1 Days,4.25
+,90010,City of Torrance,Full Reporter,DR,TX,CA,true,true,1 Hours,1
+,90012,San Joaquin Regional Transit District,Full Reporter,DR,DO,CA,true,false,4 Hours,3
+,90012,San Joaquin Regional Transit District,Full Reporter,DR,PT,CA,true,false,2 Days,3
+,90013,Santa Clara Valley Transportation Authority,Full Reporter,DR,PT,CA,true,false,1 Days,4
+,90014,Alameda-Contra Costa Transit District,Full Reporter,DR,PT,CA,true,true,1 Days,4
+,90015,City and County of San Francisco,Full Reporter,DR,PT,CA,false,false,1 Days,2.75
+,90016,"Golden Gate Bridge, Highway and Transportation District",Full Reporter,DR,PT,CA,true,false,1 Days,19.5
+,90017,City of Santa Rosa,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90018,Ak-Chin Indian Community,Reduced Reporter,DR,DO,AZ,true,false,2 Hours,0
+,90019,Sacramento Regional Transit District,Full Reporter,DR,DO,CA,true,true,1 Days,5
+,90019,Sacramento Regional Transit District,Full Reporter,DR,PT,CA,true,false,2 Days,2.5
+,90019,Sacramento Regional Transit District,Full Reporter,DR,TN,CA,true,true,1 Days,5
+,90020,Santa Barbara Metropolitan Transit District,Full Reporter,DR,DO,CA,true,false,0 Hours,3
+,90022,City of Norwalk,Full Reporter,DR,PT,CA,true,false,3 Days,1
+,90023,Long Beach Transit,Full Reporter,DR,PT,CA,true,true,1 Days,2
+,90024,City of La Mirada,Full Reporter,DR,PT,CA,true,false,1 Days,1
+,90026,San Diego Metropolitan Transit System,Full Reporter,DR,PT,CA,true,false,1 Days,5
+,90026,San Diego Metropolitan Transit System,Full Reporter,DR,TX,CA,true,false,1 Days,5
+,90027,City of Fresno,Full Reporter,DR,PT,CA,true,false,1 Days,1.25
+,90029,Omnitrans,Full Reporter,DR,PT,CA,true,true,0 Hours,3.75
+,90030,North County Transit District,Full Reporter,DR,DO,CA,true,false,1 Days,5
+,90030,North County Transit District,Full Reporter,DR,TN,CA,true,false,1 Days,5
+,90031,Riverside Transit Agency,Full Reporter,DR,PT,CA,true,false,1 Hours,3.5
+,90032,City of Phoenix,Full Reporter,DR,PT,AZ,true,false,1 Days,4
+,90033,City of Tucson,Full Reporter,DR,PT,AZ,true,false,0 Hours,0
+,90034,City of Glendale,Full Reporter,DR,DO,AZ,true,false,0 Hours,3
+,90035,Gold Coast Transit District,Full Reporter,DR,DO,CA,true,true,1 Hours,4
+,90036,Orange County Transportation Authority,Full Reporter,DR,PT,CA,false,true,1 Days,3.6
+,90036,Orange County Transportation Authority,Full Reporter,DR,TN,CA,false,true,1 Days,3.6
+,90036,Orange County Transportation Authority,Full Reporter,DR,TX,CA,false,true,0 Days,3.6
+,90039,City of Culver City,Full Reporter,DR,DO,CA,true,false,1 Days,0
+,90041,City of Montebello,Full Reporter,DR,PT,CA,true,false,1 Days,1
+,90041,City of Montebello,Full Reporter,DR,TX,CA,true,false,1 Hours,1
+,90042,City of Gardena,Full Reporter,DR,DO,CA,true,true,1 Days,0.75
+,90043,City of Commerce,Full Reporter,DR,DO,CA,true,false,1 Days,0
+,90044,City of Arcadia,Reduced Reporter,DR,PT,CA,true,true,24 Hours,0.5
+,90045,Regional Transportation Commission of Southern Nevada,Full Reporter,DR,PT,NV,true,false,1 Days,3
+,90050,City of Simi Valley,Reduced Reporter,DR,DO,CA,true,true,1 Days,2
+,90052,City of Corona,Reduced Reporter,DR,PT,CA,true,true,1 Days,3.5
+,90061,Yuba-Sutter Transit Authority,Reduced Reporter,DR,PT,CA,true,true,1 Hours,3
+,90062,Monterey-Salinas Transit,Full Reporter,DR,PT,CA,true,true,1 Days,2
+,90062,Monterey-Salinas Transit,Full Reporter,DR,TX,CA,true,true,1 Days,2
+,90078,Central Contra Costa Transit Authority,Full Reporter,DR,PT,CA,false,false,0 Hours,5
+,90079,SunLine Transit Agency,Full Reporter,DR,DO,CA,true,false,1 Days,2
+,90079,SunLine Transit Agency,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90086,City of Riverside,Full Reporter,DR,DO,CA,false,true,1 Days,3.5
+,90087,City of Santa Maria,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90088,Napa Valley Transportation Authority,Full Reporter,DR,PT,CA,true,false,1 Hours,4
+,90089,County of Sonoma,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90090,Yolo County Transportation District,Full Reporter,DR,PT,CA,true,false,1 Days,4.5
+,90091,City of Visalia,Full Reporter,DR,PT,CA,true,false,1 Days,2.25
+,90092,"City of Fairfield, California",Full Reporter,DR,PT,CA,true,false,0 Hours,4
+,90093,Redding Area Bus Authority,Reduced Reporter,DR,PT,CA,true,false,1 Days,4
+,90119,City of Laguna Beach,Reduced Reporter,DR,PT,CA,true,false,0 Hours,0
+,90121,Antelope Valley Transit Authority,Full Reporter,DR,PT,CA,true,true,2 Days,3
+,90136,Regional Public Transportation Authority,Full Reporter,DR,PT,AZ,false,true,1 Days,2
+,90136,Regional Public Transportation Authority,Full Reporter,DR,TX,AZ,false,true,1 Days,2
+,90140,City of Peoria,Full Reporter,DR,DO,AZ,false,true,1 Days,1
+,90147,City of Los Angeles,Full Reporter,DR,PT,CA,true,false,1 Days,2
+,90147,City of Los Angeles,Full Reporter,DR,TX,CA,true,false,1 Hours,2
+,90148,Victor Valley Transit Authority,Full Reporter,DR,PT,CA,true,true,1 Days,2.5
+,90149,City of Lompoc,Reduced Reporter,DR,PT,CA,true,false,1 Days,2
+,90154,Los Angeles County Metropolitan Transportation Authority,Full Reporter,DR,PT,CA,true,false,0 Hours,2.5
+,90155,City of Vacaville,Reduced Reporter,DR,PT,CA,true,false,1 Days,2
+,90157,Access Services,Full Reporter,DR,PT,CA,false,false,1 Days,2.75
+,90157,Access Services,Full Reporter,DR,TX,CA,false,false,1 Days,2.75
+,90159,Western Contra Costa Transit Authority,Full Reporter,DR,PT,CA,true,false,1 Days,1.25
+,90161,City of Union City,Reduced Reporter,DR,PT,CA,true,false,0 Hours,2.75
+,90162,The Eastern Contra Costa Transit Authority,Full Reporter,DR,PT,CA,false,true,1 Days,2.75
+,90162,The Eastern Contra Costa Transit Authority,Full Reporter,DR,TN,CA,true,false,0 Hours,4
+,90163,City of Camarillo,Reduced Reporter,DR,PT,CA,true,true,1 Days,2
+,90164,Ventura County Transportation Commission,Full Reporter,DR,PT,CA,true,true,2 Hours,2
+,90165,City of Thousand Oaks,Reduced Reporter,DR,PT,CA,false,true,0 Hours,4
+,90167,City of Davis,Reduced Reporter,DR,DO,CA,false,true,1 Days,3
+,90168,City of Roseville,Reduced Reporter,DR,PT,CA,true,true,1 Hours,3.75
+,90171,City of Santa Clarita,Full Reporter,DR,PT,CA,true,false,1 Days,2.25
+,90173,Transit Joint Powers Authority for Merced County,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90175,City of Lodi,Reduced Reporter,DR,PT,CA,true,false,1 Days,2
+,90191,Town of Oro Valley,Reduced Reporter,DR,DO,AZ,true,true,1 Days,0
+,90194,City of Atascadero,Reduced Reporter,DR,PT,CA,true,true,2 Hours,5
+,90196,County of Placer,Full Reporter,DR,DO,CA,true,true,0 Hours,2.5
+,90196,County of Placer,Full Reporter,DR,PT,"CA,NV",true,false,0 Hours,0
+,90197,City of Tracy,Reduced Reporter,DR,PT,CA,true,true,1 Days,1.5
+,90198,City of Porterville,Reduced Reporter,DR,PT,CA,true,true,0 Hours,5
+,90199,City of Madera,Reduced Reporter,DR,PT,CA,true,false,1 Days,3
+,90200,Kings County Area Public Transit Agency,Full Reporter,DR,PT,CA,true,true,1 Days,3
+,90201,City of Turlock,Full Reporter,DR,PT,CA,true,true,1 Days,1
+,90206,San Luis Obispo Regional Transit Authority,Full Reporter,DR,DO,CA,true,false,1 Days,2.5
+,90208,Butte County Association of Governments,Full Reporter,DR,PT,CA,true,true,1 Days,4
+,90211,Anaheim Transportation Network,Full Reporter,DR,PT,CA,true,true,0 Hours,4
+,90213,City of Petaluma,Full Reporter,DR,PT,CA,true,false,0 Hours,3
+,90214,City of Redondo Beach,Full Reporter,DR,PT,CA,true,false,2 Hours,1
+,90215,Carson Area Metropolitan Planning Organization,Reduced Reporter,DR,PT,NV,true,true,1 Days,3
+,90216,County of Sacramento Municipal Services Agency,Reduced Reporter,DR,PT,CA,true,true,1 Days,2.5
+,90217,City of Manteca,Reduced Reporter,DR,PT,CA,true,false,1 Days,2
+,90219,Northern Arizona Intergovernmental Public Transportation Authority,Full Reporter,DR,DO,AZ,true,true,1 Days,2.25
+,90223,"Paratransit, Inc.",Full Reporter,DR,DO,CA,true,false,1 Days,0
+,90226,Imperial County Transportation Commission,Full Reporter,DR,PT,CA,true,false,1 Days,2.5
+,90227,City of Moorpark,Reduced Reporter,DR,PT,CA,true,false,1 Hours,1
+,90229,El Dorado County Transit Authority,Reduced Reporter,DR,DO,CA,true,false,1 Days,3
+,90232,Solano County Transit,Full Reporter,DR,PT,CA,true,false,1 Days,4
+,90233,Yuma County Intergovernmental Public Transportation Authority,Full Reporter,DR,PT,AZ,true,false,1 Days,4
+,90234,Marin County Transit District,Full Reporter,DR,PT,CA,true,true,1 Days,4
+9R03,90237,County of Kaua'i,Rural Reporter,DR,DO,HI,true,true,1 Days,2
+,90238,City of Delano,Reduced Reporter,DR,DO,CA,true,false,1 Days,3
+,90239,City of Sierra Vista,Reduced Reporter,DR,DO,AZ,true,false,1 Days,0
+,90241,County of Maui,Full Reporter,DR,PT,HI,true,false,1 Days,2
+,90243,Easy Lift Transportation,Reduced Reporter,DR,DO,CA,false,false,1 Days,3.5
+,90246,City of Agoura Hills,Reduced Reporter,DR,PT,CA,true,false,0 Days,1.5
+,90247,City of Alhambra,Reduced Reporter,DR,PT,CA,true,true,3 Days,0
+,90249,City of Avalon,Reduced Reporter,DR,PT,CA,true,false,0 Hours,2
+,90250,City of Azusa,Reduced Reporter,DR,DO,CA,true,false,1 Days,1
+,90251,City of Baldwin Park,Reduced Reporter,DR,PT,CA,true,false,1 Hours,0.5
+,90252,City of Bell,Reduced Reporter,DR,PT,CA,true,false,1 Hours,1
+,90253,City of Bell Gardens,Reduced Reporter,DR,PT,CA,true,false,1 Hours,0.25
+,90254,City of Bellflower,Reduced Reporter,DR,PT,CA,true,true,48 Hours,0.5
+,90255,City of Beverly Hills,Reduced Reporter,DR,PT,CA,true,false,1 Hours,0
+,90256,City of Burbank,Reduced Reporter,DR,DO,CA,true,false,1 Days,1
+,90257,City of Calabasas,Reduced Reporter,DR,PT,CA,true,false,1 Days,2.5
+,90258,City of Carson,Reduced Reporter,DR,TN,CA,true,false,0 Hours,5.1
+,90258,City of Carson,Reduced Reporter,DR,TX,CA,true,false,1 Hours,2
+,90259,City of Cerritos,Reduced Reporter,DR,PT,CA,true,true,1 Days,1
+,90260,City of Compton,Reduced Reporter,DR,DO,CA,true,false,1 Days,0.25
+,90261,City of Covina,Reduced Reporter,DR,PT,CA,true,true,1 Days,0.25
+,90262,City of Cudahy,Reduced Reporter,DR,TX,CA,true,true,0 Hours,0.5
+,90263,City of Downey,Reduced Reporter,DR,PT,CA,true,false,1 Days,0.5
+,90265,City of El Monte,Reduced Reporter,DR,DO,CA,true,true,1 Hours,0
+,90265,City of El Monte,Reduced Reporter,DR,PT,CA,true,true,24 Hours,0.5
+,90266,City of Glendora,Reduced Reporter,DR,PT,CA,true,false,1 Days,0.5
+,90267,City of Huntington Park,Reduced Reporter,DR,TX,CA,true,true,1 Days,1
+,90268,City of Inglewood,Reduced Reporter,DR,DO,CA,true,false,1 Days,0.5
+,90271,Los Angeles County,Reduced Reporter,DR,PT,CA,true,false,24 Hours,0.5
+,90277,Los Angeles County,Reduced Reporter,DR,PT,CA,true,false,24 Hours,0.5
+,90279,Los Angeles County,Reduced Reporter,DR,PT,CA,true,true,24 Hours,0.5
+,90282,City of Malibu,Reduced Reporter,DR,PT,CA,true,true,1 Days,4
+,90283,City of Manhattan Beach,Reduced Reporter,DR,DO,CA,true,false,2 Hours,0.25
+,90284,City of Maywood,Reduced Reporter,DR,PT,CA,true,false,1 Days,1
+,90285,City of Monrovia,Reduced Reporter,DR,PT,CA,true,false,0 Hours,0.5
+,90286,City of Monterey Park,Reduced Reporter,DR,DO,CA,true,false,3 Days,0
+,90287,Palos Verdes Peninsula Transit Authority,Reduced Reporter,DR,TX,CA,true,false,1 Days,6
+,90288,City of Pico Rivera,Reduced Reporter,DR,PT,CA,true,true,7 Days,0
+,90289,City of Rosemead,Reduced Reporter,DR,PT,CA,true,false,1 Days,0.5
+,90290,City of Santa Fe Springs,Reduced Reporter,DR,DO,CA,true,false,1 Days,0
+,90291,City of South Gate,Reduced Reporter,DR,TX,CA,true,true,0 Hours,1
+,90292,City of South Pasadena,Reduced Reporter,DR,DO,CA,true,false,24 Hours,0.5
+,90293,City of West Covina,Reduced Reporter,DR,PT,CA,true,true,2 Hours,0.5
+,90294,City of West Hollywood,Reduced Reporter,DR,PT,CA,true,true,1 Hours,0
+,90295,City of Whittier,Reduced Reporter,DR,PT,CA,true,true,0 Hours,0.5
+,90296,City of Claremont,Reduced Reporter,DR,PT,CA,true,true,1 Hours,2.5
+,90296,City of Claremont,Reduced Reporter,DR,TN,CA,true,true,1 Hours,2.5
+,90299,Sonoma-Marin Area Rail Transit District,Full Reporter,DR,PT,CA,true,false,0 Hours,1.5
+,90300,City of Artesia,Reduced Reporter,DR,TX,CA,true,false,1 Days,0
+,90301,City of Lakewood,Reduced Reporter,DR,DO,CA,true,true,1 Days,0
+,90305,Lake Havasu City,Reduced Reporter,DR,DO,AZ,true,true,24 Hours,3
+,90306,Stanislaus Regional Transit Authority,Full Reporter,DR,PT,CA,true,true,1 Days,2.5
+,90309,City of Casa Grande,Reduced Reporter,DR,PT,AZ,true,false,1 Hours,1.5
+,90310,Tulare County Regional Transit Agency,Full Reporter,DR,PT,CA,true,false,1 Days,3
+,90313,City of Clovis,Full Reporter,DR,DO,CA,false,true,0 Hours,0
+,90315,City of Avondale,Reduced Reporter,DR,PT,AZ,true,true,0 Hours,2
+,90999,Government of Guam-Guam Regional Transit Authority,Reduced Reporter,DR,DO,GU,true,true,1 Days,0.5
+9R02,91000,Amador Transit,Rural Reporter,DR,DO,CA,true,true,24 Hours,2
+9R02,91002,City of Corcoran,Rural Reporter,DR,DO,CA,true,false,0 Hours,1.5
+,91005,Madera County,Reduced Reporter,DR,PT,CA,true,true,2 Hours,2
+9R02,91006,City of Ridgecrest,Rural Reporter,DR,DO,CA,true,false,1 Days,2.5
+9R02,91007,Fresno County Rural Transit Agency,Rural Reporter,DR,PT,CA,true,false,1 Days,0.75
+9R02,91008,Modoc Transportation Agency,Rural Reporter,DR,PT,CA,true,false,1 Hours,1
+9R02,91009,San Benito County Local Transportation Authority,Rural Reporter,DR,PT,CA,false,true,1 Days,2
+9R01,91010,City of Cottonwood,Rural Reporter,DR,DO,AZ,true,false,1 Days,1
+9R02,91012,Mountain Area Regional Transit Authority,Rural Reporter,DR,DO,CA,true,true,2 Hours,0
+9R02,91014,City of Rio Vista,Rural Reporter,DR,PT,CA,true,true,1 Hours,2
+9R04,91022,Lincoln County,Rural Reporter,DR,DO,NV,true,true,1 Hours,0
+9R04,91023,Humboldt County,Rural Reporter,DR,DO,NV,true,false,1 Days,1.5
+9R02,91027,City of Arvin,Rural Reporter,DR,DO,CA,true,false,0 Hours,1.5
+9R02,91028,City of Solvang,Rural Reporter,DR,PT,CA,true,true,1 Days,1.75
+9R04,91029,Nye County,Rural Reporter,DR,DO,NV,true,false,1 Days,0
+9R02,91032,City of Auburn,Rural Reporter,DR,DO,CA,false,false,1 Days,3.5
+9R02,91036,Humboldt Transit Authority,Rural Reporter,DR,PT,CA,false,false,1 Days,3
+,91037,City of Bullhead,Reduced Reporter,DR,DO,AZ,true,false,1 Days,2
+9R02,91038,Sierra County,Rural Reporter,DR,PT,CA,true,false,1 Days,10
+9R02,91041,City of Dixon,Rural Reporter,DR,DO,CA,true,true,0 Hours,2.75
+9R02,91043,City of Guadalupe,Rural Reporter,DR,PT,CA,true,false,1 Days,3
+9R08,91045,Northern Marianas - Commonwealth Office of Transit Authority,Rural Reporter,DR,DO,MP,true,false,2 Days,7
+9R02,91047,Mendocino Transit Authority,Rural Reporter,DR,DO,CA,true,true,1 Days,3
+9R01,91052,City of Douglas,Rural Reporter,DR,DO,AZ,true,false,1 Days,0
+9R02,91053,Lake Transit Authority,Rural Reporter,DR,PT,CA,true,false,1 Days,2.5
+9R02,91057,Tuolumne County Transit Agency,Rural Reporter,DR,PT,CA,true,true,1 Days,0
+,91059,County of Kern,Reduced Reporter,DR,PT,CA,true,false,1 Days,2
+9R04,91061,Elko County,Rural Reporter,DR,DO,NV,true,false,0 Days,2
+9R02,91062,Eastern Sierra Transit Authority,Rural Reporter,DR,DO,CA,true,false,0 Hours,3
+9R04,91064,Douglas County,Rural Reporter,DR,DO,NV,true,false,1 Days,0
+9R02,91066,City of Taft,Rural Reporter,DR,DO,CA,true,false,0 Hours,2.5
+9R01,91069,Town of Miami,Rural Reporter,DR,DO,AZ,true,false,1 Days,1
+9R02,91071,City of Chowchilla,Rural Reporter,DR,DO,CA,true,false,0 Hours,2
+,91072,Southern Nevada Transit Coalition,Reduced Reporter,DR,DO,NV,true,false,1 Days,2
+,91078,City of Escalon,Reduced Reporter,DR,PT,CA,true,false,0 Hours,0
+,91078,City of Escalon,Reduced Reporter,DR,TN,CA,true,false,0 Hours,2
+9R03,91080,County of Hawaii,Rural Reporter,DR,PT,HI,true,false,1 Days,0
+9R03,91080,County of Hawaii,Rural Reporter,DR,TX,HI,true,false,1 Hours,0
+9R02,91082,Mariposa County,Rural Reporter,DR,DO,CA,true,false,2 Days,4
+9R02,91088,County of Glenn,Rural Reporter,DR,PT,CA,true,false,1 Days,3
+9R02,91089,Tehama County,Rural Reporter,DR,PT,CA,true,true,1 Days,0
+9R02,91090,Morongo Basin Transit Authority,Rural Reporter,DR,DO,CA,true,false,1 Days,5
+,91092,Tahoe Transportation District,Full Reporter,DR,DO,"CA,NV",true,false,1 Days,0
+9R02,91095,County of Nevada,Rural Reporter,DR,PT,CA,true,true,14 Hours,3
+9R01,91096,City of Coolidge,Rural Reporter,DR,DO,AZ,true,false,1 Days,1.5
+9R02,91097,Redwood Coast Transit Authority,Rural Reporter,DR,PT,CA,true,true,1 Days,2
+9R02,91098,Lassen Transit Service Agency,Rural Reporter,DR,PT,CA,true,true,1 Days,1.75
+9R04,91099,White Pine County,Rural Reporter,DR,DO,NV,true,false,24 Hours,1
+9R04,91100,Southern Nevada Transit Coalition,Rural Reporter,DR,DO,NV,true,false,1 Hours,2
+9R02,91101,Town of Truckee,Rural Reporter,DR,PT,CA,true,false,1 Days,6
+9R04,91103,Churchill County,Rural Reporter,DR,DO,NV,true,false,1 Days,3
+,91106,City of Maricopa,Reduced Reporter,DR,DO,AZ,true,false,1 Hours,1
+9R04,91107,Southern Nevada Transit Coalition,Rural Reporter,DR,DO,NV,true,false,1 Days,2
+9R02,91110,City of McFarland,Rural Reporter,DR,DO,CA,true,false,0 Hours,0
+9R02,91111,City of California City,Rural Reporter,DR,DO,CA,true,false,1 Hours,2
+9R02,91112,County of Colusa,Rural Reporter,DR,DO,CA,true,false,0 Hours,2
+9R04,91113,Lyon County,Rural Reporter,DR,DO,NV,true,false,1 Days,0
+9R01,91114,City of Benson,Rural Reporter,DR,DO,AZ,true,false,1 Days,2
+9R02,91116,County of Alpine,Rural Reporter,DR,DO,CA,true,false,1 Days,2
+9R02,91120,City of Shafter,Rural Reporter,DR,DO,CA,true,false,0 Hours,1.5
+,91122,Regional Transportation Authority of Pima County,Full Reporter,DR,PT,AZ,true,true,1 Days,0
+,99262,Yurok Tribe,Reduced Reporter,DR,DO,CA,true,false,1 Days,2
+,99328,Yavapai-Apache Nation,Reduced Reporter,DR,DO,AZ,true,false,1 Hours,1.25
+,99340,Kaibab Band of Paiute Indians,Reduced Reporter,DR,DO,AZ,true,false,1 Days,0
+,99358,Morongo Band of Mission Indians,Reduced Reporter,DR,DO,CA,true,false,1 Days,1
+,99364,North Fork Rancheria of Mono Indians of California,Reduced Reporter,DR,DO,CA,true,false,4 Hours,0
+,99376,Salt River Pima-Maricopa Indian Community,Reduced Reporter,DR,DO,AZ,true,false,2 Hours,0
+,99382,Hopi Tribe,Reduced Reporter,DR,DO,AZ,true,false,1 Days,1
+,99394,Elko Band Council,Reduced Reporter,DR,DO,NV,true,true,0 Hours,0
+,99423,City of Glendale,Full Reporter,DR,PT,CA,true,false,3 Hours,1.5
+,99424,City of Pasadena,Full Reporter,DR,PT,CA,true,false,1 Days,0.75
+,99425,Pomona Valley Transportation Authority,Full Reporter,DR,PT,CA,true,true,1 Days,1
+,99425,Pomona Valley Transportation Authority,Full Reporter,DR,TN,CA,true,true,1 Hours,4.5
+9R02,99426,City of Wasco,Rural Reporter,DR,DO,CA,true,true,1 Hours,1.75
+,99433,Hualapai Indian Tribe,Reduced Reporter,DR,DO,AZ,true,false,7 Days,10
+9R06,99434,American Samoa Government,Rural Reporter,DR,DO,AS,true,true,1 Days,1
+9R01,99437,Town of Quartzsite,Rural Reporter,DR,DO,AZ,true,false,1 Days,2.5
+9R02,99442,Calaveras Transit Agency,Rural Reporter,DR,PT,CA,true,false,1 Days,3
+9R01,99453,City of Winslow,Rural Reporter,DR,DO,AZ,true,false,2 Hours,3
+9R01,99455,City of Sedona,Rural Reporter,DR,PT,AZ,true,false,1 Hours,2
+9R01,99456,City Of Willcox,Rural Reporter,DR,DO,AZ,true,false,1 Days,1
+,99457,City of Goodyear,Reduced Reporter,DR,PT,AZ,true,true,0 Hours,1
+9R04,99473,Pahrump Valley Public Transportation Inc,Rural Reporter,DR,DO,NV,true,false,24 Hours,4
+,99479,City of Lathrop,Full Reporter,DR,PT,CA,true,false,0 Hours,2
+,99480,Hopland Bands of Pomo Indians,Reduced Reporter,DR,DO,CA,true,false,0 Hours,0

@@ -15,6 +15,8 @@ What each step needs in data/raw/
     day15  NOAA Coastal Relief Model export for Monterey Bay (exportImage.tiff, GeoTIFF)
     day17  nothing: downloads EIA's hourly grid file itself (big, about 150 MB, kept in data/raw)
     day18  nothing: downloads BTS transit stops, Amtrak, intercity terminals and Census counties itself
+    day18b the NTD dial-a-ride CSVs from transit.dot.gov (Counties and Places, Passenger Eligibility), any year;
+           if missing it downloads the 2024 ones. Downloads Census county population itself
     day19  nothing: asks OpenStreetMap for Philadelphia's cafés (if it fails, the server is busy: run again later)
     day20  the WRI Aqueduct 4.0 folder you unzipped for the water map (the .gdb)
 """
@@ -403,6 +405,128 @@ def day18():
             "size_mb": size_mb(PROCESSED / "counties_connectivity.geojson")}
 
 
+# ------------------------------------------------------------------ Day 18b · dial-a-ride (NTD) and population
+# FTA National Transit Database, 2024 report year (issued Sep 2025), on the DOT open data portal
+NTD_DR = {"coverage": "qifj-zz6e",       # Demand Response Geographic Area Coverage (Counties and Places)
+          "eligibility": "i3pw-uwab",    # ... (Passenger Eligibility and Requirements)
+          "schedules": "uk25-sge7"}      # ... (Service Schedules)
+PEP = [(2024, "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/totals/co-est2024-alldata.csv"),
+       (2023, "https://www2.census.gov/programs-surveys/popest/datasets/2020-2023/counties/totals/co-est2023-alldata.csv")]
+
+
+def _socrata_csv(view, dest):
+    if dest.exists():
+        return dest
+    for url in (f"https://data.transportation.gov/api/views/{view}/rows.csv?accessType=DOWNLOAD",
+                f"https://data.transportation.gov/api/v3/views/{view}/export.csv?accessType=DOWNLOAD"):
+        try:
+            return _get(url, dest, timeout=600)
+        except Exception as e:
+            print(f"         {url} failed ({e})")
+    raise FileNotFoundError(f"Couldn't download NTD table {view}. Open data.transportation.gov/d/{view}, "
+                            f"Export > CSV, save it as data/raw/{dest.name}, then run again.")
+
+
+def _dr_by_county(dr, elig=None):
+    """One row per county from the NTD demand-response coverage table (one row per agency, service type and place).
+    A county counts if any place in it is wholly or partly served. With the eligibility table, a service is
+    'open to anyone' when the agency reports no passenger eligibility requirement for that service type."""
+    dr = dr.copy()
+    dr["geoid"] = dr.county_geo_id.str.zfill(5)
+    info = {"dr_services": int(dr[["ntd_id", "service_type_code"]].drop_duplicates().shape[0]),
+            "dr_agencies_total": int(dr.ntd_id.nunique())}
+    if elig is not None:
+        e = elig[["ntd_id", "service_type_code", "has_psgnr_elig_rqmt_flag"]].drop_duplicates(["ntd_id", "service_type_code"])
+        dr = dr.merge(e, on=["ntd_id", "service_type_code"], how="left")
+        info["services_without_eligibility_row"] = int(dr[dr.has_psgnr_elig_rqmt_flag.isna()][["ntd_id", "service_type_code"]]
+                                                      .drop_duplicates().shape[0])
+        dr["open"] = dr.has_psgnr_elig_rqmt_flag.str.lower().eq("false")
+    g = dr.groupby("geoid")
+    out = pd.DataFrame({"dr_agencies": g.ntd_id.nunique(),
+                        "dr_names": g.reportername.agg(lambda s: "; ".join(sorted(set(s.str.strip())))),
+                        "dr_any_whole_place": g.geo_service_level_desc.agg(lambda s: bool(s.str.contains("Wholly").any()))})
+    if elig is not None:
+        out["dr_open_agencies"] = dr[dr.open].groupby("geoid").ntd_id.nunique().reindex(out.index).fillna(0).astype(int)
+    return out.reset_index(), info
+
+
+@step("day18b_dial_a_ride", "ntd_dr_counties.csv", "county_population.csv")
+def day18b():
+    from mapkit import ai
+    allc = ai.load_counties()                 # all states, for matching (Census 2023 cartographic counties)
+    l48 = set(_counties_l48().geoid)
+    info = {}
+
+    # ---------------- population: Census Population Estimates (PEP) county totals
+    for year, url in PEP:
+        dest = RAW / url.rsplit("/", 1)[1]
+        try:
+            if not dest.exists():
+                _get(url, dest)
+            break
+        except Exception as e:
+            print(f"         {dest.name} not available ({e})")
+    else:
+        raise FileNotFoundError("Couldn't download Census county population. Save co-est2024-alldata.csv from "
+                                "census.gov (Population Estimates > County Population Totals) into data/raw/, then run again.")
+    pep = pd.read_csv(dest, dtype=str, encoding="latin-1")
+    pep = pep[pep.SUMLEV == "050"]
+    pop = pd.DataFrame({"geoid": pep.STATE.str.zfill(2) + pep.COUNTY.str.zfill(3),
+                        "pop": pd.to_numeric(pep[f"POPESTIMATE{year}"]).astype(int)})
+    if "ALAND" not in allc.columns:
+        raise KeyError(f"The Census county file has no ALAND column: {list(allc.columns)}")
+    land = allc[["geoid", "ALAND"]].assign(land_sqmi=lambda d: pd.to_numeric(d.ALAND) / 2_589_988.110336)
+    pop = pop.merge(land[["geoid", "land_sqmi"]], on="geoid", how="outer", indicator=True)
+    missing = pop[(pop._merge == "right_only") & pop.geoid.isin(l48)].geoid.tolist()
+    if missing:
+        raise ValueError(f"{len(missing)} Lower-48 counties have no population row (first few: {missing[:10]})")
+    pop = pop[pop._merge != "left_only"].drop(columns="_merge")
+    pop["pop"] = pop["pop"].astype("Int64")
+    pop.to_csv(PROCESSED / "county_population.csv", index=False)
+    info.update(pop_year=year, pop_file=dest.name, pop_us_total=int(pop["pop"].sum()),
+                pop_lower48=int(pop[pop.geoid.isin(l48)]["pop"].sum()))
+
+    # ---------------- dial-a-ride: NTD Demand Response coverage
+    # Newest first: CSVs you saved from transit.dot.gov (e.g. the 2025 page), else download the 2024 tables.
+    import re
+    def newest(*pats):
+        hits = [h for pat in pats for h in RAW.rglob(pat) if h.is_file()]
+        yr = lambda h: int(m.group(1)) if (m := re.search(r"(20\d\d)", h.name)) else 0
+        return max(hits, key=lambda h: (yr(h), h.stat().st_mtime)) if hits else None
+    raw = {"coverage": newest("*Counties*and*Places*.csv", "*Counties_and_Places*.csv"),
+           "eligibility": newest("*Passenger*Eligibility*.csv")}
+    if raw["coverage"] is None:
+        raw["coverage"] = _socrata_csv(NTD_DR["coverage"], RAW / "ntd_dr_coverage_2024.csv")
+    if raw["eligibility"] is None:
+        try:
+            raw["eligibility"] = _socrata_csv(NTD_DR["eligibility"], RAW / "ntd_dr_eligibility_2024.csv")
+        except Exception as e:
+            print(f"         eligibility: {e}")
+            raw.pop("eligibility")
+    m = re.search(r"(20\d\d)", raw["coverage"].name)
+    if not m:
+        raise ValueError(f"Put the report year in the file name so the map can say which year it is, "
+                         f"e.g. rename '{raw['coverage'].name}' to '2025 Counties and Places.csv'")
+    info.update(ntd_file=raw["coverage"].name, ntd_year=int(m.group(1)))
+    for k, p in raw.items():                        # small: copy into processed so they can be checked from GitHub
+        print(f"         {k}: {p.name}")
+        if size_mb(p) < 25:
+            pd.read_csv(p, dtype=str).to_csv(PROCESSED / f"ntd_dr_{k}.csv", index=False)
+    dr = pd.read_csv(raw["coverage"], dtype=str)
+    elig = pd.read_csv(raw["eligibility"], dtype=str) if "eligibility" in raw else None
+    cols = list(dr.columns)
+    print(f"         NTD coverage: {len(dr):,} rows, columns: {cols}")
+    info.update(ntd_columns=cols, ntd_rows=len(dr))
+    if "county_geo_id" not in cols or "ntd_id" not in cols:
+        raise ValueError(f"Expected county_geo_id and ntd_id columns (the 2025 NTD layout). Paste this to Claude: {cols}")
+    out, extra = _dr_by_county(dr, elig)
+    out.to_csv(PROCESSED / "ntd_dr_counties.csv", index=False)
+    info.update(extra)
+    info.update(counties_with_dr_lower48=int(out.geoid.isin(l48).sum()),
+                counties_not_in_census=sorted(set(out.geoid) - set(allc.geoid)))
+    return info
+
+
 # ------------------------------------------------------------------ Day 19 · Philly coffee
 @step("day19_philly_coffee", "philly_coffee.geojson")
 def day19():
@@ -446,13 +570,13 @@ def day20():
 
 
 # ------------------------------------------------------------------ run
-STEPS = [day13_eia, day13_uspvdb, day15, day17, day18, day19, day20]
+STEPS = [day13_eia, day13_uspvdb, day15, day17, day18, day18b, day19, day20]
 
 if __name__ == "__main__":
     wanted = [a.lower() for a in sys.argv[1:]]
     chosen = [fn for fn in STEPS if not wanted or any(fn.step_name.startswith(w + "_") for w in wanted)]
     if not chosen:
-        sys.exit(f"No step matches {wanted}. Try day13, day15, day17, day18, day19 or day20.")
+        sys.exit(f"No step matches {wanted}. Try day13, day15, day17, day18, day18b, day19 or day20.")
     for fn in chosen:
         fn()
     print("\nDone. Commit the new files in data/processed/ (GitHub Desktop: commit, then Push origin).")

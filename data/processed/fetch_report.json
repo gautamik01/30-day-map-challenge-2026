@@ -798,5 +798,35 @@
     ],
     "missing_groundwater_column": false,
     "size_mb": 4.8
+  },
+  "day18b_dial_a_ride": {
+    "status": "ok",
+    "seconds": 12,
+    "pop_year": 2024,
+    "pop_file": "co-est2024-alldata.csv",
+    "pop_us_total": 340110988,
+    "pop_lower48": 337924709,
+    "ntd_file": "2025 Counties and Places.csv",
+    "ntd_year": 2025,
+    "ntd_columns": [
+      "state_parent_ntd_id",
+      "ntd_id",
+      "reportername",
+      "reportertypeshort",
+      "mode_code",
+      "service_type_code",
+      "place_geo_id",
+      "place_name",
+      "geo_service_level_desc",
+      "county_geo_id",
+      "county_name",
+      "county_state_name"
+    ],
+    "ntd_rows": 37478,
+    "dr_agencies_total": 1931,
+    "counties_with_dr_all": 2861,
+    "counties_with_dr_lower48": 2802,
+    "dr_services": 2076,
+    "services_without_eligibility_row": 0
   }
 }
